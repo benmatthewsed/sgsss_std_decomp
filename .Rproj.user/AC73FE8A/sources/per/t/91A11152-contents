@@ -1,0 +1,42 @@
+---
+title: "Welcome/Course Intro"
+format:
+  revealjs:
+    theme: [default, assets/mystyle.scss]
+    footer: "[Workshop Home](./index.html)"
+    transition: fade
+    slide-number: true
+    preview-links: auto
+    callout-appearance: simple
+    code-line-numbers: false
+    code-overflow: wrap
+    code-annotations: hover
+    code-copy: hover
+---
+
+
+# Welcome to SGSSS Decomposition Workshop!
+
+# Hello! 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+what is the course about?
+:::
+
+::: {.column width="50%"}
+things! it's about *things!*
+:::
+
+::::
+
+# thing 1
+
+this is thing 1
+
+# thing 2
+
+what a surprise. thing 2 is here!
+
+# End

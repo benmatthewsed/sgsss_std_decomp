@@ -1,0 +1,41 @@
+project:
+  type: website
+  render: 
+    - "*.qmd"
+    - "!todo/*"
+  output-dir: docs/
+
+website:
+  title: "sgsss_decomp"
+  page-footer: Site licensed under the [GNU AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html) license.
+  navbar:
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Lectures"
+        menu:
+          - lecture00.qmd
+          - lecture01.qmd
+          - lecture02.qmd
+          - lecture03.qmd
+      - text: "Worksheets"
+        menu:
+          - csstests.qmd
+      - text: "Examples"
+
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-annotations: hover
+    link-citations: true
+    theme: 
+      - united
+      - assets/style-labs.scss
+    include-in-header: "assets/toggling.html"
+    number-sections: false
+
+
+
+
