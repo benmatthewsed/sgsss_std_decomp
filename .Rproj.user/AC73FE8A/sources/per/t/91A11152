@@ -1,9 +1,9 @@
 {
     "id": "91A11152",
-    "path": "C:/Users/jking34/Desktop/jk_projects/sgsss_decomp/lecture00.qmd",
+    "path": "C:/Users/jking34/Desktop/jk_projects/sgsss_std_decomp/lecture00.qmd",
     "project_path": "lecture00.qmd",
     "type": "quarto_markdown",
-    "hash": "2755382904",
+    "hash": "1156438487",
     "contents": "",
     "dirty": false,
     "created": 1771324132312.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "9,30",
+        "cursorPosition": "3,11",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1771324166,
+    "lastKnownWriteTime": 1780470199,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1771324166019,
+    "last_content_update": 1780470199052,
     "read_only": false,
     "read_only_alternatives": []
 }

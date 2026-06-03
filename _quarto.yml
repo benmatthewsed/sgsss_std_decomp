@@ -22,7 +22,8 @@ website:
       - text: "Worksheets"
         menu:
           - csstests.qmd
-      - text: "Examples"
+      - text: "Package Paper (Under Review)"
+        href: dgp_preprint.pdf
 
 format:
   html:

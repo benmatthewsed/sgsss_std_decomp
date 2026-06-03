@@ -1,9 +1,9 @@
 {
     "id": "4CEFD01D",
-    "path": "C:/Users/jking34/Desktop/jk_projects/sgsss_decomp/_quarto.yml",
+    "path": "C:/Users/jking34/Desktop/jk_projects/sgsss_std_decomp/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "363102635",
+    "hash": "1832065276",
     "contents": "",
     "dirty": false,
     "created": 1771323560857.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "20,25",
-        "scrollLine": "0"
+        "cursorPosition": "21,26",
+        "scrollLine": "9"
     },
     "folds": "",
-    "lastKnownWriteTime": 1771325167,
+    "lastKnownWriteTime": 1780471265,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1771325167960,
+    "last_content_update": 1780471265874,
     "read_only": false,
     "read_only_alternatives": []
 }

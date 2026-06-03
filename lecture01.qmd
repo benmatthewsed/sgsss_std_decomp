@@ -1,0 +1,67 @@
+---
+title: "2 and 3 factor decomposition"
+format:
+  revealjs:
+    theme: [default, assets/mystyle.scss]
+    footer: "[Workshop Home](./index.html)"
+    transition: fade
+    slide-number: true
+    preview-links: auto
+    callout-appearance: simple
+    code-line-numbers: false
+    code-overflow: wrap
+    code-annotations: hover
+    code-copy: hover
+    chalkboard: true
+---
+
+
+# 2 factor decomposition
+
+## data
+
+## crude rate
+
+## pop A standardised to pop B
+
+## pop B standardised to pop A
+
+## diff in crude is not diff in std
+
+## the interaction term
+
+## rearrange to... 
+
+## pops standardised to avg
+
+# 3 factor decomposition  
+
+## data
+
+## crude rate
+
+## pop A standardised to pop B
+
+## pop B standardised to pop A
+
+## uh-oh.. the interaction termS
+
+# Das Gupta
+
+## combinatorics
+
+## 2 factor
+
+## 3 factor
+
+## ... 5 factor
+
+
+
+
+
+
+
+
+
+# End

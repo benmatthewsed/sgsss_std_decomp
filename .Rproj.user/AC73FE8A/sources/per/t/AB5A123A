@@ -1,9 +1,9 @@
 {
     "id": "AB5A123A",
-    "path": "C:/Users/jking34/Desktop/jk_projects/sgsss_decomp/index.qmd",
+    "path": "C:/Users/jking34/Desktop/jk_projects/sgsss_std_decomp/index.qmd",
     "project_path": "index.qmd",
     "type": "quarto_markdown",
-    "hash": "1946615670",
+    "hash": "4292356887",
     "contents": "",
     "dirty": false,
     "created": 1771323560255.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "6,0",
+        "cursorPosition": "34,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1771323798,
+    "lastKnownWriteTime": 1780474897,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1771323798837,
+    "last_content_update": 1780474897842,
     "read_only": false,
     "read_only_alternatives": []
 }

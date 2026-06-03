@@ -1,10 +1,129 @@
 [
   {
-    "objectID": "csstests.html",
-    "href": "csstests.html",
-    "title": "Tests",
+    "objectID": "lecture01.html#data",
+    "href": "lecture01.html#data",
+    "title": "2 and 3 factor decomposition",
+    "section": "data",
+    "text": "data"
+  },
+  {
+    "objectID": "lecture01.html#crude-rate",
+    "href": "lecture01.html#crude-rate",
+    "title": "2 and 3 factor decomposition",
+    "section": "crude rate",
+    "text": "crude rate"
+  },
+  {
+    "objectID": "lecture01.html#pop-a-standardised-to-pop-b",
+    "href": "lecture01.html#pop-a-standardised-to-pop-b",
+    "title": "2 and 3 factor decomposition",
+    "section": "pop A standardised to pop B",
+    "text": "pop A standardised to pop B"
+  },
+  {
+    "objectID": "lecture01.html#pop-b-standardised-to-pop-a",
+    "href": "lecture01.html#pop-b-standardised-to-pop-a",
+    "title": "2 and 3 factor decomposition",
+    "section": "pop B standardised to pop A",
+    "text": "pop B standardised to pop A"
+  },
+  {
+    "objectID": "lecture01.html#diff-in-crude-is-not-diff-in-std",
+    "href": "lecture01.html#diff-in-crude-is-not-diff-in-std",
+    "title": "2 and 3 factor decomposition",
+    "section": "diff in crude is not diff in std",
+    "text": "diff in crude is not diff in std"
+  },
+  {
+    "objectID": "lecture01.html#the-interaction-term",
+    "href": "lecture01.html#the-interaction-term",
+    "title": "2 and 3 factor decomposition",
+    "section": "the interaction term",
+    "text": "the interaction term"
+  },
+  {
+    "objectID": "lecture01.html#rearrange-to",
+    "href": "lecture01.html#rearrange-to",
+    "title": "2 and 3 factor decomposition",
+    "section": "rearrange to…",
+    "text": "rearrange to…"
+  },
+  {
+    "objectID": "lecture01.html#pops-standardised-to-avg",
+    "href": "lecture01.html#pops-standardised-to-avg",
+    "title": "2 and 3 factor decomposition",
+    "section": "pops standardised to avg",
+    "text": "pops standardised to avg"
+  },
+  {
+    "objectID": "lecture01.html#data-1",
+    "href": "lecture01.html#data-1",
+    "title": "2 and 3 factor decomposition",
+    "section": "data",
+    "text": "data"
+  },
+  {
+    "objectID": "lecture01.html#crude-rate-1",
+    "href": "lecture01.html#crude-rate-1",
+    "title": "2 and 3 factor decomposition",
+    "section": "crude rate",
+    "text": "crude rate"
+  },
+  {
+    "objectID": "lecture01.html#pop-a-standardised-to-pop-b-1",
+    "href": "lecture01.html#pop-a-standardised-to-pop-b-1",
+    "title": "2 and 3 factor decomposition",
+    "section": "pop A standardised to pop B",
+    "text": "pop A standardised to pop B"
+  },
+  {
+    "objectID": "lecture01.html#pop-b-standardised-to-pop-a-1",
+    "href": "lecture01.html#pop-b-standardised-to-pop-a-1",
+    "title": "2 and 3 factor decomposition",
+    "section": "pop B standardised to pop A",
+    "text": "pop B standardised to pop A"
+  },
+  {
+    "objectID": "lecture01.html#uh-oh..-the-interaction-terms",
+    "href": "lecture01.html#uh-oh..-the-interaction-terms",
+    "title": "2 and 3 factor decomposition",
+    "section": "uh-oh.. the interaction termS",
+    "text": "uh-oh.. the interaction termS"
+  },
+  {
+    "objectID": "lecture01.html#combinatorics",
+    "href": "lecture01.html#combinatorics",
+    "title": "2 and 3 factor decomposition",
+    "section": "combinatorics",
+    "text": "combinatorics"
+  },
+  {
+    "objectID": "lecture01.html#factor",
+    "href": "lecture01.html#factor",
+    "title": "2 and 3 factor decomposition",
+    "section": "2 factor",
+    "text": "2 factor"
+  },
+  {
+    "objectID": "lecture01.html#factor-1",
+    "href": "lecture01.html#factor-1",
+    "title": "2 and 3 factor decomposition",
+    "section": "3 factor",
+    "text": "3 factor"
+  },
+  {
+    "objectID": "lecture01.html#factor-2",
+    "href": "lecture01.html#factor-2",
+    "title": "2 and 3 factor decomposition",
+    "section": "… 5 factor",
+    "text": "… 5 factor"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "sgsss_decomp",
     "section": "",
-    "text": "Notes for Wizards\n\n\n\n\n\nhere’s a note!\n\n\n\n\n\n\n\n\n\nHints\n\n\n\n\n\n\n\n\n\n\nlearning obj\n\n\nimportant\n\n\nsticky\n\n\n\n\n\nr tips\n\n\nstatbox\n\n\ninterprtation interprtation interprtation\n\n\nQuestion\n\n\nquestion\nwhat is your name?\nwhat is your favourite colour?\n\n\n\n\n\nSolution\n\n\n\nSolution 1. solution\nhello\n\n2+2\n\n[1] 4\n\n\n\n\n\n\n\nOptional hello my optional friend\n\n\n\nit’s nice to see you again\n\n\n\n\n\nthis is not a panel\n\n\nthis is a panel\n\n\nthis is a panel"
+    "text": "Overview\n\n\nSchedule\n\n\n\n?? - ??\ncoffee\n\n\n?? - ??\nBM: Introduction to standardisation and decomposition\n\n\n?? - ??\nJK: practical 2, 3 factor by hand\n\n\n?? - ??\nBM: bivariate/multivariate\n\n\n?? - ??\nlunch\n\n\n?? - ??\nJK: crossclassified\n\n\n?? - ??\nBM: uncertainty\n\n\n?? - ??\ncoffee\n\n\n?? - ??\nBM: category effects\n\n\n?? - ??\nJK: other methods of decomposition\n\n\n\n\nin terms of the calculations we’re going to show them, the idea of having sub-population rates only really fits into the picture when we introduce cross classified stuff? otherwise it just causes more of an issue by having to have a sum at the start of everything.\n\nit’s quite hard to come up with a rate that is the product of 2 or 3 factors that isn’t sub-populations. DG tends to use birth rate related things, because they essentially go down through a series: women&gt;sexuallyactive&gt;pregnant&gt;birthed. could we use something (maybe SCJS) like victimofcrime&gt;victimofpropertycrime&gt;victimofburglary ?\n\nsomewhere we should talk about the unit of analysis being populations.\n\ni’m not quite sure what i mean by that really.\nconsider 2 pops: uk, italy. death rate from covid is higher in italy because higher proportion of over 70s.\n\nall of this std/decomp stuff doesn’t allow you to say:\n\nif an italian was british, the prob of them dying would be XX.\n\ninstead it is:\n\nif italy was like britain, the rate of deaths would be XX\n\nmaybe that’s obvious though. it feels more blurred when it’s in the oaxaca approach for some reason."
   },
   {
     "objectID": "about.html",
@@ -14,10 +133,10 @@
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "sgsss_decomp",
+    "objectID": "csstests.html",
+    "href": "csstests.html",
+    "title": "Tests",
     "section": "",
-    "text": "Overview\n\n\nSchedule"
+    "text": "Notes for Wizards\n\n\n\n\n\nhere’s a note!\n\n\n\n\n\n\n\n\n\nHints\n\n\n\n\n\n\n\n\n\n\nlearning obj\n\n\nimportant\n\n\nsticky\n\n\n\n\n\nr tips\n\n\nstatbox\n\n\ninterprtation interprtation interprtation\n\n\nQuestion\n\n\nquestion\nwhat is your name?\nwhat is your favourite colour?\n\n\n\n\n\nSolution\n\n\n\nSolution 1. solution\nhello\n\n2+2\n\n[1] 4\n\n\n\n\n\n\n\nOptional hello my optional friend\n\n\n\nit’s nice to see you again\n\n\n\n\n\nthis is not a panel\n\n\nthis is a panel\n\n\nthis is a panel"
   }
 ]

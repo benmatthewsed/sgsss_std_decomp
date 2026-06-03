@@ -12,6 +12,7 @@ format:
     code-overflow: wrap
     code-annotations: hover
     code-copy: hover
+    chalkboard: true
 ---
 
 

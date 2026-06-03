@@ -133,7 +133,10 @@ if(f.classList.contains('jk-circle-right')) {
     <a class="dropdown-item" href="./lecture00.html">
  <span class="dropdown-text">Welcome/Course Intro</span></a>
   </li>  
-        <li class="dropdown-header">lecture01.qmd</li>
+        <li>
+    <a class="dropdown-item" href="./lecture01.html">
+ <span class="dropdown-text">2 and 3 factor decomposition</span></a>
+  </li>  
         <li class="dropdown-header">lecture02.qmd</li>
         <li class="dropdown-header">lecture03.qmd</li>
     </ul>
@@ -150,9 +153,8 @@ if(f.classList.contains('jk-circle-right')) {
     </ul>
   </li>
   <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">Examples</span>
-    </span>
+    <a class="nav-link" href="./dgp_preprint.pdf"> 
+<span class="menu-text">Package Paper (Under Review)</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -209,6 +211,71 @@ if(f.classList.contains('jk-circle-right')) {
 </section>
 <section id="schedule" class="level1">
 <h1>Schedule</h1>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>?? - ??</td>
+<td>coffee</td>
+</tr>
+<tr class="even">
+<td>?? - ??</td>
+<td><a href="lecture00.html">BM: Introduction to standardisation and decomposition</a></td>
+</tr>
+<tr class="odd">
+<td>?? - ??</td>
+<td><a href="lecture01.html">JK: practical 2, 3 factor by hand</a></td>
+</tr>
+<tr class="even">
+<td>?? - ??</td>
+<td><a href="lecture02.html">BM: bivariate/multivariate</a></td>
+</tr>
+<tr class="odd">
+<td>?? - ??</td>
+<td>lunch</td>
+</tr>
+<tr class="even">
+<td>?? - ??</td>
+<td><a href="lecture03.html">JK: crossclassified</a></td>
+</tr>
+<tr class="odd">
+<td>?? - ??</td>
+<td><a href="lecture04.html">BM: uncertainty</a></td>
+</tr>
+<tr class="even">
+<td>?? - ??</td>
+<td>coffee</td>
+</tr>
+<tr class="odd">
+<td>?? - ??</td>
+<td><a href="lecture05.html">BM: category effects</a></td>
+</tr>
+<tr class="even">
+<td>?? - ??</td>
+<td><a href="lecture06.html">JK: other methods of decomposition</a></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>in terms of the calculations we’re going to show them, the idea of having sub-population rates only really fits into the picture when we introduce cross classified stuff? otherwise it just causes more of an issue by having to have a sum at the start of everything.
+<ul>
+<li>it’s quite hard to come up with a rate that is the product of 2 or 3 factors that <strong>isn’t</strong> sub-populations. DG tends to use birth rate related things, because they essentially go down through a series: women&gt;sexuallyactive&gt;pregnant&gt;birthed. could we use something (maybe SCJS) like victimofcrime&gt;victimofpropertycrime&gt;victimofburglary ?</li>
+</ul></li>
+<li>somewhere we should talk about the unit of analysis being populations.
+<ul>
+<li>i’m not quite sure what i mean by that really.</li>
+<li>consider 2 pops: uk, italy. death rate from covid is higher in italy because higher proportion of over 70s.<br>
+</li>
+<li>all of this std/decomp stuff <strong>doesn’t</strong> allow you to say:<br>
+</li>
+<li>if an italian was british, the prob of them dying would be XX.<br>
+</li>
+<li>instead it is:<br>
+</li>
+<li>if italy was like britain, the rate of deaths would be XX<br>
+</li>
+<li>maybe that’s obvious though. it feels more blurred when it’s in the oaxaca approach for some reason.</li>
+</ul></li>
+</ul>
 
 
 </section>
