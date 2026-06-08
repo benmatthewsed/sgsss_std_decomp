@@ -15,46 +15,284 @@ format:
     chalkboard: true
 ---
 
+```{r}
+#| include: false
+options(digits=2)
+```
 
-# 2 factor decomposition
 
-## data
 
-## crude rate
+# Standardisation and Decomposition 
 
-## pop A standardised to pop B
+---
 
-## pop B standardised to pop A
+![](pres1/Slide1.PNG){fig-align="center" width="100%"}
 
-## diff in crude is not diff in std
+---
 
-## the interaction term
+![](pres1/Slide2.PNG){fig-align="center" width="100%"}
 
-## rearrange to... 
+---
 
-## pops standardised to avg
+![](pres1/Slide3.PNG){fig-align="center" width="100%"}
 
-# 3 factor decomposition  
+---
 
-## data
+![](pres1/Slide4.PNG){fig-align="center" width="100%"}
 
-## crude rate
+---
 
-## pop A standardised to pop B
+![](pres1/Slide5.PNG){fig-align="center" width="100%"}
 
-## pop B standardised to pop A
+---
 
-## uh-oh.. the interaction termS
+![](pres1/Slide6.PNG){fig-align="center" width="100%"}
 
-# Das Gupta
+---
 
-## combinatorics
+![](pres1/Slide7.PNG){fig-align="center" width="100%"}
 
-## 2 factor
+---
 
-## 3 factor
+![](pres1/Slide8.PNG){fig-align="center" width="100%"}
 
-## ... 5 factor
+---
+
+![](pres1/Slide9.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide10.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide11.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide12.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide13.PNG){fig-align="center" width="100%"}
+
+
+---
+
+![](pres1/Slide14.PNG){fig-align="center" width="100%"}
+
+
+---
+
+![](pres1/Slide15.PNG){fig-align="center" width="100%"}
+
+
+---
+
+![](pres1/Slide16.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide16.PNG){fig-align="center" width="100%"}
+
+
+---
+
+![](pres1/Slide17.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide18.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide19.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide20.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide21.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide22.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide23.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide24.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide25.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide26.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide27.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide28.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide29.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide30.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide31.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide32.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide33.PNG){fig-align="center" width="100%"}
+
+---
+
+![](pres1/Slide34.PNG){fig-align="center" width="100%"}
+
+
+## Decomposition - {DasGuptR}
+
+### 2 factor
+
+::::{.columns}
+:::{.column width="50%"}
+```{r}
+#| echo: true
+library(tibble)
+
+mydat <- tribble(
+  ~pop,~psq,~pgr,
+  "P1", 5/15, 3/5,
+  "P2", 10/15, 8/10,
+) 
+mydat
+```
+
+:::
+:::{.column width="50%" .fragment}
+
+```{r}
+#| echo: true
+library(DasGuptR)
+
+dgres <- dgnpop(x = mydat,
+       pop = "pop",
+       factors = c("psq","pgr"))
+
+head(dgres)
+
+dg_table(dgres)
+```
+
+
+:::
+::::
+
+
+## Decomposition - {DasGuptR}
+
+### 3 factor  
+
+::::{.columns}
+:::{.column width="50%"}
+```{r}
+#| echo: true
+library(tibble)
+
+mydat <- tribble(
+  ~pop,~pcol,~psq,~pgr,
+  "P1", 11/15, 4/11, 3/4,
+  "P2", 13/15, 10/13, 8/10,
+) 
+mydat
+```
+
+:::
+:::{.column width="50%" .fragment}
+
+```{r}
+#| echo: true
+library(DasGuptR)
+
+dgres <- dgnpop(x = mydat,
+       pop = "pop",
+       factors = c("pcol","psq","pgr"))
+
+head(dgres)
+
+dg_table(dgres)
+```
+
+:::
+::::
+
+## sub-populations
+
+![](pres1/Slide36.PNG){fig-align="center" width="100%"}
+
+## sub-populations
+
+![](pres1/Slide37.PNG){fig-align="center" width="100%"}
+
+## sub-populations
+
+::::{.columns}
+:::{.column width="50%"}
+```{r}
+#| echo: true
+mydat <- tribble(
+  ~pop, ~shape,    ~pshp, ~pgreen,
+  1,    "circle",  10/24,  2/10,
+  1,    "square",  10/24,  3/10,
+  1,    "triangle", 4/24,  3/4,
+  2,    "circle",   7/24,  2/7,
+  2,    "square",   7/24,  4/7,
+  2,    "triangle",10/24,  8/10,
+)
+mydat
+```
+:::
+:::{.column width="50%"}
+
+Rate_green = sum ( prop_shape_i * prop_green_i )
+
+
+:::
+::::
+
+## sub-populations
+
+```{r}
+#| echo: true
+dgnpop(x = mydat,
+       pop = "pop",
+       factors = c("pshp","pgreen"),
+       id_vars = c("shape"),
+       ratefunction = "sum(pshp*pgreen)") |>
+  dg_table()
+```
+
+
+
 
 
 

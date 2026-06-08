@@ -27,8 +27,73 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-462554cc28ce1aea00cf4f60d38f8354.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-7552c4c898e35cc5e35ad4a8dfb02f11.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -135,70 +200,306 @@
 
 </section>
 <section>
-<section id="factor-decomposition" class="title-slide slide level1 center">
-<h1>2 factor decomposition</h1>
+<section id="standardisation-and-decomposition" class="title-slide slide level1 center">
+<h1>Standardisation and Decomposition</h1>
 
 </section>
-<section id="data" class="slide level2">
-<h2>data</h2>
-</section>
-<section id="crude-rate" class="slide level2">
-<h2>crude rate</h2>
-</section>
-<section id="pop-a-standardised-to-pop-b" class="slide level2">
-<h2>pop A standardised to pop B</h2>
-</section>
-<section id="pop-b-standardised-to-pop-a" class="slide level2">
-<h2>pop B standardised to pop A</h2>
-</section>
-<section id="diff-in-crude-is-not-diff-in-std" class="slide level2">
-<h2>diff in crude is not diff in std</h2>
-</section>
-<section id="the-interaction-term" class="slide level2">
-<h2>the interaction term</h2>
-</section>
-<section id="rearrange-to" class="slide level2">
-<h2>rearrange to…</h2>
-</section>
-<section id="pops-standardised-to-avg" class="slide level2">
-<h2>pops standardised to avg</h2>
-</section></section>
-<section>
-<section id="factor-decomposition-1" class="title-slide slide level1 center">
-<h1>3 factor decomposition</h1>
+<section class="slide level2">
 
-</section>
-<section id="data-1" class="slide level2">
-<h2>data</h2>
-</section>
-<section id="crude-rate-1" class="slide level2">
-<h2>crude rate</h2>
-</section>
-<section id="pop-a-standardised-to-pop-b-1" class="slide level2">
-<h2>pop A standardised to pop B</h2>
-</section>
-<section id="pop-b-standardised-to-pop-a-1" class="slide level2">
-<h2>pop B standardised to pop A</h2>
-</section>
-<section id="uh-oh..-the-interaction-terms" class="slide level2">
-<h2>uh-oh.. the interaction termS</h2>
-</section></section>
-<section>
-<section id="das-gupta" class="title-slide slide level1 center">
-<h1>Das Gupta</h1>
 
+<img data-src="pres1/Slide1.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide2.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide3.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide4.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide5.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide6.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide7.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide8.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide9.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide10.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide11.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide12.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide13.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide14.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide15.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide16.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide16.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide17.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide18.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide19.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide20.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide21.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide22.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide23.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide24.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide25.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide26.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide27.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide28.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide29.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide30.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide31.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide32.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide33.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="pres1/Slide34.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="decomposition---dasguptr" class="slide level2">
+<h2>Decomposition - {DasGuptR}</h2>
+<h3 id="factor">2 factor</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop,<span class="sc">~</span>psq,<span class="sc">~</span>pgr,</span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="dv">5</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">5</span>,</span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  pop     psq   pgr
+  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 P1    0.333   0.6
+2 P2    0.667   0.8</code></pre>
+</div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"psq"</span>,<span class="st">"pgr"</span>))</span>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  rate pop std.set factor
+1 0.20  P1    &lt;NA&gt;  crude
+2 0.53  P2    &lt;NA&gt;  crude
+3 0.23  P1      P2    psq
+4 0.47  P2      P1    psq
+5 0.30  P1      P2    pgr
+6 0.40  P2      P1    pgr</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        P1   P2 diff decomp
+psq   0.23 0.47 0.23     70
+pgr   0.30 0.40 0.10     30
+crude 0.20 0.53 0.33    100</code></pre>
+</div>
+</div>
+</div></div>
 </section>
-<section id="combinatorics" class="slide level2">
-<h2>combinatorics</h2>
+<section id="decomposition---dasguptr-1" class="slide level2">
+<h2>Decomposition - {DasGuptR}</h2>
+<h3 id="factor-1">3 factor</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb7-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop,<span class="sc">~</span>pcol,<span class="sc">~</span>psq,<span class="sc">~</span>pgr,</span>
+<span id="cb7-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="dv">11</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">4</span><span class="sc">/</span><span class="dv">11</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
+<span id="cb7-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">13</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
+<span id="cb7-7"><a aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb7-8"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  pop    pcol   psq   pgr
+  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 P1    0.733 0.364  0.75
+2 P2    0.867 0.769  0.8 </code></pre>
+</div>
+</div>
+</div><div class="column fragment" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
+<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"pcol"</span>,<span class="st">"psq"</span>,<span class="st">"pgr"</span>))</span>
+<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  rate pop std.set factor
+1 0.20  P1    &lt;NA&gt;  crude
+2 0.53  P2    &lt;NA&gt;  crude
+3 0.32  P1      P2   pcol
+4 0.38  P2      P1   pcol
+5 0.23  P1      P2    psq
+6 0.48  P2      P1    psq</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        P1   P2  diff decomp
+pcol  0.32 0.38 0.059   17.6
+psq   0.23 0.48 0.252   75.5
+pgr   0.34 0.37 0.023    6.9
+crude 0.20 0.53 0.333  100.0</code></pre>
+</div>
+</div>
+</div></div>
 </section>
-<section id="factor" class="slide level2">
-<h2>2 factor</h2>
+<section id="sub-populations" class="slide level2">
+<h2>sub-populations</h2>
+
+<img data-src="pres1/Slide36.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="sub-populations-1" class="slide level2">
+<h2>sub-populations</h2>
+
+<img data-src="pres1/Slide37.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="sub-populations-2" class="slide level2">
+<h2>sub-populations</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop, <span class="sc">~</span>shape,    <span class="sc">~</span>pshp, <span class="sc">~</span>pgreen,</span>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>,    <span class="st">"circle"</span>,  <span class="dv">10</span><span class="sc">/</span><span class="dv">24</span>,  <span class="dv">2</span><span class="sc">/</span><span class="dv">10</span>,</span>
+<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>,    <span class="st">"square"</span>,  <span class="dv">10</span><span class="sc">/</span><span class="dv">24</span>,  <span class="dv">3</span><span class="sc">/</span><span class="dv">10</span>,</span>
+<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>,    <span class="st">"triangle"</span>, <span class="dv">4</span><span class="sc">/</span><span class="dv">24</span>,  <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
+<span id="cb13-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>,    <span class="st">"circle"</span>,   <span class="dv">7</span><span class="sc">/</span><span class="dv">24</span>,  <span class="dv">2</span><span class="sc">/</span><span class="dv">7</span>,</span>
+<span id="cb13-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>,    <span class="st">"square"</span>,   <span class="dv">7</span><span class="sc">/</span><span class="dv">24</span>,  <span class="dv">4</span><span class="sc">/</span><span class="dv">7</span>,</span>
+<span id="cb13-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>,    <span class="st">"triangle"</span>,<span class="dv">10</span><span class="sc">/</span><span class="dv">24</span>,  <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
+<span id="cb13-9"><a aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-10"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+    pop shape     pshp pgreen
+  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1     1 circle   0.417  0.2  
+2     1 square   0.417  0.3  
+3     1 triangle 0.167  0.75 
+4     2 circle   0.292  0.286
+5     2 square   0.292  0.571
+6     2 triangle 0.417  0.8  </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Rate_green = sum ( prop_shape_i * prop_green_i )</p>
+</div></div>
 </section>
-<section id="factor-1" class="slide level2">
-<h2>3 factor</h2>
-</section>
-<section id="factor-2" class="slide level2">
-<h2>… 5 factor</h2>
+<section id="sub-populations-3" class="slide level2">
+<h2>sub-populations</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
+<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"pshp"</span>,<span class="st">"pgreen"</span>),</span>
+<span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">id_vars =</span> <span class="fu">c</span>(<span class="st">"shape"</span>),</span>
+<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">ratefunction =</span> <span class="st">"sum(pshp*pgreen)"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          1    2 diff decomp
+pshp   0.41 0.52 0.11     44
+pgreen 0.40 0.54 0.14     56
+crude  0.33 0.58 0.25    100</code></pre>
+</div>
+</div>
 </section></section>
 <section id="end" class="title-slide slide level1 center">
 <h1>End</h1>
@@ -422,6 +723,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

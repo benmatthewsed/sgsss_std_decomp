@@ -138,5 +138,68 @@
     "title": "Tests",
     "section": "",
     "text": "Notes for Wizards\n\n\n\n\n\nhere’s a note!\n\n\n\n\n\n\n\n\n\nHints\n\n\n\n\n\n\n\n\n\n\nlearning obj\n\n\nimportant\n\n\nsticky\n\n\n\n\n\nr tips\n\n\nstatbox\n\n\ninterprtation interprtation interprtation\n\n\nQuestion\n\n\nquestion\nwhat is your name?\nwhat is your favourite colour?\n\n\n\n\n\nSolution\n\n\n\nSolution 1. solution\nhello\n\n2+2\n\n[1] 4\n\n\n\n\n\n\n\nOptional hello my optional friend\n\n\n\nit’s nice to see you again\n\n\n\n\n\nthis is not a panel\n\n\nthis is a panel\n\n\nthis is a panel"
+  },
+  {
+    "objectID": "lecture01.html#intro-lec",
+    "href": "lecture01.html#intro-lec",
+    "title": "2 and 3 factor decomposition",
+    "section": "intro lec",
+    "text": "intro lec\nI have two populations \\(p1\\) and \\(p2\\)\nStandardisation\n\\[\n\\text{What would }R_{p2}\\text{ be if }A\\text{ were the same in }p1\\text{ and }p2\n\\]\nDecomposition\n\\[\n\\text{How much of }R_{p2} - R_{p1}\\text{ is because of }A\\text{ being different between }p2\\text{ and }p1?\n\\] or \\[\n\\text{How much of }R_{p2} - R_{p1}\\text{ is because of }p1\\text{ and }p2\\text{ having different amounts of }A?\n\\]"
+  },
+  {
+    "objectID": "lecture01.html#intro-lec-2",
+    "href": "lecture01.html#intro-lec-2",
+    "title": "2 and 3 factor decomposition",
+    "section": "intro lec 2",
+    "text": "intro lec 2\nI have two populations \\(p1\\) and \\(p2\\)\nStandardisation\n\\[\n\\text{What would }R_{p2}\\text{ be if }\\left\\{\\begin{array}{lr}\n        A\\text{ were what it is in }p2 \\\\\n        A\\text{ were at the average of what it is in }p1\\text{ and }p2 \\\\\n        \\end{array}\\right\\}\n\\]\nDecomposition\n\\[\n\\text{How much of }R_{p2} - R_{p1}\\text{ is because of }A\\text{ being different between }p2\\text{ and }p1?\n\\] \\[\n\\text{How much of }R_{p2} - R_{p1}\\text{ is because of }p1\\text{ and }p2\\text{ having different amounts of }A?\n\\]"
+  },
+  {
+    "objectID": "lecture01.html#later-lec",
+    "href": "lecture01.html#later-lec",
+    "title": "2 and 3 factor decomposition",
+    "section": "later lec",
+    "text": "later lec\n\\[\n\\text{What would }\\bar{Y}_{p2}\\text{ be if }\\left\\{\\begin{array}{lr}\n        \\bar A_{p2}\\text{ were }\\bar A_{p1} \\\\\n        \\bar A_{p2}\\text{ were }\\frac{\\bar A_{p1}+\\bar A_{p2}}{2} \\\\\n        \\end{array}\\right\\}\n\\]\n\\[\n\\text{How much of }R_{p2} - R_{p1}\\text{ is because of }A\\text{ being different between }p2\\text{ and }p1?\n\\]\n\\[\n\\text{How much of }R_{p2} - R_{p1}\\text{ is because of }p1\\text{ and }p2\\text{ having different amounts of }A?\n\\] \\[\n\\text{How much of }\\bar Y_{p2} - \\bar Y_{p1}\\text{ is because of }\\bar A_{p2} - \\bar A_{p1}?\n\\]"
+  },
+  {
+    "objectID": "lecture01.html#decomposition---dasguptr",
+    "href": "lecture01.html#decomposition---dasguptr",
+    "title": "2 and 3 factor decomposition",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\n2 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~psq,~pgr,\n  \"P1\", 5/15, 3/5,\n  \"P2\", 10/15, 8/10,\n) \nmydat\n\n# A tibble: 2 × 3\n  pop     psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.333   0.6\n2 P2    0.667   0.8\n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"psq\",\"pgr\"))\n\nhead(dgres)\n\n  rate pop std.set factor\n1 0.20  P1    &lt;NA&gt;  crude\n2 0.53  P2    &lt;NA&gt;  crude\n3 0.23  P1      P2    psq\n4 0.47  P2      P1    psq\n5 0.30  P1      P2    pgr\n6 0.40  P2      P1    pgr\n\ndg_table(dgres)\n\n        P1   P2 diff decomp\npsq   0.23 0.47 0.23     70\npgr   0.30 0.40 0.10     30\ncrude 0.20 0.53 0.33    100"
+  },
+  {
+    "objectID": "lecture01.html#decomposition---dasguptr-1",
+    "href": "lecture01.html#decomposition---dasguptr-1",
+    "title": "2 and 3 factor decomposition",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\n3 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\nhead(dgres)\n\n  rate pop std.set factor\n1 0.20  P1    &lt;NA&gt;  crude\n2 0.53  P2    &lt;NA&gt;  crude\n3 0.32  P1      P2   pcol\n4 0.38  P2      P1   pcol\n5 0.23  P1      P2    psq\n6 0.48  P2      P1    psq\n\ndg_table(dgres)\n\n        P1   P2  diff decomp\npcol  0.32 0.38 0.059   17.6\npsq   0.23 0.48 0.252   75.5\npgr   0.34 0.37 0.023    6.9\ncrude 0.20 0.53 0.333  100.0"
+  },
+  {
+    "objectID": "lecture01.html#sub-populations",
+    "href": "lecture01.html#sub-populations",
+    "title": "2 and 3 factor decomposition",
+    "section": "sub-populations",
+    "text": "sub-populations"
+  },
+  {
+    "objectID": "lecture01.html#sub-populations-1",
+    "href": "lecture01.html#sub-populations-1",
+    "title": "2 and 3 factor decomposition",
+    "section": "sub-populations",
+    "text": "sub-populations"
+  },
+  {
+    "objectID": "lecture01.html#sub-populations-2",
+    "href": "lecture01.html#sub-populations-2",
+    "title": "2 and 3 factor decomposition",
+    "section": "sub-populations",
+    "text": "sub-populations\n\n\n\nmydat &lt;- tribble(\n  ~pop, ~shape,    ~pshp, ~pgreen,\n  1,    \"circle\",  10/24,  2/10,\n  1,    \"square\",  10/24,  3/10,\n  1,    \"triangle\", 4/24,  3/4,\n  2,    \"circle\",   7/24,  2/7,\n  2,    \"square\",   7/24,  4/7,\n  2,    \"triangle\",10/24,  8/10,\n)\nmydat\n\n# A tibble: 6 × 4\n    pop shape     pshp pgreen\n  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;\n1     1 circle   0.417  0.2  \n2     1 square   0.417  0.3  \n3     1 triangle 0.167  0.75 \n4     2 circle   0.292  0.286\n5     2 square   0.292  0.571\n6     2 triangle 0.417  0.8  \n\n\n\nRate_green = sum ( prop_shape_i * prop_green_i )"
+  },
+  {
+    "objectID": "lecture01.html#sub-populations-3",
+    "href": "lecture01.html#sub-populations-3",
+    "title": "2 and 3 factor decomposition",
+    "section": "sub-populations",
+    "text": "sub-populations\n\ndgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pshp\",\"pgreen\"),\n       id_vars = c(\"shape\"),\n       ratefunction = \"sum(pshp*pgreen)\") |&gt;\n  dg_table()\n\n          1    2 diff decomp\npshp   0.41 0.52 0.11     44\npgreen 0.40 0.54 0.14     56\ncrude  0.33 0.58 0.25    100"
   }
 ]
