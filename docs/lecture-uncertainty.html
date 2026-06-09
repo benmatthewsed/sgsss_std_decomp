@@ -154,104 +154,113 @@
 </div>
 
 </section>
-<section id="what-are-standardization-and-decomposition" class="title-slide slide level1 center">
-<h1>What are Standardization and Decomposition</h1>
-
-</section>
-
-<section id="standardization" class="title-slide slide level1 center">
-<h1>Standardization</h1>
+<section id="whence-uncertainty" class="slide level2">
+<h2>Whence uncertainty?</h2>
 <ul>
-<li>Originally used to adjust mortality comparisons between populations with different age structures <span class="citation" data-cites="keidingStandardizationControlConfounding2014">(<a href="#/my-motivating-example" role="doc-biblioref" onclick="">Keiding and Clayton 2014</a>)</span></li>
-<li>Lets you “compar[e] rates between populations with different age structures by applying age-specific rates to a single “target” age structure and, thereafter, comparing predicted <em>marginal</em><sup>1</sup> summaries in this target population.” <span class="citation" data-cites="keidingStandardizationControlConfounding2014">(<a href="#/my-motivating-example" role="doc-biblioref" onclick="">Keiding and Clayton 2014, p529</a>)</span></li>
-<li>More generally - lets you compare rates of <em>any outcome</em> between populations with different compositions of <em>any confounder</em></li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>This is an important term! We will come back to this</p></li></ol></aside></section>
-
-<section id="standardization-1" class="title-slide slide level1 center">
-<h1>Standardization</h1>
-<ul>
-<li>The focus is on <em>aggregate</em>/<em>marginal</em> rates</li>
-<li>‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change<sup>1</sup> <span class="citation" data-cites="gelmanMarginal2006">(<a href="#/my-motivating-example" role="doc-biblioref" onclick="">Gelman 2006</a>)</span></li>
-<li>Aggregate rates are really common as <a href="https://www.gov.scot/collections/national-performance-framework/">performance indicators</a>: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework</li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>To get technical, it can be either an integral or a derivative</p></li></ol></aside></section>
-
-<section id="kitagawa" class="title-slide slide level1 center">
-<h1>Kitagawa</h1>
-<ul>
-<li>“When comparing the incidence of some phenomenon in two or more groups, social researchers place much emphasis on the need for holding constant those related facors that would tend to distort the comparison” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">Kitagawa (<a href="#/my-motivating-example" role="doc-biblioref" onclick="">1955</a>)</span></li>
+<li>The Das Gupta method doesn’t really have a concept of an error term - all results are calculate algebraically <span class="citation" data-cites="dasguptaStandardizationDecompositionRates1993">(<a href="#/bootstrapping-in-practice-4" role="doc-biblioref" onclick="">Das Gupta 1993</a>)</span></li>
+<li>But we might still want to quantify uncertainty in the results of a standardization and decomposition</li>
+<li>Bootstrapping is a general purpose way to achieve this <span class="citation" data-cites="carseyMonteCarloSimulation2014">(<a href="#/bootstrapping-in-practice-4" role="doc-biblioref" onclick="">Carsey and Harden 2014</a>)</span></li>
 </ul>
 </section>
-
-<section id="kitagawas-example" class="title-slide slide level1 center">
-<h1>Kitagawa’s example</h1>
+<section id="bootstrapping" class="slide level2">
+<h2>Bootstrapping</h2>
 <ul>
-<li>“For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">Kitagawa (<a href="#/my-motivating-example" role="doc-biblioref" onclick="">1955</a>)</span></li>
-<li>Take the observed age/sex/race death rates for your two areas</li>
-<li>Multiply these by some standard age, sex and race profile</li>
-<li>You have ‘standardized’ rates!</li>
+<li>There are different ways to achieve this</li>
+<li>The way we do it rate decomposition essentially expands the data out to unit-level data, re-samples, then aggregates back up</li>
+<li>Pros: this will always* work, makes no assumptions about distributions or anything</li>
+<li>Cons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire</li>
 </ul>
 </section>
-
-<section id="picking-a-standard-population" class="title-slide slide level1 center">
-<h1>Picking a standard population</h1>
+<section id="bootstrapping-in-practice" class="slide level2">
+<h2>Bootstrapping in practice</h2>
 <ul>
-<li>Which population would you use as a standard one?</li>
+<li>First create a function to essentially “uncount” data into individual level data (where nrow = size of total population), then re-sample with replacement, then aggregate back up to the level of the original data</li>
+<li>Standardize and decompose each resampled dataset</li>
 </ul>
 </section>
-
-<section id="student-discussion" class="title-slide slide level1 center">
-<h1>Student discussion</h1>
-
+<section id="bootstrapping-in-practice-1" class="slide level2">
+<h2>Bootstrapping in practice</h2>
 </section>
-
-<section id="decomposition" class="title-slide slide level1 center">
-<h1>Decomposition</h1>
+<section id="writing-an-r-function" class="slide level2">
+<h2>Writing an R function</h2>
 <ul>
-<li>Asks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you’ve standardized by?</li>
-<li>How much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?</li>
+<li>If you have not written an R function before you might want to check out the <a href="https://r4ds.hadley.nz/functions.html">Functions chapter in R for Data Science</a> <span class="citation" data-cites="wickhamR4DS2023">(<a href="#/bootstrapping-in-practice-4" role="doc-biblioref" onclick="">Wickham, Çetinkaya-Rundel, and Grolemund 2023</a>)</span></li>
 </ul>
 </section>
-
-<section id="why-decomposition" class="title-slide slide level1 center">
-<h1>Why decomposition?</h1>
+<section id="bootstrapping-1" class="slide level2">
+<h2>Bootstrapping</h2>
 <ul>
-<li>Standardized rates are ‘artificial’, summaries of a world we do not live in</li>
-<li>Why should we care what the mortality rate in Scotland would be if it had the Estonian age distribution?</li>
-<li>Decomposition makes comparisons of standardized rates more analytically useful:</li>
-<li>“A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the”observed” crude (or total) rates and the “artificial” standardized rates” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">(<a href="#/my-motivating-example" role="doc-biblioref" onclick="">Kitagawa 1955, pp1169–1170</a>)</span></li>
-<li>It also has implications for <em>how</em> you standardize <span class="citation" data-cites="dasguptaStandardizationDecompositionRates1993">(<a href="#/my-motivating-example" role="doc-biblioref" onclick="">Das Gupta 1993</a>)</span></li>
+<li>Now we can run our <code>getBS</code> function as many times as we like to get our resampled data</li>
 </ul>
 </section>
-
-<section id="my-motivating-example" class="title-slide slide level1 smaller scrollable">
-<h1>My motivating example</h1>
+<section id="bootstrapping-2" class="slide level2">
+<h2>Bootstrapping</h2>
 <ul>
-<li>I (Ben) wrote my PhD thesis on the ‘crime drop’ in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level</li>
-<li>There is a tension at the heart of this analysis I never really got to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the subgroup level (conviction rates for people of different ages)</li>
-<li>Standardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted</li>
-<li>Once you start seeing these two problems (changing individual effects versus changing aggregation of individual effects) it’s hard <em>not</em> to see them everywhere</li>
+<li>And now we’ve got 500 reshuffled versions of our data we can standardize and decompose each one</li>
 </ul>
+</section>
+<section id="bootstrapping-in-practice-2" class="slide level2">
+<h2>Bootstrapping in practice</h2>
+<ul>
+<li>These are the original results</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 female male   diff decomp
+age_group_struct     35   37  1.928   68.9
+ethnicity_struct     36   36 -0.039   -1.4
+rate                 35   36  0.908   32.5
+crude                35   37  2.796  100.0</code></pre>
+</div>
+</div>
+</section>
+<section id="bootstrapping-in-practice-3" class="slide level2">
+<h2>Bootstrapping in practice</h2>
+<ul>
+<li>Now we can calculate standard errors for these estimates</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  factor              se
+  &lt;chr&gt;            &lt;dbl&gt;
+1 age_group_struct 0.302
+2 crude            1.26 
+3 ethnicity_struct 0.331
+4 rate             1.27 </code></pre>
+</div>
+</div>
+</section>
+<section id="bootstrapping-in-practice-4" class="slide level2 smaller scrollable">
+<h2>Bootstrapping in practice</h2>
+<ul>
+<li>Or directly calculate confidence intervals by taking percentiles</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  factor              se
+  &lt;chr&gt;            &lt;dbl&gt;
+1 age_group_struct 0.302
+2 crude            1.26 
+3 ethnicity_struct 0.331
+4 rate             1.27 </code></pre>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-carseyMonteCarloSimulation2014" class="csl-entry" role="listitem">
+Carsey, Thomas M., and Jeffrey J. Harden. 2014. <em>Monte <span>Carlo Simulation</span> and <span>Resampling Methods</span> for <span>Social Science</span></em>. SAGE Publications, Inc. <a href="https://doi.org/10.4135/9781483319605">https://doi.org/10.4135/9781483319605</a>.
+</div>
 <div id="ref-dasguptaStandardizationDecompositionRates1993" class="csl-entry" role="listitem">
 Das Gupta, Prithwis. 1993. <em>Standardization and <span>Decomposition</span> of <span>Rates</span>: <span>A User</span>’s <span>Manual</span></em>.
 </div>
-<div id="ref-gelmanMarginal2006" class="csl-entry" role="listitem">
-Gelman, Andrew. 2006. <span>“Marginal and Marginal.”</span> <em>Statistical Modeling, Causal Inference, and Social Science</em>.
-</div>
-<div id="ref-keidingStandardizationControlConfounding2014" class="csl-entry" role="listitem">
-Keiding, Niels, and David Clayton. 2014. <span>“Standardization and <span>Control</span> for <span>Confounding</span> in <span>Observational Studies</span>: <span>A Historical Perspective</span>.”</span> <em>Statistical Science</em> 29 (4): 529–58. <a href="https://doi.org/10.1214/13-STS453">https://doi.org/10.1214/13-STS453</a>.
-</div>
-<div id="ref-kitagawaComponentsDifferenceTwo1955" class="csl-entry" role="listitem">
-Kitagawa, Evelyn M. 1955. <span>“Components of a <span>Difference Between Two Rates</span>.”</span> <em>Journal of the American Statistical Association</em> 50 (272): 1168–94. <a href="https://doi.org/10.1080/01621459.1955.10501299">https://doi.org/10.1080/01621459.1955.10501299</a>.
+<div id="ref-wickhamR4DS2023" class="csl-entry" role="listitem">
+Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for <span>Data Science</span> (2e)</em>. Second.
 </div>
 </div>
 </section>
-
-
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

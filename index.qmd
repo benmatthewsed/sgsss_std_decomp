@@ -17,7 +17,7 @@ file.copy("Das Gupta 1993 - Standardization and Decomposition of Rates.pdf","doc
 
 |         |             |
 | ------- | ----------- |
-| 10:00 - 10:30 | [Introduction to standardisation and decomposition](lecture00.html) |
+| 10:00 - 10:30 | [Introduction to standardisation and decomposition](lecture-conceptual.html) |
 | 10:30 - 11:00 | [Std & Decomp of Rates as Products](lecture01.html) |
 | 11:00 - 11:15 | coffee |
 | 11:15 - 12:15 | [practical]() |
@@ -27,6 +27,6 @@ file.copy("Das Gupta 1993 - Standardization and Decomposition of Rates.pdf","doc
 | 14:15 - 14:30 | coffee |
 | ?? - ?? | [More populations?]() |
 | ?? - ?? | [Category Effects?]() |
-| ?? - ?? | [Uncertainty?]() |
+| ?? - ?? | [Uncertainty?](lecture-uncertainty.html) |
 | ?? - ?? | [Other Decomposition Methods?]() |
 
