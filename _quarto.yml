@@ -24,6 +24,8 @@ website:
           - csstests.qmd
       - text: "Package Paper (Under Review)"
         href: dgp_preprint.pdf
+      - text: "Das Gupta's 1993 Manual"
+        href: dg1993_manual.pdf
 
 format:
   html:

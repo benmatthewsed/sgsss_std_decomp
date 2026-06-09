@@ -7,6 +7,7 @@ author: "Ben Matthews & Josiah King"
 ```{r}
 #| include: false
 file.copy("dgp_preprint.pdf","docs/dgp_preprint.pdf")
+file.copy("Das Gupta 1993 - Standardization and Decomposition of Rates.pdf","docs/dg1993_manual.pdf")
 ```
 
 # Overview
@@ -16,32 +17,16 @@ file.copy("dgp_preprint.pdf","docs/dgp_preprint.pdf")
 
 |         |             |
 | ------- | ----------- |
-| ?? - ?? | coffee |
-| ?? - ?? | [BM: Introduction to standardisation and decomposition](lecture00.html) |
-| ?? - ?? | [JK: practical 2, 3 factor by hand](lecture01.html) |
-| ?? - ?? | [BM: bivariate/multivariate](lecture02.html) |
-| ?? - ?? | lunch |
-| ?? - ?? | [JK: crossclassified](lecture03.html) |
-| ?? - ?? | [BM: uncertainty](lecture04.html) |
-| ?? - ?? | coffee |
-| ?? - ?? | [BM: category effects](lecture05.html) |
-| ?? - ?? | [JK: other methods of decomposition](lecture06.html) |
-
-
-
-
-- in terms of the calculations we're going to show them, the idea of having sub-population rates only really fits into the picture when we introduce cross classified stuff? otherwise it just causes more of an issue by having to have a sum at the start of everything. 
-    - it's quite hard to come up with a rate that is the product of 2 or 3 factors that **isn't** sub-populations. DG tends to use birth rate related things, because they essentially go down through a series: women>sexuallyactive>pregnant>birthed. could we use something (maybe SCJS) like victimofcrime>victimofpropertycrime>victimofburglary ? 
-
-
-- somewhere we should talk about the unit of analysis being populations. 
-    - i'm not quite sure what i mean by that really. 
-    - consider 2 pops: uk, italy. death rate from covid is higher in italy because higher proportion of over 70s.  
-    - all of this std/decomp stuff **doesn't** allow you to say:  
-    - if an italian was british, the prob of them dying would be XX.    
-    - instead it is:  
-    - if italy was like britain, the rate of deaths would be XX  
-    - maybe that's obvious though. it feels more blurred when it's in the oaxaca approach for some reason.  
-
-
+| 10:00 - 10:30 | [Introduction to standardisation and decomposition](lecture00.html) |
+| 10:30 - 11:00 | [Std & Decomp of Rates as Products](lecture01.html) |
+| 11:00 - 11:15 | coffee |
+| 11:15 - 12:15 | [practical]() |
+| 12:15 - 13:15 | lunch |
+| 13:15 - 13:45 | [Cross-classified data](lecture02.html) |
+| 13:45 - 14:15 | [practical]() |
+| 14:15 - 14:30 | coffee |
+| ?? - ?? | [More populations?]() |
+| ?? - ?? | [Category Effects?]() |
+| ?? - ?? | [Uncertainty?]() |
+| ?? - ?? | [Other Decomposition Methods?]() |
 

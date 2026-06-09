@@ -199,10 +199,43 @@ dgres <- dgnpop(x = mydat,
        factors = c("psq","pgr"))
 
 head(dgres)
+```
+
+
+:::
+::::
+
+## Decomposition - {DasGuptR}
+
+### 2 factor
+
+::::{.columns}
+:::{.column width="50%"}
+```{r}
+#| echo: true
+library(tibble)
+
+mydat <- tribble(
+  ~pop,~psq,~pgr,
+  "P1", 5/15, 3/5,
+  "P2", 10/15, 8/10,
+) 
+mydat
+```
+
+:::
+:::{.column width="50%"}
+
+```{r}
+#| echo: true
+library(DasGuptR)
+
+dgres <- dgnpop(x = mydat,
+       pop = "pop",
+       factors = c("psq","pgr"))
 
 dg_table(dgres)
 ```
-
 
 :::
 ::::
@@ -227,7 +260,7 @@ mydat
 ```
 
 :::
-:::{.column width="50%" .fragment}
+:::{.column width="50%"}
 
 ```{r}
 #| echo: true
@@ -238,6 +271,39 @@ dgres <- dgnpop(x = mydat,
        factors = c("pcol","psq","pgr"))
 
 head(dgres)
+```
+
+:::
+::::
+
+## Decomposition - {DasGuptR}
+
+### 3 factor  
+
+::::{.columns}
+:::{.column width="50%"}
+```{r}
+#| echo: true
+library(tibble)
+
+mydat <- tribble(
+  ~pop,~pcol,~psq,~pgr,
+  "P1", 11/15, 4/11, 3/4,
+  "P2", 13/15, 10/13, 8/10,
+) 
+mydat
+```
+
+:::
+:::{.column width="50%"}
+
+```{r}
+#| echo: true
+library(DasGuptR)
+
+dgres <- dgnpop(x = mydat,
+       pop = "pop",
+       factors = c("pcol","psq","pgr"))
 
 dg_table(dgres)
 ```
