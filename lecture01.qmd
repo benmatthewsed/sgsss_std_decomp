@@ -13,6 +13,7 @@ format:
     code-annotations: hover
     code-copy: hover
     chalkboard: true
+bibliography: bibliography.bib
 ---
 
 ```{r}

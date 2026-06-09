@@ -1,0 +1,80 @@
+---
+title: "Standardization and decomposition: A conceptual introduction"
+format:
+  revealjs:
+    theme: [default, assets/mystyle.scss]
+    footer: "[Workshop Home](./index.html)"
+    transition: fade
+    slide-number: true
+    preview-links: auto
+    callout-appearance: simple
+    code-line-numbers: false
+    code-overflow: wrap
+    code-annotations: hover
+    code-copy: hover
+    chalkboard: true
+bibliography: bibliography.bib
+---
+
+```{r}
+#| include: false
+options(digits=2)
+```
+
+# What are Standardization and Decomposition
+
+
+
+# Standardization
+
+- Originally used to adjust mortality comparisons between populations with different age structures [@keidingStandardizationControlConfounding2014]
+- Lets you "compar[e] rates between populations with different age structures by applying age-specific rates to a single “target” age structure and, thereafter, comparing predicted _marginal_[^1] summaries in this target population." [@keidingStandardizationControlConfounding2014 p529]
+- More generally - lets you compare rates of _any outcome_ between populations with different compositions of _any confounder_
+
+[^1]: This is an important term! We will come back to this
+
+# Standardization
+
+- The focus is on _aggregate_/_marginal_ rates
+- 'Marginal' has two opposite meanings in statistics - either it can be an average or it can be a small change[^2] [@gelmanMarginal2006]
+- Aggregate rates are really common as [performance indicators](https://www.gov.scot/collections/national-performance-framework/): the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate... were all part of Scotland's National Performance Framework
+
+[^2]: To get technical, it can be either an integral or a derivative
+
+# Kitagawa
+
+- "When comparing the incidence of some phenomenon in two or more groups, social researchers place much emphasis on the need for holding constant those related facors that would tend to distort the comparison" @kitagawaComponentsDifferenceTwo1955
+
+
+# Kitagawa's example
+- "For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition" @kitagawaComponentsDifferenceTwo1955
+- Take the observed age/sex/race death rates for your two areas
+- Multiply these by some standard age, sex and race profile
+- You have 'standardized' rates!
+
+# Picking a standard population
+
+- Which population would you use as a standard one?
+
+# Student discussion
+
+# Decomposition
+
+- Asks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you've standardized by?
+- How much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?
+
+# Why decomposition?
+
+- Standardized rates are 'artificial', summaries of a world we do not live in
+- Why should we care what the mortality rate in Scotland would be if it had the Estonian age distribution?
+- Decomposition makes comparisons of standardized rates more analytically useful:
+- "A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the "observed" crude (or total) rates and the "artificial" standardized rates" [@kitagawaComponentsDifferenceTwo1955 pp1169-1170]
+- It also has implications for _how_ you standardize [@dasguptaStandardizationDecompositionRates1993]
+
+
+# My motivating example
+
+- I (Ben) wrote my PhD thesis on the 'crime drop' in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level [@matthewsCriminalCareersCrime2017]
+- There is a tension at the heart of this analysis I never really got to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the subgroup level (conviction rates for people of different ages)
+- Standardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted
+- Once you start seeing these two problems (changing individual effects versus changing aggregation of individual effects) it's hard _not_ to see them everywhere
