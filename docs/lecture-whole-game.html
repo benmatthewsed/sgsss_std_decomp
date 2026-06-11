@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <title>sgsss_decomp – Standardization and decomposition: A conceptual introduction</title>
+  <title>sgsss_decomp – The Whole Game</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -148,115 +148,189 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Standardization and decomposition: A conceptual introduction</h1>
+  <h1 class="title">The Whole Game</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="what-are-standardization-and-decomposition" class="title-slide slide level1 center">
-<h1>What are Standardization and Decomposition</h1>
+<section id="a-motivating-example-why-is-scotlands-reconviction-rate-falling" class="title-slide slide level1 center">
+<h1>A motivating example: Why is Scotland’s reconviction rate falling?</h1>
 
 </section>
 
-<section id="standardization" class="title-slide slide level1 center">
-<h1>Standardization</h1>
+<section id="background" class="title-slide slide level1 center">
+<h1>Background</h1>
 <ul>
-<li>Originally used to adjust mortality comparisons between populations with different age structures <span class="citation" data-cites="keidingStandardizationControlConfounding2014">(<a href="#/references" role="doc-biblioref" onclick="">Keiding and Clayton 2014</a>)</span></li>
-<li>Lets you “compar[e] rates between populations with different age structures by applying age-specific rates to a single “target” age structure and, thereafter, comparing predicted <em>marginal</em><sup>1</sup> summaries in this target population.” <span class="citation" data-cites="keidingStandardizationControlConfounding2014">(<a href="#/references" role="doc-biblioref" onclick="">Keiding and Clayton 2014, p529</a>)</span></li>
-<li>More generally - lets you compare rates of <em>any outcome</em> between populations with different compositions of <em>any confounder</em></li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>This is an important term! We will come back to this</p></li></ol></aside></section>
-
-<section id="standardization-1" class="title-slide slide level1 center">
-<h1>Standardization</h1>
-<ul>
-<li>The focus is on <em>aggregate</em>/<em>marginal</em> rates</li>
-<li>‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change<sup>1</sup> <span class="citation" data-cites="gelmanMarginal2006">(<a href="#/references" role="doc-biblioref" onclick="">Gelman 2006</a>)</span></li>
-<li>Aggregate rates are really common as <a href="https://www.gov.scot/collections/national-performance-framework/">performance indicators</a>: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework</li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>To get technical, it can be either an integral or a derivative</p></li></ol></aside></section>
-
-<section id="kitagawa" class="title-slide slide level1 center">
-<h1>Kitagawa</h1>
-<ul>
-<li>“When comparing the incidence of some phenomenon in two or more groups, social researchers place much emphasis on the need for holding constant those related facors that would tend to distort the comparison” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">Kitagawa (<a href="#/references" role="doc-biblioref" onclick="">1955</a>)</span></li>
-</ul>
-</section>
-
-<section id="kitagawas-example" class="title-slide slide level1 center">
-<h1>Kitagawa’s example</h1>
-<ul>
-<li>“For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">Kitagawa (<a href="#/references" role="doc-biblioref" onclick="">1955</a>)</span></li>
-<li>Take the observed age/sex/race death rates for your two areas</li>
-<li>Multiply these by some standard age, sex and race profile</li>
-<li>You have ‘standardized’ rates!</li>
-</ul>
-</section>
-
-<section id="picking-a-standard-population" class="title-slide slide level1 center">
-<h1>Picking a standard population</h1>
-<ul>
-<li>Which population would you use as a standard one?</li>
-</ul>
-</section>
-
-<section id="student-discussion" class="title-slide slide level1 center">
-<h1>Student discussion</h1>
-
-</section>
-
-<section id="decomposition" class="title-slide slide level1 center">
-<h1>Decomposition</h1>
-<ul>
-<li>Asks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you’ve standardized by?</li>
-<li>How much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?</li>
-</ul>
-</section>
-
-<section id="why-decomposition" class="title-slide slide level1 center">
-<h1>Why decomposition?</h1>
-<ul>
-<li>Standardized rates are ‘artificial’, summaries of a world we do not live in</li>
-<li>Why should we care what the mortality rate in Scotland would be if it had the Estonian age distribution?</li>
-<li>Decomposition makes comparisons of standardized rates more analytically useful:</li>
-<li>“A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the”observed” crude (or total) rates and the “artificial” standardized rates” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">(<a href="#/references" role="doc-biblioref" onclick="">Kitagawa 1955, pp1169–1170</a>)</span></li>
-<li>It also has implications for <em>how</em> you standardize <span class="citation" data-cites="dasguptaStandardizationDecompositionRates1993">(<a href="#/references" role="doc-biblioref" onclick="">Das Gupta 1993</a>)</span></li>
+<li>The crime drop has changed the demographics of people being convicted</li>
+<li>Changing demographics of people convicted complicates comparisons in the aggregate reconviction rate over time</li>
+<li>The overall change in the reconvictions rate in Scotland is partly due to less reconvictions and partly due to changing demographics</li>
+<li>This creates statistical bias in the aggregate reconviction rate if it’s used as a measure of ‘effectiveness’ of the justice system, an example of a statistical phenomenon known as the ‘amalgamation paradox’</li>
+<li>We demonstrate this problem with a worked example using Scottish reconvictions data</li>
 </ul>
 </section>
 
 <section>
-<section id="my-motivating-example" class="title-slide slide level1 center">
-<h1>My motivating example</h1>
+<section id="part-one-the-crime-drop-in-scotland" class="title-slide slide level1 center" data-background-color="#006938">
+<h1>Part One: The crime drop in Scotland</h1>
+
+</section>
+<section id="fewer-people-are-being-convicted" class="slide level2">
+<h2>Fewer people are being convicted</h2>
+</section>
+<section id="the-overall-reconviction-rate-is-falling" class="slide level2">
+<h2>The overall reconviction rate is falling</h2>
+</section>
+<section id="the-demographics-of-convictions-are-changing" class="slide level2">
+<h2>The demographics of convictions are changing</h2>
+</section>
+<section id="a-gap-in-the-crime-drop" class="slide level2">
+<h2>A gap in the crime drop</h2>
 <ul>
-<li>I (Ben) wrote my PhD thesis on the ‘crime drop’ in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level <span class="citation" data-cites="matthewsCriminalCareersCrime2017">(<a href="#/references" role="doc-biblioref" onclick="">Matthews 2017</a>)</span></li>
-<li>There is a tension at the heart of this analysis I never really got to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the subgroup level (conviction rates for people of different ages)</li>
-<li>Standardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted</li>
-<li>Once you start seeing these two problems (changing individual effects versus changing aggregation of individual effects) it’s hard <em>not</em> to see them everywhere</li>
+<li>There has been <em>a lot</em> written about the causes of the crime drop <span class="citation" data-cites="farrell2014 tonry2014 ball2023">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>farrell2014?</strong></a>; <a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>tonry2014?</strong></a>; <a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>ball2023?</strong></a>)</span>, including previous attempts to describe changes in the demographics of crime and use these descriptions to build explanations for why there is less crime now than in the past <span class="citation" data-cites="matthewsRethinkingOneCriminologys2018 tuttleEndAgeCrimeCurve2024 farrellDebutsLegaciesCrime2015">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>matthewsRethinkingOneCriminologys2018?</strong></a>; <a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>tuttleEndAgeCrimeCurve2024?</strong></a>; <a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>farrellDebutsLegaciesCrime2015?</strong></a>)</span></li>
+<li>There haven’t - at least as far as I’m aware - been any studies which go on to explore the <em>consequences</em> of these changing demographics for the justice system more broadly</li>
+<li>One area these changing demographics can matter are when measuring CJS ‘performance’</li>
+</ul>
+</section></section>
+<section>
+<section id="part-two-measuring-performance" class="title-slide slide level1 center" data-background-color="#006938">
+<h1>Part Two: Measuring ‘Performance’</h1>
+
+</section>
+<section id="reconviction-rates-as-a-performance-metric" class="slide level2">
+<h2>Reconviction rates as a performance metric</h2>
+<ul>
+<li><p>The Sentencing Council (for England and Wales) says the reconviction rate is a “key metric for evaluating the effectiveness of sentencing” <span class="citation" data-cites="gormley2022">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>gormley2022?</strong></a>)</span></p></li>
+<li><p>“Measuring recidivism is important, as it is one indicator of the effectiveness of the criminal justice system in the rehabilitation of offenders. Reconviction rates are a proxy measure for recidivism” <span class="citation" data-cites="scottishgovernmentReconvictionRatesScotland2024">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>scottishgovernmentReconvictionRatesScotland2024?</strong></a>)</span> and “Reduce reconviction rates” was a National Performance Framework indicator from 2007 to 2018</p></li>
+<li><p>The common logic is that if the reconviction rate goes down then the criminal justice system is doing a better job at rehabilitating offenders</p></li>
 </ul>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
+<section id="but-its-not-so-simple" class="slide level2">
+<h2>But it’s not so simple</h2>
+<ul>
+<li><p>However, “differences in the offending related characteristics of those included in each cohort make comparing reoffending rates problematic, across both time and jurisdictions.” <span class="citation" data-cites="browne2024">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>browne2024?</strong></a>)</span></p></li>
+<li><p>We can think of the overall reconviction rate as a <em>weighted</em> mean of the reconviction rates in different demographic groups, weighted by the group size. You can have changes in the rate due to changes in the means or changes in the rates.</p></li>
+<li><p>This is known as the amalgamation paradox <span class="citation" data-cites="good1987">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>good1987?</strong></a>)</span> or Simpson’s <span class="citation" data-cites="simpson1951">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>simpson1951?</strong></a>)</span> paradox</p></li>
+<li><p>Because of changes in the distribution of characteristics of the people who have been convicted change in the overall reconviction rate can be biased. The overall change we see will be both due to changes in the prevalence of reconviction amongst demographic groups, but also the mix/composition of those groups who are in each reconviction cohort.</p></li>
+</ul>
+</section>
+<section id="the-anatomy-of-a-rate" class="slide level2">
+<h2>The anatomy of a rate</h2>
+<ul>
+<li>To use reconviction rates as measures of criminal justice system ‘performance’ you only want to measure change in the subgroup rates</li>
+<li>But change in the overall rate can come from either changes in the subgroup rates <em>or changes in the relative subgroup sizes</em></li>
+</ul>
+<blockquote>
+<p>“If the target for a reduction in the overall reconviction rate is met, and this is mainly due to more people with a lower likelihood of re-offending being brought into the criminal justice system and being convicted, rather than through a reduction in rates of re-offending among those who would normally be brought into the system, this would bring little cause for celebration.” <span class="citation" data-cites="kirkwood2008">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>kirkwood2008?</strong></a>)</span></p>
+</blockquote>
+</section>
+<section id="standardized-reconviction-rates-as-performance-indicators" class="slide level2">
+<h2>Standardized reconviction rates as performance indicators</h2>
+<ul>
+<li><p>This compositional problem is well known, and typically what people do is come up with some counterfactual ‘standardized’ reconviction rate to facilitate comparisons across years when measuring performance <span class="citation" data-cites="francis2005 cunliffe2007 drake2010">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>francis2005?</strong></a>; <a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>cunliffe2007?</strong></a>; <a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>drake2010?</strong></a>)</span> to correct for the problem of changing ‘offender mix’</p></li>
+<li><p>These methods typically focus on whether the observed reconviction rate is higher or lower than the standardized (read: made up with maths) rate</p></li>
+<li><p>These methods do not directly assess the drivers of any change in the observed rate - specifically the relative importance of demographic changes and change in ‘sub-group’ reconviction rates in producing change in the aggregate rate</p></li>
+<li><p>To date, no studies have assessed the extent to which these long-term demographic changes as reflected in the crime drop can influence aggregate performance measures</p></li>
+</ul>
+</section></section>
+<section>
+<section id="part-three-an-alternative-approach" class="title-slide slide level1 center" data-background-color="#006938">
+<h1>Part Three: An alternative approach</h1>
+
+</section>
+<section id="standardization-and-decomposition" class="slide level2">
+<h2>Standardization and decomposition</h2>
+<ul>
+<li>The methods of standardization and decomposition can separate out changes in the reconviction rate that are due to demographic change from those due to change in the underlying reconviction rate for different age groups</li>
+<li>Standardization and decomposition can also separate out the relative importance of different factors in driving aggregate change (e.g.&nbsp;age and sex)</li>
+<li>Previous regression-based approaches <span class="citation" data-cites="francis2005 cunliffe2007 drake2010">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>francis2005?</strong></a>; <a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>cunliffe2007?</strong></a>; <a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>drake2010?</strong></a>)</span> to correct for the problem of changing ‘offender mix’ can perform this standardization part, but don’t focus on the decomposition part</li>
+<li>We illustrate this approach using the standardization and decomposition methods described by <span class="citation" data-cites="dasguptaStandardizationDecompositionRates1993">(<a href="#/analysis-1" role="doc-biblioref" onclick="">Das Gupta 1993</a>)</span> and implemented in the <code>{dasguptr}</code> R package <span class="citation" data-cites="king2025">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>king2025?</strong></a>)</span> to Scottish reconvictions data from 1997-2022</li>
+</ul>
+</section></section>
+<section>
+<section id="research-design" class="title-slide slide level1 center" data-background-color="#006938">
+<h1>Research design</h1>
+
+</section>
+<section id="research-question" class="slide level2">
+<h2>Research Question</h2>
+<ul>
+<li>How much of the change in the overall reconviction rate in Scotland between 1997 and 2022 is attributable to changing demographics?</li>
+</ul>
+</section>
+<section id="data" class="slide level2">
+<h2>Data</h2>
+<ul>
+<li><p>We analyse data from ‘reconviciton cohorts’ in Scotland between 1997/1998-2020/21. These are made available by Scottish Government as part of their Reconvictions Bulletin <span class="citation" data-cites="scottishgovernmentReconvictionRatesScotland2024">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>scottishgovernmentReconvictionRatesScotland2024?</strong></a>)</span></p></li>
+<li><p>A reconviction cohort is “all offenders who either received a non-custodial conviction or were released from a custodial sentence in a given financial year, from the 1st April to the 31st March the following year” <span class="citation" data-cites="scottishgovernmentReconvictionRatesScotland2024">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>scottishgovernmentReconvictionRatesScotland2024?</strong></a>)</span></p></li>
+<li><p>There is nothing particularly special about these time points, and the same approach would work for other time periods and other characteristics</p></li>
+<li><p>Some evidence that Scotland might be an extreme case here with larger demographic changes than in other countries <span class="citation" data-cites="matthews2023">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>matthews2023?</strong></a>)</span></p></li>
+</ul>
+</section>
+<section id="measures" class="slide level2">
+<h2>Measures</h2>
+<ul>
+<li>“The reconviction rate is presented as the percentage of offenders in the cohort who were reconvicted one or more times by a court within a specified follow up period from the date of the index conviction. For most reconviction analyses in this bulletin, the follow-up period is one year,” <span class="citation" data-cites="scottishgovernmentReconvictionRatesScotland2024">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>scottishgovernmentReconvictionRatesScotland2024?</strong></a>)</span></li>
+<li>We decompose the overall reconviction rate by age and sex</li>
+<li>Age groups:
+<ul>
+<li>Under 21, 21 to 25, 26 to 30, 31 to 40, over 40</li>
+</ul></li>
+<li>Sex:
+<ul>
+<li>Male, female</li>
+</ul></li>
+</ul>
+
+<aside><div>
+<p>Sex is “generally based on how a person presents and is recorded when a person’s details are entered into the [Criminal Histories System]. It is recorded for operational purposes, such as requirements for searching” <span class="citation" data-cites="scottishgovernmentReconvictionRatesScotland2024">(<a href="#/analysis-1" role="doc-biblioref" onclick=""><strong>scottishgovernmentReconvictionRatesScotland2024?</strong></a>)</span></p>
+</div></aside></section>
+<section id="method" class="slide level2">
+<h2>Method</h2>
+<ul>
+<li><p>The <span class="citation" data-cites="dasguptaStandardizationDecompositionRates1993">Das Gupta (<a href="#/analysis-1" role="doc-biblioref" onclick="">1993</a>)</span> approach to standardization and decomposition calculates what the reconviction rate ‘would have been’ in each comparison year if each year had the average demographic composition</p></li>
+<li><p>The differences between these ‘standardized’ rates to the observed rates are then used to calculate how much of the change in the observed rate is due to changes in the underlying reconviction rates for each age group, and how much is due to the change in the mix of the age groups</p></li>
+</ul>
+</section></section>
+<section>
+<section id="results" class="title-slide slide level1 center" data-background-color="#006938">
+<h1>Results</h1>
+
+</section>
+<section id="change-in-reconviciton-rate-by-age-group" class="slide level2">
+<h2>Change in reconviciton rate by age group</h2>
+</section>
+<section id="changing-demographic-mix" class="slide level2">
+<h2>Changing demographic mix</h2>
+</section>
+<section id="how-much-change-in-the-reconviction-rate-is-due-to-demographic-mix" class="slide level2">
+<h2>How much change in the reconviction rate is due to demographic mix?</h2>
+</section>
+<section id="analysis" class="slide level2">
+<h2>Analysis</h2>
+<ul>
+<li>The dramatic changes in the demographics of people involved in the justice system that we have seen in Scotland distorts simple comparisons over time in aggregate performance measures such as the reconviction rate, because the people who make up reconviction cohorts in the early 2000s have a very different profile to those who make up reconvictions cohorts in the mid 2020s</li>
+<li>Young people used to have the highest reconviction rate of all age groups, but this is has fallen</li>
+<li>Those over 40 have consistently lower reconviction rates, but these have not fallen</li>
+<li>Young people also used to make up more of the reconviction cohorts</li>
+<li>In terms of the overall reconviction rate, a group of people with high levels of reconviction have been replaced by people with lower levels of reconviction</li>
+</ul>
+</section>
+<section id="analysis-1" class="slide level2 smaller scrollable">
+<h2>Analysis</h2>
+<ul>
+<li>We can attribute about three-quarters of the fall in the reconvictions rate in Scotland between 1997/98-2020/21 to demographic change in the population of people convicted, rather than falls in the reconviction rate <em>per se</em>.<sup>1</sup></li>
+<li>If you want to use the reconviction rate as a measure of sentencing effectiveness or similar, you would think the justice system is doing a much better job than it is</li>
+<li>In an optimistic reading the change in the mix of people being reconvicted could still be due to criminal justice practices (e.g.&nbsp;more diversion from prosecution for young people), but <em>is not attributable to the ‘effectiveness’ of the criminal justice system in rehabilitating offenders</em> - it is purely due to changes in the demographic mix of people being convicted in the first place</li>
+</ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-dasguptaStandardizationDecompositionRates1993" class="csl-entry" role="listitem">
 Das Gupta, Prithwis. 1993. <em>Standardization and <span>Decomposition</span> of <span>Rates</span>: <span>A User</span>’s <span>Manual</span></em>.
 </div>
-<div id="ref-gelmanMarginal2006" class="csl-entry" role="listitem">
-Gelman, Andrew. 2006. <span>“Marginal and Marginal.”</span> <em>Statistical Modeling, Causal Inference, and Social Science</em>.
 </div>
-<div id="ref-keidingStandardizationControlConfounding2014" class="csl-entry" role="listitem">
-Keiding, Niels, and David Clayton. 2014. <span>“Standardization and <span>Control</span> for <span>Confounding</span> in <span>Observational Studies</span>: <span>A Historical Perspective</span>.”</span> <em>Statistical Science</em> 29 (4): 529–58. <a href="https://doi.org/10.1214/13-STS453">https://doi.org/10.1214/13-STS453</a>.
-</div>
-<div id="ref-kitagawaComponentsDifferenceTwo1955" class="csl-entry" role="listitem">
-Kitagawa, Evelyn M. 1955. <span>“Components of a <span>Difference Between Two Rates</span>.”</span> <em>Journal of the American Statistical Association</em> 50 (272): 1168–94. <a href="https://doi.org/10.1080/01621459.1955.10501299">https://doi.org/10.1080/01621459.1955.10501299</a>.
-</div>
-<div id="ref-matthewsCriminalCareersCrime2017" class="csl-entry" role="listitem">
-Matthews, Ben. 2017. <span>“Criminal <span>Careers</span> and the <span>Crime Drop</span> in <span>Scotland</span>, 1989-2011: <span>An Exploration</span> of <span>Conviction Trends Across Age</span> and <span>Sex</span>.”</span> PhD thesis, University of Edinburgh.
-</div>
-</div>
-</section></section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>If you change the comparison years to compare a year in the 2000s to 2020/1 this falls to around half of the overall change attributable to changes in age structure.</p></li></ol></aside></section></section>
 
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

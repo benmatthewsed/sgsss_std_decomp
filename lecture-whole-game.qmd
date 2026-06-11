@@ -45,21 +45,21 @@ library(binom)
 library(patchwork)
 
 
-scot_reconv <- readRDS(here::here("01_data", "combined_reconvictions.rds"))
+# scot_reconv <- readRDS(here::here("01_data", "combined_reconvictions.rds"))
 
-scot_reconv |> 
-  group_by(year) |> 
-  summarise(n = sum(number_of_offenders)) |> 
-  ggplot(aes(x = year, group = 1, y = n)) +
-  geom_line() +
-  theme_minimal() +
-  geom_line(linewidth = 1.5,
-            alpha = 0.9,
-            colour = "#006938") +
-  labs(y = "Size of reconviction cohorts",
-       x = "Year",
-       caption = "Source: Scottish Government (2013; 2024)") +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
+# scot_reconv |> 
+#   group_by(year) |> 
+#   summarise(n = sum(number_of_offenders)) |> 
+#   ggplot(aes(x = year, group = 1, y = n)) +
+#   geom_line() +
+#   theme_minimal() +
+#   geom_line(linewidth = 1.5,
+#             alpha = 0.9,
+#             colour = "#006938") +
+#   labs(y = "Size of reconviction cohorts",
+#        x = "Year",
+#        caption = "Source: Scottish Government (2013; 2024)") +
+#   theme(axis.text.x = element_text(angle = 45, hjust=1))
 ```
 
 ## The overall reconviction rate is falling
