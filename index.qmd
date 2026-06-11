@@ -27,6 +27,7 @@ file.copy("Das Gupta 1993 - Standardization and Decomposition of Rates.pdf","doc
 | 14:15 - 14:30 | coffee |
 | ?? - ?? | [More populations?]() |
 | ?? - ?? | [Category Effects?]() |
+| ?? - ?? | [The whole game](lecture-whole-game.html) |
 | ?? - ?? | [Uncertainty?](lecture-uncertainty.html) |
 | ?? - ?? | [Other Decomposition Methods?]() |
 

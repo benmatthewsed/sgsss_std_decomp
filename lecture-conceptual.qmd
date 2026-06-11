@@ -78,3 +78,5 @@ options(digits=2)
 - There is a tension at the heart of this analysis I never really got to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the subgroup level (conviction rates for people of different ages)
 - Standardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted
 - Once you start seeing these two problems (changing individual effects versus changing aggregation of individual effects) it's hard _not_ to see them everywhere
+
+## References
