@@ -27,6 +27,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -199,6 +265,27 @@
 </section>
 <section id="bootstrapping-in-practice-exploding-the-data" class="slide level2">
 <h2>Bootstrapping in practice: Exploding the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># just the first and last year</span></span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>dat_2004_2016 <span class="ot">&lt;-</span> </span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>  DasGuptR<span class="sc">::</span>reconv <span class="sc">|&gt;</span> </span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2004"</span> <span class="sc">|</span> year <span class="sc">==</span> <span class="st">"2016"</span>)</span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># we need to turn the dataset into a 'tidy' dataframe with columns for</span></span>
+<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># year, Age, Sex, whether a person was reconvicted or not, n</span></span>
+<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a aria-hidden="true" tabindex="-1"></a>dat_2004_2016_long <span class="ot">&lt;-</span> </span>
+<span id="cb1-13"><a aria-hidden="true" tabindex="-1"></a>  dat_2004_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb1-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">not_reconvicted =</span> offenders <span class="sc">-</span> reconvicted) <span class="sc">|&gt;</span> </span>
+<span id="cb1-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, Age, Sex, not_reconvicted, reconvicted) <span class="sc">|&gt;</span> </span>
+<span id="cb1-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(not_reconvicted<span class="sc">:</span>reconvicted, <span class="at">names_to =</span> <span class="st">"reconvicted"</span>, <span class="at">values_to =</span> <span class="st">"n"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-17"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">as.integer</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb1-18"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">uncount</span>(n) <span class="co"># this takes the n column and explodes the data using the counts</span></span>
+<span id="cb1-19"><a aria-hidden="true" tabindex="-1"></a><span class="co"># of people convicted and not reconvicted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="bootstrapping-2.-resampling" class="slide level2">
 <h2>Bootstrapping: 2. Resampling</h2>
@@ -208,6 +295,18 @@
 <li>Because bootstrapping uses random number generation we need to set the seed before starting so our results are reproducible</li>
 <li>We also need to set the number of draws. We’ll use 200 for speed; but more is always better</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsample)</span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a>n_draws <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="ot">&lt;-</span> </span>
+<span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a>dat_2004_2016_long <span class="sc">|&gt;</span> </span>
+<span id="cb2-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> <span class="co"># we bootstrap within years - this keeps the sizes of the reconviction cohorts the same</span></span>
+<span id="cb2-10"><a aria-hidden="true" tabindex="-1"></a>  rsample<span class="sc">::</span><span class="fu">bootstraps</span>(<span class="at">times =</span> n_draws)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="boostrapping-2.-resampling" class="slide level2">
 <h2>Boostrapping: 2. Resampling</h2>
@@ -215,6 +314,7 @@
 <li>We now have 200 of… something</li>
 </ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Bootstrap sampling 
 # A tibble: 200 × 2
@@ -251,6 +351,20 @@
 </section>
 <section id="bootstrapping-3.-aggregating-1" class="slide level2">
 <h2>Bootstrapping: 3. Aggregating</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># create a helper function to aggregate the results o</span></span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>uncount_split <span class="ot">&lt;-</span> <span class="cf">function</span>(splits){</span>
+<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a>  rsample<span class="sc">::</span><span class="fu">analysis</span>(splits) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(year, Age, Sex, reconvicted) <span class="sc">|&gt;</span> <span class="co"># this is the opposite of uncount()</span></span>
+<span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"reconvicted"</span>, <span class="co"># this gets the data back in the</span></span>
+<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> <span class="st">"n"</span>) <span class="sc">|&gt;</span> <span class="co"># right shape for dgnpop</span></span>
+<span id="cb5-9"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">offenders =</span> not_reconvicted <span class="sc">+</span> reconvicted,</span>
+<span id="cb5-10"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">prev_rate =</span> reconvicted <span class="sc">/</span> offenders)</span>
+<span id="cb5-11"><a aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-12"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="bootstrapping-3.-aggregating-2" class="slide level2">
 <h2>Bootstrapping: 3. Aggregating</h2>
@@ -264,6 +378,11 @@
 </section>
 <section id="bootstrapping-3.-aggregating-3" class="slide level2">
 <h2>Bootstrapping: 3. Aggregating</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="ot">&lt;-</span> </span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">agg_data =</span> <span class="fu">map</span>(splits, uncount_split))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="bootstrapping-3.-aggregating-4" class="slide level2">
 <h2>Bootstrapping: 3. Aggregating</h2>
@@ -293,6 +412,7 @@
 <li>Look at the first aggregated draw</li>
 </ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016<span class="sc">$</span>agg_data[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 7
 # Groups:   year [2]
@@ -327,6 +447,7 @@
 <li>Look at the second aggregated draw</li>
 </ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016<span class="sc">$</span>agg_data[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 7
 # Groups:   year [2]
@@ -363,18 +484,47 @@
 </section>
 <section id="bootstrapping-4.-helper-function" class="slide level2">
 <h2>Bootstrapping: 4. Helper function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>calc_dg <span class="ot">&lt;-</span> <span class="cf">function</span>(d){</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="co"># This just wraps the standard dgnpop call for the reconvictions data</span></span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>  d <span class="sc">|&gt;</span> </span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">dgnpop</span>(<span class="at">pop=</span><span class="st">"year"</span>, </span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"prev_rate"</span>),<span class="at">id_vars=</span><span class="fu">c</span>(<span class="st">"Sex"</span>,<span class="st">"Age"</span>),</span>
+<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">crossclassified=</span><span class="st">"offenders"</span>,</span>
+<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">agg =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">dg_table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames_to_column</span>() <span class="co"># this helps keep track of the results</span></span>
+<span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="bootstrapping-4.-standardize-and-decompose-1" class="slide level2">
 <h2>Bootstrapping: 4. Standardize and decompose</h2>
 <ul>
 <li>NB this might take a while!</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="ot">&lt;-</span> </span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">results =</span> <span class="fu">map</span>(agg_data, calc_dg), <span class="co"># apply dgnpop to each aggregated dataset</span></span>
+<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">draw =</span> <span class="dv">1</span><span class="sc">:</span>n_draws) <span class="sc">|&gt;</span> <span class="co"># add an index which says which draw number the results are from</span></span>
+<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(draw, results) <span class="co"># only keep the draw number and results column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="bootstrapping-4.-standardize-and-decompose-2" class="slide level2">
 <h2>Bootstrapping: 4. Standardize and decompose</h2>
 <ul>
 <li>We now need to expand out the results with <code>unnest</code></li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a>decomp_draws <span class="ot">&lt;-</span> </span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(results) <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="fu">pivot_longer</span>(<span class="st">`</span><span class="at">2004</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2016</span><span class="st">`</span>,</span>
+<span id="cb14-5"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"rate"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2016"</span>) <span class="co"># the decomposition results are the same for both years, so we'll just keep one set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="bootstrapping-5.-visualize" class="slide level2">
 <h2>Bootstrapping: 5. Visualize</h2>

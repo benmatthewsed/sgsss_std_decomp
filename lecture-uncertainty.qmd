@@ -1,5 +1,5 @@
 ---
-title: "Standardization and decomposition: A conceptual introduction"
+title: "Uncertainty in Standardization and Decomposition"
 format:
   revealjs:
     theme: [default, assets/mystyle.scss]
@@ -57,6 +57,8 @@ options(digits = 2)
 ## Bootstrapping in practice: Exploding the data
 
 ```{r}
+#| echo: true
+
 library(tidyverse)
 library(DasGuptR)
 
@@ -87,7 +89,7 @@ dat_2004_2016_long <-
 
 
 ```{r}
-
+#| echo: true
 library(rsample)
 
 set.seed(12345)
@@ -106,7 +108,7 @@ dat_2004_2016_long |>
 - We now have 200 of... something
 
 ```{r}
-
+#| echo: true
 draws_2004_2016
 
 ```
@@ -124,8 +126,8 @@ draws_2004_2016
 
 ## Bootstrapping: 3. Aggregating
 
-```{r echo=FALSE}
-
+```{r}
+#| echo: true
 # create a helper function to aggregate the results o
 
 uncount_split <- function(splits){
@@ -152,7 +154,7 @@ uncount_split <- function(splits){
 ## Bootstrapping: 3. Aggregating
 
 ```{r}
-
+#| echo: true
 draws_2004_2016 <- 
 draws_2004_2016 |> 
  mutate(agg_data = map(splits, uncount_split))
@@ -172,7 +174,7 @@ draws_2004_2016
 - Look at the first aggregated draw
 
 ```{r}
-
+#| echo: true
 draws_2004_2016$agg_data[[1]]
 
 ```
@@ -182,7 +184,7 @@ draws_2004_2016$agg_data[[1]]
 - Look at the second aggregated draw
 
 ```{r}
-
+#| echo: true
 draws_2004_2016$agg_data[[2]]
 
 ```
@@ -194,6 +196,7 @@ draws_2004_2016$agg_data[[2]]
 ## Bootstrapping: 4. Helper function
 
 ```{r}
+#| echo: true
 calc_dg <- function(d){
   # This just wraps the standard dgnpop call for the reconvictions data
   d |> 
@@ -212,6 +215,7 @@ calc_dg <- function(d){
 - NB this might take a while!
 
 ```{r}
+#| echo: true
 draws_2004_2016 <- 
 draws_2004_2016 |> 
   mutate(results = map(agg_data, calc_dg), # apply dgnpop to each aggregated dataset
@@ -223,6 +227,7 @@ draws_2004_2016 |>
 
 - We now need to expand out the results with `unnest`
 ```{r}
+#| echo: true
 decomp_draws <- 
 draws_2004_2016 |> 
     unnest(results) |> 
@@ -338,8 +343,8 @@ decomp_draws |>
 ```{r}
 decomp_draws |> 
   group_by(rowname) |> 
-  summarise(confs = list(quantile(decomp, c(0.025, 0.5, 0.975))),
-            cis = list(c("lower_ci", "median", "upper_ci")),
+  summarise(confs = list(quantile(decomp, c(0.05, 0.025, 0.975))),
+            cis = list(c("median", "lower_ci", "upper_ci")),
             .groups = "drop") |> 
   unnest(c(confs, cis)) |> 
   pivot_wider(id_cols = rowname,
@@ -366,12 +371,6 @@ decomp_draws |>
 ## A not-so-nice example
 ![haywire-fig](figs/haywire-fig.png)
 
-## It's the same problem!
-- In both cases the 'problem' is that you are calculating a quantity of interest that can involve dividing by arbitrarily small numbers
-- In the first case, you do absolutely need to factor in the uncertainty in the estimated victimization rates (it's from a survey!)
-- The simulated VDs help identify when the comparison is pathological - the @kingMakingMostStatistical2000 method is useful as a quality check not just to provide clear outputs
-- (In that toy example, the fix is actually just to model all the years together with an interaction effect - but that won't work so well in more complex cases)
-- In this case (a la @kingMakingMostStatistical2000) the simulation was after fitting the model (i.e. parametric)
 
 ## It's the same problem!
 
@@ -380,7 +379,7 @@ decomp_draws |>
 - But the decomposition is a transformation of these rates, and the properties of the rates do not necessarily transfer downstream to the transformation
 
 ## It's the same problem!
-- In the second case maybe you could argue that you don't need to factor in uncertainty in the underlying rates - it's admin data, the reconviction cohorts are what they are, what are you a Bayesian or something [see @verlaan2024use]
+- Maybe you could argue that you don't need to factor in uncertainty in the underlying rates - it's admin data, the reconviction cohorts are what they are, what are you a Bayesian or something [see @verlaan2024use]
 - But it's still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons
 - Bootstrapping the raw data (nonparametric simulation [see @carseyMonteCarloSimulation2014]) can show when your results are fragile to small permutations in the data [see also @giordanoAutomaticFinitesampleRobustness2026]
 

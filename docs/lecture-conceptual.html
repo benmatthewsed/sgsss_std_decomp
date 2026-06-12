@@ -154,38 +154,38 @@
 </div>
 
 </section>
+<section>
 <section id="what-are-standardization-and-decomposition" class="title-slide slide level1 center">
 <h1>What are Standardization and Decomposition</h1>
 
 </section>
-
-<section id="standardization" class="title-slide slide level1 center">
-<h1>Standardization</h1>
+<section id="standardization" class="slide level2">
+<h2>Standardization</h2>
 <ul>
 <li>Originally used to adjust mortality comparisons between populations with different age structures <span class="citation" data-cites="keidingStandardizationControlConfounding2014">(<a href="#/references" role="doc-biblioref" onclick="">Keiding and Clayton 2014</a>)</span></li>
 <li>Lets you “compar[e] rates between populations with different age structures by applying age-specific rates to a single “target” age structure and, thereafter, comparing predicted <em>marginal</em><sup>1</sup> summaries in this target population.” <span class="citation" data-cites="keidingStandardizationControlConfounding2014">(<a href="#/references" role="doc-biblioref" onclick="">Keiding and Clayton 2014, p529</a>)</span></li>
 <li>More generally - lets you compare rates of <em>any outcome</em> between populations with different compositions of <em>any confounder</em></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>This is an important term! We will come back to this</p></li></ol></aside></section>
-
-<section id="standardization-1" class="title-slide slide level1 center">
-<h1>Standardization</h1>
-<ul>
-<li>The focus is on <em>aggregate</em>/<em>marginal</em> rates</li>
-<li>‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change<sup>1</sup> <span class="citation" data-cites="gelmanMarginal2006">(<a href="#/references" role="doc-biblioref" onclick="">Gelman 2006</a>)</span></li>
-<li>Aggregate rates are really common as <a href="https://www.gov.scot/collections/national-performance-framework/">performance indicators</a>: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework</li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>To get technical, it can be either an integral or a derivative</p></li></ol></aside></section>
-
-<section id="kitagawa" class="title-slide slide level1 center">
-<h1>Kitagawa</h1>
+<section id="kitagawa" class="slide level2">
+<h2>Kitagawa</h2>
 <ul>
 <li>“When comparing the incidence of some phenomenon in two or more groups, social researchers place much emphasis on the need for holding constant those related facors that would tend to distort the comparison” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">Kitagawa (<a href="#/references" role="doc-biblioref" onclick="">1955</a>)</span></li>
 </ul>
 </section>
+<section id="standardization-1" class="slide level2">
+<h2>Standardization</h2>
+<ul>
+<li>Conceptually the focus is on <em>aggregate</em>/<em>marginal</em> rates, not individual effects</li>
+<li>Aggregate rates are really common as <a href="https://www.gov.scot/collections/national-performance-framework/">performance indicators</a>: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework</li>
+<li>Individual effects can aggregate in non-intuitive ways <span class="citation" data-cites="good1987">(<a href="#/references" role="doc-biblioref" onclick=""><strong>simpson1951?</strong></a>)</span></li>
+</ul>
 
-<section id="kitagawas-example" class="title-slide slide level1 center">
-<h1>Kitagawa’s example</h1>
+<aside><div>
+<p>‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change[^2] <span class="citation" data-cites="gelmanMarginal2006">(<a href="#/references" role="doc-biblioref" onclick="">Gelman 2006</a>)</span>. To get technical, it can be either an integral or a derivative</p>
+</div></aside></section>
+<section id="kitagawas-example" class="slide level2">
+<h2>Kitagawa’s example</h2>
 <ul>
 <li>“For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">Kitagawa (<a href="#/references" role="doc-biblioref" onclick="">1955</a>)</span></li>
 <li>Take the observed age/sex/race death rates for your two areas</li>
@@ -193,46 +193,70 @@
 <li>You have ‘standardized’ rates!</li>
 </ul>
 </section>
-
-<section id="picking-a-standard-population" class="title-slide slide level1 center">
-<h1>Picking a standard population</h1>
+<section id="picking-a-standard-population" class="slide level2">
+<h2>Picking a standard population</h2>
 <ul>
-<li>Which population would you use as a standard one?</li>
+<li>Say you wanted to compare mortality rates in Glasgow and Shetland, controling for differences in age sex and ethnicity</li>
+<li>Which population would you use as a standard one?
+<ul>
+<li>The Glasgow population?</li>
+<li>The Shetland population?</li>
+<li>The average of the two populations?</li>
+<li>Something else?</li>
+</ul></li>
 </ul>
-</section>
-
+</section></section>
+<section>
 <section id="student-discussion" class="title-slide slide level1 center">
 <h1>Student discussion</h1>
 
 </section>
-
-<section id="decomposition" class="title-slide slide level1 center">
-<h1>Decomposition</h1>
+<section id="decomposition" class="slide level2">
+<h2>Decomposition</h2>
 <ul>
 <li>Asks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you’ve standardized by?</li>
 <li>How much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?</li>
 </ul>
 </section>
-
-<section id="why-decomposition" class="title-slide slide level1 center">
-<h1>Why decomposition?</h1>
+<section id="why-decomposition" class="slide level2">
+<h2>Why decomposition?</h2>
 <ul>
 <li>Standardized rates are ‘artificial’, summaries of a world we do not live in</li>
 <li>Why should we care what the mortality rate in Scotland would be if it had the Estonian age distribution?</li>
 <li>Decomposition makes comparisons of standardized rates more analytically useful:</li>
 <li>“A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the”observed” crude (or total) rates and the “artificial” standardized rates” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">(<a href="#/references" role="doc-biblioref" onclick="">Kitagawa 1955, pp1169–1170</a>)</span></li>
-<li>It also has implications for <em>how</em> you standardize <span class="citation" data-cites="dasguptaStandardizationDecompositionRates1993">(<a href="#/references" role="doc-biblioref" onclick="">Das Gupta 1993</a>)</span></li>
 </ul>
 </section>
-
-<section>
-<section id="my-motivating-example" class="title-slide slide level1 center">
-<h1>My motivating example</h1>
+<section id="decomposition-1" class="slide level2">
+<h2>Decomposition</h2>
+<ul>
+<li>Decomposition lets you say how much of the difference between crude rates of your outcome between your comparison cases are due to the various factors you choose to control for</li>
+<li>In Kitagawa’s example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is ‘left over’</li>
+</ul>
+</section>
+<section id="my-motivating-example" class="slide level2">
+<h2>My motivating example</h2>
 <ul>
 <li>I (Ben) wrote my PhD thesis on the ‘crime drop’ in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level <span class="citation" data-cites="matthewsCriminalCareersCrime2017">(<a href="#/references" role="doc-biblioref" onclick="">Matthews 2017</a>)</span></li>
-<li>There is a tension at the heart of this analysis I never really got to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the subgroup level (conviction rates for people of different ages)</li>
+<li>There is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)</li>
 <li>Standardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted</li>
-<li>Once you start seeing these two problems (changing individual effects versus changing aggregation of individual effects) it’s hard <em>not</em> to see them everywhere</li>
+</ul>
+</section>
+<section id="a-conjecture" class="slide level2">
+<h2>A conjecture</h2>
+<ul>
+<li>Most quantitative social science (implicitly?) focuses on individuals</li>
+<li>“while the number of ACEs is a strong predictor of childhood offending, certain types of childhood adversity are of greater importance than others” <span class="citation" data-cites="jahanshahiACEsPlacesInequality2022">(<a href="#/references" role="doc-biblioref" onclick="">Jahanshahi, Murray, and McVie 2022</a>)</span></li>
+<li>How does the number of ACEs affect a child’s probability of offending?</li>
+<li>Not - how much of the change in Scotland’s child offending rate is due to changes in the prevalence of ACEs?</li>
+</ul>
+</section>
+<section id="a-conjecture-1" class="slide level2">
+<h2>A conjecture</h2>
+<ul>
+<li>There is nothing wrong with focusing on individuals!</li>
+<li>But it’s useful to be able to answer questions about macro-level phenomena too, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes</li>
+<li>Standardization and decomposition are one way to do this (there are others!)</li>
 </ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
@@ -240,11 +264,11 @@
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-dasguptaStandardizationDecompositionRates1993" class="csl-entry" role="listitem">
-Das Gupta, Prithwis. 1993. <em>Standardization and <span>Decomposition</span> of <span>Rates</span>: <span>A User</span>’s <span>Manual</span></em>.
-</div>
 <div id="ref-gelmanMarginal2006" class="csl-entry" role="listitem">
 Gelman, Andrew. 2006. <span>“Marginal and Marginal.”</span> <em>Statistical Modeling, Causal Inference, and Social Science</em>.
+</div>
+<div id="ref-jahanshahiACEsPlacesInequality2022" class="csl-entry" role="listitem">
+Jahanshahi, Babak, Kath Murray, and Susan McVie. 2022. <span>“<span>ACEs</span>, <span>Places</span> and <span>Inequality</span>: <span>Understanding</span> the <span>Effects</span> of <span>Adverse Childhood Experiences</span> and <span>Poverty</span> on <span>Offending</span> in <span>Childhood</span>.”</span> <em>The British Journal of Criminology</em> 62 (3): 751–72. <a href="https://doi.org/10.1093/bjc/azab079">https://doi.org/10.1093/bjc/azab079</a>.
 </div>
 <div id="ref-keidingStandardizationControlConfounding2014" class="csl-entry" role="listitem">
 Keiding, Niels, and David Clayton. 2014. <span>“Standardization and <span>Control</span> for <span>Confounding</span> in <span>Observational Studies</span>: <span>A Historical Perspective</span>.”</span> <em>Statistical Science</em> 29 (4): 529–58. <a href="https://doi.org/10.1214/13-STS453">https://doi.org/10.1214/13-STS453</a>.
