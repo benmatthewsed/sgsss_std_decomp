@@ -291,7 +291,7 @@
     "href": "lecture-whole-game.html#analysis-1",
     "title": "The Whole Game",
     "section": "Analysis",
-    "text": "Analysis\n\nWe can attribute about three-quarters of the fall in the reconvictions rate in Scotland between 1997/98-2020/21 to demographic change in the population of people convicted, rather than falls in the reconviction rate per se.1\nIf you want to use the reconviction rate as a measure of sentencing effectiveness or similar, you would think the justice system is doing a much better job than it is\nIn an optimistic reading the change in the mix of people being reconvicted could still be due to criminal justice practices (e.g. more diversion from prosecution for young people), but is not attributable to the ‘effectiveness’ of the criminal justice system in rehabilitating offenders - it is purely due to changes in the demographic mix of people being convicted in the first place\n\n\n\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual.\n\n\nIf you change the comparison years to compare a year in the 2000s to 2020/1 this falls to around half of the overall change attributable to changes in age structure."
+    "text": "Analysis\n\nWe can attribute about three-quarters of the fall in the reconvictions rate in Scotland between 1997/98-2020/21 to demographic change in the population of people convicted, rather than falls in the reconviction rate per se.1\nIf you want to use the reconviction rate as a measure of sentencing effectiveness or similar, you would think the justice system is doing a much better job than it is\nIn an optimistic reading the change in the mix of people being reconvicted could still be due to criminal justice practices (e.g. more diversion from prosecution for young people), but is not attributable to the ‘effectiveness’ of the criminal justice system in rehabilitating offenders - it is purely due to changes in the demographic mix of people being convicted in the first place\n\nIf you change the comparison years to compare a year in the 2000s to 2020/1 this falls to around half of the overall change attributable to changes in age structure."
   },
   {
     "objectID": "lecture-uncertainty.html",
@@ -355,5 +355,12 @@
     "title": "Standardization and decomposition: A conceptual introduction",
     "section": "It’s the same problem!",
     "text": "It’s the same problem!\n\nIn the second case maybe you could argue that you don’t need to factor in uncertainty in the underlying rates - it’s admin data, the reconviction cohorts are what they are, what are you a Bayesian or something (see verlaan2024use?)\nBut it’s still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons\nBootstrapping the raw data (nonparametric simulation (see Carsey and Harden 2014)) can show when your results are fragile to small permutations in the data (see also giordanoAutomaticFinitesampleRobustness2026?)"
+  },
+  {
+    "objectID": "lecture-whole-game.html#references",
+    "href": "lecture-whole-game.html#references",
+    "title": "The Whole Game",
+    "section": "References",
+    "text": "References\n\n\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual."
   }
 ]

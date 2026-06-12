@@ -37,12 +37,12 @@ options(digits=2)
 ## Fewer people are being convicted
 
 ```{r warnings=FALSE}
-library(tidyverse)
-library(DasGuptR)
-library(readxl)
-library(here)
-library(binom)
-library(patchwork)
+# library(tidyverse)
+# library(DasGuptR)
+# library(readxl)
+# library(here)
+# library(binom)
+# library(patchwork)
 
 
 # scot_reconv <- readRDS(here::here("01_data", "combined_reconvictions.rds"))
@@ -206,3 +206,5 @@ Sex is "generally based on how a person presents and is recorded when a personâ€
 
 
 [^1]: If you change the comparison years to compare a year in the 2000s to 2020/1 this falls to around half of the overall change attributable to changes in age structure.
+
+## References
