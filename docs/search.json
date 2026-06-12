@@ -200,7 +200,7 @@
     "href": "lecture-whole-game.html#reconviction-rates-as-a-performance-metric",
     "title": "The Whole Game",
     "section": "Reconviction rates as a performance metric",
-    "text": "Reconviction rates as a performance metric\n\nThe Sentencing Council (for England and Wales) says the reconviction rate is a “key metric for evaluating the effectiveness of sentencing” (gormley2022?)\n“Measuring recidivism is important, as it is one indicator of the effectiveness of the criminal justice system in the rehabilitation of offenders. Reconviction rates are a proxy measure for recidivism” (scottishgovernmentReconvictionRatesScotland2024?) and “Reduce reconviction rates” was a National Performance Framework indicator from 2007 to 2018\nThe common logic is that if the reconviction rate goes down then the criminal justice system is doing a better job at rehabilitating offenders"
+    "text": "Reconviction rates as a performance metric\n\nThe Sentencing Council (for England and Wales) says the reconviction rate is a “key metric for evaluating the effectiveness of sentencing” (gormley2022?)\n“Measuring recidivism is important, as it is one indicator of the effectiveness of the criminal justice system in the rehabilitation of offenders. Reconviction rates are a proxy measure for recidivism” (Scottish Government 2024, p8) and “Reduce reconviction rates” was a National Performance Framework indicator from 2007 to 2018\nThe common logic is that if the reconviction rate goes down then the criminal justice system is doing a better job at rehabilitating offenders"
   },
   {
     "objectID": "lecture-whole-game.html#but-its-not-so-simple",
@@ -242,14 +242,14 @@
     "href": "lecture-whole-game.html#data",
     "title": "The Whole Game",
     "section": "Data",
-    "text": "Data\n\nWe analyse data from ‘reconviciton cohorts’ in Scotland between 1997/1998-2020/21. These are made available by Scottish Government as part of their Reconvictions Bulletin (scottishgovernmentReconvictionRatesScotland2024?)\nA reconviction cohort is “all offenders who either received a non-custodial conviction or were released from a custodial sentence in a given financial year, from the 1st April to the 31st March the following year” (scottishgovernmentReconvictionRatesScotland2024?)\nThere is nothing particularly special about these time points, and the same approach would work for other time periods and other characteristics\nSome evidence that Scotland might be an extreme case here with larger demographic changes than in other countries (matthews2023?)"
+    "text": "Data\n\nWe analyse data from ‘reconviciton cohorts’ in Scotland between 1997/1998-2020/21. These are made available by Scottish Government as part of their Reconvictions Bulletin (Scottish Government 2024)\nA reconviction cohort is “all offenders who either received a non-custodial conviction or were released from a custodial sentence in a given financial year, from the 1st April to the 31st March the following year” (Scottish Government 2024, p40)\nThere is nothing particularly special about these time points, and the same approach would work for other time periods and other characteristics\nSome evidence that Scotland might be an extreme case here with larger demographic changes than in other countries (matthews2023?)"
   },
   {
     "objectID": "lecture-whole-game.html#measures",
     "href": "lecture-whole-game.html#measures",
     "title": "The Whole Game",
     "section": "Measures",
-    "text": "Measures\n\n“The reconviction rate is presented as the percentage of offenders in the cohort who were reconvicted one or more times by a court within a specified follow up period from the date of the index conviction. For most reconviction analyses in this bulletin, the follow-up period is one year,” (scottishgovernmentReconvictionRatesScotland2024?)\nWe decompose the overall reconviction rate by age and sex\nAge groups:\n\nUnder 21, 21 to 25, 26 to 30, 31 to 40, over 40\n\nSex:\n\nMale, female\n\n\n\n\nSex is “generally based on how a person presents and is recorded when a person’s details are entered into the [Criminal Histories System]. It is recorded for operational purposes, such as requirements for searching” (scottishgovernmentReconvictionRatesScotland2024?)"
+    "text": "Measures\n\n“The reconviction rate is presented as the percentage of offenders in the cohort who were reconvicted one or more times by a court within a specified follow up period from the date of the index conviction. For most reconviction analyses in this bulletin, the follow-up period is one year,” (Scottish Government 2024, p10)\nWe decompose the overall reconviction rate by age and sex\nAge groups:\n\nUnder 21, 21 to 25, 26 to 30, 31 to 40, over 40\n\nSex:\n\nMale, female\n\n\n\n\nSex is “generally based on how a person presents and is recorded when a person’s details are entered into the [Criminal Histories System]. It is recorded for operational purposes, such as requirements for searching” (Scottish Government 2024, p44)"
   },
   {
     "objectID": "lecture-whole-game.html#method",
@@ -291,7 +291,7 @@
     "href": "lecture-whole-game.html#analysis-1",
     "title": "The Whole Game",
     "section": "Analysis",
-    "text": "Analysis\n\nWe can attribute about three-quarters of the fall in the reconvictions rate in Scotland between 1997/98-2020/21 to demographic change in the population of people convicted, rather than falls in the reconviction rate per se.1\nIf you want to use the reconviction rate as a measure of sentencing effectiveness or similar, you would think the justice system is doing a much better job than it is\nIn an optimistic reading the change in the mix of people being reconvicted could still be due to criminal justice practices (e.g. more diversion from prosecution for young people), but is not attributable to the ‘effectiveness’ of the criminal justice system in rehabilitating offenders - it is purely due to changes in the demographic mix of people being convicted in the first place\n\nIf you change the comparison years to compare a year in the 2000s to 2020/1 this falls to around half of the overall change attributable to changes in age structure."
+    "text": "Analysis\n\nWe can attribute about three-quarters of the fall in the reconvictions rate in Scotland between 1997/98-2020/21 to demographic change in the population of people convicted, rather than falls in the reconviction rate per se.1\nIf you want to use the reconviction rate as a measure of sentencing effectiveness or similar, you would think the justice system is doing a much better job than it is\nIn an optimistic reading the change in the mix of people being reconvicted could still be due to criminal justice practices (e.g. more diversion from prosecution for young people), but is not attributable to the ‘effectiveness’ of the criminal justice system in rehabilitating offenders - it is purely due to changes in the demographic mix of people being convicted in the first place"
   },
   {
     "objectID": "lecture-uncertainty.html",
@@ -607,5 +607,12 @@
     "title": "Welcome/Course Intro",
     "section": "Practical sessions",
     "text": "Practical sessions\n\nYou can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp\nIf you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) [Ben post the link in the chat now]\nFor Stata you’re relying on your own copy"
+  },
+  {
+    "objectID": "lecture-whole-game.html#footnotes",
+    "href": "lecture-whole-game.html#footnotes",
+    "title": "The Whole Game",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nIf you change the comparison years to compare a year in the 2000s to 2020/1 this falls to around half of the overall change attributable to changes in age structure.↩︎"
   }
 ]
