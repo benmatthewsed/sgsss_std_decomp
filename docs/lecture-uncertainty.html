@@ -1,243 +1,317 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Uncertainty in Standardization and Decomposition – sgsss_decomp</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.32">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-fbd2582a2ae3df5473553beb91a56c19.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
 
-  <title>sgsss_decomp – Standardization and decomposition: A conceptual introduction</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-      margin-bottom: 0em;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e2f8a6539310bde99460a1dff2d71388.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
+function toggle_visibility(id1, id2) {
+
+var e = document.getElementById(id1);
+
+var f = document.getElementById(id2);
+
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
+if(f.classList.contains('jk-circle-right')) {
+
+    f.classList.add('jk-circle-down')
+
+    f.classList.remove('jk-circle-right')
+
+} else {
+
+    f.classList.add('jk-circle-right')
+
+    f.classList.remove('jk-circle-down')
+
+}
+
+}
+
+</script>
+
+
+
+<!---<script src="https://kit.fontawesome.com/120b08a6f5.js" crossorigin="anonymous"></script>-->
+
+
+
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Standardization and decomposition: A conceptual introduction</h1>
+<body class="nav-fixed quarto-light">
 
-<div class="quarto-title-authors">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">sgsss_decomp</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="./lecture00.html">
+ <span class="dropdown-text">Welcome/Course Intro</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lecture01.html">
+ <span class="dropdown-text">2 and 3 factor decomposition</span></a>
+  </li>  
+        <li class="dropdown-header">lecture02.qmd</li>
+        <li class="dropdown-header">lecture03.qmd</li>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-worksheets" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Worksheets</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-worksheets">    
+        <li>
+    <a class="dropdown-item" href="./csstests.html">
+ <span class="dropdown-text">Tests</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./dgp_preprint.pdf"> 
+<span class="menu-text">Package Paper (Under Review)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dg1993_manual.pdf"> 
+<span class="menu-text">Das Gupta’s 1993 Manual</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#whence-uncertainty" id="toc-whence-uncertainty" class="nav-link active" data-scroll-target="#whence-uncertainty">Whence uncertainty?</a></li>
+  <li><a href="#bootstrapping" id="toc-bootstrapping" class="nav-link" data-scroll-target="#bootstrapping">Bootstrapping</a></li>
+  <li><a href="#bootstrapping-1" id="toc-bootstrapping-1" class="nav-link" data-scroll-target="#bootstrapping-1">Bootstrapping</a></li>
+  <li><a href="#bootstrapping-in-practice" id="toc-bootstrapping-in-practice" class="nav-link" data-scroll-target="#bootstrapping-in-practice">Bootstrapping in practice</a></li>
+  <li><a href="#bootstrapping-in-practice-1" id="toc-bootstrapping-in-practice-1" class="nav-link" data-scroll-target="#bootstrapping-in-practice-1">Bootstrapping in practice</a></li>
+  <li><a href="#bootstrapping-in-practice-exploding-the-data" id="toc-bootstrapping-in-practice-exploding-the-data" class="nav-link" data-scroll-target="#bootstrapping-in-practice-exploding-the-data">Bootstrapping in practice: Exploding the data</a></li>
+  <li><a href="#bootstrapping-2.-resampling" id="toc-bootstrapping-2.-resampling" class="nav-link" data-scroll-target="#bootstrapping-2.-resampling">Bootstrapping: 2. Resampling</a></li>
+  <li><a href="#boostrapping-2.-resampling" id="toc-boostrapping-2.-resampling" class="nav-link" data-scroll-target="#boostrapping-2.-resampling">Boostrapping: 2. Resampling</a></li>
+  <li><a href="#bootstrapping-3.-aggregating" id="toc-bootstrapping-3.-aggregating" class="nav-link" data-scroll-target="#bootstrapping-3.-aggregating">Bootstrapping: 3. Aggregating</a></li>
+  <li><a href="#writing-an-r-function" id="toc-writing-an-r-function" class="nav-link" data-scroll-target="#writing-an-r-function">Writing an R function</a></li>
+  <li><a href="#bootstrapping-3.-aggregating-1" id="toc-bootstrapping-3.-aggregating-1" class="nav-link" data-scroll-target="#bootstrapping-3.-aggregating-1">Bootstrapping: 3. Aggregating</a></li>
+  <li><a href="#bootstrapping-3.-aggregating-2" id="toc-bootstrapping-3.-aggregating-2" class="nav-link" data-scroll-target="#bootstrapping-3.-aggregating-2">Bootstrapping: 3. Aggregating</a></li>
+  <li><a href="#bootstrapping-3.-aggregating-3" id="toc-bootstrapping-3.-aggregating-3" class="nav-link" data-scroll-target="#bootstrapping-3.-aggregating-3">Bootstrapping: 3. Aggregating</a></li>
+  <li><a href="#bootstrapping-3.-aggregating-4" id="toc-bootstrapping-3.-aggregating-4" class="nav-link" data-scroll-target="#bootstrapping-3.-aggregating-4">Bootstrapping: 3. Aggregating</a></li>
+  <li><a href="#bootstrapping-3.-aggregating-5" id="toc-bootstrapping-3.-aggregating-5" class="nav-link" data-scroll-target="#bootstrapping-3.-aggregating-5">Bootstrapping: 3. Aggregating</a></li>
+  <li><a href="#bootstrapping-3.-aggregating-6" id="toc-bootstrapping-3.-aggregating-6" class="nav-link" data-scroll-target="#bootstrapping-3.-aggregating-6">Bootstrapping: 3. Aggregating</a></li>
+  <li><a href="#bootstrapping-4.-standardize-and-decompose" id="toc-bootstrapping-4.-standardize-and-decompose" class="nav-link" data-scroll-target="#bootstrapping-4.-standardize-and-decompose">Bootstrapping: 4. Standardize and decompose</a></li>
+  <li><a href="#bootstrapping-4.-helper-function" id="toc-bootstrapping-4.-helper-function" class="nav-link" data-scroll-target="#bootstrapping-4.-helper-function">Bootstrapping: 4. Helper function</a></li>
+  <li><a href="#bootstrapping-4.-standardize-and-decompose-1" id="toc-bootstrapping-4.-standardize-and-decompose-1" class="nav-link" data-scroll-target="#bootstrapping-4.-standardize-and-decompose-1">Bootstrapping: 4. Standardize and decompose</a></li>
+  <li><a href="#bootstrapping-4.-standardize-and-decompose-2" id="toc-bootstrapping-4.-standardize-and-decompose-2" class="nav-link" data-scroll-target="#bootstrapping-4.-standardize-and-decompose-2">Bootstrapping: 4. Standardize and decompose</a></li>
+  <li><a href="#bootstrapping-5.-visualize" id="toc-bootstrapping-5.-visualize" class="nav-link" data-scroll-target="#bootstrapping-5.-visualize">Bootstrapping: 5. Visualize</a></li>
+  <li><a href="#bootstrapping-5.-visualize-1" id="toc-bootstrapping-5.-visualize-1" class="nav-link" data-scroll-target="#bootstrapping-5.-visualize-1">Bootstrapping: 5. Visualize</a></li>
+  <li><a href="#bootstrapping-5.-visualize-2" id="toc-bootstrapping-5.-visualize-2" class="nav-link" data-scroll-target="#bootstrapping-5.-visualize-2">Bootstrapping: 5. Visualize</a></li>
+  <li><a href="#bootstrapping-in-practice-2" id="toc-bootstrapping-in-practice-2" class="nav-link" data-scroll-target="#bootstrapping-in-practice-2">Bootstrapping in practice</a></li>
+  <li><a href="#bootstrapping-in-practice-3" id="toc-bootstrapping-in-practice-3" class="nav-link" data-scroll-target="#bootstrapping-in-practice-3">Bootstrapping in practice</a></li>
+  <li><a href="#bootstrapping-in-practice-4" id="toc-bootstrapping-in-practice-4" class="nav-link" data-scroll-target="#bootstrapping-in-practice-4">Bootstrapping in practice</a></li>
+  <li><a href="#bootstrapping-in-practice-5" id="toc-bootstrapping-in-practice-5" class="nav-link" data-scroll-target="#bootstrapping-in-practice-5">Bootstrapping in practice</a></li>
+  <li><a href="#bonus-slides-with-where-this-can-go-wrong" id="toc-bonus-slides-with-where-this-can-go-wrong" class="nav-link" data-scroll-target="#bonus-slides-with-where-this-can-go-wrong">Bonus slides with where this can go wrong?</a>
+  <ul class="collapse">
+  <li><a href="#a-nice-example" id="toc-a-nice-example" class="nav-link" data-scroll-target="#a-nice-example">A nice example</a></li>
+  <li><a href="#a-nice-example-1" id="toc-a-nice-example-1" class="nav-link" data-scroll-target="#a-nice-example-1">A nice example</a></li>
+  <li><a href="#where-things-go-wrong" id="toc-where-things-go-wrong" class="nav-link" data-scroll-target="#where-things-go-wrong">Where things go wrong</a></li>
+  <li><a href="#a-not-so-nice-example" id="toc-a-not-so-nice-example" class="nav-link" data-scroll-target="#a-not-so-nice-example">A not-so-nice example</a></li>
+  <li><a href="#a-not-so-nice-example-1" id="toc-a-not-so-nice-example-1" class="nav-link" data-scroll-target="#a-not-so-nice-example-1">A not-so-nice example</a></li>
+  <li><a href="#its-the-same-problem" id="toc-its-the-same-problem" class="nav-link" data-scroll-target="#its-the-same-problem">It’s the same problem!</a></li>
+  <li><a href="#its-the-same-problem-1" id="toc-its-the-same-problem-1" class="nav-link" data-scroll-target="#its-the-same-problem-1">It’s the same problem!</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-uncertainty.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Uncertainty in Standardization and Decomposition</h1>
 </div>
 
-</section>
-<section id="whence-uncertainty" class="slide level2">
-<h2>Whence uncertainty?</h2>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="whence-uncertainty" class="level2">
+<h2 class="anchored" data-anchor-id="whence-uncertainty">Whence uncertainty?</h2>
 <ul>
-<li>The Das Gupta method doesn’t really have a concept of an error term - all results are calculate algebraically <span class="citation" data-cites="dasguptaStandardizationDecompositionRates1993">(<a href="#/references" role="doc-biblioref" onclick="">Das Gupta 1993</a>)</span></li>
+<li>The Das Gupta method doesn’t really have a concept of an error term - all results are calculate algebraically <span class="citation" data-cites="dasguptaStandardizationDecompositionRates1993">(<a href="#ref-dasguptaStandardizationDecompositionRates1993" role="doc-biblioref">Das Gupta 1993</a>)</span></li>
 <li>But we might still want to quantify uncertainty in the results of a standardization and decomposition</li>
-<li>Bootstrapping is a general purpose way to achieve this <span class="citation" data-cites="carseyMonteCarloSimulation2014">(<a href="#/references" role="doc-biblioref" onclick="">Carsey and Harden 2014</a>)</span></li>
+<li>Bootstrapping is a general purpose way to achieve this <span class="citation" data-cites="carseyMonteCarloSimulation2014">(<a href="#ref-carseyMonteCarloSimulation2014" role="doc-biblioref">Carsey and Harden 2014</a>)</span></li>
 </ul>
 </section>
-<section id="bootstrapping" class="slide level2">
-<h2>Bootstrapping</h2>
+<section id="bootstrapping" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping">Bootstrapping</h2>
 <ul>
 <li>Bootstrapping is a resampling method where you create an empirical distribution of estimates of your quantity of interest through resampling</li>
 <li>It is, as it were, a dumb strategy - it doesn’t try to be clever, just reshuffles your data a bunch and re-runs your analysis on each resampled dataset</li>
 <li>Computer go brrr</li>
 </ul>
 </section>
-<section id="bootstrapping-1" class="slide level2">
-<h2>Bootstrapping</h2>
+<section id="bootstrapping-1" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-1">Bootstrapping</h2>
 <ul>
 <li>There are different ways to achieve this</li>
 <li>We adopt a <em>non-parametric</em> bootstrap where you sample with replacement from the original data and re-run the analysis on each bootstrap draw</li>
@@ -246,15 +320,15 @@
 <li>Cons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire</li>
 </ul>
 </section>
-<section id="bootstrapping-in-practice" class="slide level2">
-<h2>Bootstrapping in practice</h2>
+<section id="bootstrapping-in-practice" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-in-practice">Bootstrapping in practice</h2>
 <ul>
 <li>First create a function to essentially “uncount” data into individual level data (where nrow = size of total population), then re-sample with replacement, then aggregate back up to the level of the original data</li>
 <li>Standardize and decompose each resampled dataset</li>
 </ul>
 </section>
-<section id="bootstrapping-in-practice-1" class="slide level2">
-<h2>Bootstrapping in practice</h2>
+<section id="bootstrapping-in-practice-1" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-in-practice-1">Bootstrapping in practice</h2>
 <ol type="1">
 <li>‘Explode’ the aggregate data</li>
 <li>Resample the exploded data 200 times (NB more is always better)</li>
@@ -263,32 +337,57 @@
 <li>Visualize the results</li>
 </ol>
 </section>
-<section id="bootstrapping-in-practice-exploding-the-data" class="slide level2">
-<h2>Bootstrapping in practice: Exploding the data</h2>
+<section id="bootstrapping-in-practice-exploding-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-in-practice-exploding-the-data">Bootstrapping in practice: Exploding the data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># just the first and last year</span></span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>dat_2004_2016 <span class="ot">&lt;-</span> </span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>  DasGuptR<span class="sc">::</span>reconv <span class="sc">|&gt;</span> </span>
-<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2004"</span> <span class="sc">|</span> year <span class="sc">==</span> <span class="st">"2016"</span>)</span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a><span class="co"># we need to turn the dataset into a 'tidy' dataframe with columns for</span></span>
-<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># year, Age, Sex, whether a person was reconvicted or not, n</span></span>
-<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a aria-hidden="true" tabindex="-1"></a>dat_2004_2016_long <span class="ot">&lt;-</span> </span>
-<span id="cb1-13"><a aria-hidden="true" tabindex="-1"></a>  dat_2004_2016 <span class="sc">|&gt;</span> </span>
-<span id="cb1-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">not_reconvicted =</span> offenders <span class="sc">-</span> reconvicted) <span class="sc">|&gt;</span> </span>
-<span id="cb1-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, Age, Sex, not_reconvicted, reconvicted) <span class="sc">|&gt;</span> </span>
-<span id="cb1-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(not_reconvicted<span class="sc">:</span>reconvicted, <span class="at">names_to =</span> <span class="st">"reconvicted"</span>, <span class="at">values_to =</span> <span class="st">"n"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-17"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">as.integer</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb1-18"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">uncount</span>(n) <span class="co"># this takes the n column and explodes the data using the counts</span></span>
-<span id="cb1-19"><a aria-hidden="true" tabindex="-1"></a><span class="co"># of people convicted and not reconvicted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.6
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.1     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+✔ purrr     1.2.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'DasGuptR'
+
+The following object is masked from 'package:datasets':
+
+    uspop</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># just the first and last year</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dat_2004_2016 <span class="ot">&lt;-</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  DasGuptR<span class="sc">::</span>reconv <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2004"</span> <span class="sc">|</span> year <span class="sc">==</span> <span class="st">"2016"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># we need to turn the dataset into a 'tidy' dataframe with columns for</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># year, Age, Sex, whether a person was reconvicted or not, n</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>dat_2004_2016_long <span class="ot">&lt;-</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  dat_2004_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">not_reconvicted =</span> offenders <span class="sc">-</span> reconvicted) <span class="sc">|&gt;</span> </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, Age, Sex, not_reconvicted, reconvicted) <span class="sc">|&gt;</span> </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(not_reconvicted<span class="sc">:</span>reconvicted, <span class="at">names_to =</span> <span class="st">"reconvicted"</span>, <span class="at">values_to =</span> <span class="st">"n"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">as.integer</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">uncount</span>(n) <span class="co"># this takes the n column and explodes the data using the counts</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># of people convicted and not reconvicted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="bootstrapping-2.-resampling" class="slide level2">
-<h2>Bootstrapping: 2. Resampling</h2>
+<section id="bootstrapping-2.-resampling" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-2.-resampling">Bootstrapping: 2. Resampling</h2>
 <ul>
 <li>Now we have an ‘individual’ level dataset for our reconviction cohorts we can resample from them with replacement</li>
 <li>We use functions from the <a href="https://rsample.tidymodels.org/"><code>{rsample}</code></a> package to do this in a memory efficient way</li>
@@ -296,25 +395,27 @@
 <li>We also need to set the number of draws. We’ll use 200 for speed; but more is always better</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsample)</span>
-<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a>n_draws <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="ot">&lt;-</span> </span>
-<span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a>dat_2004_2016_long <span class="sc">|&gt;</span> </span>
-<span id="cb2-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> <span class="co"># we bootstrap within years - this keeps the sizes of the reconviction cohorts the same</span></span>
-<span id="cb2-10"><a aria-hidden="true" tabindex="-1"></a>  rsample<span class="sc">::</span><span class="fu">bootstraps</span>(<span class="at">times =</span> n_draws)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'rsample' was built under R version 4.5.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>n_draws <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="ot">&lt;-</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>dat_2004_2016_long <span class="sc">|&gt;</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span> <span class="co"># we bootstrap within years - this keeps the sizes of the reconviction cohorts the same</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  rsample<span class="sc">::</span><span class="fu">bootstraps</span>(<span class="at">times =</span> n_draws)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="boostrapping-2.-resampling" class="slide level2">
-<h2>Boostrapping: 2. Resampling</h2>
+<section id="boostrapping-2.-resampling" class="level2">
+<h2 class="anchored" data-anchor-id="boostrapping-2.-resampling">Boostrapping: 2. Resampling</h2>
 <ul>
 <li>We now have 200 of… something</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>draws_2004_2016</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Bootstrap sampling 
 # A tibble: 200 × 2
@@ -334,40 +435,40 @@
 </div>
 </div>
 </section>
-<section id="bootstrapping-3.-aggregating" class="slide level2">
-<h2>Bootstrapping: 3. Aggregating</h2>
+<section id="bootstrapping-3.-aggregating" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-3.-aggregating">Bootstrapping: 3. Aggregating</h2>
 <ul>
 <li>Now we can convert these memory-efficient, individual level resamples from our data to aggregate data ready to standardize and decompose</li>
 <li>To do this we need to use R’s programming functions to iterate over each bootstrap resample and aggregate them</li>
 <li>We will write a helper function to do this</li>
 </ul>
 </section>
-<section id="writing-an-r-function" class="slide level2">
-<h2>Writing an R function</h2>
+<section id="writing-an-r-function" class="level2">
+<h2 class="anchored" data-anchor-id="writing-an-r-function">Writing an R function</h2>
 <ul>
 <li>Functions in R let you easily re-run code</li>
-<li>If you have not written an R function before you might want to check out the <a href="https://r4ds.hadley.nz/functions.html">Functions chapter in R for Data Science</a> <span class="citation" data-cites="wickhamR4DS2023">(<a href="#/references" role="doc-biblioref" onclick="">Wickham, Çetinkaya-Rundel, and Grolemund 2023</a>)</span></li>
+<li>If you have not written an R function before you might want to check out the <a href="https://r4ds.hadley.nz/functions.html">Functions chapter in R for Data Science</a> <span class="citation" data-cites="wickhamR4DS2023">(<a href="#ref-wickhamR4DS2023" role="doc-biblioref">Wickham, Çetinkaya-Rundel, and Grolemund 2023</a>)</span></li>
 </ul>
 </section>
-<section id="bootstrapping-3.-aggregating-1" class="slide level2">
-<h2>Bootstrapping: 3. Aggregating</h2>
+<section id="bootstrapping-3.-aggregating-1" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-3.-aggregating-1">Bootstrapping: 3. Aggregating</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># create a helper function to aggregate the results o</span></span>
-<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>uncount_split <span class="ot">&lt;-</span> <span class="cf">function</span>(splits){</span>
-<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a>  rsample<span class="sc">::</span><span class="fu">analysis</span>(splits) <span class="sc">|&gt;</span> </span>
-<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(year, Age, Sex, reconvicted) <span class="sc">|&gt;</span> <span class="co"># this is the opposite of uncount()</span></span>
-<span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"reconvicted"</span>, <span class="co"># this gets the data back in the</span></span>
-<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> <span class="st">"n"</span>) <span class="sc">|&gt;</span> <span class="co"># right shape for dgnpop</span></span>
-<span id="cb5-9"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">offenders =</span> not_reconvicted <span class="sc">+</span> reconvicted,</span>
-<span id="cb5-10"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">prev_rate =</span> reconvicted <span class="sc">/</span> offenders)</span>
-<span id="cb5-11"><a aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-12"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a helper function to aggregate the results o</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>uncount_split <span class="ot">&lt;-</span> <span class="cf">function</span>(splits){</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  rsample<span class="sc">::</span><span class="fu">analysis</span>(splits) <span class="sc">|&gt;</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(year, Age, Sex, reconvicted) <span class="sc">|&gt;</span> <span class="co"># this is the opposite of uncount()</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"reconvicted"</span>, <span class="co"># this gets the data back in the</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> <span class="st">"n"</span>) <span class="sc">|&gt;</span> <span class="co"># right shape for dgnpop</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">offenders =</span> not_reconvicted <span class="sc">+</span> reconvicted,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">prev_rate =</span> reconvicted <span class="sc">/</span> offenders)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="bootstrapping-3.-aggregating-2" class="slide level2">
-<h2>Bootstrapping: 3. Aggregating</h2>
+<section id="bootstrapping-3.-aggregating-2" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-3.-aggregating-2">Bootstrapping: 3. Aggregating</h2>
 <ul>
 <li>Now we have our helper function we can apply it to each bootstrap draw</li>
 <li>We use the <code>map</code> function from the <a href="https://purrr.tidyverse.org/"><code>{purrr}</code></a> package</li>
@@ -376,17 +477,18 @@
 <li>In other words, we want to <code>map</code> the aggregation to each of the bootstrap draws</li>
 </ul>
 </section>
-<section id="bootstrapping-3.-aggregating-3" class="slide level2">
-<h2>Bootstrapping: 3. Aggregating</h2>
+<section id="bootstrapping-3.-aggregating-3" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-3.-aggregating-3">Bootstrapping: 3. Aggregating</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="ot">&lt;-</span> </span>
-<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">agg_data =</span> <span class="fu">map</span>(splits, uncount_split))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="ot">&lt;-</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">agg_data =</span> <span class="fu">map</span>(splits, uncount_split))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="bootstrapping-3.-aggregating-4" class="slide level2">
-<h2>Bootstrapping: 3. Aggregating</h2>
+<section id="bootstrapping-3.-aggregating-4" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-3.-aggregating-4">Bootstrapping: 3. Aggregating</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>draws_2004_2016</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Bootstrap sampling 
 # A tibble: 200 × 3
@@ -406,13 +508,13 @@
 </div>
 </div>
 </section>
-<section id="bootstrapping-3.-aggregating-5" class="slide level2">
-<h2>Bootstrapping: 3. Aggregating</h2>
+<section id="bootstrapping-3.-aggregating-5" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-3.-aggregating-5">Bootstrapping: 3. Aggregating</h2>
 <ul>
 <li>Look at the first aggregated draw</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016<span class="sc">$</span>agg_data[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>draws_2004_2016<span class="sc">$</span>agg_data[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 7
 # Groups:   year [2]
@@ -441,13 +543,13 @@
 </div>
 </div>
 </section>
-<section id="bootstrapping-3.-aggregating-6" class="slide level2">
-<h2>Bootstrapping: 3. Aggregating</h2>
+<section id="bootstrapping-3.-aggregating-6" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-3.-aggregating-6">Bootstrapping: 3. Aggregating</h2>
 <ul>
 <li>Look at the second aggregated draw</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016<span class="sc">$</span>agg_data[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>draws_2004_2016<span class="sc">$</span>agg_data[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 7
 # Groups:   year [2]
@@ -476,84 +578,774 @@
 </div>
 </div>
 </section>
-<section id="bootstrapping-4.-standardize-and-decompose" class="slide level2">
-<h2>Bootstrapping: 4. Standardize and decompose</h2>
+<section id="bootstrapping-4.-standardize-and-decompose" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-4.-standardize-and-decompose">Bootstrapping: 4. Standardize and decompose</h2>
 <ul>
 <li>We can use the same pattern of creating a helper function and then applying it to each row of <code>draws_2004_2016</code> to standardize and decompose 200 times</li>
 </ul>
 </section>
-<section id="bootstrapping-4.-helper-function" class="slide level2">
-<h2>Bootstrapping: 4. Helper function</h2>
+<section id="bootstrapping-4.-helper-function" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-4.-helper-function">Bootstrapping: 4. Helper function</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>calc_dg <span class="ot">&lt;-</span> <span class="cf">function</span>(d){</span>
-<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="co"># This just wraps the standard dgnpop call for the reconvictions data</span></span>
-<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>  d <span class="sc">|&gt;</span> </span>
-<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">dgnpop</span>(<span class="at">pop=</span><span class="st">"year"</span>, </span>
-<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"prev_rate"</span>),<span class="at">id_vars=</span><span class="fu">c</span>(<span class="st">"Sex"</span>,<span class="st">"Age"</span>),</span>
-<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">crossclassified=</span><span class="st">"offenders"</span>,</span>
-<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">agg =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">dg_table</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames_to_column</span>() <span class="co"># this helps keep track of the results</span></span>
-<span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>calc_dg <span class="ot">&lt;-</span> <span class="cf">function</span>(d){</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This just wraps the standard dgnpop call for the reconvictions data</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  d <span class="sc">|&gt;</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dgnpop</span>(<span class="at">pop=</span><span class="st">"year"</span>, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"prev_rate"</span>),<span class="at">id_vars=</span><span class="fu">c</span>(<span class="st">"Sex"</span>,<span class="st">"Age"</span>),</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">crossclassified=</span><span class="st">"offenders"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">agg =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dg_table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames_to_column</span>() <span class="co"># this helps keep track of the results</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="bootstrapping-4.-standardize-and-decompose-1" class="slide level2">
-<h2>Bootstrapping: 4. Standardize and decompose</h2>
+<section id="bootstrapping-4.-standardize-and-decompose-1" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-4.-standardize-and-decompose-1">Bootstrapping: 4. Standardize and decompose</h2>
 <ul>
 <li>NB this might take a while!</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="ot">&lt;-</span> </span>
-<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="sc">|&gt;</span> </span>
-<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">results =</span> <span class="fu">map</span>(agg_data, calc_dg), <span class="co"># apply dgnpop to each aggregated dataset</span></span>
-<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">draw =</span> <span class="dv">1</span><span class="sc">:</span>n_draws) <span class="sc">|&gt;</span> <span class="co"># add an index which says which draw number the results are from</span></span>
-<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(draw, results) <span class="co"># only keep the draw number and results column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="ot">&lt;-</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">results =</span> <span class="fu">map</span>(agg_data, calc_dg), <span class="co"># apply dgnpop to each aggregated dataset</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">draw =</span> <span class="dv">1</span><span class="sc">:</span>n_draws) <span class="sc">|&gt;</span> <span class="co"># add an index which says which draw number the results are from</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(draw, results) <span class="co"># only keep the draw number and results column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate
+
+
+DG decomposition being conducted with R = prev_rate</code></pre>
+</div>
 </div>
 </section>
-<section id="bootstrapping-4.-standardize-and-decompose-2" class="slide level2">
-<h2>Bootstrapping: 4. Standardize and decompose</h2>
+<section id="bootstrapping-4.-standardize-and-decompose-2" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-4.-standardize-and-decompose-2">Bootstrapping: 4. Standardize and decompose</h2>
 <ul>
 <li>We now need to expand out the results with <code>unnest</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a>decomp_draws <span class="ot">&lt;-</span> </span>
-<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="sc">|&gt;</span> </span>
-<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(results) <span class="sc">|&gt;</span> </span>
-<span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="fu">pivot_longer</span>(<span class="st">`</span><span class="at">2004</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2016</span><span class="st">`</span>,</span>
-<span id="cb14-5"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
-<span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"rate"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2016"</span>) <span class="co"># the decomposition results are the same for both years, so we'll just keep one set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>decomp_draws <span class="ot">&lt;-</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>draws_2004_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(results) <span class="sc">|&gt;</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">pivot_longer</span>(<span class="st">`</span><span class="at">2004</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2016</span><span class="st">`</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"year"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"rate"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2016"</span>) <span class="co"># the decomposition results are the same for both years, so we'll just keep one set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="bootstrapping-5.-visualize" class="slide level2">
-<h2>Bootstrapping: 5. Visualize</h2>
-
-<img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
-<section id="bootstrapping-5.-visualize-1" class="slide level2">
-<h2>Bootstrapping: 5. Visualize</h2>
-
-<img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
-<section id="bootstrapping-5.-visualize-2" class="slide level2">
-<h2>Bootstrapping: 5. Visualize</h2>
+<section id="bootstrapping-5.-visualize" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-5.-visualize">Bootstrapping: 5. Visualize</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdist)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>decomp_draws <span class="sc">|&gt;</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> decomp, <span class="at">y =</span> rowname)) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  ggdist<span class="sc">::</span><span class="fu">stat_dist_dots</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture-uncertainty_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="bootstrapping-in-practice-2" class="slide level2">
-<h2>Bootstrapping in practice</h2>
+<section id="bootstrapping-5.-visualize-1" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-5.-visualize-1">Bootstrapping: 5. Visualize</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get rid of the crude</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>decomp_draws <span class="sc">|&gt;</span> </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rowname <span class="sc">!=</span> <span class="st">"crude"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> decomp, <span class="at">y =</span> rowname)) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  ggdist<span class="sc">::</span><span class="fu">stat_dist_dots</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture-uncertainty_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bootstrapping-5.-visualize-2" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-5.-visualize-2">Bootstrapping: 5. Visualize</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy up a bit</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>decomp_fig <span class="ot">&lt;-</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>decomp_draws <span class="sc">|&gt;</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rowname <span class="sc">!=</span> <span class="st">"crude"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rowname =</span> <span class="fu">case_when</span>(</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    rowname <span class="sc">==</span> <span class="st">"prev_rate"</span> <span class="sc">~</span> <span class="st">"Reconviction prevalence"</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    rowname <span class="sc">==</span> <span class="st">"Sex_struct"</span> <span class="sc">~</span> <span class="st">"Sex structure"</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    rowname <span class="sc">==</span> <span class="st">"Age_struct"</span> <span class="sc">~</span> <span class="st">"Age structure"</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> decomp, <span class="at">y =</span> rowname)) <span class="sc">+</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  ggdist<span class="sc">::</span><span class="fu">stat_dist_dots</span>() <span class="sc">+</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"% of change in crude reconviction rate"</span>,</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="st">"Factor"</span>,</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Decomposition of Scottish reconviction rate, 2004 and 2016"</span>) <span class="sc">+</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title.position =</span> <span class="st">"plot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bootstrapping-in-practice-2" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-in-practice-2">Bootstrapping in practice</h2>
 <ul>
 <li>These are the original results</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>res_2004_2016 <span class="ot">&lt;-</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>dat_2004_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">dgnpop</span>(<span class="at">pop=</span><span class="st">"year"</span>, </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"prev_rate"</span>),<span class="at">id_vars=</span><span class="fu">c</span>(<span class="st">"Sex"</span>,<span class="st">"Age"</span>),</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">crossclassified=</span><span class="st">"offenders"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="dv">2</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+DG decomposition being conducted with R = prev_rate</code></pre>
+</div>
+</div>
 </section>
-<section id="bootstrapping-in-practice-3" class="slide level2">
-<h2>Bootstrapping in practice</h2>
-
-<img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
-<section id="bootstrapping-in-practice-4" class="slide level2">
-<h2>Bootstrapping in practice</h2>
+<section id="bootstrapping-in-practice-3" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-in-practice-3">Bootstrapping in practice</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>res_2004_2016_plot <span class="ot">&lt;-</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>res_2004_2016 <span class="sc">|&gt;</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(rowname <span class="sc">!=</span> <span class="st">"crude"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rowname =</span> <span class="fu">case_when</span>(</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    rowname <span class="sc">==</span> <span class="st">"prev_rate"</span> <span class="sc">~</span> <span class="st">"Reconviction prevalence"</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    rowname <span class="sc">==</span> <span class="st">"Sex_struct"</span> <span class="sc">~</span> <span class="st">"Sex structure"</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    rowname <span class="sc">==</span> <span class="st">"Age_struct"</span> <span class="sc">~</span> <span class="st">"Age structure"</span>,</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>decomp_fig <span class="sc">+</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> res_2004_2016_plot,</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"red"</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Red point is original data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture-uncertainty_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bootstrapping-in-practice-4" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-in-practice-4">Bootstrapping in practice</h2>
 <ul>
 <li>Now we can calculate standard errors and confidence intervals for these estimates</li>
-<li>(Actually it’s bad practice to use the mean of the bootstrap draws instead of the observed results <span class="citation" data-cites="raineyCarefulConsiderationCLARIFY2024">(<a href="#/references" role="doc-biblioref" onclick="">Rainey 2024</a>)</span>)</li>
+<li>(Actually it’s bad practice to use the mean of the bootstrap draws instead of the observed results <span class="citation" data-cites="raineyCarefulConsiderationCLARIFY2024">(<a href="#ref-raineyCarefulConsiderationCLARIFY2024" role="doc-biblioref">Rainey 2024</a>)</span>)</li>
 </ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>decomp_draws <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rowname) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_decomp =</span> <span class="fu">mean</span>(decomp),</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">se_est =</span> <span class="fu">sd</span>(decomp),</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">lower_ci =</span> mean_decomp <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> se_est,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper_ci =</span> mean_decomp <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> se_est)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   rowname    mean_decomp se_est lower_ci upper_ci
@@ -565,91 +1357,104 @@
 </div>
 </div>
 </section>
-<section id="bootstrapping-in-practice-5" class="slide level2">
-<h2>Bootstrapping in practice</h2>
+<section id="bootstrapping-in-practice-5" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrapping-in-practice-5">Bootstrapping in practice</h2>
 <ul>
 <li>Or directly calculate confidence intervals by taking percentiles</li>
 </ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>decomp_draws <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rowname) <span class="sc">|&gt;</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">confs =</span> <span class="fu">list</span>(<span class="fu">quantile</span>(decomp, <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.025</span>, <span class="fl">0.975</span>))),</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">cis =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"median"</span>, <span class="st">"lower_ci"</span>, <span class="st">"upper_ci"</span>)),</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="fu">c</span>(confs, cis)) <span class="sc">|&gt;</span> </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> rowname,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> confs,</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> cis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
-  rowname    lower_ci median upper_ci
-  &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
-1 Age_struct     36.4  41.2     46.6 
-2 Sex_struct      1     1.47     2.19
-3 crude         100   100      100   
-4 prev_rate      51.9  57.2     62.6 </code></pre>
+  rowname    median lower_ci upper_ci
+  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 Age_struct  36.8      36.4    46.6 
+2 Sex_struct   1.05      1       2.19
+3 crude      100       100     100   
+4 prev_rate   52.8      51.9    62.6 </code></pre>
 </div>
 </div>
 </section>
-<section>
-<section id="bonus-slides-with-where-this-can-go-wrong" class="title-slide slide level1 center">
+<section id="bonus-slides-with-where-this-can-go-wrong" class="level1">
 <h1>Bonus slides with where this can go wrong?</h1>
-
-</section>
-<section id="a-nice-example" class="slide level2">
-<h2>A nice example</h2>
+<section id="a-nice-example" class="level2">
+<h2 class="anchored" data-anchor-id="a-nice-example">A nice example</h2>
 <ul>
 <li>Add in results for 2004/2016</li>
 </ul>
 </section>
-<section id="a-nice-example-1" class="slide level2">
-<h2>A nice example</h2>
-
-<img data-src="figs/fine-fig.png" class="r-stretch quarto-figure-center"><p class="caption">fine-fig</p></section>
-<section id="where-things-go-wrong" class="slide level2">
-<h2>Where things go wrong</h2>
+<section id="a-nice-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="a-nice-example-1">A nice example</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/fine-fig.png" class="img-fluid figure-img"></p>
+<figcaption>fine-fig</figcaption>
+</figure>
+</div>
+</section>
+<section id="where-things-go-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="where-things-go-wrong">Where things go wrong</h2>
 <ul>
 <li>Decomposition will decompose whatever difference there is - even if it is very small</li>
 <li>If there isn’t much difference in the underlying crude rate you are decomposing (in a hand-wavy way, if the difference is not statistically significant) then things can do haywire</li>
 </ul>
 </section>
-<section id="a-not-so-nice-example" class="slide level2">
-<h2>A not-so-nice example</h2>
+<section id="a-not-so-nice-example" class="level2">
+<h2 class="anchored" data-anchor-id="a-not-so-nice-example">A not-so-nice example</h2>
 <ul>
 <li>Add in results for 2004/2016</li>
 </ul>
 </section>
-<section id="a-not-so-nice-example-1" class="slide level2">
-<h2>A not-so-nice example</h2>
-
-<img data-src="figs/haywire-fig.png" class="r-stretch quarto-figure-center"><p class="caption">haywire-fig</p></section>
-<section id="its-the-same-problem" class="slide level2">
-<h2>It’s the same problem!</h2>
-<ul>
-<li>In both cases the ‘problem’ is that you are calculating a quantity of interest that can involve dividing by arbitrarily small numbers</li>
-<li>In the first case, you do absolutely need to factor in the uncertainty in the estimated victimization rates (it’s from a survey!)</li>
-<li>The simulated VDs help identify when the comparison is pathological - the <span class="citation" data-cites="kingMakingMostStatistical2000">(<a href="#/references" role="doc-biblioref" onclick=""><strong>kingMakingMostStatistical2000?</strong></a>)</span> method is useful as a quality check not just to provide clear outputs</li>
-<li>(In that toy example, the fix is actually just to model all the years together with an interaction effect - but that won’t work so well in more complex cases)</li>
-<li>In this case (a la <span class="citation" data-cites="kingMakingMostStatistical2000">(<a href="#/references" role="doc-biblioref" onclick=""><strong>kingMakingMostStatistical2000?</strong></a>)</span>) the simulation was after fitting the model (i.e.&nbsp;parametric)</li>
-</ul>
+<section id="a-not-so-nice-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="a-not-so-nice-example-1">A not-so-nice example</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/haywire-fig.png" class="img-fluid figure-img"></p>
+<figcaption>haywire-fig</figcaption>
+</figure>
+</div>
 </section>
-<section id="its-the-same-problem-1" class="slide level2">
-<h2>It’s the same problem!</h2>
+<section id="its-the-same-problem" class="level2">
+<h2 class="anchored" data-anchor-id="its-the-same-problem">It’s the same problem!</h2>
 <ul>
 <li>I was very confused by the bad decomposition - why would the bootstrapping lead to these wild estimates (huge confidence intervals not centered on the true values!)</li>
 <li>The thing I was bootstrapping was the underlying data - and the bootstrapped distribution <em>of the crude rates</em> is fine</li>
 <li>But the decomposition is a transformation of these rates, and the properties of the rates do not necessarily transfer downstream to the transformation</li>
 </ul>
 </section>
-<section id="its-the-same-problem-2" class="slide level2">
-<h2>It’s the same problem!</h2>
+<section id="its-the-same-problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="its-the-same-problem-1">It’s the same problem!</h2>
 <ul>
-<li>In the second case maybe you could argue that you don’t need to factor in uncertainty in the underlying rates - it’s admin data, the reconviction cohorts are what they are, what are you a Bayesian or something <span class="citation" data-cites="verlaan2024use">(see <a href="#/references" role="doc-biblioref" onclick=""><strong>verlaan2024use?</strong></a>)</span></li>
+<li>Maybe you could argue that you don’t need to factor in uncertainty in the underlying rates - it’s admin data, the reconviction cohorts are what they are, what are you a Bayesian or something <span class="citation" data-cites="verlaan2024use">(see <a href="#ref-verlaan2024use" role="doc-biblioref"><strong>verlaan2024use?</strong></a>)</span></li>
 <li>But it’s still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons</li>
-<li>Bootstrapping the raw data (nonparametric simulation <span class="citation" data-cites="carseyMonteCarloSimulation2014">(see <a href="#/references" role="doc-biblioref" onclick="">Carsey and Harden 2014</a>)</span>) can show when your results are fragile to small permutations in the data <span class="citation" data-cites="giordanoAutomaticFinitesampleRobustness2026">(see also <a href="#/references" role="doc-biblioref" onclick=""><strong>giordanoAutomaticFinitesampleRobustness2026?</strong></a>)</span></li>
+<li>Bootstrapping the raw data (nonparametric simulation <span class="citation" data-cites="carseyMonteCarloSimulation2014">(see <a href="#ref-carseyMonteCarloSimulation2014" role="doc-biblioref">Carsey and Harden 2014</a>)</span>) can show when your results are fragile to small permutations in the data <span class="citation" data-cites="giordanoAutomaticFinitesampleRobustness2026">(see also <a href="#ref-giordanoAutomaticFinitesampleRobustness2026" role="doc-biblioref">Giordano, Meager, and Broderick 2026</a>)</span></li>
 </ul>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
+<section id="references" class="level2">
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-carseyMonteCarloSimulation2014" class="csl-entry" role="listitem">
 Carsey, Thomas M., and Jeffrey J. Harden. 2014. <em>Monte <span>Carlo Simulation</span> and <span>Resampling Methods</span> for <span>Social Science</span></em>. SAGE Publications, Inc. <a href="https://doi.org/10.4135/9781483319605">https://doi.org/10.4135/9781483319605</a>.
 </div>
 <div id="ref-dasguptaStandardizationDecompositionRates1993" class="csl-entry" role="listitem">
 Das Gupta, Prithwis. 1993. <em>Standardization and <span>Decomposition</span> of <span>Rates</span>: <span>A User</span>’s <span>Manual</span></em>.
+</div>
+<div id="ref-giordanoAutomaticFinitesampleRobustness2026" class="csl-entry" role="listitem">
+Giordano, Ryan, Rachael Meager, and Tamara Broderick. 2026. <span>“An Automatic Finite-Sample Robustness Metric: When Can Dropping a Little Data Change Conclusions? <span>Part I</span>: Definitions and Experiments.”</span> <em>Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences</em> 384 (2321): 20250001. <a href="https://doi.org/10.1098/rsta.2025.0001">https://doi.org/10.1098/rsta.2025.0001</a>.
 </div>
 <div id="ref-raineyCarefulConsiderationCLARIFY2024" class="csl-entry" role="listitem">
 Rainey, Carlisle. 2024. <span>“A Careful Consideration of <span>CLARIFY</span>: Simulation-Induced Bias in Point Estimates of Quantities of Interest.”</span> <em>Political Science Research and Methods</em> 12 (3): 614–23. <a href="https://doi.org/10.1017/psrm.2023.8">https://doi.org/10.1017/psrm.2023.8</a>.
@@ -657,620 +1462,461 @@ Rainey, Carlisle. 2024. <span>“A Careful Consideration of <span>CLARIFY</span>
 <div id="ref-wickhamR4DS2023" class="csl-entry" role="listitem">
 Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for <span>Data Science</span> (2e)</em>. Second.
 </div>
-</div>
-</section></section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
-<p><a href="./index.html">Workshop Home</a></p>
-</div>
-</div></div>
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': true,
-'previewLinksAuto': true,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: false,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: true,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: false,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'fade',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
-
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
-    </script>
-    
-
-    <script>
-
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
-      // slide changes (different for each slide format).
-
-      (function () {
-
-        // dispatch for htmlwidgets
-
-        function fireSlideEnter() {
-
-          const event = window.document.createEvent("Event");
-
-          event.initEvent("slideenter", true, true);
-
-          window.document.dispatchEvent(event);
-
-        }
-
-    
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          fireSlideEnter();
-
-    
-
-          // dispatch for shiny
-
-          if (window.jQuery) {
-
-            if (previousSlide) {
-
-              window.jQuery(previousSlide).trigger("hidden");
-
-            }
-
-            if (currentSlide) {
-
-              window.jQuery(currentSlide).trigger("shown");
-
-            }
-
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-
         }
-
-    
-
-        // hookup for slidy
-
-        if (window.w3c_slidy) {
-
-          window.w3c_slidy.add_observer(function (slide_num) {
-
-            // slide_num starts at position 1
-
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
-          });
-
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-
-    
-
-      })();
-
-    </script>
-
-    
-
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
             }
           }
-          return false;
-        }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
           }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
               }
-            }
-            return codeEl.innerText;
-        }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
           });
-          clipboardModal.on('success', onCopySuccess);
         }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
               }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
             }
           }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
           const config = {
             allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
             appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
+              return el.parentElement.parentElement.parentElement;
             },
             interactive: true,
             interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
+            theme: 'quarto',
+            placement: 'right',
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
           };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
+          window.tippy(annoteTarget, config); 
         }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
-            } else {
-              return "";
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
             }
+            popup.appendChild(citeDiv);
           });
-        }
-            let selectedAnnoteEl;
-            const selectorForAnnotation = ( cell, annotation) => {
-              let cellAttr = 'data-code-cell="' + cell + '"';
-              let lineAttr = 'data-code-annotation="' +  annotation + '"';
-              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-              return selector;
-            }
-            const selectCodeLines = (annoteEl) => {
-              const doc = window.document;
-              const targetCell = annoteEl.getAttribute("data-target-cell");
-              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-              const lineIds = lines.map((line) => {
-                return targetCell + "-" + line;
-              })
-              let top = null;
-              let height = null;
-              let parent = null;
-              if (lineIds.length > 0) {
-                  //compute the position of the single el (top and bottom and make a div)
-                  const el = window.document.getElementById(lineIds[0]);
-                  top = el.offsetTop;
-                  height = el.offsetHeight;
-                  parent = el.parentElement.parentElement;
-                if (lineIds.length > 1) {
-                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-                  height = bottom - top;
-                }
-                if (top !== null && height !== null && parent !== null) {
-                  // cook up a div (if necessary) and position it 
-                  let div = window.document.getElementById("code-annotation-line-highlight");
-                  if (div === null) {
-                    div = window.document.createElement("div");
-                    div.setAttribute("id", "code-annotation-line-highlight");
-                    div.style.position = 'absolute';
-                    parent.appendChild(div);
-                  }
-                  div.style.top = top - 2 + "px";
-                  div.style.height = height + 4 + "px";
-                  div.style.left = 0;
-                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-                  if (gutterDiv === null) {
-                    gutterDiv = window.document.createElement("div");
-                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                    gutterDiv.style.position = 'absolute';
-                    const codeCell = window.document.getElementById(targetCell);
-                    const gutter = codeCell.querySelector('.code-annotation-gutter');
-                    gutter.appendChild(gutterDiv);
-                  }
-                  gutterDiv.style.top = top - 2 + "px";
-                  gutterDiv.style.height = height + 4 + "px";
-                }
-                selectedAnnoteEl = annoteEl;
-              }
-            };
-            const unselectCodeLines = () => {
-              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-              elementsIds.forEach((elId) => {
-                const div = window.document.getElementById(elId);
-                if (div) {
-                  div.remove();
-                }
-              });
-              selectedAnnoteEl = undefined;
-            };
-              // Handle positioning of the toggle
-          window.addEventListener(
-            "resize",
-            throttle(() => {
-              elRect = undefined;
-              if (selectedAnnoteEl) {
-                selectCodeLines(selectedAnnoteEl);
-              }
-            }, 10)
-          );
-          function throttle(fn, ms) {
-          let throttle = false;
-          let timer;
-            return (...args) => {
-              if(!throttle) { // first call gets through
-                  fn.apply(this, args);
-                  throttle = true;
-              } else { // all the others get throttled
-                  if(timer) clearTimeout(timer); // cancel #2
-                  timer = setTimeout(() => {
-                    fn.apply(this, args);
-                    timer = throttle = false;
-                  }, ms);
-              }
-            };
-          }
-            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
-            for (let i=0; i<annoteTargets.length; i++) {
-              const annoteTarget = annoteTargets[i];
-              const targetCell = annoteTarget.getAttribute("data-target-cell");
-              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
-              const contentFn = () => {
-                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-                if (content) {
-                  const tipContent = content.cloneNode(true);
-                  tipContent.classList.add("code-annotation-tip-content");
-                  return tipContent.outerHTML;
-                }
-              }
-              const config = {
-                allowHTML: true,
-                content: contentFn,
-                onShow: (instance) => {
-                  selectCodeLines(instance.reference);
-                  instance.reference.classList.add('code-annotation-active');
-                  window.tippy.hideAll();
-                },
-                onHide: (instance) => {
-                  unselectCodeLines();
-                  instance.reference.classList.remove('code-annotation-active');
-                },
-                maxWidth: 300,
-                delay: [50, 0],
-                duration: [200, 0],
-                offset: [5, 10],
-                arrow: true,
-                appendTo: function(el) {
-                  return el.parentElement.parentElement.parentElement;
-                },
-                interactive: true,
-                interactiveBorder: 10,
-                theme: 'light-border',
-                placement: 'right',
-                popperOptions: {
-                  modifiers: [
-                  {
-                    name: 'flip',
-                    options: {
-                      flipVariations: false, // true by default
-                      allowedAutoPlacements: ['right'],
-                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
-                    },
-                  },
-                  {
-                    name: 'preventOverflow',
-                    options: {
-                      mainAxis: false,
-                      altAxis: false
-                    }
-                  }
-                  ]        
-                }      
-              };
-              window.tippy(annoteTarget, config); 
-            }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
-            }
-          } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
-            });
-          }
-        }
-      });
-      </script>
-    
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Site licensed under the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">GNU AGPLv3</a> license.</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
 
 </body></html>
