@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <title>sgsss_decomp – Welcome/Course Intro</title>
+  <title>sgsss_decomp – Standardization and decomposition: A conceptual introduction</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -27,7 +27,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-e2f8a6539310bde99460a1dff2d71388.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -128,60 +148,140 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Welcome/Course Intro</h1>
+  <h1 class="title">Standardization and decomposition: A conceptual introduction</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
 <section>
-<section id="welcome-to-sgsss-decomposition-workshop" class="title-slide slide level1 center">
-<h1>Welcome to SGSSS Decomposition Workshop!</h1>
+<section id="what-are-standardization-and-decomposition" class="title-slide slide level1 center">
+<h1>What are Standardization and Decomposition</h1>
 
 </section>
-<section id="hello" class="slide level2">
-<h2>Hello!</h2>
+<section id="standardization" class="slide level2">
+<h2>Standardization</h2>
 <ul>
-<li>Who we are</li>
-<li>Who you are (Mentimeter: Your background? What you want to get from this session?)</li>
+<li>Originally used to adjust mortality comparisons between populations with different age structures <span class="citation" data-cites="keidingStandardizationControlConfounding2014">(<a href="#/references" role="doc-biblioref" onclick="">Keiding and Clayton 2014</a>)</span></li>
+<li>Lets you “compar[e] rates between populations with different age structures by applying age-specific rates to a single “target” age structure and, thereafter, comparing predicted <em>marginal</em><sup>1</sup> summaries in this target population.” <span class="citation" data-cites="keidingStandardizationControlConfounding2014">(<a href="#/references" role="doc-biblioref" onclick="">Keiding and Clayton 2014, p529</a>)</span></li>
+<li>More generally - lets you compare rates of <em>any outcome</em> between populations with different compositions of <em>any confounder</em></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>This is an important term! We will come back to this</p></li></ol></aside></section>
+<section id="kitagawa" class="slide level2">
+<h2>Kitagawa</h2>
+<ul>
+<li>“When comparing the incidence of some phenomenon in two or more groups, social researchers place much emphasis on the need for holding constant those related facors that would tend to distort the comparison” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">Kitagawa (<a href="#/references" role="doc-biblioref" onclick="">1955</a>)</span></li>
 </ul>
 </section>
-<section id="housekeeping" class="slide level2">
-<h2>Housekeeping</h2>
+<section id="standardization-1" class="slide level2">
+<h2>Standardization</h2>
 <ul>
-<li>Code of conduct</li>
-<li>Ask questions whenever 👍 You can do this through the Teams chat facility {demo this now}</li>
-<li>We’ve structured the sessions with regular breaks, but if you need to leave just leave!</li>
-<li>Materials will live online here so you can access them any time</li>
-</ul>
-</section>
-<section id="learning-outcomes" class="slide level2">
-<h2>Learning outcomes</h2>
-<p>Learning outcomes</p>
-<p>By the end of the workshop you will:</p>
-<ol type="1">
-<li>Understand how standardization and decomposition can be used to answer social science research questions</li>
-<li>Be familiar with different approaches to standardization and decomposition</li>
-<li>Be able to apply standardization and decomposition to practical examples in R or Stata</li>
-</ol>
-</section>
-<section id="course-schedule" class="slide level2">
-<h2>Course schedule</h2>
-<ul>
-<li>See the <a href="https://josiahpjking.github.io/sgsss_std_decomp/index.html">course website</a></li>
-</ul>
-</section>
-<section id="practical-sessions" class="slide level2">
-<h2>Practical sessions</h2>
-<ul>
-<li>You can follow along with the materials in a local installation of R and RStudio on your own computer</li>
-<li>You can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp</li>
-<li>If you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) [Ben post the link in the chat now]</li>
-<li>For Stata you’re relying on your own copy</li>
+<li>Conceptually the focus is on <em>aggregate</em>/<em>marginal</em> rates, not individual effects</li>
+<li>Aggregate rates are really common as <a href="https://www.gov.scot/collections/national-performance-framework/">performance indicators</a>: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework</li>
+<li>Individual effects can aggregate in non-intuitive ways <span class="citation" data-cites="good1987">(<a href="#/references" role="doc-biblioref" onclick=""><strong>simpson1951?</strong></a>)</span></li>
 </ul>
 
-
+<aside><div>
+<p>‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change[^2] <span class="citation" data-cites="gelmanMarginal2006">(<a href="#/references" role="doc-biblioref" onclick="">Gelman 2006</a>)</span>. To get technical, it can be either an integral or a derivative</p>
+</div></aside></section>
+<section id="kitagawas-example" class="slide level2">
+<h2>Kitagawa’s example</h2>
+<ul>
+<li>“For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">Kitagawa (<a href="#/references" role="doc-biblioref" onclick="">1955</a>)</span></li>
+<li>Take the observed age/sex/race death rates for your two areas</li>
+<li>Multiply these by some standard age, sex and race profile</li>
+<li>You have ‘standardized’ rates!</li>
+</ul>
+</section>
+<section id="picking-a-standard-population" class="slide level2">
+<h2>Picking a standard population</h2>
+<ul>
+<li>Say you wanted to compare mortality rates in Glasgow and Shetland, controling for differences in age sex and ethnicity</li>
+<li>Which population would you use as a standard one?
+<ul>
+<li>The Glasgow population?</li>
+<li>The Shetland population?</li>
+<li>The average of the two populations?</li>
+<li>Something else?</li>
+</ul></li>
+</ul>
 </section></section>
+<section>
+<section id="student-discussion" class="title-slide slide level1 center">
+<h1>Student discussion</h1>
+
+</section>
+<section id="decomposition" class="slide level2">
+<h2>Decomposition</h2>
+<ul>
+<li>Asks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you’ve standardized by?</li>
+<li>How much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?</li>
+</ul>
+</section>
+<section id="why-decomposition" class="slide level2">
+<h2>Why decomposition?</h2>
+<ul>
+<li>Standardized rates are ‘artificial’, summaries of a world we do not live in</li>
+<li>Why should we care what the mortality rate in Scotland would be if it had the Estonian age distribution?</li>
+<li>Decomposition makes comparisons of standardized rates more analytically useful:</li>
+<li>“A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the”observed” crude (or total) rates and the “artificial” standardized rates” <span class="citation" data-cites="kitagawaComponentsDifferenceTwo1955">(<a href="#/references" role="doc-biblioref" onclick="">Kitagawa 1955, pp1169–1170</a>)</span></li>
+</ul>
+</section>
+<section id="decomposition-1" class="slide level2">
+<h2>Decomposition</h2>
+<ul>
+<li>Decomposition lets you say how much of the difference between crude rates of your outcome between your comparison cases are due to the various factors you choose to control for</li>
+<li>In Kitagawa’s example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is ‘left over’</li>
+</ul>
+</section>
+<section id="my-motivating-example" class="slide level2">
+<h2>My motivating example</h2>
+<ul>
+<li>I (Ben) wrote my PhD thesis on the ‘crime drop’ in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level <span class="citation" data-cites="matthewsCriminalCareersCrime2017">(<a href="#/references" role="doc-biblioref" onclick="">Matthews 2017</a>)</span></li>
+<li>There is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)</li>
+<li>Standardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted</li>
+</ul>
+</section>
+<section id="a-conjecture" class="slide level2">
+<h2>A conjecture</h2>
+<ul>
+<li>Most quantitative social science (implicitly?) focuses on individuals</li>
+<li>“while the number of ACEs is a strong predictor of childhood offending, certain types of childhood adversity are of greater importance than others” <span class="citation" data-cites="jahanshahiACEsPlacesInequality2022">(<a href="#/references" role="doc-biblioref" onclick="">Jahanshahi, Murray, and McVie 2022</a>)</span></li>
+<li>How does the number of ACEs affect a child’s probability of offending?</li>
+<li>Not - how much of the change in Scotland’s child offending rate is due to changes in the prevalence of ACEs?</li>
+</ul>
+</section>
+<section id="a-conjecture-1" class="slide level2">
+<h2>A conjecture</h2>
+<ul>
+<li>There is nothing wrong with focusing on individuals!</li>
+<li>But it’s useful to be able to answer questions about macro-level phenomena too, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes</li>
+<li>Standardization and decomposition are one way to do this (there are others!)</li>
+</ul>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-gelmanMarginal2006" class="csl-entry" role="listitem">
+Gelman, Andrew. 2006. <span>“Marginal and Marginal.”</span> <em>Statistical Modeling, Causal Inference, and Social Science</em>.
+</div>
+<div id="ref-jahanshahiACEsPlacesInequality2022" class="csl-entry" role="listitem">
+Jahanshahi, Babak, Kath Murray, and Susan McVie. 2022. <span>“<span>ACEs</span>, <span>Places</span> and <span>Inequality</span>: <span>Understanding</span> the <span>Effects</span> of <span>Adverse Childhood Experiences</span> and <span>Poverty</span> on <span>Offending</span> in <span>Childhood</span>.”</span> <em>The British Journal of Criminology</em> 62 (3): 751–72. <a href="https://doi.org/10.1093/bjc/azab079">https://doi.org/10.1093/bjc/azab079</a>.
+</div>
+<div id="ref-keidingStandardizationControlConfounding2014" class="csl-entry" role="listitem">
+Keiding, Niels, and David Clayton. 2014. <span>“Standardization and <span>Control</span> for <span>Confounding</span> in <span>Observational Studies</span>: <span>A Historical Perspective</span>.”</span> <em>Statistical Science</em> 29 (4): 529–58. <a href="https://doi.org/10.1214/13-STS453">https://doi.org/10.1214/13-STS453</a>.
+</div>
+<div id="ref-kitagawaComponentsDifferenceTwo1955" class="csl-entry" role="listitem">
+Kitagawa, Evelyn M. 1955. <span>“Components of a <span>Difference Between Two Rates</span>.”</span> <em>Journal of the American Statistical Association</em> 50 (272): 1168–94. <a href="https://doi.org/10.1080/01621459.1955.10501299">https://doi.org/10.1080/01621459.1955.10501299</a>.
+</div>
+<div id="ref-matthewsCriminalCareersCrime2017" class="csl-entry" role="listitem">
+Matthews, Ben. 2017. <span>“Criminal <span>Careers</span> and the <span>Crime Drop</span> in <span>Scotland</span>, 1989-2011: <span>An Exploration</span> of <span>Conviction Trends Across Age</span> and <span>Sex</span>.”</span> PhD thesis, University of Edinburgh.
+</div>
+</div>
+</section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -399,6 +499,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

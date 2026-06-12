@@ -18,26 +18,34 @@ format:
 
 # Welcome to SGSSS Decomposition Workshop!
 
-# Hello! 
+## Hello! 
+- Who we are
+- Who you are (Mentimeter: Your background? What you want to get from this session?)
 
-:::: {.columns}
+## Housekeeping
 
-::: {.column width="50%"}
-what is the course about?
-:::
+- Code of conduct
+- Ask questions whenever 👍 You can do this through the Teams chat facility {demo this now}
+- We’ve structured the sessions with regular breaks, but if you need to leave just leave!
+- Materials will live online here so you can access them any time
 
-::: {.column width="50%"}
-things! it's about *things!*
-:::
+## Learning outcomes
+Learning outcomes
 
-::::
+By the end of the workshop you will:
 
-# thing 1
+1.	Understand how standardization and decomposition can be used to answer social science research questions
+2.	Be familiar with different approaches to standardization and decomposition
+3.	Be able to apply standardization and decomposition to practical examples in R or Stata
 
-this is thing 1
+## Course schedule
 
-# thing 2
+- See the [course website](https://josiahpjking.github.io/sgsss_std_decomp/index.html)
 
-what a surprise. thing 2 is here!
+## Practical sessions
 
-# End
+- You can follow along with the materials in a local installation of R and RStudio on your own computer
+- You can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp
+- If you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) [Ben post the link in the chat now]
+- For Stata you're relying on your own copy
+

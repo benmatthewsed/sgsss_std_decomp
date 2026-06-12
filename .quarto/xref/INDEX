@@ -13,5 +13,17 @@
   },
   "lecture01.qmd": {
     "lecture01.html": "7f295770"
+  },
+  "lecture02.qmd": {
+    "lecture02.html": "f8256747"
+  },
+  "lecture-uncertainty.qmd": {
+    "lecture-uncertainty.html": "f085e5be"
+  },
+  "lecture-conceptual.qmd": {
+    "lecture-conceptual.html": "61479ce5"
+  },
+  "lecture-whole-game.qmd": {
+    "lecture-whole-game.html": "9ada0482"
   }
 }
