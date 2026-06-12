@@ -29,7 +29,14 @@ options(digits = 2)
 
 ## Bootstrapping
 
+- Bootstrapping is a resampling method where you create an empirical distribution of estimates of your quantity of interest through resampling
+- It is, as it were, a dumb strategy - it doesn't try to be clever, just reshuffles your data a bunch and re-runs your analysis on each resampled dataset
+- Computer go brrr
+
+## Bootstrapping
+
 - There are different ways to achieve this
+- We adopt a _non-parametric_ bootstrap where you sample with replacement from the original data and re-run the analysis on each bootstrap draw
 - The way we do it rate decomposition essentially expands the data out to unit-level data, re-samples, then aggregates back up
 - Pros: this will always* work, makes no assumptions about distributions or anything
 - Cons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire
@@ -39,137 +46,241 @@ options(digits = 2)
 - First create a function to essentially “uncount” data into individual level data (where nrow = size of total population), then re-sample with replacement, then aggregate back up to the level of the original data
 - Standardize and decompose each resampled dataset
 
-
 ## Bootstrapping in practice
+1. 'Explode' the aggregate data
+2. Resample the exploded data 200 times (NB more is always better)
+3. Aggregate each of the 200 datasets
+4. Standardize and decompose 200 times
+5. Visualize the results
+
+
+## Bootstrapping in practice: Exploding the data
 
 ```{r}
 library(tidyverse)
 library(DasGuptR)
 
-eg.wang2000 <- data.frame(
-  pop = rep(c("male", "female"), e = 12),
-  ethnicity = rep(1:3, e = 4),
-  age_group = rep(1:4, 3),
-  size = c(
-    130,
-    1305,
-    1539,
-    316,
-    211,
-    697,
-    334,
-    48,
-    105,
-    475,
-    424,
-    49,
-    70,
-    604,
-    428,
-    43,
-    55,
-    127,
-    44,
-    9,
-    72,
-    178,
-    103,
-    12
-  ),
-  rate = c(
-    12.31,
-    34.90,
-    52.91,
-    44.44,
-    16.67,
-    36.40,
-    51.20,
-    41.67,
-    12.38,
-    19.20,
-    21.23,
-    12.50,
-    17.14,
-    35.55,
-    48.71,
-    55.81,
-    14.55,
-    39.37,
-    32.56,
-    55.56,
-    22.22,
-    20.34,
-    13.59,
-    8.33
-  )
-)
+# just the first and last year
+dat_2004_2016 <- 
+  DasGuptR::reconv |> 
+  filter(year == "2004" | year == "2016")
+
+# we need to turn the dataset into a 'tidy' dataframe with columns for
+# year, Age, Sex, whether a person was reconvicted or not, n
+
+dat_2004_2016_long <- 
+  dat_2004_2016 |> 
+  mutate(not_reconvicted = offenders - reconvicted) |> 
+  select(year, Age, Sex, not_reconvicted, reconvicted) |> 
+  pivot_longer(not_reconvicted:reconvicted, names_to = "reconvicted", values_to = "n") |> 
+  mutate(n = as.integer(n)) |>
+  uncount(n) # this takes the n column and explodes the data using the counts
+# of people convicted and not reconvicted
 ```
+
+## Bootstrapping: 2. Resampling
+
+- Now we have an 'individual' level dataset for our reconviction cohorts we can resample from them with replacement
+- We use functions from the [`{rsample}`](https://rsample.tidymodels.org/) package to do this in a memory efficient way
+- Because bootstrapping uses random number generation we need to set the seed before starting so our results are reproducible
+- We also need to set the number of draws. We'll use 200 for speed; but more is always better
+
+
+```{r}
+
+library(rsample)
+
+set.seed(12345)
+
+n_draws <- 200
+
+draws_2004_2016 <- 
+dat_2004_2016_long |> 
+  group_by(year) |> # we bootstrap within years - this keeps the sizes of the reconviction cohorts the same
+  rsample::bootstraps(times = n_draws)
+
+```
+
+## Boostrapping: 2. Resampling
+
+- We now have 200 of... something
+
+```{r}
+
+draws_2004_2016
+
+```
+
+## Bootstrapping: 3. Aggregating
+
+- Now we can convert these memory-efficient, individual level resamples from our data to aggregate data ready to standardize and decompose
+- To do this we need to use R's programming functions to iterate over each bootstrap resample and aggregate them
+- We will write a helper function to do this
 
 ## Writing an R function
 
+- Functions in R let you easily re-run code
 - If you have not written an R function before you might want to check out the [Functions chapter in R for Data Science](https://r4ds.hadley.nz/functions.html) [@wickhamR4DS2023]
 
+## Bootstrapping: 3. Aggregating
+
+```{r echo=FALSE}
+
+# create a helper function to aggregate the results o
+
+uncount_split <- function(splits){
+  
+  rsample::analysis(splits) |> 
+    count(year, Age, Sex, reconvicted) |> # this is the opposite of uncount()
+    pivot_wider(names_from = "reconvicted", # this gets the data back in the
+                values_from = "n") |> # right shape for dgnpop
+    mutate(offenders = not_reconvicted + reconvicted,
+           prev_rate = reconvicted / offenders)
+  
+}
+
+```
+
+## Bootstrapping: 3. Aggregating
+
+- Now we have our helper function we can apply it to each bootstrap draw
+- We use the `map` function from the [`{purrr}`](https://purrr.tidyverse.org/) package
+- Jenny Bryan has written the definitive guide to iteration with [`{purrr}`](https://jennybc.github.io/purrr-tutorial/index.html) 
+- The basic intuition is each bootstrap draw is a row of our `draws_2004_2016` dataframe, and we want to aggregate each one
+- In other words, we want to `map` the aggregation to each of the bootstrap draws
+
+## Bootstrapping: 3. Aggregating
+
 ```{r}
-getBS <- function() {
-  # expand out
-  exp <- eg.wang2000 |>
-    mutate(
-      r1 = (rate / 100) * size,
-      r0 = (1 - (rate / 100)) * size
-    ) |>
-    select(pop, ethnicity, age_group, r0:r1) |>
-    pivot_longer(r0:r1, names_to = "r", values_to = "n") |>
-    mutate(n = as.integer(n)) |>
-    uncount(n)
 
-  # sample for each pop
-  # lapply fits the function to each level of the data
-  bs <- lapply(unique(eg.wang2000$pop), \(p) {
-    slice_sample(exp[exp$pop == p, ], prop = 1, replace = TRUE) |>
-      group_by(ethnicity, age_group) |>
-      reframe(
-        pop = p,
-        size = n(),
-        rate = mean(r == "r1") * 100
-      ) |>
-      ungroup()
-  })
+draws_2004_2016 <- 
+draws_2004_2016 |> 
+ mutate(agg_data = map(splits, uncount_split))
 
-  do.call(rbind, bs)
+```
+
+## Bootstrapping: 3. Aggregating
+
+```{r}
+
+draws_2004_2016
+
+```
+
+## Bootstrapping: 3. Aggregating
+
+- Look at the first aggregated draw
+
+```{r}
+
+draws_2004_2016$agg_data[[1]]
+
+```
+
+## Bootstrapping: 3. Aggregating
+
+- Look at the second aggregated draw
+
+```{r}
+
+draws_2004_2016$agg_data[[2]]
+
+```
+
+## Bootstrapping: 4. Standardize and decompose
+
+- We can use the same pattern of creating a helper function and then applying it to each row of `draws_2004_2016` to standardize and decompose 200 times
+
+## Bootstrapping: 4. Helper function
+
+```{r}
+calc_dg <- function(d){
+  # This just wraps the standard dgnpop call for the reconvictions data
+  d |> 
+    dgnpop(pop="year", 
+           factors=c("prev_rate"),id_vars=c("Sex","Age"),
+           crossclassified="offenders",
+           agg = TRUE) |> 
+    dg_table() |> 
+    rownames_to_column() # this helps keep track of the results
+  
 }
 ```
 
-## Bootstrapping
+## Bootstrapping: 4. Standardize and decompose
 
-- Now we can run our `getBS` function as many times as we like to get our resampled data
+- NB this might take a while!
 
 ```{r}
-bsamps <-
-  tibble(
-    k = 1:500,
-    # map() runs the getBS function we just made for each value of 1:500
-    i = map(1:500, ~ getBS())
-  )
+draws_2004_2016 <- 
+draws_2004_2016 |> 
+  mutate(results = map(agg_data, calc_dg), # apply dgnpop to each aggregated dataset
+         draw = 1:n_draws) |> # add an index which says which draw number the results are from
+  select(draw, results) # only keep the draw number and results column
 ```
 
-## Bootstrapping
+## Bootstrapping: 4. Standardize and decompose
 
-- And now we've got 500 reshuffled versions of our data we can standardize and decompose each one
+- We now need to expand out the results with `unnest`
+```{r}
+decomp_draws <- 
+draws_2004_2016 |> 
+    unnest(results) |> 
+     pivot_longer(`2004`:`2016`,
+               names_to = "year",
+               values_to = "rate") |> 
+     filter(year == "2016") # the decomposition results are the same for both years, so we'll just keep one set
+
+```
+
+## Bootstrapping: 5. Visualize
 
 ```{r}
-bsamps <- bsamps |>
-  mutate(
-    dgo = map(
-      i,
-      ~ dgnpop(
-        .,
-        pop = "pop",
-        factors = "rate",
-        id_vars = c("ethnicity", "age_group"),
-        crossclassified = "size"
-      )
-    )
-  )
+
+library(ggdist)
+
+decomp_draws |> 
+ggplot(aes(x = decomp, y = rowname)) +
+  ggdist::stat_dist_dots()
+
+```
+
+## Bootstrapping: 5. Visualize
+
+```{r}
+
+# get rid of the crude
+
+decomp_draws |> 
+  filter(rowname != "crude") |> 
+  ggplot(aes(x = decomp, y = rowname)) +
+  ggdist::stat_dist_dots()
+
+```
+
+
+## Bootstrapping: 5. Visualize
+
+```{r}
+
+# tidy up a bit
+decomp_fig <- 
+decomp_draws |> 
+  filter(rowname != "crude") |> 
+  mutate(rowname = case_when(
+    rowname == "prev_rate" ~ "Reconviction prevalence",
+    rowname == "Sex_struct" ~ "Sex structure",
+    rowname == "Age_struct" ~ "Age structure",
+  )) |> 
+  ggplot(aes(x = decomp, y = rowname)) +
+  ggdist::stat_dist_dots() +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(x = "% of change in crude reconviction rate",
+  y = "Factor",
+  title = "Decomposition of Scottish reconviction rate, 2004 and 2016") +
+    theme(plot.title.position = "plot")
+
 ```
 
 ## Bootstrapping in practice
@@ -177,41 +288,67 @@ bsamps <- bsamps |>
 - These are the original results
 
 ```{r}
-dgnpop(
-  eg.wang2000,
-  pop = "pop",
-  factors = "rate",
-  id_vars = c("ethnicity", "age_group"),
-  crossclassified = "size"
-) |>
-  dg_table()
+res_2004_2016 <- 
+dat_2004_2016 |> 
+ dgnpop(pop="year", 
+         factors=c("prev_rate"),id_vars=c("Sex","Age"),
+         crossclassified="offenders") |> 
+  dg_table() |> 
+  mutate(across(where(is.numeric), ~ round(.x, 2))) |>
+  rownames_to_column()
 ```
 
 ## Bootstrapping in practice
-- Now we can calculate standard errors for these estimates
 
 ```{r}
-bsamps |>
-  select(k, dgo) |>
-  unnest(dgo) |>
-  group_by(k, factor) |>
-  reframe(diff = rate[pop == "female"] - rate[pop == "male"]) |>
-  group_by(factor) |>
-  reframe(se = sd(diff))
+res_2004_2016_plot <- 
+res_2004_2016 |> 
+   filter(rowname != "crude") |> 
+  mutate(rowname = case_when(
+    rowname == "prev_rate" ~ "Reconviction prevalence",
+    rowname == "Sex_struct" ~ "Sex structure",
+    rowname == "Age_struct" ~ "Age structure",
+  ))
+
+decomp_fig +
+  geom_point(
+    data = res_2004_2016_plot,
+    colour = "red"
+  ) +
+    labs(caption = "Red point is original data")
+```
+
+## Bootstrapping in practice
+- Now we can calculate standard errors and confidence intervals for these estimates
+- (Actually it's bad practice to use the mean of the bootstrap draws instead of the observed results [@raineyCarefulConsiderationCLARIFY2024])
+
+```{r}
+decomp_draws |> 
+  group_by(rowname) |> 
+  summarise(mean_decomp = mean(decomp),
+            se_est = sd(decomp),
+            lower_ci = mean_decomp - 1.96 * se_est,
+            upper_ci = mean_decomp + 1.96 * se_est)
+
 ```
 
 ## Bootstrapping in practice
 - Or directly calculate confidence intervals by taking percentiles
 
 ```{r}
-bsamps |>
-  select(k, dgo) |>
-  unnest(dgo) |>
-  group_by(k, factor) |>
-  reframe(diff = rate[pop == "female"] - rate[pop == "male"]) |>
-  group_by(factor) |>
-  reframe(se = sd(diff))
+decomp_draws |> 
+  group_by(rowname) |> 
+  summarise(confs = list(quantile(decomp, c(0.025, 0.5, 0.975))),
+            cis = list(c("lower_ci", "median", "upper_ci")),
+            .groups = "drop") |> 
+  unnest(c(confs, cis)) |> 
+  pivot_wider(id_cols = rowname,
+  values_from = confs,
+  names_from = cis)
 ```
+
+# Bonus slides with where this can go wrong?
+
 
 ## A nice example
 - Add in results for 2004/2016
