@@ -1,0 +1,13 @@
+"0","scotlaa |>
+  mutate(
+    avgprop = mean(n_over60/n_people),
+    avgover60deathrate = mean(deaths_over60 / n_over60),
+    stdrate1 = avgprop* (deaths_over60 / n_over60) * 1e3,
+    stdrate2 = (n_over60/n_people) * avgover60deathrate * 1e3,
+    cr = deaths_over60/n_people*1e3
+  ) |> select(stdrate1,stdrate2,cr) |>
+  apply(2,diff)
+"
+"1","  stdrate1   stdrate2         cr 
+-1.4456220  0.6212492 -0.8243728 
+"

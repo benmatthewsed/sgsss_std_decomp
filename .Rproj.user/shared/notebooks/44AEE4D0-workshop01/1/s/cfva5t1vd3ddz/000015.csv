@@ -1,0 +1,15 @@
+"0","scotlaa |>
+  mutate(
+    prop_over60 = n_over60/n_people,
+    over60_deathrate = deaths_over60 / n_over60,
+  ) |>
+  dgnpop(
+    pop=""laa"",
+    factors=c(""prop_over60"",""over60_deathrate""),
+    ratefunction=""prop_over60*over60_deathrate*1e3""
+  ) |> dg_table()
+"
+"2","G3;
+DG decomposition being conducted with R = prop_over60*over60_deathrate*1e3
+
+g"

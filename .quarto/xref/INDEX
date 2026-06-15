@@ -25,5 +25,14 @@
   },
   "lecture-whole-game.qmd": {
     "lecture-whole-game.html": "9ada0482"
+  },
+  "lecture-crossclass.qmd": {
+    "lecture-crossclass.html": "2c88b538"
+  },
+  "lecture-stddecompbasics.qmd": {
+    "lecture-stddecompbasics.html": "36f1d712"
+  },
+  "workshop01.qmd": {
+    "workshop01.html": "46509de9"
   }
 }

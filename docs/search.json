@@ -158,14 +158,7 @@
     "href": "lecture00.html",
     "title": "Welcome/Course Intro",
     "section": "",
-    "text": "Welcome to SGSSS Decomposition Workshop!\n\n\nHello!\n\n\nwhat is the course about?\n\nthings! it’s about things!\n\n\n\n\nthing 1\nthis is thing 1\n\n\nthing 2\nwhat a surprise. thing 2 is here!\n\n\nEnd"
-  },
-  {
-    "objectID": "lecture-conceptual.html#references",
-    "href": "lecture-conceptual.html#references",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "References",
-    "text": "References\n\n\n\n\nGelman, Andrew. 2006. “Marginal and Marginal.” Statistical Modeling, Causal Inference, and Social Science.\n\n\nJahanshahi, Babak, Kath Murray, and Susan McVie. 2022. “ACEs, Places and Inequality: Understanding the Effects of Adverse Childhood Experiences and Poverty on Offending in Childhood.” The British Journal of Criminology 62 (3): 751–72. https://doi.org/10.1093/bjc/azab079.\n\n\nKeiding, Niels, and David Clayton. 2014. “Standardization and Control for Confounding in Observational Studies: A Historical Perspective.” Statistical Science 29 (4): 529–58. https://doi.org/10.1214/13-STS453.\n\n\nKitagawa, Evelyn M. 1955. “Components of a Difference Between Two Rates.” Journal of the American Statistical Association 50 (272): 1168–94. https://doi.org/10.1080/01621459.1955.10501299.\n\n\nMatthews, Ben. 2017. “Criminal Careers and the Crime Drop in Scotland, 1989-2011: An Exploration of Conviction Trends Across Age and Sex.” PhD thesis, University of Edinburgh."
+    "text": "Find your own!\ndeath rates across council areas\nhttps://www.nrscotland.gov.uk/publications/deaths-time-series-data-2024/\n\npick an age group.\npick two LAAs\nhow many deaths in that age group in that year for each LAA?\nhow many people were in that age group that year for each LAA?\nwhat is the crude death rate for each LAA? (ndeaths/total pop)\nwhat would the death rate for each LAA be if you held the proportion of that age group at the average?\nhow much of the difference in crude rates can be attributed to this compositional difference between LAAs?\n\nEXAMPLE:\n\n\n\n\n\n\n\n\nlaa\nn_people\nn_over60\ndeaths_over60\n\n\n\n\nGlasgow City\n650300\n128902\n5287\n\n\nEdinburgh\n530680\n113979\n3877\n\n\n...\n...\n...\n...\n\n\n...\n...\n...\n...\n\n\n\n\n\n\n\ncrude rates and showing that r = a*b\n\nscotlaa |&gt;\n  mutate(\n    cruderate = deaths_over60/n_people*1e3,\n    prop_over60 = n_over60/n_people,\n    over60_deathrate = deaths_over60 / n_over60,\n    cruderate2 = prop_over60 * over60_deathrate*1e3\n  )\n\n# A tibble: 2 × 8\n  laa     n_people n_over60 deaths_over60 cruderate prop_over60 over60_deathrate\n  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;            &lt;dbl&gt;\n1 Glasgo…   650300   128902          5287      8.13       0.198           0.0410\n2 Edinbu…   530680   113979          3877      7.31       0.215           0.0340\n# ℹ 1 more variable: cruderate2 &lt;dbl&gt;\n\n\nstd rates\n\nscotlaa |&gt;\n  mutate(\n    avgprop = mean(n_over60/n_people),\n    avgover60deathrate = mean(deaths_over60 / n_over60),\n    stdrate1 = avgprop* (deaths_over60 / n_over60) * 1e3,\n    stdrate2 = (n_over60/n_people) * avgover60deathrate\n  )\n\n# A tibble: 2 × 8\n  laa        n_people n_over60 deaths_over60 avgprop avgover60deathrate stdrate1\n  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;              &lt;dbl&gt;    &lt;dbl&gt;\n1 Glasgow C…   650300   128902          5287   0.206             0.0375     8.47\n2 Edinburgh    530680   113979          3877   0.206             0.0375     7.02\n# ℹ 1 more variable: stdrate2 &lt;dbl&gt;\n\n\ndecomp\n\nscotlaa |&gt;\n  mutate(\n    avgprop = mean(n_over60/n_people),\n    avgover60deathrate = mean(deaths_over60 / n_over60),\n    stdrate1 = avgprop* (deaths_over60 / n_over60) * 1e3,\n    stdrate2 = (n_over60/n_people) * avgover60deathrate * 1e3,\n    cr = deaths_over60/n_people*1e3\n  ) |&gt; select(stdrate1,stdrate2,cr) |&gt;\n  apply(2,diff)\n\n  stdrate1   stdrate2         cr \n-1.4456220  0.6212492 -0.8243728 \n\n\nof the crude rate difference (Edinburgh is 0.82 deaths per 1000 lower than glasgow), 175% this difference would happen if they only differed in the ‘over60s death rate’.\n-75% of the difference would happen if they only differed in the age demographic. i.e., Edinburgh would have a higher death rate than glasgow!\n\n-1.4456220 / -0.8243728 * 100 = 175\n\n0.6212492 / -0.8243728 *100 = -75\n\n\nlibrary(DasGuptR)\n\n\nAttaching package: 'DasGuptR'\n\n\nThe following object is masked from 'package:datasets':\n\n    uspop\n\nscotlaa |&gt;\n  mutate(\n    prop_over60 = n_over60/n_people,\n    over60_deathrate = deaths_over60 / n_over60,\n  ) |&gt;\n  dgnpop(\n    pop=\"laa\",\n    factors=c(\"prop_over60\",\"over60_deathrate\"),\n    ratefunction=\"prop_over60*over60_deathrate*1e3\"\n  ) |&gt; dg_table()\n\n\nDG decomposition being conducted with R = prop_over60*over60_deathrate*1e3\n\n\n                 Edinburgh Glasgow City       diff decomp\nprop_over60       8.057514     7.436265 -0.6212492 -75.36\nover60_deathrate  7.024079     8.469701  1.4456220 175.36\ncrude             7.305721     8.130094  0.8243728 100.00"
   },
   {
     "objectID": "lecture-whole-game.html#fewer-people-are-being-convicted",
@@ -350,25 +343,144 @@
     "text": "It’s the same problem!\n\nMaybe you could argue that you don’t need to factor in uncertainty in the underlying rates - it’s admin data, the reconviction cohorts are what they are, what are you a Bayesian or something (see verlaan2024use?)\nBut it’s still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons\nBootstrapping the raw data (nonparametric simulation (see Carsey and Harden 2014)) can show when your results are fragile to small permutations in the data (see also Giordano, Meager, and Broderick 2026)"
   },
   {
-    "objectID": "lecture-uncertainty.html#its-the-same-problem-2",
-    "href": "lecture-uncertainty.html#its-the-same-problem-2",
+    "objectID": "lecture-conceptual.html#my-motivating-example",
+    "href": "lecture-conceptual.html#my-motivating-example",
     "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "It’s the same problem!",
-    "text": "It’s the same problem!\n\nIn the second case maybe you could argue that you don’t need to factor in uncertainty in the underlying rates - it’s admin data, the reconviction cohorts are what they are, what are you a Bayesian or something (see verlaan2024use?)\nBut it’s still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons\nBootstrapping the raw data (nonparametric simulation (see Carsey and Harden 2014)) can show when your results are fragile to small permutations in the data (see also giordanoAutomaticFinitesampleRobustness2026?)"
+    "section": "My motivating example",
+    "text": "My motivating example\n\nI (Ben) wrote my PhD thesis on the ‘crime drop’ in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level (Matthews 2017)\nThere is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)\nStandardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted"
   },
   {
-    "objectID": "lecture-whole-game.html#references",
-    "href": "lecture-whole-game.html#references",
-    "title": "The Whole Game",
-    "section": "References",
-    "text": "References\n\n\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual."
+    "objectID": "lecture-conceptual.html#a-conjecture",
+    "href": "lecture-conceptual.html#a-conjecture",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "A conjecture",
+    "text": "A conjecture\n\nMost quantitative social science (implicitly?) focuses on individuals\n“while the number of ACEs is a strong predictor of childhood offending, certain types of childhood adversity are of greater importance than others” (Jahanshahi, Murray, and McVie 2022)\nHow does the number of ACEs affect a child’s probability of offending?\nNot - how much of the change in Scotland’s child offending rate is due to changes in the prevalence of ACEs?"
   },
   {
-    "objectID": "lecture-uncertainty.html#references",
-    "href": "lecture-uncertainty.html#references",
+    "objectID": "lecture-conceptual.html#a-conjecture-1",
+    "href": "lecture-conceptual.html#a-conjecture-1",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "A conjecture",
+    "text": "A conjecture\n\nThere is nothing wrong with focusing on individuals!\nBut it’s useful to be able to answer questions about macro-level phenomena too, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes\nStandardization and decomposition are one way to do this (there are others!)"
+  },
+  {
+    "objectID": "lecture-conceptual.html#references",
+    "href": "lecture-conceptual.html#references",
     "title": "Standardization and decomposition: A conceptual introduction",
     "section": "References",
-    "text": "References\n\n\n\n\nCarsey, Thomas M., and Jeffrey J. Harden. 2014. Monte Carlo Simulation and Resampling Methods for Social Science. SAGE Publications, Inc. https://doi.org/10.4135/9781483319605.\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual.\n\n\nRainey, Carlisle. 2024. “A Careful Consideration of CLARIFY: Simulation-Induced Bias in Point Estimates of Quantities of Interest.” Political Science Research and Methods 12 (3): 614–23. https://doi.org/10.1017/psrm.2023.8.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science (2e). Second."
+    "text": "References\n\n\n\n\nGelman, Andrew. 2006. “Marginal and Marginal.” Statistical Modeling, Causal Inference, and Social Science.\n\n\nJahanshahi, Babak, Kath Murray, and Susan McVie. 2022. “ACEs, Places and Inequality: Understanding the Effects of Adverse Childhood Experiences and Poverty on Offending in Childhood.” The British Journal of Criminology 62 (3): 751–72. https://doi.org/10.1093/bjc/azab079.\n\n\nKeiding, Niels, and David Clayton. 2014. “Standardization and Control for Confounding in Observational Studies: A Historical Perspective.” Statistical Science 29 (4): 529–58. https://doi.org/10.1214/13-STS453.\n\n\nKitagawa, Evelyn M. 1955. “Components of a Difference Between Two Rates.” Journal of the American Statistical Association 50 (272): 1168–94. https://doi.org/10.1080/01621459.1955.10501299.\n\n\nMatthews, Ben. 2017. “Criminal Careers and the Crime Drop in Scotland, 1989-2011: An Exploration of Conviction Trends Across Age and Sex.” PhD thesis, University of Edinburgh."
+  },
+  {
+    "objectID": "csstests.html",
+    "href": "csstests.html",
+    "title": "Tests",
+    "section": "",
+    "text": "Notes for Wizards\n\n\n\n\n\nhere’s a note!\n\n\n\n\n\n\n\n\n\nHints\n\n\n\n\n\n\n\n\n\n\nlearning obj\n\n\nimportant\n\n\nsticky\n\n\n\n\n\nr tips\n\n\nstatbox\n\n\ninterprtation interprtation interprtation\n\n\nQuestion\n\n\nquestion\nwhat is your name?\nwhat is your favourite colour?\n\n\n\n\n\nSolution\n\n\n\nSolution 1. solution\nhello\n\n2+2\n\n[1] 4\n\n\n\n\n\n\n\nOptional hello my optional friend\n\n\n\nit’s nice to see you again\n\n\n\n\n\nthis is not a panel\n\n\nthis is a panel\n\n\nthis is a panel"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "sgsss_decomp",
+    "section": "",
+    "text": "Overview\n\n\nSchedule\n\n\n\n10:00 - 10:30\nIntroduction to standardisation and decomposition\n\n\n10:30 - 11:00\nStd & Decomp of Rates as Products\n\n\n11:00 - 11:15\ncoffee\n\n\n11:15 - 12:15\npractical\n\n\n12:15 - 13:15\nlunch\n\n\n13:15 - 13:45\nCross-classified data\n\n\n13:45 - 14:15\npractical\n\n\n14:15 - 14:30\ncoffee\n\n\n?? - ??\nMore populations?\n\n\n?? - ??\nCategory Effects?\n\n\n?? - ??\nThe whole game\n\n\n?? - ??\nUncertainty?\n\n\n?? - ??\nOther Decomposition Methods?"
+  },
+  {
+    "objectID": "lecture-crossclass.html#picking-up-at-3-factors",
+    "href": "lecture-crossclass.html#picking-up-at-3-factors",
+    "title": "Crossclassified Data Structures",
+    "section": "Picking up at 3-factors",
+    "text": "Picking up at 3-factors\n3 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\ndg_table(dgres)\n\n        P1   P2  diff decomp\npcol  0.32 0.38 0.059   17.6\npsq   0.23 0.48 0.252   75.5\npgr   0.34 0.37 0.023    6.9\ncrude 0.20 0.53 0.333  100.0"
+  },
+  {
+    "objectID": "lecture-crossclass.html#sub-populations-1",
+    "href": "lecture-crossclass.html#sub-populations-1",
+    "title": "Crossclassified Data Structures",
+    "section": "sub-populations",
+    "text": "sub-populations"
+  },
+  {
+    "objectID": "lecture-crossclass.html#sub-populations-2",
+    "href": "lecture-crossclass.html#sub-populations-2",
+    "title": "Crossclassified Data Structures",
+    "section": "sub-populations",
+    "text": "sub-populations"
+  },
+  {
+    "objectID": "lecture-crossclass.html#sub-populations-3",
+    "href": "lecture-crossclass.html#sub-populations-3",
+    "title": "Crossclassified Data Structures",
+    "section": "sub-populations",
+    "text": "sub-populations\n\n\n\nmydat &lt;- tribble(\n  ~pop, ~shape,    ~pshp, ~pgreen,\n  1,    \"circle\",  10/24,  2/10,\n  1,    \"square\",  10/24,  3/10,\n  1,    \"triangle\", 4/24,  3/4,\n  2,    \"circle\",   7/24,  2/7,\n  2,    \"square\",   7/24,  4/7,\n  2,    \"triangle\",10/24,  8/10,\n)\nmydat\n\n# A tibble: 6 × 4\n    pop shape     pshp pgreen\n  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;\n1     1 circle   0.417  0.2  \n2     1 square   0.417  0.3  \n3     1 triangle 0.167  0.75 \n4     2 circle   0.292  0.286\n5     2 square   0.292  0.571\n6     2 triangle 0.417  0.8  \n\n\n\n\\[Rate_{green} = \\sum\\limits_i ( \\frac{n_{i-}}{n_{--}}) *\\cdot \\frac{n_{i\\text{ green}}}{n_{i-}} )\\]"
+  },
+  {
+    "objectID": "lecture-crossclass.html#population-share",
+    "href": "lecture-crossclass.html#population-share",
+    "title": "Crossclassified Data Structures",
+    "section": "population share",
+    "text": "population share\n\nrelative size of sub group is another factor\n\nsum ( w_i * r_i )"
+  },
+  {
+    "objectID": "lecture-crossclass.html#rate-sumgroup-size-group-rate",
+    "href": "lecture-crossclass.html#rate-sumgroup-size-group-rate",
+    "title": "Crossclassified Data Structures",
+    "section": "rate = sum(group size * group rate)",
+    "text": "rate = sum(group size * group rate)"
+  },
+  {
+    "objectID": "lecture-crossclass.html#sub-populations-4",
+    "href": "lecture-crossclass.html#sub-populations-4",
+    "title": "Crossclassified Data Structures",
+    "section": "sub-populations",
+    "text": "sub-populations\n\ndgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pshp\",\"pgreen\"),\n       id_vars = c(\"shape\"),\n       ratefunction = \"sum(pshp*pgreen)\") |&gt;\n  dg_table()\n\n          1    2 diff decomp\npshp   0.41 0.52 0.11     44\npgreen 0.40 0.54 0.14     56\ncrude  0.33 0.58 0.25    100\n\n\ndasguptr needs appropriate ratefunction that aggregates up"
+  },
+  {
+    "objectID": "lecture-crossclass.html#easy-option-shove-it-in",
+    "href": "lecture-crossclass.html#easy-option-shove-it-in",
+    "title": "Crossclassified Data Structures",
+    "section": "easy option, shove it in:",
+    "text": "easy option, shove it in:"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#whence-uncertainty",
+    "href": "lecture-uncertainty.html#whence-uncertainty",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Whence uncertainty?",
+    "text": "Whence uncertainty?\n\nThe Das Gupta method doesn’t really have a concept of an error term - all results are calculate algebraically (Das Gupta 1993)\nBut we might still want to quantify uncertainty in the results of a standardization and decomposition\nBootstrapping is a general purpose way to achieve this (Carsey and Harden 2014)"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping",
+    "href": "lecture-uncertainty.html#bootstrapping",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\n\nBootstrapping is a resampling method where you create an empirical distribution of estimates of your quantity of interest through resampling\nIt is, as it were, a dumb strategy - it doesn’t try to be clever, just reshuffles your data a bunch and re-runs your analysis on each resampled dataset\nComputer go brrr"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-1",
+    "href": "lecture-uncertainty.html#bootstrapping-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\n\nThere are different ways to achieve this\nWe adopt a non-parametric bootstrap where you sample with replacement from the original data and re-run the analysis on each bootstrap draw\nThe way we do it rate decomposition essentially expands the data out to unit-level data, re-samples, then aggregates back up\nPros: this will always* work, makes no assumptions about distributions or anything\nCons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice",
+    "href": "lecture-uncertainty.html#bootstrapping-in-practice",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping in practice",
+    "text": "Bootstrapping in practice\n\nFirst create a function to essentially “uncount” data into individual level data (where nrow = size of total population), then re-sample with replacement, then aggregate back up to the level of the original data\nStandardize and decompose each resampled dataset"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-1",
+    "href": "lecture-uncertainty.html#bootstrapping-in-practice-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping in practice",
+    "text": "Bootstrapping in practice\n\n‘Explode’ the aggregate data\nResample the exploded data 200 times (NB more is always better)\nAggregate each of the 200 datasets\nStandardize and decompose 200 times\nVisualize the results"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-exploding-the-data",
@@ -397,6 +509,13 @@
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping: 3. Aggregating",
     "text": "Bootstrapping: 3. Aggregating\n\nNow we can convert these memory-efficient, individual level resamples from our data to aggregate data ready to standardize and decompose\nTo do this we need to use R’s programming functions to iterate over each bootstrap resample and aggregate them\nWe will write a helper function to do this"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#writing-an-r-function",
+    "href": "lecture-uncertainty.html#writing-an-r-function",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Writing an R function",
+    "text": "Writing an R function\n\nFunctions in R let you easily re-run code\nIf you have not written an R function before you might want to check out the Functions chapter in R for Data Science (Wickham, Çetinkaya-Rundel, and Grolemund 2023)"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-3.-aggregating-1",
@@ -497,18 +616,18 @@
     "text": "Bootstrapping in practice\n\nOr directly calculate confidence intervals by taking percentiles\n\n\ndecomp_draws |&gt; \n  group_by(rowname) |&gt; \n  summarise(confs = list(quantile(decomp, c(0.05, 0.025, 0.975))),\n            cis = list(c(\"median\", \"lower_ci\", \"upper_ci\")),\n            .groups = \"drop\") |&gt; \n  unnest(c(confs, cis)) |&gt; \n  pivot_wider(id_cols = rowname,\n  values_from = confs,\n  names_from = cis)\n\n# A tibble: 4 × 4\n  rowname    median lower_ci upper_ci\n  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Age_struct  36.8      36.4    46.6 \n2 Sex_struct   1.05      1       2.19\n3 crude      100       100     100   \n4 prev_rate   52.8      51.9    62.6"
   },
   {
-    "objectID": "lecture-conceptual.html#standardization",
-    "href": "lecture-conceptual.html#standardization",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Standardization",
-    "text": "Standardization\n\nOriginally used to adjust mortality comparisons between populations with different age structures (Keiding and Clayton 2014)\nLets you “compar[e] rates between populations with different age structures by applying age-specific rates to a single “target” age structure and, thereafter, comparing predicted marginal1 summaries in this target population.” (Keiding and Clayton 2014, p529)\nMore generally - lets you compare rates of any outcome between populations with different compositions of any confounder\n\nThis is an important term! We will come back to this"
+    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-3",
+    "href": "lecture-uncertainty.html#bootstrapping-in-practice-3",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping in practice",
+    "text": "Bootstrapping in practice"
   },
   {
-    "objectID": "lecture-conceptual.html#kitagawa",
-    "href": "lecture-conceptual.html#kitagawa",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Kitagawa",
-    "text": "Kitagawa\n\n“When comparing the incidence of some phenomenon in two or more groups, social researchers place much emphasis on the need for holding constant those related facors that would tend to distort the comparison” Kitagawa (1955)"
+    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-4",
+    "href": "lecture-uncertainty.html#bootstrapping-in-practice-4",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping in practice",
+    "text": "Bootstrapping in practice\n\nNow we can calculate standard errors and confidence intervals for these estimates\n(Actually it’s bad practice to use the mean of the bootstrap draws instead of the observed results (Rainey 2024))\n\n\n\n# A tibble: 4 × 5\n  rowname    mean_decomp se_est lower_ci upper_ci\n  &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Age_struct       41.3   2.74    35.9      46.7 \n2 Sex_struct        1.48  0.290    0.910     2.05\n3 crude           100     0      100       100   \n4 prev_rate        57.2   2.82    51.7      62.7"
   },
   {
     "objectID": "lecture-conceptual.html#standardization-1",
@@ -518,60 +637,60 @@
     "text": "Standardization\n\nConceptually the focus is on aggregate/marginal rates, not individual effects\nAggregate rates are really common as performance indicators: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework\nIndividual effects can aggregate in non-intuitive ways (simpson1951?)\n\n\n\n‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change (Gelman 2006). To get technical, it can be either an integral or a derivative"
   },
   {
-    "objectID": "lecture-conceptual.html#kitagawas-example",
-    "href": "lecture-conceptual.html#kitagawas-example",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Kitagawa’s example",
-    "text": "Kitagawa’s example\n\n“For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition” Kitagawa (1955)\nTake the observed age/sex/race death rates for your two areas\nMultiply these by some standard age, sex and race profile\nYou have ‘standardized’ rates!"
+    "objectID": "lecture-uncertainty.html#a-nice-example",
+    "href": "lecture-uncertainty.html#a-nice-example",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "A nice example",
+    "text": "A nice example\n\nAdd in results for 2004/2016"
   },
   {
-    "objectID": "lecture-conceptual.html#picking-a-standard-population",
-    "href": "lecture-conceptual.html#picking-a-standard-population",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Picking a standard population",
-    "text": "Picking a standard population\n\nSay you wanted to compare mortality rates in Glasgow and Shetland, controling for differences in age sex and ethnicity\nWhich population would you use as a standard one?\n\nThe Glasgow population?\nThe Shetland population?\nThe average of the two populations?\nSomething else?"
+    "objectID": "lecture-uncertainty.html#a-nice-example-1",
+    "href": "lecture-uncertainty.html#a-nice-example-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "A nice example",
+    "text": "A nice example\n\nfine-fig"
   },
   {
-    "objectID": "lecture-conceptual.html#decomposition",
-    "href": "lecture-conceptual.html#decomposition",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Decomposition",
-    "text": "Decomposition\n\nAsks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you’ve standardized by?\nHow much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?"
+    "objectID": "lecture-uncertainty.html#where-things-go-wrong",
+    "href": "lecture-uncertainty.html#where-things-go-wrong",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Where things go wrong",
+    "text": "Where things go wrong\n\nDecomposition will decompose whatever difference there is - even if it is very small\nIf there isn’t much difference in the underlying crude rate you are decomposing (in a hand-wavy way, if the difference is not statistically significant) then things can do haywire"
   },
   {
-    "objectID": "lecture-conceptual.html#why-decomposition",
-    "href": "lecture-conceptual.html#why-decomposition",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Why decomposition?",
-    "text": "Why decomposition?\n\nStandardized rates are ‘artificial’, summaries of a world we do not live in\nWhy should we care what the mortality rate in Scotland would be if it had the Estonian age distribution?\nDecomposition makes comparisons of standardized rates more analytically useful:\n“A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the”observed” crude (or total) rates and the “artificial” standardized rates” (Kitagawa 1955, pp1169–1170)"
+    "objectID": "lecture-uncertainty.html#a-not-so-nice-example",
+    "href": "lecture-uncertainty.html#a-not-so-nice-example",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "A not-so-nice example",
+    "text": "A not-so-nice example\n\nAdd in results for 2004/2016"
   },
   {
-    "objectID": "lecture-conceptual.html#decomposition-1",
-    "href": "lecture-conceptual.html#decomposition-1",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Decomposition",
-    "text": "Decomposition\n\nDecomposition lets you say how much of the difference between crude rates of your outcome between your comparison cases are due to the various factors you choose to control for\nIn Kitagawa’s example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is ‘left over’"
+    "objectID": "lecture-uncertainty.html#a-not-so-nice-example-1",
+    "href": "lecture-uncertainty.html#a-not-so-nice-example-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "A not-so-nice example",
+    "text": "A not-so-nice example\n\nhaywire-fig"
   },
   {
-    "objectID": "lecture-conceptual.html#my-motivating-example",
-    "href": "lecture-conceptual.html#my-motivating-example",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "My motivating example",
-    "text": "My motivating example\n\nI (Ben) wrote my PhD thesis on the ‘crime drop’ in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level (Matthews 2017)\nThere is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)\nStandardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted"
+    "objectID": "lecture-uncertainty.html#its-the-same-problem",
+    "href": "lecture-uncertainty.html#its-the-same-problem",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "It’s the same problem!",
+    "text": "It’s the same problem!\n\nI was very confused by the bad decomposition - why would the bootstrapping lead to these wild estimates (huge confidence intervals not centered on the true values!)\nThe thing I was bootstrapping was the underlying data - and the bootstrapped distribution of the crude rates is fine\nBut the decomposition is a transformation of these rates, and the properties of the rates do not necessarily transfer downstream to the transformation"
   },
   {
-    "objectID": "lecture-conceptual.html#a-conjecture",
-    "href": "lecture-conceptual.html#a-conjecture",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "A conjecture",
-    "text": "A conjecture\n\nMost quantitative social science (implicitly?) focuses on individuals\n“while the number of ACEs is a strong predictor of childhood offending, certain types of childhood adversity are of greater importance than others” (Jahanshahi, Murray, and McVie 2022)\nHow does the number of ACEs affect a child’s probability of offending?\nNot - how much of the change in Scotland’s child offending rate is due to changes in the prevalence of ACEs?"
+    "objectID": "lecture-uncertainty.html#its-the-same-problem-1",
+    "href": "lecture-uncertainty.html#its-the-same-problem-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "It’s the same problem!",
+    "text": "It’s the same problem!\n\nMaybe you could argue that you don’t need to factor in uncertainty in the underlying rates - it’s admin data, the reconviction cohorts are what they are, what are you a Bayesian or something (see verlaan2024use?)\nBut it’s still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons\nBootstrapping the raw data (nonparametric simulation (see Carsey and Harden 2014)) can show when your results are fragile to small permutations in the data (see also giordanoAutomaticFinitesampleRobustness2026?)"
   },
   {
-    "objectID": "lecture-conceptual.html#a-conjecture-1",
-    "href": "lecture-conceptual.html#a-conjecture-1",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "A conjecture",
-    "text": "A conjecture\n\nThere is nothing wrong with focusing on individuals!\nBut it’s useful to be able to answer questions about macro-level phenomena too, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes\nStandardization and decomposition are one way to do this (there are others!)"
+    "objectID": "lecture-uncertainty.html#references",
+    "href": "lecture-uncertainty.html#references",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "References",
+    "text": "References\n\n\n\n\nCarsey, Thomas M., and Jeffrey J. Harden. 2014. Monte Carlo Simulation and Resampling Methods for Social Science. SAGE Publications, Inc. https://doi.org/10.4135/9781483319605.\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual.\n\n\nRainey, Carlisle. 2024. “A Careful Consideration of CLARIFY: Simulation-Induced Bias in Point Estimates of Quantities of Interest.” Political Science Research and Methods 12 (3): 614–23. https://doi.org/10.1017/psrm.2023.8.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science (2e). Second."
   },
   {
     "objectID": "lecture00.html#hello",
