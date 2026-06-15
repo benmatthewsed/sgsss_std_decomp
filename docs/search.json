@@ -1,8 +1,162 @@
 [
   {
-    "objectID": "workshop01.html",
-    "href": "workshop01.html",
-    "title": "workshop-1",
+    "objectID": "lecture01.html#decomposition---dasguptr",
+    "href": "lecture01.html#decomposition---dasguptr",
+    "title": "2 and 3 factor decomposition",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\n2 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~psq,~pgr,\n  \"P1\", 5/15, 3/5,\n  \"P2\", 10/15, 8/10,\n) \nmydat\n\n# A tibble: 2 × 3\n  pop     psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.333   0.6\n2 P2    0.667   0.8\n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"psq\",\"pgr\"))\n\nhead(dgres)\n\n  rate pop std.set factor\n1 0.20  P1    &lt;NA&gt;  crude\n2 0.53  P2    &lt;NA&gt;  crude\n3 0.23  P1      P2    psq\n4 0.47  P2      P1    psq\n5 0.30  P1      P2    pgr\n6 0.40  P2      P1    pgr"
+  },
+  {
+    "objectID": "lecture01.html#decomposition---dasguptr-1",
+    "href": "lecture01.html#decomposition---dasguptr-1",
+    "title": "2 and 3 factor decomposition",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\n2 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~psq,~pgr,\n  \"P1\", 5/15, 3/5,\n  \"P2\", 10/15, 8/10,\n) \nmydat\n\n# A tibble: 2 × 3\n  pop     psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.333   0.6\n2 P2    0.667   0.8\n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"psq\",\"pgr\"))\n\ndg_table(dgres)\n\n        P1   P2 diff decomp\npsq   0.23 0.47 0.23     70\npgr   0.30 0.40 0.10     30\ncrude 0.20 0.53 0.33    100"
+  },
+  {
+    "objectID": "lecture01.html#decomposition---dasguptr-2",
+    "href": "lecture01.html#decomposition---dasguptr-2",
+    "title": "2 and 3 factor decomposition",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\n3 factor\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\ndg_table(dgres)\nmydat &lt;- tribble(\n  ~pop, ~shape,    ~pshp, ~pgreen,\n  1,    \"circle\",  10/24,  2/10,\n  1,    \"square\",  10/24,  3/10,\n  1,    \"triangle\", 4/24,  3/4,\n  2,    \"circle\",   7/24,  2/7,\n  2,    \"square\",   7/24,  4/7,\n  2,    \"triangle\",10/24,  8/10,\n)\nmydat\ndgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pshp\",\"pgreen\"),\n       id_vars = c(\"shape\"),\n       ratefunction = \"sum(pshp*pgreen)\") |&gt;\n  dg_table()\n\n\n\nRStata\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\n\nRStata\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\nhead(dgres)\n\n  rate pop std.set factor\n1 0.20  P1    &lt;NA&gt;  crude\n2 0.53  P2    &lt;NA&gt;  crude\n3 0.32  P1      P2   pcol\n4 0.38  P2      P1   pcol\n5 0.23  P1      P2    psq\n6 0.48  P2      P1    psq\n\n\n\n\n\n\n\n\n\n\n\n\n\n3 factor\n\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\n\n        P1   P2  diff decomp\npcol  0.32 0.38 0.059   17.6\npsq   0.23 0.48 0.252   75.5\npgr   0.34 0.37 0.023    6.9\ncrude 0.20 0.53 0.333  100.0\n\n\n\n\n\n\nsub-populations\n\n\n\n\n\n\n\nsub-populations\n\n\n\n\n\n\n\n\n\nsub-populations\n\n\n# A tibble: 6 × 4\n    pop shape     pshp pgreen\n  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;\n1     1 circle   0.417  0.2  \n2     1 square   0.417  0.3  \n3     1 triangle 0.167  0.75 \n4     2 circle   0.292  0.286\n5     2 square   0.292  0.571\n6     2 triangle 0.417  0.8  \n\n\n\nRate_green = sum ( prop_shape_i * prop_green_i )\n\n\nsub-populations\n\n          1    2 diff decomp\npshp   0.41 0.52 0.11     44\npgreen 0.40 0.54 0.14     56\ncrude  0.33 0.58 0.25    100"
+  },
+  {
+    "objectID": "lecture01.html#decomposition---dasguptr-3",
+    "href": "lecture01.html#decomposition---dasguptr-3",
+    "title": "2 and 3 factor decomposition",
+    "section": "",
+    "text": "library(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\n\nDG decomposition being conducted with R = pcol*psq*pgr\n\ndg_table(dgres)\n\n        P1   P2  diff decomp\npcol  0.32 0.38 0.059   17.6\npsq   0.23 0.48 0.252   75.5\npgr   0.34 0.37 0.023    6.9\ncrude 0.20 0.53 0.333  100.0"
+  },
+  {
+    "objectID": "lecture01.html#sub-populations",
+    "href": "lecture01.html#sub-populations",
+    "title": "2 and 3 factor decomposition",
+    "section": "sub-populations",
+    "text": "sub-populations"
+  },
+  {
+    "objectID": "lecture01.html#sub-populations-1",
+    "href": "lecture01.html#sub-populations-1",
+    "title": "2 and 3 factor decomposition",
+    "section": "sub-populations",
+    "text": "sub-populations"
+  },
+  {
+    "objectID": "lecture01.html#sub-populations-2",
+    "href": "lecture01.html#sub-populations-2",
+    "title": "2 and 3 factor decomposition",
+    "section": "",
+    "text": "mydat &lt;- tribble(\n  ~pop, ~shape,    ~pshp, ~pgreen,\n  1,    \"circle\",  10/24,  2/10,\n  1,    \"square\",  10/24,  3/10,\n  1,    \"triangle\", 4/24,  3/4,\n  2,    \"circle\",   7/24,  2/7,\n  2,    \"square\",   7/24,  4/7,\n  2,    \"triangle\",10/24,  8/10,\n)\nmydat\n\n# A tibble: 6 × 4\n    pop shape     pshp pgreen\n  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;\n1     1 circle   0.417  0.2  \n2     1 square   0.417  0.3  \n3     1 triangle 0.167  0.75 \n4     2 circle   0.292  0.286\n5     2 square   0.292  0.571\n6     2 triangle 0.417  0.8  \n\n\n\nRate_green = sum ( prop_shape_i * prop_green_i )"
+  },
+  {
+    "objectID": "lecture01.html#sub-populations-3",
+    "href": "lecture01.html#sub-populations-3",
+    "title": "2 and 3 factor decomposition",
+    "section": "",
+    "text": "dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pshp\",\"pgreen\"),\n       id_vars = c(\"shape\"),\n       ratefunction = \"sum(pshp*pgreen)\") |&gt;\n  dg_table()\n\n\nDG decomposition being conducted with R = sum(pshp*pgreen)\n\n\n          1    2 diff decomp\npshp   0.41 0.52 0.11     44\npgreen 0.40 0.54 0.14     56\ncrude  0.33 0.58 0.25    100"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Standardization and Decomposition: An Introduction for Social Scientists",
+    "section": "",
+    "text": "Overview\n\n\nSchedule\n\n\n\n10:00 - 10:30\nIntroduction to standardisation and decomposition\n\n\n10:30 - 11:00\nStd & Decomp of Rates as Products\n\n\n11:00 - 11:15\ncoffee\n\n\n11:15 - 12:15\npractical\n\n\n12:15 - 13:15\nlunch\n\n\n13:15 - 13:45\nCross-classified data\n\n\n13:45 - 14:15\npractical\n\n\n14:15 - 14:30\ncoffee\n\n\n?? - ??\nMore populations?\n\n\n?? - ??\nCategory Effects?\n\n\n?? - ??\nThe whole game\n\n\n?? - ??\nUncertainty?\n\n\n?? - ??\nOther Decomposition Methods?"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "csstests.html",
+    "href": "csstests.html",
+    "title": "Tests",
+    "section": "",
+    "text": "Notes for Wizards\n\n\n\n\n\nhere’s a note!\n\n\n\n\n\n\n\n\n\nHints\n\n\n\n\n\n\n\n\n\n\nlearning obj\n\n\nimportant\n\n\nsticky\n\n\n\n\n\nr tips\n\n\nstatbox\n\n\ninterprtation interprtation interprtation\n\n\nQuestion\n\n\nquestion\nwhat is your name?\nwhat is your favourite colour?\n\n\n\n\n\nSolution\n\n\n\nSolution 1. solution\nhello\n\n2+2\n\n[1] 4\n\n\n\n\n\n\n\nOptional hello my optional friend\n\n\n\nit’s nice to see you again\n\n\n\n\n\nthis is not a panel\n\n\nthis is a panel\n\n\nthis is a panel"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#whence-uncertainty",
+    "href": "lecture-uncertainty.html#whence-uncertainty",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "",
+    "text": "The Das Gupta method doesn’t really have a concept of an error term - all results are calculate algebraically (Das Gupta 1993)\nBut we might still want to quantify uncertainty in the results of a standardization and decomposition\nBootstrapping is a general purpose way to achieve this (Carsey and Harden 2014)"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping",
+    "href": "lecture-uncertainty.html#bootstrapping",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\n\nBootstrapping is a resampling method where you create an empirical distribution of estimates of your quantity of interest through resampling\nIt is, as it were, a dumb strategy - it doesn’t try to be clever, just reshuffles your data a bunch and re-runs your analysis on each resampled dataset\nComputer go brrr"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice",
+    "href": "lecture-uncertainty.html#bootstrapping-in-practice",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping in practice",
+    "text": "Bootstrapping in practice\n\nFirst create a function to essentially “uncount” data into individual level data (where nrow = size of total population), then re-sample with replacement, then aggregate back up to the level of the original data\nStandardize and decompose each resampled dataset"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-1",
+    "href": "lecture-uncertainty.html#bootstrapping-in-practice-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping in practice",
+    "text": "Bootstrapping in practice\n\n‘Explode’ the aggregate data\nResample the exploded data 200 times (NB more is always better)\nAggregate each of the 200 datasets\nStandardize and decompose 200 times\nVisualize the results"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#writing-an-r-function",
+    "href": "lecture-uncertainty.html#writing-an-r-function",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Writing an R function",
+    "text": "Writing an R function\n\nFunctions in R let you easily re-run code\nIf you have not written an R function before you might want to check out the Functions chapter in R for Data Science (Wickham, Çetinkaya-Rundel, and Grolemund 2023)"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-1",
+    "href": "lecture-uncertainty.html#bootstrapping-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\n\nThere are different ways to achieve this\nWe adopt a non-parametric bootstrap where you sample with replacement from the original data and re-run the analysis on each bootstrap draw\nThe way we do it rate decomposition essentially expands the data out to unit-level data, re-samples, then aggregates back up\nPros: this will always* work, makes no assumptions about distributions or anything\nCons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-2",
+    "href": "lecture-uncertainty.html#bootstrapping-2",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\n\nAnd now we’ve got 500 reshuffled versions of our data we can standardize and decompose each one"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-2",
+    "href": "lecture-uncertainty.html#bootstrapping-in-practice-2",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping in practice",
+    "text": "Bootstrapping in practice\n\nThese are the original results\n\n\nres_2004_2016 &lt;- \ndat_2004_2016 |&gt; \n dgnpop(pop=\"year\", \n         factors=c(\"prev_rate\"),id_vars=c(\"Sex\",\"Age\"),\n         crossclassified=\"offenders\") |&gt; \n  dg_table() |&gt; \n  mutate(across(where(is.numeric), ~ round(.x, 2))) |&gt;\n  rownames_to_column()\n\n\nDG decomposition being conducted with R = prev_rate"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-3",
+    "href": "lecture-uncertainty.html#bootstrapping-in-practice-3",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping in practice",
+    "text": "Bootstrapping in practice\n\nres_2004_2016_plot &lt;- \nres_2004_2016 |&gt; \n   filter(rowname != \"crude\") |&gt; \n  mutate(rowname = case_when(\n    rowname == \"prev_rate\" ~ \"Reconviction prevalence\",\n    rowname == \"Sex_struct\" ~ \"Sex structure\",\n    rowname == \"Age_struct\" ~ \"Age structure\",\n  ))\n\ndecomp_fig +\n  geom_point(\n    data = res_2004_2016_plot,\n    colour = \"red\"\n  ) +\n    labs(caption = \"Red point is original data\")"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-4",
+    "href": "lecture-uncertainty.html#bootstrapping-in-practice-4",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping in practice",
+    "text": "Bootstrapping in practice\n\nNow we can calculate standard errors and confidence intervals for these estimates\n(Actually it’s bad practice to use the mean of the bootstrap draws instead of the observed results (Rainey 2024))\n\n\ndecomp_draws |&gt; \n  group_by(rowname) |&gt; \n  summarise(mean_decomp = mean(decomp),\n            se_est = sd(decomp),\n            lower_ci = mean_decomp - 1.96 * se_est,\n            upper_ci = mean_decomp + 1.96 * se_est)\n\n# A tibble: 4 × 5\n  rowname    mean_decomp se_est lower_ci upper_ci\n  &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Age_struct       41.3   2.74    35.9      46.7 \n2 Sex_struct        1.48  0.290    0.910     2.05\n3 crude           100     0      100       100   \n4 prev_rate        57.2   2.82    51.7      62.7"
+  },
+  {
+    "objectID": "lecture01.html",
+    "href": "lecture01.html",
+    "title": "2 and 3 factor decomposition",
+    "section": "",
+    "text": "library(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~psq,~pgr,\n  \"P1\", 5/15, 3/5,\n  \"P2\", 10/15, 8/10,\n) \nmydat\n\n# A tibble: 2 × 3\n  pop     psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.333   0.6\n2 P2    0.667   0.8\n\n\n\n\nlibrary(DasGuptR)\n\n\nAttaching package: 'DasGuptR'\n\n\nThe following object is masked from 'package:datasets':\n\n    uspop\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"psq\",\"pgr\"))\n\n\nDG decomposition being conducted with R = psq*pgr\n\nhead(dgres)\n\n  rate pop std.set factor\n1 0.20  P1    &lt;NA&gt;  crude\n2 0.53  P2    &lt;NA&gt;  crude\n3 0.23  P1      P2    psq\n4 0.47  P2      P1    psq\n5 0.30  P1      P2    pgr\n6 0.40  P2      P1    pgr\n\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~psq,~pgr,\n  \"P1\", 5/15, 3/5,\n  \"P2\", 10/15, 8/10,\n) \nmydat\n\n# A tibble: 2 × 3\n  pop     psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.333   0.6\n2 P2    0.667   0.8\n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"psq\",\"pgr\"))\n\n\nDG decomposition being conducted with R = psq*pgr\n\ndg_table(dgres)\n\n        P1   P2 diff decomp\npsq   0.23 0.47 0.23     70\npgr   0.30 0.40 0.10     30\ncrude 0.20 0.53 0.33    100\n\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\n\nDG decomposition being conducted with R = pcol*psq*pgr\n\nhead(dgres)\n\n  rate pop std.set factor\n1 0.20  P1    &lt;NA&gt;  crude\n2 0.53  P2    &lt;NA&gt;  crude\n3 0.32  P1      P2   pcol\n4 0.38  P2      P1   pcol\n5 0.23  P1      P2    psq\n6 0.48  P2      P1    psq\n\n\n\n\n\n\n\n\n\n\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\n\nDG decomposition being conducted with R = pcol*psq*pgr\n\ndg_table(dgres)\n\n        P1   P2  diff decomp\npcol  0.32 0.38 0.059   17.6\npsq   0.23 0.48 0.252   75.5\npgr   0.34 0.37 0.023    6.9\ncrude 0.20 0.53 0.333  100.0\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmydat &lt;- tribble(\n  ~pop, ~shape,    ~pshp, ~pgreen,\n  1,    \"circle\",  10/24,  2/10,\n  1,    \"square\",  10/24,  3/10,\n  1,    \"triangle\", 4/24,  3/4,\n  2,    \"circle\",   7/24,  2/7,\n  2,    \"square\",   7/24,  4/7,\n  2,    \"triangle\",10/24,  8/10,\n)\nmydat\n\n# A tibble: 6 × 4\n    pop shape     pshp pgreen\n  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;\n1     1 circle   0.417  0.2  \n2     1 square   0.417  0.3  \n3     1 triangle 0.167  0.75 \n4     2 circle   0.292  0.286\n5     2 square   0.292  0.571\n6     2 triangle 0.417  0.8  \n\n\n\nRate_green = sum ( prop_shape_i * prop_green_i )\n\n\n\n\n\n\ndgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pshp\",\"pgreen\"),\n       id_vars = c(\"shape\"),\n       ratefunction = \"sum(pshp*pgreen)\") |&gt;\n  dg_table()\n\n\nDG decomposition being conducted with R = sum(pshp*pgreen)\n\n\n          1    2 diff decomp\npshp   0.41 0.52 0.11     44\npgreen 0.40 0.54 0.14     56\ncrude  0.33 0.58 0.25    100"
+  },
+  {
+    "objectID": "lecture00.html",
+    "href": "lecture00.html",
+    "title": "Welcome/Course Intro",
     "section": "",
     "text": "Find your own!\ndeath rates across council areas\nhttps://www.nrscotland.gov.uk/publications/deaths-time-series-data-2024/\n\npick an age group.\npick two LAAs\nhow many deaths in that age group in that year for each LAA?\nhow many people were in that age group that year for each LAA?\nwhat is the crude death rate for each LAA? (ndeaths/total pop)\nwhat would the death rate for each LAA be if you held the proportion of that age group at the average?\nhow much of the difference in crude rates can be attributed to this compositional difference between LAAs?\n\nEXAMPLE:\n\n\n\n\n\n\n\n\nlaa\nn_people\nn_over60\ndeaths_over60\n\n\n\n\nGlasgow City\n650300\n128902\n5287\n\n\nEdinburgh\n530680\n113979\n3877\n\n\n...\n...\n...\n...\n\n\n...\n...\n...\n...\n\n\n\n\n\n\n\ncrude rates and showing that r = a*b\n\nscotlaa |&gt;\n  mutate(\n    cruderate = deaths_over60/n_people*1e3,\n    prop_over60 = n_over60/n_people,\n    over60_deathrate = deaths_over60 / n_over60,\n    cruderate2 = prop_over60 * over60_deathrate*1e3\n  )\n\n# A tibble: 2 × 8\n  laa     n_people n_over60 deaths_over60 cruderate prop_over60 over60_deathrate\n  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;            &lt;dbl&gt;\n1 Glasgo…   650300   128902          5287      8.13       0.198           0.0410\n2 Edinbu…   530680   113979          3877      7.31       0.215           0.0340\n# ℹ 1 more variable: cruderate2 &lt;dbl&gt;\n\n\nstd rates\n\nscotlaa |&gt;\n  mutate(\n    avgprop = mean(n_over60/n_people),\n    avgover60deathrate = mean(deaths_over60 / n_over60),\n    stdrate1 = avgprop* (deaths_over60 / n_over60) * 1e3,\n    stdrate2 = (n_over60/n_people) * avgover60deathrate\n  )\n\n# A tibble: 2 × 8\n  laa        n_people n_over60 deaths_over60 avgprop avgover60deathrate stdrate1\n  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;              &lt;dbl&gt;    &lt;dbl&gt;\n1 Glasgow C…   650300   128902          5287   0.206             0.0375     8.47\n2 Edinburgh    530680   113979          3877   0.206             0.0375     7.02\n# ℹ 1 more variable: stdrate2 &lt;dbl&gt;\n\n\ndecomp\n\nscotlaa |&gt;\n  mutate(\n    avgprop = mean(n_over60/n_people),\n    avgover60deathrate = mean(deaths_over60 / n_over60),\n    stdrate1 = avgprop* (deaths_over60 / n_over60) * 1e3,\n    stdrate2 = (n_over60/n_people) * avgover60deathrate * 1e3,\n    cr = deaths_over60/n_people*1e3\n  ) |&gt; select(stdrate1,stdrate2,cr) |&gt;\n  apply(2,diff)\n\n  stdrate1   stdrate2         cr \n-1.4456220  0.6212492 -0.8243728 \n\n\nof the crude rate difference (Edinburgh is 0.82 deaths per 1000 lower than glasgow), 175% this difference would happen if they only differed in the ‘over60s death rate’.\n-75% of the difference would happen if they only differed in the age demographic. i.e., Edinburgh would have a higher death rate than glasgow!\n\n-1.4456220 / -0.8243728 * 100 = 175\n\n0.6212492 / -0.8243728 *100 = -75\n\n\nlibrary(DasGuptR)\n\n\nAttaching package: 'DasGuptR'\n\n\nThe following object is masked from 'package:datasets':\n\n    uspop\n\nscotlaa |&gt;\n  mutate(\n    prop_over60 = n_over60/n_people,\n    over60_deathrate = deaths_over60 / n_over60,\n  ) |&gt;\n  dgnpop(\n    pop=\"laa\",\n    factors=c(\"prop_over60\",\"over60_deathrate\"),\n    ratefunction=\"prop_over60*over60_deathrate*1e3\"\n  ) |&gt; dg_table()\n\n\nDG decomposition being conducted with R = prop_over60*over60_deathrate*1e3\n\n\n                 Edinburgh Glasgow City       diff decomp\nprop_over60       8.057514     7.436265 -0.6212492 -75.36\nover60_deathrate  7.024079     8.469701  1.4456220 175.36\ncrude             7.305721     8.130094  0.8243728 100.00"
   },
@@ -39,7 +193,7 @@
     "href": "lecture-whole-game.html#reconviction-rates-as-a-performance-metric",
     "title": "The Whole Game",
     "section": "Reconviction rates as a performance metric",
-    "text": "Reconviction rates as a performance metric\n\nThe Sentencing Council (for England and Wales) says the reconviction rate is a “key metric for evaluating the effectiveness of sentencing” (gormley2022?)\n“Measuring recidivism is important, as it is one indicator of the effectiveness of the criminal justice system in the rehabilitation of offenders. Reconviction rates are a proxy measure for recidivism” (scottishgovernmentReconvictionRatesScotland2024?) and “Reduce reconviction rates” was a National Performance Framework indicator from 2007 to 2018\nThe common logic is that if the reconviction rate goes down then the criminal justice system is doing a better job at rehabilitating offenders"
+    "text": "Reconviction rates as a performance metric\n\nThe Sentencing Council (for England and Wales) says the reconviction rate is a “key metric for evaluating the effectiveness of sentencing” (gormley2022?)\n“Measuring recidivism is important, as it is one indicator of the effectiveness of the criminal justice system in the rehabilitation of offenders. Reconviction rates are a proxy measure for recidivism” (Scottish Government 2024, p8) and “Reduce reconviction rates” was a National Performance Framework indicator from 2007 to 2018\nThe common logic is that if the reconviction rate goes down then the criminal justice system is doing a better job at rehabilitating offenders"
   },
   {
     "objectID": "lecture-whole-game.html#but-its-not-so-simple",
@@ -81,14 +235,14 @@
     "href": "lecture-whole-game.html#data",
     "title": "The Whole Game",
     "section": "Data",
-    "text": "Data\n\nWe analyse data from ‘reconviciton cohorts’ in Scotland between 1997/1998-2020/21. These are made available by Scottish Government as part of their Reconvictions Bulletin (scottishgovernmentReconvictionRatesScotland2024?)\nA reconviction cohort is “all offenders who either received a non-custodial conviction or were released from a custodial sentence in a given financial year, from the 1st April to the 31st March the following year” (scottishgovernmentReconvictionRatesScotland2024?)\nThere is nothing particularly special about these time points, and the same approach would work for other time periods and other characteristics\nSome evidence that Scotland might be an extreme case here with larger demographic changes than in other countries (matthews2023?)"
+    "text": "Data\n\nWe analyse data from ‘reconviciton cohorts’ in Scotland between 1997/1998-2020/21. These are made available by Scottish Government as part of their Reconvictions Bulletin (Scottish Government 2024)\nA reconviction cohort is “all offenders who either received a non-custodial conviction or were released from a custodial sentence in a given financial year, from the 1st April to the 31st March the following year” (Scottish Government 2024, p40)\nThere is nothing particularly special about these time points, and the same approach would work for other time periods and other characteristics\nSome evidence that Scotland might be an extreme case here with larger demographic changes than in other countries (matthews2023?)"
   },
   {
     "objectID": "lecture-whole-game.html#measures",
     "href": "lecture-whole-game.html#measures",
     "title": "The Whole Game",
     "section": "Measures",
-    "text": "Measures\n\n“The reconviction rate is presented as the percentage of offenders in the cohort who were reconvicted one or more times by a court within a specified follow up period from the date of the index conviction. For most reconviction analyses in this bulletin, the follow-up period is one year,” (scottishgovernmentReconvictionRatesScotland2024?)\nWe decompose the overall reconviction rate by age and sex\nAge groups:\n\nUnder 21, 21 to 25, 26 to 30, 31 to 40, over 40\n\nSex:\n\nMale, female\n\n\n\n\nSex is “generally based on how a person presents and is recorded when a person’s details are entered into the [Criminal Histories System]. It is recorded for operational purposes, such as requirements for searching” (scottishgovernmentReconvictionRatesScotland2024?)"
+    "text": "Measures\n\n“The reconviction rate is presented as the percentage of offenders in the cohort who were reconvicted one or more times by a court within a specified follow up period from the date of the index conviction. For most reconviction analyses in this bulletin, the follow-up period is one year,” (Scottish Government 2024, p10)\nWe decompose the overall reconviction rate by age and sex\nAge groups:\n\nUnder 21, 21 to 25, 26 to 30, 31 to 40, over 40\n\nSex:\n\nMale, female\n\n\n\n\nSex is “generally based on how a person presents and is recorded when a person’s details are entered into the [Criminal Histories System]. It is recorded for operational purposes, such as requirements for searching” (Scottish Government 2024, p44)"
   },
   {
     "objectID": "lecture-whole-game.html#method",
@@ -130,98 +284,63 @@
     "href": "lecture-whole-game.html#analysis-1",
     "title": "The Whole Game",
     "section": "Analysis",
-    "text": "Analysis\n\nWe can attribute about three-quarters of the fall in the reconvictions rate in Scotland between 1997/98-2020/21 to demographic change in the population of people convicted, rather than falls in the reconviction rate per se.1\nIf you want to use the reconviction rate as a measure of sentencing effectiveness or similar, you would think the justice system is doing a much better job than it is\nIn an optimistic reading the change in the mix of people being reconvicted could still be due to criminal justice practices (e.g. more diversion from prosecution for young people), but is not attributable to the ‘effectiveness’ of the criminal justice system in rehabilitating offenders - it is purely due to changes in the demographic mix of people being convicted in the first place\n\nIf you change the comparison years to compare a year in the 2000s to 2020/1 this falls to around half of the overall change attributable to changes in age structure."
+    "text": "Analysis\n\nWe can attribute about three-quarters of the fall in the reconvictions rate in Scotland between 1997/98-2020/21 to demographic change in the population of people convicted, rather than falls in the reconviction rate per se.1\nIf you want to use the reconviction rate as a measure of sentencing effectiveness or similar, you would think the justice system is doing a much better job than it is\nIn an optimistic reading the change in the mix of people being reconvicted could still be due to criminal justice practices (e.g. more diversion from prosecution for young people), but is not attributable to the ‘effectiveness’ of the criminal justice system in rehabilitating offenders - it is purely due to changes in the demographic mix of people being convicted in the first place"
   },
   {
-    "objectID": "lecture-whole-game.html#references",
-    "href": "lecture-whole-game.html#references",
-    "title": "The Whole Game",
-    "section": "References",
-    "text": "References\n\n\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual."
+    "objectID": "lecture-uncertainty.html",
+    "href": "lecture-uncertainty.html",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "",
+    "text": "The Das Gupta method doesn’t really have a concept of an error term - all results are calculate algebraically (Das Gupta 1993)\nBut we might still want to quantify uncertainty in the results of a standardization and decomposition\nBootstrapping is a general purpose way to achieve this (Carsey and Harden 2014)"
   },
   {
-    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr",
-    "href": "lecture-stddecompbasics.html#decomposition---dasguptr",
-    "title": "2 and 3 factor decomposition",
-    "section": "Decomposition - {DasGuptR}",
-    "text": "Decomposition - {DasGuptR}\n2 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~psq,~pgr,\n  \"P1\", 5/15, 3/5,\n  \"P2\", 10/15, 8/10,\n) \nmydat\n\n# A tibble: 2 × 3\n  pop     psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.333   0.6\n2 P2    0.667   0.8\n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"psq\",\"pgr\"))\n\nhead(dgres)\n\n  rate pop std.set factor\n1 0.20  P1    &lt;NA&gt;  crude\n2 0.53  P2    &lt;NA&gt;  crude\n3 0.23  P1      P2    psq\n4 0.47  P2      P1    psq\n5 0.30  P1      P2    pgr\n6 0.40  P2      P1    pgr"
+    "objectID": "lecture-uncertainty.html#a-nice-example",
+    "href": "lecture-uncertainty.html#a-nice-example",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "A nice example",
+    "text": "A nice example\n\nAdd in results for 2004/2016"
   },
   {
-    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr-1",
-    "href": "lecture-stddecompbasics.html#decomposition---dasguptr-1",
-    "title": "2 and 3 factor decomposition",
-    "section": "Decomposition - {DasGuptR}",
-    "text": "Decomposition - {DasGuptR}\n2 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~psq,~pgr,\n  \"P1\", 5/15, 3/5,\n  \"P2\", 10/15, 8/10,\n) \nmydat\n\n# A tibble: 2 × 3\n  pop     psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.333   0.6\n2 P2    0.667   0.8\n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"psq\",\"pgr\"))\n\ndg_table(dgres)\n\n        P1   P2 diff decomp\npsq   0.23 0.47 0.23     70\npgr   0.30 0.40 0.10     30\ncrude 0.20 0.53 0.33    100"
+    "objectID": "lecture-uncertainty.html#a-nice-example-1",
+    "href": "lecture-uncertainty.html#a-nice-example-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "A nice example",
+    "text": "A nice example\n\n\n\nfine-fig"
   },
   {
-    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr-2",
-    "href": "lecture-stddecompbasics.html#decomposition---dasguptr-2",
-    "title": "2 and 3 factor decomposition",
-    "section": "Decomposition - {DasGuptR}",
-    "text": "Decomposition - {DasGuptR}\n3 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\nhead(dgres)\n\n  rate pop std.set factor\n1 0.20  P1    &lt;NA&gt;  crude\n2 0.53  P2    &lt;NA&gt;  crude\n3 0.32  P1      P2   pcol\n4 0.38  P2      P1   pcol\n5 0.23  P1      P2    psq\n6 0.48  P2      P1    psq"
+    "objectID": "lecture-uncertainty.html#where-things-go-wrong",
+    "href": "lecture-uncertainty.html#where-things-go-wrong",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Where things go wrong",
+    "text": "Where things go wrong\n\nDecomposition will decompose whatever difference there is - even if it is very small\nIf there isn’t much difference in the underlying crude rate you are decomposing (in a hand-wavy way, if the difference is not statistically significant) then things can do haywire"
   },
   {
-    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr-3",
-    "href": "lecture-stddecompbasics.html#decomposition---dasguptr-3",
-    "title": "2 and 3 factor decomposition",
-    "section": "Decomposition - {DasGuptR}",
-    "text": "Decomposition - {DasGuptR}\n3 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\ndg_table(dgres)\n\n        P1   P2  diff decomp\npcol  0.32 0.38 0.059   17.6\npsq   0.23 0.48 0.252   75.5\npgr   0.34 0.37 0.023    6.9\ncrude 0.20 0.53 0.333  100.0"
+    "objectID": "lecture-uncertainty.html#a-not-so-nice-example",
+    "href": "lecture-uncertainty.html#a-not-so-nice-example",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "A not-so-nice example",
+    "text": "A not-so-nice example\n\nAdd in results for 2004/2016"
   },
   {
-    "objectID": "lecture-conceptual.html#standardization",
-    "href": "lecture-conceptual.html#standardization",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Standardization",
-    "text": "Standardization\n\nOriginally used to adjust mortality comparisons between populations with different age structures (Keiding and Clayton 2014)\nLets you “compar[e] rates between populations with different age structures by applying age-specific rates to a single “target” age structure and, thereafter, comparing predicted marginal1 summaries in this target population.” (Keiding and Clayton 2014, p529)\nMore generally - lets you compare rates of any outcome between populations with different compositions of any confounder\n\nThis is an important term! We will come back to this"
+    "objectID": "lecture-uncertainty.html#a-not-so-nice-example-1",
+    "href": "lecture-uncertainty.html#a-not-so-nice-example-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "A not-so-nice example",
+    "text": "A not-so-nice example\n\n\n\nhaywire-fig"
   },
   {
-    "objectID": "lecture-conceptual.html#kitagawa",
-    "href": "lecture-conceptual.html#kitagawa",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Kitagawa",
-    "text": "Kitagawa\n\n“When comparing the incidence of some phenomenon in two or more groups, social researchers place much emphasis on the need for holding constant those related facors that would tend to distort the comparison” Kitagawa (1955)"
+    "objectID": "lecture-uncertainty.html#its-the-same-problem",
+    "href": "lecture-uncertainty.html#its-the-same-problem",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "It’s the same problem!",
+    "text": "It’s the same problem!\n\nI was very confused by the bad decomposition - why would the bootstrapping lead to these wild estimates (huge confidence intervals not centered on the true values!)\nThe thing I was bootstrapping was the underlying data - and the bootstrapped distribution of the crude rates is fine\nBut the decomposition is a transformation of these rates, and the properties of the rates do not necessarily transfer downstream to the transformation"
   },
   {
-    "objectID": "lecture-conceptual.html#standardization-1",
-    "href": "lecture-conceptual.html#standardization-1",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Standardization",
-    "text": "Standardization\n\nConceptually the focus is on aggregate/marginal rates, not individual effects\nAggregate rates are really common as performance indicators: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework\nIndividual effects can aggregate in non-intuitive ways (simpson1951?)\n\n\n\n‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change[^2] (Gelman 2006). To get technical, it can be either an integral or a derivative"
-  },
-  {
-    "objectID": "lecture-conceptual.html#kitagawas-example",
-    "href": "lecture-conceptual.html#kitagawas-example",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Kitagawa’s example",
-    "text": "Kitagawa’s example\n\n“For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition” Kitagawa (1955)\nTake the observed age/sex/race death rates for your two areas\nMultiply these by some standard age, sex and race profile\nYou have ‘standardized’ rates!"
-  },
-  {
-    "objectID": "lecture-conceptual.html#picking-a-standard-population",
-    "href": "lecture-conceptual.html#picking-a-standard-population",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Picking a standard population",
-    "text": "Picking a standard population\n\nSay you wanted to compare mortality rates in Glasgow and Shetland, controling for differences in age sex and ethnicity\nWhich population would you use as a standard one?\n\nThe Glasgow population?\nThe Shetland population?\nThe average of the two populations?\nSomething else?"
-  },
-  {
-    "objectID": "lecture-conceptual.html#decomposition",
-    "href": "lecture-conceptual.html#decomposition",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Decomposition",
-    "text": "Decomposition\n\nAsks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you’ve standardized by?\nHow much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?"
-  },
-  {
-    "objectID": "lecture-conceptual.html#why-decomposition",
-    "href": "lecture-conceptual.html#why-decomposition",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Why decomposition?",
-    "text": "Why decomposition?\n\nStandardized rates are ‘artificial’, summaries of a world we do not live in\nWhy should we care what the mortality rate in Scotland would be if it had the Estonian age distribution?\nDecomposition makes comparisons of standardized rates more analytically useful:\n“A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the”observed” crude (or total) rates and the “artificial” standardized rates” (Kitagawa 1955, pp1169–1170)"
-  },
-  {
-    "objectID": "lecture-conceptual.html#decomposition-1",
-    "href": "lecture-conceptual.html#decomposition-1",
-    "title": "Standardization and decomposition: A conceptual introduction",
-    "section": "Decomposition",
-    "text": "Decomposition\n\nDecomposition lets you say how much of the difference between crude rates of your outcome between your comparison cases are due to the various factors you choose to control for\nIn Kitagawa’s example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is ‘left over’"
+    "objectID": "lecture-uncertainty.html#its-the-same-problem-1",
+    "href": "lecture-uncertainty.html#its-the-same-problem-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "It’s the same problem!",
+    "text": "It’s the same problem!\n\nMaybe you could argue that you don’t need to factor in uncertainty in the underlying rates - it’s admin data, the reconviction cohorts are what they are, what are you a Bayesian or something (see verlaan2024use?)\nBut it’s still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons\nBootstrapping the raw data (nonparametric simulation (see Carsey and Harden 2014)) can show when your results are fragile to small permutations in the data (see also Giordano, Meager, and Broderick 2026)"
   },
   {
     "objectID": "lecture-conceptual.html#my-motivating-example",
@@ -368,14 +487,14 @@
     "href": "lecture-uncertainty.html#bootstrapping-in-practice-exploding-the-data",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping in practice: Exploding the data",
-    "text": "Bootstrapping in practice: Exploding the data\n\nlibrary(tidyverse)\nlibrary(DasGuptR)\n\n# just the first and last year\ndat_2004_2016 &lt;- \n  DasGuptR::reconv |&gt; \n  filter(year == \"2004\" | year == \"2016\")\n\n# we need to turn the dataset into a 'tidy' dataframe with columns for\n# year, Age, Sex, whether a person was reconvicted or not, n\n\ndat_2004_2016_long &lt;- \n  dat_2004_2016 |&gt; \n  mutate(not_reconvicted = offenders - reconvicted) |&gt; \n  select(year, Age, Sex, not_reconvicted, reconvicted) |&gt; \n  pivot_longer(not_reconvicted:reconvicted, names_to = \"reconvicted\", values_to = \"n\") |&gt; \n  mutate(n = as.integer(n)) |&gt;\n  uncount(n) # this takes the n column and explodes the data using the counts\n# of people convicted and not reconvicted"
+    "text": "Bootstrapping in practice: Exploding the data\n\nlibrary(tidyverse)\n\nWarning: package 'tidyverse' was built under R version 4.5.3\n\n\nWarning: package 'purrr' was built under R version 4.5.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.6\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.1     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(DasGuptR)\n\n\nAttaching package: 'DasGuptR'\n\nThe following object is masked from 'package:datasets':\n\n    uspop\n\n# just the first and last year\ndat_2004_2016 &lt;- \n  DasGuptR::reconv |&gt; \n  filter(year == \"2004\" | year == \"2016\")\n\n# we need to turn the dataset into a 'tidy' dataframe with columns for\n# year, Age, Sex, whether a person was reconvicted or not, n\n\ndat_2004_2016_long &lt;- \n  dat_2004_2016 |&gt; \n  mutate(not_reconvicted = offenders - reconvicted) |&gt; \n  select(year, Age, Sex, not_reconvicted, reconvicted) |&gt; \n  pivot_longer(not_reconvicted:reconvicted, names_to = \"reconvicted\", values_to = \"n\") |&gt; \n  mutate(n = as.integer(n)) |&gt;\n  uncount(n) # this takes the n column and explodes the data using the counts\n# of people convicted and not reconvicted"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-2.-resampling",
     "href": "lecture-uncertainty.html#bootstrapping-2.-resampling",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping: 2. Resampling",
-    "text": "Bootstrapping: 2. Resampling\n\nNow we have an ‘individual’ level dataset for our reconviction cohorts we can resample from them with replacement\nWe use functions from the {rsample} package to do this in a memory efficient way\nBecause bootstrapping uses random number generation we need to set the seed before starting so our results are reproducible\nWe also need to set the number of draws. We’ll use 200 for speed; but more is always better\n\n\nlibrary(rsample)\n\nset.seed(12345)\n\nn_draws &lt;- 200\n\ndraws_2004_2016 &lt;- \ndat_2004_2016_long |&gt; \n  group_by(year) |&gt; # we bootstrap within years - this keeps the sizes of the reconviction cohorts the same\n  rsample::bootstraps(times = n_draws)"
+    "text": "Bootstrapping: 2. Resampling\n\nNow we have an ‘individual’ level dataset for our reconviction cohorts we can resample from them with replacement\nWe use functions from the {rsample} package to do this in a memory efficient way\nBecause bootstrapping uses random number generation we need to set the seed before starting so our results are reproducible\nWe also need to set the number of draws. We’ll use 200 for speed; but more is always better\n\n\nlibrary(rsample)\n\nWarning: package 'rsample' was built under R version 4.5.3\n\nset.seed(12345)\n\nn_draws &lt;- 200\n\ndraws_2004_2016 &lt;- \ndat_2004_2016_long |&gt; \n  group_by(year) |&gt; # we bootstrap within years - this keeps the sizes of the reconviction cohorts the same\n  rsample::bootstraps(times = n_draws)"
   },
   {
     "objectID": "lecture-uncertainty.html#boostrapping-2.-resampling",
@@ -424,7 +543,7 @@
     "href": "lecture-uncertainty.html#bootstrapping-3.-aggregating-4",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping: 3. Aggregating",
-    "text": "Bootstrapping: 3. Aggregating\n\n\n# Bootstrap sampling \n# A tibble: 200 × 3\n   splits                id           agg_data           \n   &lt;list&gt;                &lt;chr&gt;        &lt;list&gt;             \n 1 &lt;split [89957/32972]&gt; Bootstrap001 &lt;gropd_df [20 × 7]&gt;\n 2 &lt;split [89957/32992]&gt; Bootstrap002 &lt;gropd_df [20 × 7]&gt;\n 3 &lt;split [89957/33239]&gt; Bootstrap003 &lt;gropd_df [20 × 7]&gt;\n 4 &lt;split [89957/33113]&gt; Bootstrap004 &lt;gropd_df [20 × 7]&gt;\n 5 &lt;split [89957/32932]&gt; Bootstrap005 &lt;gropd_df [20 × 7]&gt;\n 6 &lt;split [89957/33149]&gt; Bootstrap006 &lt;gropd_df [20 × 7]&gt;\n 7 &lt;split [89957/33307]&gt; Bootstrap007 &lt;gropd_df [20 × 7]&gt;\n 8 &lt;split [89957/33076]&gt; Bootstrap008 &lt;gropd_df [20 × 7]&gt;\n 9 &lt;split [89957/32863]&gt; Bootstrap009 &lt;gropd_df [20 × 7]&gt;\n10 &lt;split [89957/33139]&gt; Bootstrap010 &lt;gropd_df [20 × 7]&gt;\n# ℹ 190 more rows"
+    "text": "Bootstrapping: 3. Aggregating\n\ndraws_2004_2016\n\n# Bootstrap sampling \n# A tibble: 200 × 3\n   splits                id           agg_data           \n   &lt;list&gt;                &lt;chr&gt;        &lt;list&gt;             \n 1 &lt;split [89957/32972]&gt; Bootstrap001 &lt;gropd_df [20 × 7]&gt;\n 2 &lt;split [89957/32992]&gt; Bootstrap002 &lt;gropd_df [20 × 7]&gt;\n 3 &lt;split [89957/33239]&gt; Bootstrap003 &lt;gropd_df [20 × 7]&gt;\n 4 &lt;split [89957/33113]&gt; Bootstrap004 &lt;gropd_df [20 × 7]&gt;\n 5 &lt;split [89957/32932]&gt; Bootstrap005 &lt;gropd_df [20 × 7]&gt;\n 6 &lt;split [89957/33149]&gt; Bootstrap006 &lt;gropd_df [20 × 7]&gt;\n 7 &lt;split [89957/33307]&gt; Bootstrap007 &lt;gropd_df [20 × 7]&gt;\n 8 &lt;split [89957/33076]&gt; Bootstrap008 &lt;gropd_df [20 × 7]&gt;\n 9 &lt;split [89957/32863]&gt; Bootstrap009 &lt;gropd_df [20 × 7]&gt;\n10 &lt;split [89957/33139]&gt; Bootstrap010 &lt;gropd_df [20 × 7]&gt;\n# ℹ 190 more rows"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-3.-aggregating-5",
@@ -459,7 +578,7 @@
     "href": "lecture-uncertainty.html#bootstrapping-4.-standardize-and-decompose-1",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping: 4. Standardize and decompose",
-    "text": "Bootstrapping: 4. Standardize and decompose\n\nNB this might take a while!\n\n\ndraws_2004_2016 &lt;- \ndraws_2004_2016 |&gt; \n  mutate(results = map(agg_data, calc_dg), # apply dgnpop to each aggregated dataset\n         draw = 1:n_draws) |&gt; # add an index which says which draw number the results are from\n  select(draw, results) # only keep the draw number and results column"
+    "text": "Bootstrapping: 4. Standardize and decompose\n\nNB this might take a while!\n\n\ndraws_2004_2016 &lt;- \ndraws_2004_2016 |&gt; \n  mutate(results = map(agg_data, calc_dg), # apply dgnpop to each aggregated dataset\n         draw = 1:n_draws) |&gt; # add an index which says which draw number the results are from\n  select(draw, results) # only keep the draw number and results column\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate\n\n\nDG decomposition being conducted with R = prev_rate"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-4.-standardize-and-decompose-2",
@@ -473,28 +592,28 @@
     "href": "lecture-uncertainty.html#bootstrapping-5.-visualize",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping: 5. Visualize",
-    "text": "Bootstrapping: 5. Visualize"
+    "text": "Bootstrapping: 5. Visualize\n\nlibrary(ggdist)\n\ndecomp_draws |&gt; \nggplot(aes(x = decomp, y = rowname)) +\n  ggdist::stat_dist_dots()"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-5.-visualize-1",
     "href": "lecture-uncertainty.html#bootstrapping-5.-visualize-1",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping: 5. Visualize",
-    "text": "Bootstrapping: 5. Visualize"
+    "text": "Bootstrapping: 5. Visualize\n\n# get rid of the crude\n\ndecomp_draws |&gt; \n  filter(rowname != \"crude\") |&gt; \n  ggplot(aes(x = decomp, y = rowname)) +\n  ggdist::stat_dist_dots()"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-5.-visualize-2",
     "href": "lecture-uncertainty.html#bootstrapping-5.-visualize-2",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping: 5. Visualize",
-    "text": "Bootstrapping: 5. Visualize"
+    "text": "Bootstrapping: 5. Visualize\n\n# tidy up a bit\ndecomp_fig &lt;- \ndecomp_draws |&gt; \n  filter(rowname != \"crude\") |&gt; \n  mutate(rowname = case_when(\n    rowname == \"prev_rate\" ~ \"Reconviction prevalence\",\n    rowname == \"Sex_struct\" ~ \"Sex structure\",\n    rowname == \"Age_struct\" ~ \"Age structure\",\n  )) |&gt; \n  ggplot(aes(x = decomp, y = rowname)) +\n  ggdist::stat_dist_dots() +\n  theme_minimal() +\n  scale_x_continuous(labels = scales::label_percent(scale = 1)) +\n  labs(x = \"% of change in crude reconviction rate\",\n  y = \"Factor\",\n  title = \"Decomposition of Scottish reconviction rate, 2004 and 2016\") +\n    theme(plot.title.position = \"plot\")"
   },
   {
-    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-2",
-    "href": "lecture-uncertainty.html#bootstrapping-in-practice-2",
+    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-5",
+    "href": "lecture-uncertainty.html#bootstrapping-in-practice-5",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping in practice",
-    "text": "Bootstrapping in practice\n\nThese are the original results"
+    "text": "Bootstrapping in practice\n\nOr directly calculate confidence intervals by taking percentiles\n\n\ndecomp_draws |&gt; \n  group_by(rowname) |&gt; \n  summarise(confs = list(quantile(decomp, c(0.05, 0.025, 0.975))),\n            cis = list(c(\"median\", \"lower_ci\", \"upper_ci\")),\n            .groups = \"drop\") |&gt; \n  unnest(c(confs, cis)) |&gt; \n  pivot_wider(id_cols = rowname,\n  values_from = confs,\n  names_from = cis)\n\n# A tibble: 4 × 4\n  rowname    median lower_ci upper_ci\n  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Age_struct  36.8      36.4    46.6 \n2 Sex_struct   1.05      1       2.19\n3 crude      100       100     100   \n4 prev_rate   52.8      51.9    62.6"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-3",
@@ -511,11 +630,11 @@
     "text": "Bootstrapping in practice\n\nNow we can calculate standard errors and confidence intervals for these estimates\n(Actually it’s bad practice to use the mean of the bootstrap draws instead of the observed results (Rainey 2024))\n\n\n\n# A tibble: 4 × 5\n  rowname    mean_decomp se_est lower_ci upper_ci\n  &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Age_struct       41.3   2.74    35.9      46.7 \n2 Sex_struct        1.48  0.290    0.910     2.05\n3 crude           100     0      100       100   \n4 prev_rate        57.2   2.82    51.7      62.7"
   },
   {
-    "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-5",
-    "href": "lecture-uncertainty.html#bootstrapping-in-practice-5",
-    "title": "Uncertainty in Standardization and Decomposition",
-    "section": "Bootstrapping in practice",
-    "text": "Bootstrapping in practice\n\nOr directly calculate confidence intervals by taking percentiles\n\n\n\n# A tibble: 4 × 4\n  rowname    median lower_ci upper_ci\n  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 Age_struct  36.8      36.4    46.6 \n2 Sex_struct   1.05      1       2.19\n3 crude      100       100     100   \n4 prev_rate   52.8      51.9    62.6"
+    "objectID": "lecture-conceptual.html#standardization-1",
+    "href": "lecture-conceptual.html#standardization-1",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Standardization",
+    "text": "Standardization\n\nConceptually the focus is on aggregate/marginal rates, not individual effects\nAggregate rates are really common as performance indicators: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework\nIndividual effects can aggregate in non-intuitive ways (simpson1951?)\n\n\n\n‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change (Gelman 2006). To get technical, it can be either an integral or a derivative"
   },
   {
     "objectID": "lecture-uncertainty.html#a-nice-example",
@@ -607,5 +726,12 @@
     "title": "Welcome/Course Intro",
     "section": "Practical sessions",
     "text": "Practical sessions\n\nYou can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp\nIf you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) [Ben post the link in the chat now]\nFor Stata you’re relying on your own copy"
+  },
+  {
+    "objectID": "lecture-whole-game.html#footnotes",
+    "href": "lecture-whole-game.html#footnotes",
+    "title": "The Whole Game",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nIf you change the comparison years to compare a year in the 2000s to 2020/1 this falls to around half of the overall change attributable to changes in age structure.↩︎"
   }
 ]

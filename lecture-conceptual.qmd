@@ -46,7 +46,7 @@ options(digits=2)
 - Individual effects can aggregate in non-intuitive ways [see @good1987 or @simpson1951]
 
 ::: aside
-'Marginal' has two opposite meanings in statistics - either it can be an average or it can be a small change[^2] [@gelmanMarginal2006]. To get technical, it can be either an integral or a derivative
+'Marginal' has two opposite meanings in statistics - either it can be an average or it can be a small change [@gelmanMarginal2006]. To get technical, it can be either an integral or a derivative
 :::
 
 

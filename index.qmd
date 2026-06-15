@@ -1,6 +1,6 @@
 ---
-title: "sgsss_decomp"
-subtitle: "Workshop [DATE]"
+title: "Standardization and Decomposition: An Introduction for Social Scientists"
+subtitle: "Workshop 15 July 2026"
 author: "Ben Matthews & Josiah King"
 ---
 
