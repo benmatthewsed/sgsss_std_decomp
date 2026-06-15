@@ -16,14 +16,17 @@ website:
       - text: "Lectures"
         menu:
           - lecture00.qmd
-          - lecture01.qmd
-          - lecture02.qmd
-          - lecture03.qmd
+          - lecture-whole-game.qmd
+          - lecture-stddecompbasics.qmd
+          - lecture-crossclass.qmd
+          - lecture-uncertainty.qmd
       - text: "Worksheets"
         menu:
-          - csstests.qmd
+          - workshop01.qmd
       - text: "Package Paper (Under Review)"
         href: dgp_preprint.pdf
+      - text: "Das Gupta's 1993 Manual"
+        href: dg1993_manual.pdf
 
 format:
   html:
@@ -36,6 +39,8 @@ format:
       - assets/style-labs.scss
     include-in-header: "assets/toggling.html"
     number-sections: false
+    
+    
 
 
 
