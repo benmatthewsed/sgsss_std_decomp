@@ -515,7 +515,7 @@
     "href": "lecture-conceptual.html#standardization-1",
     "title": "Standardization and decomposition: A conceptual introduction",
     "section": "Standardization",
-    "text": "Standardization\n\nConceptually the focus is on aggregate/marginal rates, not individual effects\nAggregate rates are really common as performance indicators: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework\nIndividual effects can aggregate in non-intuitive ways (simpson1951?)\n\n\n\n‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change[^2] (Gelman 2006). To get technical, it can be either an integral or a derivative"
+    "text": "Standardization\n\nConceptually the focus is on aggregate/marginal rates, not individual effects\nAggregate rates are really common as performance indicators: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework\nIndividual effects can aggregate in non-intuitive ways (simpson1951?)\n\n\n\n‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change (Gelman 2006). To get technical, it can be either an integral or a derivative"
   },
   {
     "objectID": "lecture-conceptual.html#kitagawas-example",
