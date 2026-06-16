@@ -246,7 +246,7 @@ library(ggdist)
 
 decomp_draws |> 
 ggplot(aes(x = decomp, y = rowname)) +
-  ggdist::stat_dist_dots()
+  ggdist::stat_dots(quantiles = 100)
 
 ```
 
@@ -259,7 +259,7 @@ ggplot(aes(x = decomp, y = rowname)) +
 decomp_draws |> 
   filter(rowname != "crude") |> 
   ggplot(aes(x = decomp, y = rowname)) +
-  ggdist::stat_dist_dots()
+  ggdist::stat_dots(quantiles = 100)
 
 ```
 
@@ -278,7 +278,7 @@ decomp_draws |>
     rowname == "Age_struct" ~ "Age structure",
   )) |> 
   ggplot(aes(x = decomp, y = rowname)) +
-  ggdist::stat_dist_dots() +
+  ggdist::stat_dots(quantiles = 100) +
   theme_minimal() +
   scale_x_continuous(labels = scales::label_percent(scale = 1)) +
   labs(x = "% of change in crude reconviction rate",
@@ -320,7 +320,7 @@ decomp_fig +
     data = res_2004_2016_plot,
     colour = "red"
   ) +
-    labs(caption = "Red point is original data")
+    labs(caption = "Red point is original data. Dots show quantiles of bootstrap distribution")
 ```
 
 ## Bootstrapping in practice
@@ -343,7 +343,7 @@ decomp_draws |>
 ```{r}
 decomp_draws |> 
   group_by(rowname) |> 
-  summarise(confs = list(quantile(decomp, c(0.05, 0.025, 0.975))),
+  summarise(confs = list(quantile(decomp, c(0.5, 0.025, 0.975))),
             cis = list(c("median", "lower_ci", "upper_ci")),
             .groups = "drop") |> 
   unnest(c(confs, cis)) |> 
@@ -354,6 +354,142 @@ decomp_draws |>
 
 # Bonus slides with where this can go wrong?
 
+```{r}
+# just the first and last year
+dat_2015_2016 <- 
+  DasGuptR::reconv |> 
+  filter(year == "2015" | year == "2016")
+
+
+dat_2015_2016_long <- 
+  dat_2015_2016 |> 
+  mutate(not_reconvicted = offenders - reconvicted) |> 
+  select(year, Age, Sex, not_reconvicted, reconvicted) |> 
+  pivot_longer(not_reconvicted:reconvicted, names_to = "reconvicted", values_to = "n") |> 
+  mutate(n = as.integer(n)) |>
+  uncount(n) # this takes the n column and explodes the data using the counts
+# of people convicted and not reconvicted
+
+
+draws_2015_2016 <- 
+dat_2015_2016_long |> 
+  group_by(year) |> # we bootstrap within years - this keeps the sizes of the reconviction cohorts the same
+  rsample::bootstraps(times = n_draws)
+
+
+draws_2015_2016 <- 
+draws_2015_2016 |> 
+ mutate(agg_data = map(splits, uncount_split))
+
+
+draws_2015_2016 <- 
+draws_2015_2016 |> 
+  mutate(results = map(agg_data, calc_dg), # apply dgnpop to each aggregated dataset
+         draw = 1:n_draws) |> # add an index which says which draw number the results are from
+  select(draw, results)
+
+
+decomp_draws <- 
+draws_2015_2016 |> 
+    unnest(results) |> 
+     pivot_longer(`2015`:`2016`,
+               names_to = "year",
+               values_to = "rate") |> 
+     filter(year == "2016") # the decomposition results are the same for both years, so we'll just keep one set
+
+decomp_draws |> 
+ggplot(aes(x = decomp, y = rowname)) +
+  ggdist::stat_dots(quantiles = 100)
+
+
+decomp_fig <- 
+decomp_draws |> 
+  filter(rowname != "crude") |> 
+  mutate(rowname = case_when(
+    rowname == "prev_rate" ~ "Reconviction prevalence",
+    rowname == "Sex_struct" ~ "Sex structure",
+    rowname == "Age_struct" ~ "Age structure",
+  )) |> 
+  ggplot(aes(x = decomp, y = rowname)) +
+  ggdist::stat_dots(quantiles = 100) +
+  theme_minimal() +
+  scale_x_continuous(labels = scales::label_percent(scale = 1)) +
+  labs(x = "% of change in crude reconviction rate",
+  y = "Factor",
+  title = "Decomposition of Scottish reconviction rate, 2015 and 2016") +
+    theme(plot.title.position = "plot")
+
+res_2015_2016 <- 
+dat_2015_2016 |> 
+ dgnpop(pop="year", 
+         factors=c("prev_rate"),id_vars=c("Sex","Age"),
+         crossclassified="offenders") |> 
+  dg_table() |> 
+  mutate(across(where(is.numeric), ~ round(.x, 2))) |>
+  rownames_to_column()
+
+
+res_2015_2016_plot <- 
+res_2015_2016 |> 
+   filter(rowname != "crude") |> 
+  mutate(rowname = case_when(
+    rowname == "prev_rate" ~ "Reconviction prevalence",
+    rowname == "Sex_struct" ~ "Sex structure",
+    rowname == "Age_struct" ~ "Age structure",
+  ))
+
+decomp_fig +
+  geom_point(
+    data = res_2015_2016_plot,
+    colour = "red"
+  ) +
+    labs(caption = "Red point is original data. Dots show quantiles of bootstrap distribution")
+
+
+
+decomp_fig +
+  geom_point(
+    data = res_2015_2016_plot,
+    colour = "red"
+  ) +
+    labs(caption = "Red point is original data. Dots show quantiles of bootstrap distribution") +
+ scale_x_continuous(limits = c(-200, 200),
+labels = scales::label_percent(scale = 1))
+
+decomp_medians <- 
+decomp_draws |> 
+  group_by(rowname) |> 
+  summarise(confs = list(quantile(decomp, c(0.5, 0.025, 0.975))),
+            cis = list(c("median", "lower_ci", "upper_ci")),
+            .groups = "drop") |> 
+  unnest(c(confs, cis)) |> 
+  pivot_wider(id_cols = rowname,
+  values_from = confs,
+  names_from = cis) |> 
+   mutate(rowname = case_when(
+    rowname == "prev_rate" ~ "Reconviction prevalence",
+    rowname == "Sex_struct" ~ "Sex structure",
+    rowname == "Age_struct" ~ "Age structure",
+  )) |> 
+  filter(!is.na(rowname))
+
+decomp_fig +
+  geom_point(
+    data = res_2015_2016_plot,
+    colour = "red"
+  ) +
+    geom_point(
+    data = decomp_medians,
+    aes(x = median),
+    colour = "blue"
+  )  +
+    labs(caption = "Red point is original data. Blue is bootstrap median. Dots show quantiles of bootstrap distribution") +
+ scale_x_continuous(limits = c(-200, 200),
+labels = scales::label_percent(scale = 1))
+
+
+
+```
 
 ## A nice example
 - Add in results for 2004/2016

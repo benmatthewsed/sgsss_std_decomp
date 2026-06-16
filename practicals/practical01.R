@@ -87,6 +87,7 @@ eg2.1 |>
 
 # this code is very awkward!
 
+manual_eg2.1 <- 
 eg2.1 |>
   mutate(
     earner_prop_Black = weights_Black$earner_prop_Black,
@@ -108,6 +109,23 @@ eg2.1 |>
 earner_prop_std_rate_diff = earner_prop_std_rate[pop == "Black"] - earner_prop_std_rate[pop == "White"],
 avg_earnings_std_rate_diff = avg_earnings_std_rate[pop == "Black"] - avg_earnings_std_rate[pop == "White"]
 ) |> 
-  mutate(earner_prop_std_rate_decomp = earner_prop_std_rate_diff / crude_diff,
-  avg_earnings_std_rate_decomp = avg_earnings_std_rate_diff / crude_diff)
+  mutate(earner_prop_std_rate_decomp = earner_prop_std_rate_diff / crude_diff * 100,
+  avg_earnings_std_rate_decomp = avg_earnings_std_rate_diff / crude_diff * 100)
+
+manual_eg2.1
+
+# with DasGuptR ----------------------------------------------------------
+
+dg_eg2.1 <- 
+dgnpop(eg2.1, pop = "pop", factors = c("avg_earnings", "earner_prop")) |>
+  dg_table()
+
+dg_eg2.1
+
+all.equal(
+round(c(manual_eg2.1$earner_prop_std_rate_decomp[[1]],
+  manual_eg2.1$avg_earnings_std_rate_decomp[[1]]), 2),
+dg_eg2.1$decomp[1:2]
+)
+
 

@@ -41,7 +41,7 @@ weights_2004 <-
 reconv_04_16 |> 
   ungroup() |> 
   filter(year == 2004) |> 
-  select(Age, Sex, demog_struct_2004 = demog_struct)
+  select(Age, Sex, demog_struct_2004 = demog_struct, prev_rate_2004 = prev_rate)
 
 reconv_04_16 |> 
   left_join(weights_2004) |> 
