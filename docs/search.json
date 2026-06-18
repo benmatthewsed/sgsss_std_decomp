@@ -347,28 +347,28 @@
     "href": "lecture-conceptual.html#my-motivating-example",
     "title": "Standardization and decomposition: A conceptual introduction",
     "section": "My motivating example",
-    "text": "My motivating example\n\nI (Ben) wrote my PhD thesis on the ‘crime drop’ in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level (Matthews 2017)\nThere is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)\nStandardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted"
+    "text": "My motivating example\n\nI (Ben) wrote my PhD thesis on the ‘crime drop’ in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level (Matthews 2017)\nThere is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)\nStandardization and decomposition appealed to me because I was trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted"
   },
   {
     "objectID": "lecture-conceptual.html#a-conjecture",
     "href": "lecture-conceptual.html#a-conjecture",
     "title": "Standardization and decomposition: A conceptual introduction",
     "section": "A conjecture",
-    "text": "A conjecture\n\nMost quantitative social science (implicitly?) focuses on individuals\n“while the number of ACEs is a strong predictor of childhood offending, certain types of childhood adversity are of greater importance than others” (Jahanshahi, Murray, and McVie 2022)\nHow does the number of ACEs affect a child’s probability of offending?\nNot - how much of the change in Scotland’s child offending rate is due to changes in the prevalence of ACEs?"
+    "text": "A conjecture\n\nA lot of social science research either aims to identify the ‘effect’ of some independent variable on an outcome\nIn either an associational or causal way (Holland 1986)\nBut this is only half the picture"
   },
   {
     "objectID": "lecture-conceptual.html#a-conjecture-1",
     "href": "lecture-conceptual.html#a-conjecture-1",
     "title": "Standardization and decomposition: A conceptual introduction",
     "section": "A conjecture",
-    "text": "A conjecture\n\nThere is nothing wrong with focusing on individuals!\nBut it’s useful to be able to answer questions about macro-level phenomena too, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes\nStandardization and decomposition are one way to do this (there are others!)"
+    "text": "A conjecture\n\nThe What is Your Estimand? approach to social science splits a target ‘estimand’ into “a unit-specific quantity … aggregated over a target population of units” (Lundberg, Johnson, and Stewart 2021, p535)\nIt’s useful to be able to answer questions about macro-level phenomena, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes\nStandardization and decomposition are one way to do this (there are others!)"
   },
   {
     "objectID": "lecture-conceptual.html#references",
     "href": "lecture-conceptual.html#references",
     "title": "Standardization and decomposition: A conceptual introduction",
     "section": "References",
-    "text": "References\n\n\n\n\nGelman, Andrew. 2006. “Marginal and Marginal.” Statistical Modeling, Causal Inference, and Social Science.\n\n\nJahanshahi, Babak, Kath Murray, and Susan McVie. 2022. “ACEs, Places and Inequality: Understanding the Effects of Adverse Childhood Experiences and Poverty on Offending in Childhood.” The British Journal of Criminology 62 (3): 751–72. https://doi.org/10.1093/bjc/azab079.\n\n\nKeiding, Niels, and David Clayton. 2014. “Standardization and Control for Confounding in Observational Studies: A Historical Perspective.” Statistical Science 29 (4): 529–58. https://doi.org/10.1214/13-STS453.\n\n\nKitagawa, Evelyn M. 1955. “Components of a Difference Between Two Rates.” Journal of the American Statistical Association 50 (272): 1168–94. https://doi.org/10.1080/01621459.1955.10501299.\n\n\nMatthews, Ben. 2017. “Criminal Careers and the Crime Drop in Scotland, 1989-2011: An Exploration of Conviction Trends Across Age and Sex.” PhD thesis, University of Edinburgh."
+    "text": "References\n\n\n\n\nGelman, Andrew. 2006. “Marginal and Marginal.” Statistical Modeling, Causal Inference, and Social Science.\n\n\nHolland, Paul W. 1986. “Statistics and Causal Inference.” Journal of the American Statistical Association 81 (396): 945–60. https://doi.org/10.2307/2289064.\n\n\nKeiding, Niels, and David Clayton. 2014. “Standardization and Control for Confounding in Observational Studies: A Historical Perspective.” Statistical Science 29 (4): 529–58. https://doi.org/10.1214/13-STS453.\n\n\nKitagawa, Evelyn M. 1955. “Components of a Difference Between Two Rates.” Journal of the American Statistical Association 50 (272): 1168–94. https://doi.org/10.1080/01621459.1955.10501299.\n\n\nLundberg, Ian, Rebecca Johnson, and Brandon M. Stewart. 2021. “What Is Your Estimand? Defining the Target Quantity Connects Statistical Evidence to Theory.” American Sociological Review 86 (3): 532–65. https://doi.org/10.1177/00031224211004187.\n\n\nMatthews, Ben. 2017. “Criminal Careers and the Crime Drop in Scotland, 1989-2011: An Exploration of Conviction Trends Across Age and Sex.” PhD thesis, University of Edinburgh."
   },
   {
     "objectID": "csstests.html",
@@ -824,5 +824,54 @@
     "title": "Welcome/Course Intro",
     "section": "",
     "text": "You can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp\nIf you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) [Ben post the link in the chat now]\nFor Stata you’re relying on your own copy"
+  },
+  {
+    "objectID": "lecture-conceptual.html#standardization",
+    "href": "lecture-conceptual.html#standardization",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Standardization",
+    "text": "Standardization\n\nOriginally used to adjust mortality comparisons between populations with different age structures (Keiding and Clayton 2014)\nLets you “compar[e] rates between populations with different age structures by applying age-specific rates to a single “target” age structure and, thereafter, comparing predicted marginal1 summaries in this target population.” (Keiding and Clayton 2014, p529)\nMore generally - lets you compare rates of any outcome between populations with different compositions of any confounder\n\nThis is an important term! We will come back to this"
+  },
+  {
+    "objectID": "lecture-conceptual.html#kitagawa",
+    "href": "lecture-conceptual.html#kitagawa",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Kitagawa",
+    "text": "Kitagawa\n\n“When comparing the incidence of some phenomenon in two or more groups, social researchers place much emphasis on the need for holding constant those related facors that would tend to distort the comparison” Kitagawa (1955)"
+  },
+  {
+    "objectID": "lecture-conceptual.html#kitagawas-example",
+    "href": "lecture-conceptual.html#kitagawas-example",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Kitagawa’s example",
+    "text": "Kitagawa’s example\n\n“For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition” Kitagawa (1955)\nTake the observed age/sex/race death rates for your two areas\nMultiply these by some standard age, sex and race profile\nYou have ‘standardized’ rates!"
+  },
+  {
+    "objectID": "lecture-conceptual.html#picking-a-standard-population",
+    "href": "lecture-conceptual.html#picking-a-standard-population",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Picking a standard population",
+    "text": "Picking a standard population\n\nSay you wanted to compare mortality rates in Glasgow and Shetland, controling for differences in age sex and ethnicity\nWhich population would you use as a standard one?\n\nThe Glasgow population?\nThe Shetland population?\nThe average of the two populations?\nSomething else?"
+  },
+  {
+    "objectID": "lecture-conceptual.html#decomposition",
+    "href": "lecture-conceptual.html#decomposition",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Decomposition",
+    "text": "Decomposition\n\nAsks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you’ve standardized by?\nHow much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?"
+  },
+  {
+    "objectID": "lecture-conceptual.html#why-decomposition",
+    "href": "lecture-conceptual.html#why-decomposition",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Why decomposition?",
+    "text": "Why decomposition?\n\nStandardized rates are ‘artificial’, summaries of a world we do not live in\nWhy should we care what the mortality rate in Scotland would be if it had the Estonian age distribution?\nDecomposition makes comparisons of standardized rates more analytically useful:\n“A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the”observed” crude (or total) rates and the “artificial” standardized rates” (Kitagawa 1955, pp1169–1170)"
+  },
+  {
+    "objectID": "lecture-conceptual.html#decomposition-1",
+    "href": "lecture-conceptual.html#decomposition-1",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Decomposition",
+    "text": "Decomposition\n\nDecomposition lets you say how much of the difference between crude rates of your outcome between your comparison cases are due to the various factors you choose to control for\nIn Kitagawa’s example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is ‘left over’"
   }
 ]

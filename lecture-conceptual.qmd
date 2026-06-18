@@ -87,17 +87,16 @@ options(digits=2)
 
 - I (Ben) wrote my PhD thesis on the 'crime drop' in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level [@matthewsCriminalCareersCrime2017]
 - There is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)
-- Standardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted
+- Standardization and decomposition appealed to me because I was trying to separate out how much of the change in the *aggregate* conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted
 
 ## A conjecture
-- Most quantitative social science (implicitly?) focuses on individuals
-- "while the number of ACEs is a strong predictor of childhood offending, certain types of childhood adversity are of greater importance than others" [@jahanshahiACEsPlacesInequality2022]
-- How does the number of ACEs affect a child's probability of offending?
-- Not - how much of the change in Scotland's child offending rate is due to changes in the prevalence of ACEs?
+- A lot of social science research either aims to identify the 'effect' of some independent variable on an outcome
+- In either an associational or causal way [@hollandStatisticsCausalInference1986]
+- But this is only half the picture
 
 ## A conjecture
-- There is nothing wrong with focusing on individuals!
-- But it's useful to be able to answer questions about macro-level phenomena too, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes
+- The What is Your Estimand? approach to social science splits a target 'estimand' into "a unit-specific quantity ... aggregated over a target population of units" [@lundbergWhatYourEstimand2021, p535]
+- It's useful to be able to answer questions about macro-level phenomena, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes
 - Standardization and decomposition are one way to do this (there are others!)
 
 ## References
