@@ -168,11 +168,12 @@ dg_04_16
 all.equal(
   round(
     c(
-      manual_04_16$prev_rate_std_rate_decomp[[1]],
-      manual_04_16$demog_struct_std_rate_decomp[[1]]
+      manual_04_16$demog_struct_std_rate_decomp[[1]],
+      manual_04_16$prev_rate_std_rate_decomp[[1]]      
     ),
     2
   ),
   dg_04_16$decomp[1:2]
 )
+
 
