@@ -176,4 +176,6 @@ all.equal(
   dg_04_16$decomp[1:2]
 )
 
-
+# this is obviously a huge pain
+# the beauty of the DasGuptR package is that it does all this wrangling for you
+# and scales to as many factors as you like

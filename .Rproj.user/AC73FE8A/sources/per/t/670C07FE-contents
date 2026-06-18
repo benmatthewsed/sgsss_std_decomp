@@ -1,0 +1,92 @@
+---
+title: "Practical 2"
+params: 
+    SHOW_SOLS: TRUE
+    TOGGLE: TRUE
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+source('assets/setup.R')
+library(tidyverse)
+qcounter <- function(){
+  if(!exists("qcounter_i")){
+    qcounter_i <<- 1
+  }else{
+    qcounter_i <<- qcounter_i + 1
+  }
+  qcounter_i
+}
+```
+
+# Example
+geographic shifts in scotland's crime rate
+
+# getting started
+reconvictions
+
+# choose your own
+
+::: {.callout-note collapse="true"}
+#### age-specific death rates in POP1 and POP2
+
+two countries age-specific death rates (deaths / total)  
+Rate = sum( deaths_g / total_g )  
+age-specific deaths will probs be found separately from age-specific population estimates
+
+:::
+
+
+::: {.callout-note collapse="true"}
+#### Rate of Homeless Deaths in Scotland across time 
+
+Homeless death rate_i = A*B
+
+A.  Homeless deaths_i / homeless_applications_i
+B.  Homeless_applications_i / total_population_i
+Groups i = agegroups
+
+:::
+
+::: {.callout-note collapse="true"}
+#### Scotland's Business 5 year Survival Rate
+
+Rate = survivey1/births * survivey3/survivey1 * survivey5/survivey3
+
+do it across sectors i
+
+:::
+
+
+::: {.callout-note collapse="true"}
+#### Scotland's Drug Deaths, two timepoints
+
+rate_age,sex,area
+
+
+:::
+
+
+
+::: {.callout-note collapse="true"}
+#### Scotland's Recycling
+
+
+Total Carbon Impact = population * (generated waste / population) * (carbon impact / generated waste)
+
+split by LAA
+
+
+total tonnage recycled = population * (generated waste / population) * (recycled / generated waste)
+
+time series
+
+
+:::
+
+
+
+

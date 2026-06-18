@@ -1,7 +1,0 @@
-"0","scotlaa |>"
-"0","  mutate("
-"0","    avgprop = mean(n_over60/n_people),"
-"0","    avgover60deathrate = mean(deaths_over60 / n_over60),"
-"0","    stdrate1 = avgprop* (deaths_over60 / n_over60) * 1e3,"
-"0","    stdrate2 = (n_over60/n_people) * avgover60deathrate"
-"0","  )"

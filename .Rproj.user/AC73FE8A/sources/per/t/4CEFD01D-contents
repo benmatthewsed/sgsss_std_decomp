@@ -23,10 +23,13 @@ website:
       - text: "Worksheets"
         menu:
           - workshop01.qmd
-      - text: "Package Paper (Under Review)"
-        href: dgp_preprint.pdf
-      - text: "Das Gupta's 1993 Manual"
-        href: dg1993_manual.pdf
+          - workshop02.qmd
+      - text: "Resources"
+        menu:
+          - text: "DasGuptR Tutorial Paper (Under Review)"
+            href: dgp_preprint.pdf
+          - text: "Das Gupta's 1993 Manual"
+            href: dg1993_manual.pdf
 
 format:
   html:
