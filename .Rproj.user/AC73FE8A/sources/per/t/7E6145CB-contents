@@ -1,0 +1,28 @@
+library(tidyverse)
+df <- read_csv("../../decomp_data/businesssurvival.csv") |> janitor::clean_names() |>
+  fill(cohort) |> 
+  transmute(
+    cohort, industry, births,
+    surv1 = x1_year_survival,
+    surv3 = x3_year_survival,
+    surv5 = x5_year_survival,
+    a = surv5/surv3,
+    b = surv3/surv1,
+    c = surv1/births,
+  ) |> na.omit() |>
+  group_by(cohort) |>
+  mutate(iprop = births/sum(births))
+
+head(df)
+
+df |> group_by(cohort) |>
+  summarise(
+    crude = sum(surv5)/sum(births),
+    crude2= sum(c*b*a*iprop)
+  )
+
+library(DasGuptR)
+df <- df |> arrange(cohort)
+dgnpop(df, pop="cohort",
+       factors=c("a","b","c","iprop"),
+       ratefunction = "sum(a*b*c*iprop)") |> dg_plot()

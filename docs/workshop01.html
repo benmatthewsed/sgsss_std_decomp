@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>workshop-1 – sgsss_decomp</title>
+<title>Practical 1 – sgsss_decomp</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-69c11597d3d4d4de902bb69c5431880a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-33292a589ea9797582940b4560cfe6d3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -133,6 +133,35 @@ if(f.classList.contains('jk-circle-right')) {
 <!---<script src="https://kit.fontawesome.com/120b08a6f5.js" crossorigin="anonymous"></script>-->
 
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -191,18 +220,29 @@ if(f.classList.contains('jk-circle-right')) {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-worksheets">    
         <li>
     <a class="dropdown-item" href="./workshop01.html">
- <span class="dropdown-text">workshop-1</span></a>
+ <span class="dropdown-text">Practical 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./workshop02.html">
+ <span class="dropdown-text">Practical 2</span></a>
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./dgp_preprint.pdf"> 
-<span class="menu-text">Package Paper (Under Review)</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="./dgp_preprint.pdf">
+ <span class="dropdown-text">DasGuptR Tutorial Paper (Under Review)</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./dg1993_manual.pdf"> 
-<span class="menu-text">Das Gupta’s 1993 Manual</span></a>
+        <li>
+    <a class="dropdown-item" href="./dg1993_manual.pdf">
+ <span class="dropdown-text">Das Gupta’s 1993 Manual</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -219,7 +259,9 @@ if(f.classList.contains('jk-circle-right')) {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#find-your-own" id="toc-find-your-own" class="nav-link active" data-scroll-target="#find-your-own">Find your own!</a></li>
+  <li><a href="#example-by-hand---crime-rates-in-scotland-vs-rest-of-uk" id="toc-example-by-hand---crime-rates-in-scotland-vs-rest-of-uk" class="nav-link active" data-scroll-target="#example-by-hand---crime-rates-in-scotland-vs-rest-of-uk">Example by-hand - Crime Rates in Scotland vs Rest of UK</a></li>
+  <li><a href="#get-the-software" id="toc-get-the-software" class="nav-link" data-scroll-target="#get-the-software">Get The Software</a></li>
+  <li><a href="#choose-your-own" id="toc-choose-your-own" class="nav-link" data-scroll-target="#choose-your-own">Choose your own</a></li>
   </ul>
 </nav>
     </div>
@@ -228,7 +270,7 @@ if(f.classList.contains('jk-circle-right')) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">workshop-1</h1>
+<h1 class="title">Practical 1</h1>
 </div>
 
 
@@ -245,39 +287,34 @@ if(f.classList.contains('jk-circle-right')) {
 </header>
 
 
-<section id="find-your-own" class="level1">
-<h1>Find your own!</h1>
-<p>death rates across council areas</p>
-<p>https://www.nrscotland.gov.uk/publications/deaths-time-series-data-2024/</p>
-<ol type="1">
-<li>pick an age group.</li>
-<li>pick two LAAs</li>
-<li>how many deaths in that age group in that year for each LAA?</li>
-<li>how many people were in that age group that year for each LAA?</li>
-<li>what is the crude death rate for each LAA? (ndeaths/total pop)</li>
-<li>what would the death rate for each LAA be if you held the proportion of that age group at the average?</li>
-<li>how much of the difference in crude rates can be attributed to this compositional difference between LAAs?</li>
-</ol>
-<p>EXAMPLE:</p>
-<div class="cell">
+<section id="example-by-hand---crime-rates-in-scotland-vs-rest-of-uk" class="level1">
+<h1>Example by-hand - Crime Rates in Scotland vs Rest of UK</h1>
+<div class="question-begin">
+Question 1
+</div>
+<div class="question-body">
+<p>Here is the data for two Local Authority Areas (LAA) in Scotland.<br>
+The crude birth rate is calculated as the number of births per 1000 people.</p>
+<p>Calculate the birth rate for each LAA</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="wvpxvqxqlq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wvpxvqxqlq table {
+<div id="wrkgibwqeb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wrkgibwqeb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wvpxvqxqlq thead, #wvpxvqxqlq tbody, #wvpxvqxqlq tfoot, #wvpxvqxqlq tr, #wvpxvqxqlq td, #wvpxvqxqlq th {
+#wrkgibwqeb thead, #wrkgibwqeb tbody, #wrkgibwqeb tfoot, #wrkgibwqeb tr, #wrkgibwqeb td, #wrkgibwqeb th {
   border-style: none;
 }
 
-#wvpxvqxqlq p {
+#wrkgibwqeb p {
   margin: 0;
   padding: 0;
 }
 
-#wvpxvqxqlq .gt_table {
+#wrkgibwqeb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -303,12 +340,12 @@ if(f.classList.contains('jk-circle-right')) {
   border-left-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_caption {
+#wrkgibwqeb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wvpxvqxqlq .gt_title {
+#wrkgibwqeb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -320,7 +357,7 @@ if(f.classList.contains('jk-circle-right')) {
   border-bottom-width: 0;
 }
 
-#wvpxvqxqlq .gt_subtitle {
+#wrkgibwqeb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -332,7 +369,7 @@ if(f.classList.contains('jk-circle-right')) {
   border-top-width: 0;
 }
 
-#wvpxvqxqlq .gt_heading {
+#wrkgibwqeb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -344,13 +381,13 @@ if(f.classList.contains('jk-circle-right')) {
   border-right-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_bottom_border {
+#wrkgibwqeb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_col_headings {
+#wrkgibwqeb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -365,7 +402,7 @@ if(f.classList.contains('jk-circle-right')) {
   border-right-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_col_heading {
+#wrkgibwqeb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -385,7 +422,7 @@ if(f.classList.contains('jk-circle-right')) {
   overflow-x: hidden;
 }
 
-#wvpxvqxqlq .gt_column_spanner_outer {
+#wrkgibwqeb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -397,15 +434,15 @@ if(f.classList.contains('jk-circle-right')) {
   padding-right: 4px;
 }
 
-#wvpxvqxqlq .gt_column_spanner_outer:first-child {
+#wrkgibwqeb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wvpxvqxqlq .gt_column_spanner_outer:last-child {
+#wrkgibwqeb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wvpxvqxqlq .gt_column_spanner {
+#wrkgibwqeb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -417,11 +454,11 @@ if(f.classList.contains('jk-circle-right')) {
   width: 100%;
 }
 
-#wvpxvqxqlq .gt_spanner_row {
+#wrkgibwqeb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wvpxvqxqlq .gt_group_heading {
+#wrkgibwqeb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -447,7 +484,7 @@ if(f.classList.contains('jk-circle-right')) {
   text-align: left;
 }
 
-#wvpxvqxqlq .gt_empty_group_heading {
+#wrkgibwqeb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -462,15 +499,15 @@ if(f.classList.contains('jk-circle-right')) {
   vertical-align: middle;
 }
 
-#wvpxvqxqlq .gt_from_md > :first-child {
+#wrkgibwqeb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wvpxvqxqlq .gt_from_md > :last-child {
+#wrkgibwqeb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wvpxvqxqlq .gt_row {
+#wrkgibwqeb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -489,7 +526,7 @@ if(f.classList.contains('jk-circle-right')) {
   overflow-x: hidden;
 }
 
-#wvpxvqxqlq .gt_stub {
+#wrkgibwqeb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -502,7 +539,7 @@ if(f.classList.contains('jk-circle-right')) {
   padding-right: 5px;
 }
 
-#wvpxvqxqlq .gt_stub_row_group {
+#wrkgibwqeb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -516,15 +553,15 @@ if(f.classList.contains('jk-circle-right')) {
   vertical-align: top;
 }
 
-#wvpxvqxqlq .gt_row_group_first td {
+#wrkgibwqeb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wvpxvqxqlq .gt_row_group_first th {
+#wrkgibwqeb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wvpxvqxqlq .gt_summary_row {
+#wrkgibwqeb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -534,16 +571,16 @@ if(f.classList.contains('jk-circle-right')) {
   padding-right: 5px;
 }
 
-#wvpxvqxqlq .gt_first_summary_row {
+#wrkgibwqeb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_first_summary_row.thick {
+#wrkgibwqeb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wvpxvqxqlq .gt_last_summary_row {
+#wrkgibwqeb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -553,7 +590,7 @@ if(f.classList.contains('jk-circle-right')) {
   border-bottom-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_grand_summary_row {
+#wrkgibwqeb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -563,7 +600,7 @@ if(f.classList.contains('jk-circle-right')) {
   padding-right: 5px;
 }
 
-#wvpxvqxqlq .gt_first_grand_summary_row {
+#wrkgibwqeb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -573,7 +610,7 @@ if(f.classList.contains('jk-circle-right')) {
   border-top-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_last_grand_summary_row_top {
+#wrkgibwqeb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -583,11 +620,11 @@ if(f.classList.contains('jk-circle-right')) {
   border-bottom-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_striped {
+#wrkgibwqeb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wvpxvqxqlq .gt_table_body {
+#wrkgibwqeb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -596,7 +633,7 @@ if(f.classList.contains('jk-circle-right')) {
   border-bottom-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_footnotes {
+#wrkgibwqeb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -610,7 +647,7 @@ if(f.classList.contains('jk-circle-right')) {
   border-right-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_footnote {
+#wrkgibwqeb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -619,7 +656,7 @@ if(f.classList.contains('jk-circle-right')) {
   padding-right: 5px;
 }
 
-#wvpxvqxqlq .gt_sourcenotes {
+#wrkgibwqeb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -633,7 +670,7 @@ if(f.classList.contains('jk-circle-right')) {
   border-right-color: #D3D3D3;
 }
 
-#wvpxvqxqlq .gt_sourcenote {
+#wrkgibwqeb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -641,72 +678,72 @@ if(f.classList.contains('jk-circle-right')) {
   padding-right: 5px;
 }
 
-#wvpxvqxqlq .gt_left {
+#wrkgibwqeb .gt_left {
   text-align: left;
 }
 
-#wvpxvqxqlq .gt_center {
+#wrkgibwqeb .gt_center {
   text-align: center;
 }
 
-#wvpxvqxqlq .gt_right {
+#wrkgibwqeb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wvpxvqxqlq .gt_font_normal {
+#wrkgibwqeb .gt_font_normal {
   font-weight: normal;
 }
 
-#wvpxvqxqlq .gt_font_bold {
+#wrkgibwqeb .gt_font_bold {
   font-weight: bold;
 }
 
-#wvpxvqxqlq .gt_font_italic {
+#wrkgibwqeb .gt_font_italic {
   font-style: italic;
 }
 
-#wvpxvqxqlq .gt_super {
+#wrkgibwqeb .gt_super {
   font-size: 65%;
 }
 
-#wvpxvqxqlq .gt_footnote_marks {
+#wrkgibwqeb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wvpxvqxqlq .gt_asterisk {
+#wrkgibwqeb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wvpxvqxqlq .gt_indent_1 {
+#wrkgibwqeb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wvpxvqxqlq .gt_indent_2 {
+#wrkgibwqeb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wvpxvqxqlq .gt_indent_3 {
+#wrkgibwqeb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wvpxvqxqlq .gt_indent_4 {
+#wrkgibwqeb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wvpxvqxqlq .gt_indent_5 {
+#wrkgibwqeb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wvpxvqxqlq .katex-display {
+#wrkgibwqeb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wvpxvqxqlq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wrkgibwqeb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -714,36 +751,27 @@ if(f.classList.contains('jk-circle-right')) {
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
-<th id="laa" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">laa</th>
+<th id="LAA" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LAA</th>
 <th id="n_people" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_people</th>
-<th id="n_over60" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_over60</th>
-<th id="deaths_over60" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">deaths_over60</th>
+<th id="n_women15to44" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_women15to44</th>
+<th id="n_births" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_births</th>
+<th id="birth_rate" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">birth_rate</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="laa">Glasgow City</td>
+<td class="gt_row gt_left" headers="LAA">Glasgow City</td>
 <td class="gt_row gt_right" headers="n_people">650300</td>
-<td class="gt_row gt_right" headers="n_over60">128902</td>
-<td class="gt_row gt_right" headers="deaths_over60">5287</td>
+<td class="gt_row gt_right" headers="n_women15to44">161105</td>
+<td class="gt_row gt_right" headers="n_births">6150</td>
+<td class="gt_row gt_left" headers="birth_rate">?</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="laa">Edinburgh</td>
-<td class="gt_row gt_right" headers="n_people">530680</td>
-<td class="gt_row gt_right" headers="n_over60">113979</td>
-<td class="gt_row gt_right" headers="deaths_over60">3877</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="laa">...</td>
-<td class="gt_row gt_right" headers="n_people">...</td>
-<td class="gt_row gt_right" headers="n_over60">...</td>
-<td class="gt_row gt_right" headers="deaths_over60">...</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="laa">...</td>
-<td class="gt_row gt_right" headers="n_people">...</td>
-<td class="gt_row gt_right" headers="n_over60">...</td>
-<td class="gt_row gt_right" headers="deaths_over60">...</td>
+<td class="gt_row gt_left" headers="LAA">Stirling</td>
+<td class="gt_row gt_right" headers="n_people">94210</td>
+<td class="gt_row gt_right" headers="n_women15to44">17844</td>
+<td class="gt_row gt_right" headers="n_births">659</td>
+<td class="gt_row gt_left" headers="birth_rate">?</td>
 </tr>
 </tbody>
 </table>
@@ -751,95 +779,3259 @@ if(f.classList.contains('jk-circle-right')) {
 </div>
 </div>
 </div>
-<p>crude rates and showing that r = a*b</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>scotlaa <span class="sc">|&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cruderate =</span> deaths_over60<span class="sc">/</span>n_people<span class="sc">*</span><span class="fl">1e3</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_over60 =</span> n_over60<span class="sc">/</span>n_people,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">over60_deathrate =</span> deaths_over60 <span class="sc">/</span> n_over60,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cruderate2 =</span> prop_over60 <span class="sc">*</span> over60_deathrate<span class="sc">*</span><span class="fl">1e3</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 8
-  laa     n_people n_over60 deaths_over60 cruderate prop_over60 over60_deathrate
-  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;            &lt;dbl&gt;
-1 Glasgo…   650300   128902          5287      8.13       0.198           0.0410
-2 Edinbu…   530680   113979          3877      7.31       0.215           0.0340
-# ℹ 1 more variable: cruderate2 &lt;dbl&gt;</code></pre>
 </div>
+<p class="question-end">
+</p>
+<div class="solution-begin">
+<button id="sol-start-1" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-1', 'sol-start-1')">
+Solution
+</button>
 </div>
-<p>std rates</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>scotlaa <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">avgprop =</span> <span class="fu">mean</span>(n_over60<span class="sc">/</span>n_people),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">avgover60deathrate =</span> <span class="fu">mean</span>(deaths_over60 <span class="sc">/</span> n_over60),</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">stdrate1 =</span> avgprop<span class="sc">*</span> (deaths_over60 <span class="sc">/</span> n_over60) <span class="sc">*</span> <span class="fl">1e3</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">stdrate2 =</span> (n_over60<span class="sc">/</span>n_people) <span class="sc">*</span> avgover60deathrate</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 8
-  laa        n_people n_over60 deaths_over60 avgprop avgover60deathrate stdrate1
-  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;              &lt;dbl&gt;    &lt;dbl&gt;
-1 Glasgow C…   650300   128902          5287   0.206             0.0375     8.47
-2 Edinburgh    530680   113979          3877   0.206             0.0375     7.02
-# ℹ 1 more variable: stdrate2 &lt;dbl&gt;</code></pre>
-</div>
-</div>
-<p>decomp</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>scotlaa <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">avgprop =</span> <span class="fu">mean</span>(n_over60<span class="sc">/</span>n_people),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">avgover60deathrate =</span> <span class="fu">mean</span>(deaths_over60 <span class="sc">/</span> n_over60),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">stdrate1 =</span> avgprop<span class="sc">*</span> (deaths_over60 <span class="sc">/</span> n_over60) <span class="sc">*</span> <span class="fl">1e3</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">stdrate2 =</span> (n_over60<span class="sc">/</span>n_people) <span class="sc">*</span> avgover60deathrate <span class="sc">*</span> <span class="fl">1e3</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">cr =</span> deaths_over60<span class="sc">/</span>n_people<span class="sc">*</span><span class="fl">1e3</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">select</span>(stdrate1,stdrate2,cr) <span class="sc">|&gt;</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply</span>(<span class="dv">2</span>,diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  stdrate1   stdrate2         cr 
--1.4456220  0.6212492 -0.8243728 </code></pre>
-</div>
-</div>
-<p>of the crude rate difference (Edinburgh is 0.82 deaths per 1000 lower than glasgow), 175% this difference would happen if they only differed in the ‘over60s death rate’.</p>
-<p>-75% of the difference would happen if they only differed in the age demographic. i.e., Edinburgh would have a higher death rate than glasgow!</p>
-<ul>
-<li>-1.4456220 / -0.8243728 * 100 = 175<br>
-</li>
-<li>0.6212492 / -0.8243728 *100 = -75</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'DasGuptR'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:datasets':
+<div id="sol-body-1" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 1</em>. </span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="hkilvaobru" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hkilvaobru table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    uspop</code></pre>
+#hkilvaobru thead, #hkilvaobru tbody, #hkilvaobru tfoot, #hkilvaobru tr, #hkilvaobru td, #hkilvaobru th {
+  border-style: none;
+}
+
+#hkilvaobru p {
+  margin: 0;
+  padding: 0;
+}
+
+#hkilvaobru .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hkilvaobru .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hkilvaobru .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hkilvaobru .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hkilvaobru .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hkilvaobru .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hkilvaobru .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hkilvaobru .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hkilvaobru .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hkilvaobru .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hkilvaobru .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hkilvaobru .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hkilvaobru .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hkilvaobru .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hkilvaobru .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hkilvaobru .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hkilvaobru .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hkilvaobru .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hkilvaobru .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hkilvaobru .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hkilvaobru .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hkilvaobru .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hkilvaobru .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hkilvaobru .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hkilvaobru .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hkilvaobru .gt_left {
+  text-align: left;
+}
+
+#hkilvaobru .gt_center {
+  text-align: center;
+}
+
+#hkilvaobru .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hkilvaobru .gt_font_normal {
+  font-weight: normal;
+}
+
+#hkilvaobru .gt_font_bold {
+  font-weight: bold;
+}
+
+#hkilvaobru .gt_font_italic {
+  font-style: italic;
+}
+
+#hkilvaobru .gt_super {
+  font-size: 65%;
+}
+
+#hkilvaobru .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hkilvaobru .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hkilvaobru .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hkilvaobru .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hkilvaobru .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hkilvaobru .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hkilvaobru .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hkilvaobru .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hkilvaobru div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="LAA" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LAA</th>
+<th id="n_people" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_people</th>
+<th id="n_women15to44" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_women15to44</th>
+<th id="n_births" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_births</th>
+<th id="birth_rate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">birth_rate</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="LAA">Glasgow City</td>
+<td class="gt_row gt_right" headers="n_people">650300</td>
+<td class="gt_row gt_right" headers="n_women15to44">161105</td>
+<td class="gt_row gt_right" headers="n_births">6150</td>
+<td class="gt_row gt_right" headers="birth_rate">9.46</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="LAA">Stirling</td>
+<td class="gt_row gt_right" headers="n_people">94210</td>
+<td class="gt_row gt_right" headers="n_women15to44">17844</td>
+<td class="gt_row gt_right" headers="n_births">659</td>
+<td class="gt_row gt_right" headers="birth_rate">7.00</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>scotlaa <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_over60 =</span> n_over60<span class="sc">/</span>n_people,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">over60_deathrate =</span> deaths_over60 <span class="sc">/</span> n_over60,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dgnpop</span>(</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">pop=</span><span class="st">"laa"</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"prop_over60"</span>,<span class="st">"over60_deathrate"</span>),</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ratefunction=</span><span class="st">"prop_over60*over60_deathrate*1e3"</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-DG decomposition being conducted with R = prop_over60*over60_deathrate*1e3</code></pre>
 </div>
+</div>
+</div>
+<p class="solution-end">
+</p>
+<div class="question-begin">
+Question 2
+</div>
+<div class="question-body">
+<p>We can decompose this into two components: the number of births per “woman of child bearing age”(Scotland uses ages 15-44)“, and the proportion of the population that are women aged 15-44.</p>
+<p>Calculate these below, and then multiply them to demonstrate to yourselves that this returns the same rates as the previous question.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="feklawepdy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#feklawepdy table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#feklawepdy thead, #feklawepdy tbody, #feklawepdy tfoot, #feklawepdy tr, #feklawepdy td, #feklawepdy th {
+  border-style: none;
+}
+
+#feklawepdy p {
+  margin: 0;
+  padding: 0;
+}
+
+#feklawepdy .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#feklawepdy .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#feklawepdy .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#feklawepdy .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#feklawepdy .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#feklawepdy .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#feklawepdy .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#feklawepdy .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#feklawepdy .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#feklawepdy .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#feklawepdy .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#feklawepdy .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#feklawepdy .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#feklawepdy .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#feklawepdy .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#feklawepdy .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#feklawepdy .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#feklawepdy .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#feklawepdy .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#feklawepdy .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#feklawepdy .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#feklawepdy .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#feklawepdy .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#feklawepdy .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#feklawepdy .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#feklawepdy .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#feklawepdy .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#feklawepdy .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#feklawepdy .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#feklawepdy .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#feklawepdy .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#feklawepdy .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#feklawepdy .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#feklawepdy .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#feklawepdy .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#feklawepdy .gt_left {
+  text-align: left;
+}
+
+#feklawepdy .gt_center {
+  text-align: center;
+}
+
+#feklawepdy .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#feklawepdy .gt_font_normal {
+  font-weight: normal;
+}
+
+#feklawepdy .gt_font_bold {
+  font-weight: bold;
+}
+
+#feklawepdy .gt_font_italic {
+  font-style: italic;
+}
+
+#feklawepdy .gt_super {
+  font-size: 65%;
+}
+
+#feklawepdy .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#feklawepdy .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#feklawepdy .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#feklawepdy .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#feklawepdy .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#feklawepdy .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#feklawepdy .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#feklawepdy .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#feklawepdy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="LAA" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LAA</th>
+<th id="n_people" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_people</th>
+<th id="n_women15to44" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_women15to44</th>
+<th id="n_births" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_births</th>
+<th id="births-/-w15-44" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">births / w15-44</th>
+<th id="w15-44-/-people" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">w15-44 / people</th>
+<th id="birth_rate" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">birth_rate</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="LAA">Glasgow City</td>
+<td class="gt_row gt_right" headers="n_people">650300</td>
+<td class="gt_row gt_right" headers="n_women15to44">161105</td>
+<td class="gt_row gt_right" headers="n_births">6150</td>
+<td class="gt_row gt_left" headers="births / w15-44">A1</td>
+<td class="gt_row gt_left" headers="w15-44 / people">B1</td>
+<td class="gt_row gt_left" headers="birth_rate">A1 * B1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="LAA">Stirling</td>
+<td class="gt_row gt_right" headers="n_people">94210</td>
+<td class="gt_row gt_right" headers="n_women15to44">17844</td>
+<td class="gt_row gt_right" headers="n_births">659</td>
+<td class="gt_row gt_left" headers="births / w15-44">A2</td>
+<td class="gt_row gt_left" headers="w15-44 / people">B2</td>
+<td class="gt_row gt_left" headers="birth_rate">A2 * B2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p class="question-end">
+</p>
+<div class="solution-begin">
+<button id="sol-start-2" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-2', 'sol-start-2')">
+Solution
+</button>
+</div>
+<div id="sol-body-2" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 2</em>. </span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="wxkavocnlo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wxkavocnlo table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wxkavocnlo thead, #wxkavocnlo tbody, #wxkavocnlo tfoot, #wxkavocnlo tr, #wxkavocnlo td, #wxkavocnlo th {
+  border-style: none;
+}
+
+#wxkavocnlo p {
+  margin: 0;
+  padding: 0;
+}
+
+#wxkavocnlo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wxkavocnlo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wxkavocnlo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wxkavocnlo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wxkavocnlo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wxkavocnlo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wxkavocnlo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wxkavocnlo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wxkavocnlo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wxkavocnlo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wxkavocnlo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wxkavocnlo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wxkavocnlo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wxkavocnlo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wxkavocnlo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wxkavocnlo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wxkavocnlo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wxkavocnlo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wxkavocnlo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wxkavocnlo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wxkavocnlo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wxkavocnlo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wxkavocnlo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wxkavocnlo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wxkavocnlo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wxkavocnlo .gt_left {
+  text-align: left;
+}
+
+#wxkavocnlo .gt_center {
+  text-align: center;
+}
+
+#wxkavocnlo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wxkavocnlo .gt_font_normal {
+  font-weight: normal;
+}
+
+#wxkavocnlo .gt_font_bold {
+  font-weight: bold;
+}
+
+#wxkavocnlo .gt_font_italic {
+  font-style: italic;
+}
+
+#wxkavocnlo .gt_super {
+  font-size: 65%;
+}
+
+#wxkavocnlo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wxkavocnlo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wxkavocnlo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wxkavocnlo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wxkavocnlo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wxkavocnlo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wxkavocnlo .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wxkavocnlo .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wxkavocnlo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="LAA" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LAA</th>
+<th id="n_people" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_people</th>
+<th id="n_women15to44" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_women15to44</th>
+<th id="n_births" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_births</th>
+<th id="births-/-w15-44-*-1000" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">births / w15-44 * 1000</th>
+<th id="w15-44-/-people" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">w15-44 / people</th>
+<th id="birth_rate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">birth_rate</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="LAA">Glasgow City</td>
+<td class="gt_row gt_right" headers="n_people">650300</td>
+<td class="gt_row gt_right" headers="n_women15to44">161105</td>
+<td class="gt_row gt_right" headers="n_births">6150</td>
+<td class="gt_row gt_right" headers="births / w15-44 * 1000">38.174</td>
+<td class="gt_row gt_right" headers="w15-44 / people">0.248</td>
+<td class="gt_row gt_right" headers="birth_rate">9.47</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="LAA">Stirling</td>
+<td class="gt_row gt_right" headers="n_people">94210</td>
+<td class="gt_row gt_right" headers="n_women15to44">17844</td>
+<td class="gt_row gt_right" headers="n_births">659</td>
+<td class="gt_row gt_right" headers="births / w15-44 * 1000">36.931</td>
+<td class="gt_row gt_right" headers="w15-44 / people">0.189</td>
+<td class="gt_row gt_right" headers="birth_rate">6.98</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p class="solution-end">
+</p>
+<div class="question-begin">
+Question 3
+</div>
+<div class="question-body">
+<p>What would Stirling’s birth rate be if:</p>
+<ol type="1">
+<li>Women aged 15-44 made up the same proportion of its population as they do for Glasgow?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hints
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="hjwszysxel" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hjwszysxel table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hjwszysxel thead, #hjwszysxel tbody, #hjwszysxel tfoot, #hjwszysxel tr, #hjwszysxel td, #hjwszysxel th {
+  border-style: none;
+}
+
+#hjwszysxel p {
+  margin: 0;
+  padding: 0;
+}
+
+#hjwszysxel .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hjwszysxel .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hjwszysxel .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hjwszysxel .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hjwszysxel .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hjwszysxel .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hjwszysxel .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hjwszysxel .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hjwszysxel .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hjwszysxel .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hjwszysxel .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hjwszysxel .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hjwszysxel .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hjwszysxel .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hjwszysxel .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hjwszysxel .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hjwszysxel .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hjwszysxel .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hjwszysxel .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hjwszysxel .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hjwszysxel .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hjwszysxel .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hjwszysxel .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hjwszysxel .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hjwszysxel .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hjwszysxel .gt_left {
+  text-align: left;
+}
+
+#hjwszysxel .gt_center {
+  text-align: center;
+}
+
+#hjwszysxel .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hjwszysxel .gt_font_normal {
+  font-weight: normal;
+}
+
+#hjwszysxel .gt_font_bold {
+  font-weight: bold;
+}
+
+#hjwszysxel .gt_font_italic {
+  font-style: italic;
+}
+
+#hjwszysxel .gt_super {
+  font-size: 65%;
+}
+
+#hjwszysxel .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hjwszysxel .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hjwszysxel .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hjwszysxel .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hjwszysxel .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hjwszysxel .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hjwszysxel .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hjwszysxel .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hjwszysxel div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="LAA" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LAA</th>
+<th id="n_people" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_people</th>
+<th id="n_women15to44" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_women15to44</th>
+<th id="n_births" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_births</th>
+<th id="births-/-w15-44" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">births / w15-44</th>
+<th id="w15-44-/-people" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">w15-44 / people</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="LAA">Glasgow City</td>
+<td class="gt_row gt_right" headers="n_people">650300</td>
+<td class="gt_row gt_right" headers="n_women15to44">161105</td>
+<td class="gt_row gt_right" headers="n_births">6150</td>
+<td class="gt_row gt_left" headers="births / w15-44">A1</td>
+<td class="gt_row gt_left" headers="w15-44 / people">B1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="LAA">Stirling</td>
+<td class="gt_row gt_right" headers="n_people">94210</td>
+<td class="gt_row gt_right" headers="n_women15to44">17844</td>
+<td class="gt_row gt_right" headers="n_births">659</td>
+<td class="gt_row gt_left" headers="births / w15-44">A2</td>
+<td class="gt_row gt_left" headers="w15-44 / people">B2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>A2 * B1!</p>
+</div>
+</div>
+</div>
+</div>
+<p class="question-end">
+</p>
+<div class="solution-begin">
+<button id="sol-start-3" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-3', 'sol-start-3')">
+Solution
+</button>
+</div>
+<div id="sol-body-3" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 3</em>. </span></p>
+</div>
+<p class="solution-end">
+</p>
+<div class="question-begin">
+Question 4
+</div>
+<div class="question-body">
+<p>What would each LAA’s birth rates be if:</p>
+<ul>
+<li>The proportion of the population comprised of women aged 15-44 was the same in both populations (i.e., at the average of the two)</li>
+<li>The rates of births in women aged 15-44 were the same in both populations (i.e., at the average of the two)</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hints
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="ykcwwzhwin" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ykcwwzhwin table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ykcwwzhwin thead, #ykcwwzhwin tbody, #ykcwwzhwin tfoot, #ykcwwzhwin tr, #ykcwwzhwin td, #ykcwwzhwin th {
+  border-style: none;
+}
+
+#ykcwwzhwin p {
+  margin: 0;
+  padding: 0;
+}
+
+#ykcwwzhwin .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ykcwwzhwin .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ykcwwzhwin .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ykcwwzhwin .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ykcwwzhwin .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ykcwwzhwin .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ykcwwzhwin .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ykcwwzhwin .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ykcwwzhwin .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ykcwwzhwin .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ykcwwzhwin .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ykcwwzhwin .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ykcwwzhwin .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ykcwwzhwin .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ykcwwzhwin .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ykcwwzhwin .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ykcwwzhwin .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ykcwwzhwin .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ykcwwzhwin .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ykcwwzhwin .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ykcwwzhwin .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ykcwwzhwin .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ykcwwzhwin .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ykcwwzhwin .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ykcwwzhwin .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ykcwwzhwin .gt_left {
+  text-align: left;
+}
+
+#ykcwwzhwin .gt_center {
+  text-align: center;
+}
+
+#ykcwwzhwin .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ykcwwzhwin .gt_font_normal {
+  font-weight: normal;
+}
+
+#ykcwwzhwin .gt_font_bold {
+  font-weight: bold;
+}
+
+#ykcwwzhwin .gt_font_italic {
+  font-style: italic;
+}
+
+#ykcwwzhwin .gt_super {
+  font-size: 65%;
+}
+
+#ykcwwzhwin .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ykcwwzhwin .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ykcwwzhwin .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ykcwwzhwin .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ykcwwzhwin .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ykcwwzhwin .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ykcwwzhwin .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ykcwwzhwin .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ykcwwzhwin div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="LAA" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LAA</th>
+<th id="n_people" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_people</th>
+<th id="n_women15to44" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_women15to44</th>
+<th id="n_births" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_births</th>
+<th id="births-/-w15-44" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">births / w15-44</th>
+<th id="w15-44-/-people" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">w15-44 / people</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="LAA">Glasgow City</td>
+<td class="gt_row gt_right" headers="n_people">650300</td>
+<td class="gt_row gt_right" headers="n_women15to44">161105</td>
+<td class="gt_row gt_right" headers="n_births">6150</td>
+<td class="gt_row gt_left" headers="births / w15-44">A1</td>
+<td class="gt_row gt_left" headers="w15-44 / people">B1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="LAA">Stirling</td>
+<td class="gt_row gt_right" headers="n_people">94210</td>
+<td class="gt_row gt_right" headers="n_women15to44">17844</td>
+<td class="gt_row gt_right" headers="n_births">659</td>
+<td class="gt_row gt_left" headers="births / w15-44">A2</td>
+<td class="gt_row gt_left" headers="w15-44 / people">B2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>A1 * ((B1+B2)/2)<br>
+A2 * ((B1+B2)/2)<br>
+and<br>
+B1 * ((A1+A2)/2)<br>
+B2 * ((A1+A2)/2)</p>
+</div>
+</div>
+</div>
+</div>
+<p class="question-end">
+</p>
+<div class="solution-begin">
+<button id="sol-start-4" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-4', 'sol-start-4')">
+Solution
+</button>
+</div>
+<div id="sol-body-4" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 4</em>. </span></p>
+</div>
+<p class="solution-end">
+</p>
+<div class="question-begin">
+Question 5
+</div>
+<div class="question-body">
+<p>The differences between these two pairs of standardised rates (when using the average of the two populations as the reference) provides the contribution of each factor on the total crude rate difference.</p>
+<p>Stirling has a crude birth rate that is ~2.5 births per 1000 people fewer than Glasgow.<br>
+How much of this is due to Stirling having relatively fewer ‘women of child bearing age’?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hints
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>(B2 - B1)* ((A1+A2)/2) / 2.5</p>
+</div>
+</div>
+</div>
+</div>
+<p class="question-end">
+</p>
+<div class="solution-begin">
+<button id="sol-start-5" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-5', 'sol-start-5')">
+Solution
+</button>
+</div>
+<div id="sol-body-5" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 5</em>. </span></p>
+</div>
+<p class="solution-end">
+</p>
+</section>
+<section id="get-the-software" class="level1">
+<h1>Get The Software</h1>
+<div class="question-begin">
+Question 6
+</div>
+<div class="question-body">
+<p>Get either R or Stata open, and install the various packages.</p>
+<p>In R: <strong>DasGuptR</strong><br>
+we would recommend installing the development version</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(remotes)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">"josiahpjking/DasGuptR@develop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In Stata: <strong>rdecompose</strong></p>
+</div>
+<p class="question-end">
+</p>
+<div class="question-begin">
+Question 7
+</div>
+<div class="question-body">
+<p>Here’s the data for you to get it into R.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">LAA =</span> <span class="fu">c</span>(<span class="st">"Glasgow City"</span>,<span class="st">"Stirling"</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_people =</span> <span class="fu">c</span>(<span class="dv">650300</span>,<span class="dv">94210</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women15to44 =</span> <span class="fu">c</span>(<span class="dv">161105</span>,<span class="dv">17844</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_births =</span> <span class="fu">c</span>(<span class="dv">6150</span>,<span class="dv">659</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create the new factors, and use <code>dgnpop()</code> to conduct the decomposition.<br>
+Check that it matches your calculations above.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> p01 <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">factorA =</span>  ????</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">factorB =</span>  ???</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>dres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> ???, </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"???"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"???"</span>,<span class="st">"???"</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p class="question-end">
+</p>
+<div class="solution-begin">
+<button id="sol-start-6" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-6', 'sol-start-6')">
+Solution
+</button>
+</div>
+<div id="sol-body-6" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 6</em>. </span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> p01 <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">factorA =</span>  n_births<span class="sc">/</span>n_women15to44,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">factorB =</span>  n_women15to44<span class="sc">/</span>n_people</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>dres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> p01, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"LAA"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"factorA"</span>,<span class="st">"factorB"</span>))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                 Edinburgh Glasgow City       diff decomp
-prop_over60       8.057514     7.436265 -0.6212492 -75.36
-over60_deathrate  7.024079     8.469701  1.4456220 175.36
-crude             7.305721     8.130094  0.8243728 100.00</code></pre>
+<pre><code>        Glasgow City    Stirling          diff decomp
+factorA  0.008343778 0.008072162 -0.0002716165  11.03
+factorB  0.009303243 0.007112697 -0.0021905460  88.97
+crude    0.009457174 0.006995011 -0.0024621625 100.00</code></pre>
+</div>
+</div>
+</div>
+<p class="solution-end">
+</p>
+<div class="question-begin">
+Question 8
+</div>
+<div class="question-body">
+<p>We can split the birth rate further, into the proportion of women:</p>
+<p><span class="math display">\[
+Rate = \frac{\text{women}}{\text{people}} \cdot \frac{\text{women 15-44}}{\text{women}} \cdot \frac{\text{births}}{\text{women 15-44}}
+\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p01a <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">LAA =</span> <span class="fu">c</span>(<span class="st">"Glasgow City"</span>,<span class="st">"Stirling"</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_people =</span> <span class="fu">c</span>(<span class="dv">650300</span>,<span class="dv">94210</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women =</span> <span class="fu">c</span>(<span class="dv">332054</span>, <span class="dv">48731</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women15to44 =</span> <span class="fu">c</span>(<span class="dv">161105</span>,<span class="dv">17844</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_births =</span> <span class="fu">c</span>(<span class="dv">6150</span>,<span class="dv">659</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p class="question-end">
+</p>
+<div class="solution-begin">
+<button id="sol-start-7" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-7', 'sol-start-7')">
+Solution
+</button>
+</div>
+<div id="sol-body-7" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 7</em>. </span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p01a <span class="ot">&lt;-</span> p01a <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">fa =</span> n_births<span class="sc">/</span>n_women15to44,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fb =</span> n_women15to44<span class="sc">/</span>n_women,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fc =</span> n_women<span class="sc">/</span>n_people</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(p01a,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"LAA"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"fa"</span>,<span class="st">"fb"</span>,<span class="st">"fc"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Glasgow City    Stirling          diff decomp
+fa     0.008348808 0.008077028 -0.0002717802  11.04
+fb     0.009363423 0.007066774 -0.0022966485  93.28
+fc     0.008168592 0.008274858  0.0001062662  -4.32
+crude  0.009457174 0.006995011 -0.0024621625 100.00</code></pre>
+</div>
+</div>
+</div>
+<p class="solution-end">
+</p>
+</section>
+<section id="choose-your-own" class="level1">
+<h1>Choose your own</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Birth Rates Across England and Scotland
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Avg Earnings in Black and White Populations (Das Gupta Example 2.1)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Gender Earnings-Gap
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In 2025 in the UK, the total weekly earnings per working age man was £179. The total weekly earnings per working aged woman was £7.</p>
+<p>This difference could be due to:</p>
+<ul>
+<li>a greater number of men in the “labour force” (people who are employed or actively seeking employent. it excludes students etc).<br>
+</li>
+<li>more employment for men in the labour force compared to women in the labour force</li>
+<li>men working more hours per work than women (i.e., fewer part time roles)</li>
+<li>a higher average hourly wage for men compared to women (this is the “gender pay gap”, unadjusted for specific role)</li>
+</ul>
+<p>You can find this data for a whole load of different countries at <a href="https://ilostat.ilo.org/data/?cat_mode=subject" target="_blank">https://ilostat.ilo.org/data/?cat_mode=subject</a>, if you would like to do this for somewhere else.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="bkyubcwydl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bkyubcwydl table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#bkyubcwydl thead, #bkyubcwydl tbody, #bkyubcwydl tfoot, #bkyubcwydl tr, #bkyubcwydl td, #bkyubcwydl th {
+  border-style: none;
+}
+
+#bkyubcwydl p {
+  margin: 0;
+  padding: 0;
+}
+
+#bkyubcwydl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#bkyubcwydl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bkyubcwydl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bkyubcwydl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bkyubcwydl .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bkyubcwydl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bkyubcwydl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bkyubcwydl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bkyubcwydl .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bkyubcwydl .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#bkyubcwydl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bkyubcwydl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bkyubcwydl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bkyubcwydl .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bkyubcwydl .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkyubcwydl .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bkyubcwydl .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bkyubcwydl .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bkyubcwydl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkyubcwydl .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bkyubcwydl .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkyubcwydl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bkyubcwydl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkyubcwydl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bkyubcwydl .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkyubcwydl .gt_left {
+  text-align: left;
+}
+
+#bkyubcwydl .gt_center {
+  text-align: center;
+}
+
+#bkyubcwydl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bkyubcwydl .gt_font_normal {
+  font-weight: normal;
+}
+
+#bkyubcwydl .gt_font_bold {
+  font-weight: bold;
+}
+
+#bkyubcwydl .gt_font_italic {
+  font-style: italic;
+}
+
+#bkyubcwydl .gt_super {
+  font-size: 65%;
+}
+
+#bkyubcwydl .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#bkyubcwydl .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bkyubcwydl .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#bkyubcwydl .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#bkyubcwydl .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bkyubcwydl .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bkyubcwydl .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#bkyubcwydl .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#bkyubcwydl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="pop" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">pop</th>
+<th id="working_agepop" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">working_agepop</th>
+<th id="labourforce" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">labourforce</th>
+<th id="employees" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">employees</th>
+<th id="total_weekly_earnings" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">total_weekly_earnings</th>
+<th id="avg_hours_worked" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">avg_hours_worked</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="pop">males</td>
+<td class="gt_row gt_right" headers="working_agepop">23718900</td>
+<td class="gt_row gt_right" headers="labourforce">18442860</td>
+<td class="gt_row gt_right" headers="employees">4823169</td>
+<td class="gt_row gt_right" headers="total_weekly_earnings">4240916038</td>
+<td class="gt_row gt_right" headers="avg_hours_worked">37.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="pop">females</td>
+<td class="gt_row gt_right" headers="working_agepop">24613110</td>
+<td class="gt_row gt_right" headers="labourforce">5767405</td>
+<td class="gt_row gt_right" headers="employees">280557</td>
+<td class="gt_row gt_right" headers="total_weekly_earnings">178762504</td>
+<td class="gt_row gt_right" headers="avg_hours_worked">31.7</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
