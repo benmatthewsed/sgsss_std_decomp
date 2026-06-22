@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
-  <title>sgsss_decomp – 2 and 3 factor decomposition</title>
+  <title>SGSSS Decomp Workshop 2026 – 2 and 3 factor decomposition</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -346,18 +346,54 @@
 <img data-src="pres1/Slide34.PNG" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="decomposition---dasguptr" class="slide level2">
 <h2>Decomposition - {DasGuptR}</h2>
+<p><strong>Why?</strong></p>
+<ul>
+<li><p>developed because we shared an office back in 2019.</p></li>
+<li><p>implements all of Das Gupta’s 1993 manual:</p>
+<ul>
+<li>K factors</li>
+<li>arbitrary rate functions (not just products)</li>
+<li>crossclassified data structures</li>
+<li>N populations</li>
+</ul></li>
+</ul>
+</section>
+<section id="decomposition---dasguptr-1" class="slide level2">
+<h2>Decomposition - {DasGuptR}</h2>
+<p><strong>Workflow</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(<span class="at">x =</span> <span class="sc">&lt;</span>data<span class="sc">&gt;</span>,</span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"..."</span>,</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"..."</span>),</span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">id_vars =</span> <span class="fu">c</span>(<span class="st">"..."</span>),</span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">crossclassified =</span> <span class="st">"..."</span>,</span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">ratefunction =</span> <span class="st">"..."</span></span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Decomposition tables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(...) <span class="sc">|&gt;</span> <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Time series plots:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(...) <span class="sc">|&gt;</span> <span class="fu">dg_plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="decomposition---dasguptr-2" class="slide level2">
+<h2>Decomposition - {DasGuptR}</h2>
 <h3 id="factor">2 factor</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop,<span class="sc">~</span>psq,<span class="sc">~</span>pgr,</span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="dv">5</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">5</span>,</span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
-<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop,<span class="sc">~</span>psq,<span class="sc">~</span>pgr,</span>
+<span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="dv">5</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">5</span>,</span>
+<span id="cb4-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
+<span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb4-8"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   pop     psq   pgr
@@ -368,13 +404,13 @@
 </div>
 </div><div class="column fragment" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
-<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"psq"</span>,<span class="st">"pgr"</span>))</span>
-<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
+<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"psq"</span>,<span class="st">"pgr"</span>))</span>
+<span id="cb6-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  rate pop std.set factor
 1 0.20  P1    &lt;NA&gt;  crude
@@ -387,20 +423,20 @@
 </div>
 </div></div>
 </section>
-<section id="decomposition---dasguptr-1" class="slide level2">
+<section id="decomposition---dasguptr-3" class="slide level2">
 <h2>Decomposition - {DasGuptR}</h2>
 <h3 id="factor-1">2 factor</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop,<span class="sc">~</span>psq,<span class="sc">~</span>pgr,</span>
-<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="dv">5</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">5</span>,</span>
-<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
-<span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop,<span class="sc">~</span>psq,<span class="sc">~</span>pgr,</span>
+<span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="dv">5</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">5</span>,</span>
+<span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
+<span id="cb8-7"><a aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb8-8"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   pop     psq   pgr
@@ -411,13 +447,13 @@
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
-<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
-<span id="cb7-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
-<span id="cb7-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"psq"</span>,<span class="st">"pgr"</span>))</span>
-<span id="cb7-6"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"psq"</span>,<span class="st">"pgr"</span>))</span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        P1   P2 diff decomp
 psq   0.23 0.47 0.23     70
@@ -427,20 +463,20 @@ crude 0.20 0.53 0.33    100</code></pre>
 </div>
 </div></div>
 </section>
-<section id="decomposition---dasguptr-2" class="slide level2">
+<section id="decomposition---dasguptr-4" class="slide level2">
 <h2>Decomposition - {DasGuptR}</h2>
 <h3 id="factor-2">3 factor</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop,<span class="sc">~</span>pcol,<span class="sc">~</span>psq,<span class="sc">~</span>pgr,</span>
-<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="dv">11</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">4</span><span class="sc">/</span><span class="dv">11</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
-<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">13</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
-<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop,<span class="sc">~</span>pcol,<span class="sc">~</span>psq,<span class="sc">~</span>pgr,</span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="dv">11</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">4</span><span class="sc">/</span><span class="dv">11</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
+<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">13</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
+<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   pop    pcol   psq   pgr
@@ -451,13 +487,13 @@ crude 0.20 0.53 0.33    100</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
-<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
-<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
-<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"pcol"</span>,<span class="st">"psq"</span>,<span class="st">"pgr"</span>))</span>
-<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
+<span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
+<span id="cb14-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"pcol"</span>,<span class="st">"psq"</span>,<span class="st">"pgr"</span>))</span>
+<span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  rate pop std.set factor
 1 0.20  P1    &lt;NA&gt;  crude
@@ -470,20 +506,20 @@ crude 0.20 0.53 0.33    100</code></pre>
 </div>
 </div></div>
 </section>
-<section id="decomposition---dasguptr-3" class="slide level2">
+<section id="decomposition---dasguptr-5" class="slide level2">
 <h2>Decomposition - {DasGuptR}</h2>
 <h3 id="factor-3">3 factor</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop,<span class="sc">~</span>pcol,<span class="sc">~</span>psq,<span class="sc">~</span>pgr,</span>
-<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="dv">11</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">4</span><span class="sc">/</span><span class="dv">11</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
-<span id="cb13-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">13</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
-<span id="cb13-7"><a aria-hidden="true" tabindex="-1"></a>) </span>
-<span id="cb13-8"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pop,<span class="sc">~</span>pcol,<span class="sc">~</span>psq,<span class="sc">~</span>pgr,</span>
+<span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P1"</span>, <span class="dv">11</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">4</span><span class="sc">/</span><span class="dv">11</span>, <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
+<span id="cb16-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"P2"</span>, <span class="dv">13</span><span class="sc">/</span><span class="dv">15</span>, <span class="dv">10</span><span class="sc">/</span><span class="dv">13</span>, <span class="dv">8</span><span class="sc">/</span><span class="dv">10</span>,</span>
+<span id="cb16-7"><a aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb16-8"><a aria-hidden="true" tabindex="-1"></a>mydat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   pop    pcol   psq   pgr
@@ -494,13 +530,13 @@ crude 0.20 0.53 0.33    100</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
-<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
-<span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
-<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"pcol"</span>,<span class="st">"psq"</span>,<span class="st">"pgr"</span>))</span>
-<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> mydat,</span>
+<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"pop"</span>,</span>
+<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"pcol"</span>,<span class="st">"psq"</span>,<span class="st">"pgr"</span>))</span>
+<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dgres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        P1   P2  diff decomp
 pcol  0.32 0.38 0.059   17.6

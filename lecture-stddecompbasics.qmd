@@ -172,6 +172,50 @@ options(digits=2)
 
 ## Decomposition - {DasGuptR}
 
+**Why?**
+
+- developed because we shared an office back in 2019.  
+
+- implements all of Das Gupta's 1993 manual:  
+    - K factors
+    - arbitrary rate functions (not just products)
+    - crossclassified data structures
+    - N populations
+
+## Decomposition - {DasGuptR}
+
+**Workflow**  
+
+```{r}
+#| eval: false
+#| echo: true
+dgnpop(x = <data>,
+       pop = "...",
+       factors = c("..."),
+       
+       id_vars = c("..."),
+       crossclassified = "...",
+       ratefunction = "..."
+)
+```
+
+Decomposition tables: 
+```{r}
+#| eval: false
+#| echo: true
+dgnpop(...) |> dg_table()
+```
+
+Time series plots:
+```{r}
+#| eval: false
+#| echo: true
+dgnpop(...) |> dg_plot()
+```
+
+
+## Decomposition - {DasGuptR}
+
 ### 2 factor
 
 ::::{.columns}

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Practical 2 – sgsss_decomp</title>
+<title>Practical 2 – SGSSS Decomp Workshop 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -98,7 +132,40 @@ if(f.classList.contains('jk-circle-right')) {
 
 <!---<script src="https://kit.fontawesome.com/120b08a6f5.js" crossorigin="anonymous"></script>-->
 
+<link href="site_libs/panelset-0.3.0/panelset.css" rel="stylesheet">
 
+<script src="site_libs/panelset-0.3.0/panelset.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -110,7 +177,7 @@ if(f.classList.contains('jk-circle-right')) {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">sgsss_decomp</span>
+    <span class="navbar-title">SGSSS Decomp Workshop 2026</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -196,8 +263,8 @@ if(f.classList.contains('jk-circle-right')) {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#example" id="toc-example" class="nav-link active" data-scroll-target="#example">Example</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">getting started</a></li>
+  <li><a href="#example-reconvictions-by-age-group" id="toc-example-reconvictions-by-age-group" class="nav-link active" data-scroll-target="#example-reconvictions-by-age-group">Example: Reconvictions by age group</a></li>
+  <li><a href="#example-2-reconvictions-by-age-and-sex" id="toc-example-2-reconvictions-by-age-and-sex" class="nav-link" data-scroll-target="#example-2-reconvictions-by-age-and-sex">Example 2: Reconvictions by age and sex</a></li>
   <li><a href="#choose-your-own" id="toc-choose-your-own" class="nav-link" data-scroll-target="#choose-your-own">choose your own</a></li>
   </ul>
 </nav>
@@ -224,13 +291,13 @@ if(f.classList.contains('jk-circle-right')) {
 </header>
 
 
-<section id="example" class="level1">
-<h1>Example</h1>
-<p>geographic shifts in scotland’s crime rate</p>
+<section id="example-reconvictions-by-age-group" class="level1">
+<h1>Example: Reconvictions by age group</h1>
+<p>TODO</p>
 </section>
-<section id="getting-started" class="level1">
-<h1>getting started</h1>
-<p>reconvictions</p>
+<section id="example-2-reconvictions-by-age-and-sex" class="level1">
+<h1>Example 2: Reconvictions by age and sex</h1>
+<p>TODO</p>
 </section>
 <section id="choose-your-own" class="level1">
 <h1>choose your own</h1>
@@ -240,52 +307,220 @@ if(f.classList.contains('jk-circle-right')) {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-age-specific death rates in POP1 and POP2
+Scotland’s Homelessness Deaths
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>two countries age-specific death rates (deaths / total)<br>
-Rate = sum( deaths_g / total_g )<br>
-age-specific deaths will probs be found separately from age-specific population estimates</p>
+<p>Scotland tracks the numbers of homeless deaths each year.<br>
+It also tracks the number of homelessness applications each year.<br>
+Both of these measures are provided broken down into four coarse age groups.</p>
+<p>One way in which we could choose to approach this question is to decompose the number of homeless deaths per 100,000 people in the population:</p>
+<p><span class="math display">\[ \small
+\begin{align}
+\text{Homelessness Death Rate} &amp;= \sum\limits_{\text{agegroup }i} \frac{\text{Nr Deaths}_i}{\text{Nr People}_i} \cdot 100,000\\
+&amp;= \sum\limits_{\text{agegroup }i}\frac{\text{Nr Applications}_i}{\text{Nr People}_i} \cdot \frac{\text{Nr Deaths}_i}{\text{Nr Applications}_i} \cdot 100,000 \\
+\end{align}
+\]</span></p>
+<p>There is an important note here that the number of applications is a measure that doesn’t represent the entire homeless population, but rather those that are currently engaging with the system in a given year. As such it captures the mortality risk of the population that is engaging with applications, and <em>not</em> the mortality risk of the entire homeless population.</p>
+<p>An alternative approach we might choose here is to decompose the <em>total</em> number of homeless deaths. The benefit here is that we can include the raw population size as a contributing factor:</p>
+<p><span class="math display">\[ \small
+\text{Total Homelessness Deaths} = \sum\limits_{\text{agegroup }i} \text{Nr People} \cdot \frac{\text{Nr People}_i}{\text{Nr People}} \cdot \frac{\text{Nr Applications}_i}{\text{Nr People}_i} \cdot \frac{\text{Nr Deaths}_i}{\text{Nr Applications}_i} \\
+\]</span></p>
+<p>If our conversation is focussed on the raw totals (homeless deaths are up from 164 in 2017 to 231 in 2024), this may be preferable as we can provide the % due to population growth, the % due to an aging demographic, the % due to changes in applications, and the % due to the change in mortality risk per application.</p>
+<p>Data are available at <a href="https://josiahpjking.github.io/sgsss_std_decomp/data/hdeaths.csv" target="_blank">https://josiahpjking.github.io/sgsss_std_decomp/data/hdeaths.csv</a></p>
 </div>
 </div>
 </div>
+<div style="display:none;">
+<p>decomposing deaths per 100,000 people:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>hd <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/hdeaths.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>hd<span class="sc">$</span>scotpop <span class="ot">=</span> <span class="fu">sample</span>(hd<span class="sc">$</span>scotpop)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>hd <span class="ot">&lt;-</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  hd <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">hdr =</span> deaths<span class="sc">/</span>applications,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">hr =</span> applications<span class="sc">/</span>scotpop,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#crude rates</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>hd <span class="sc">|&gt;</span> </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">cr =</span> <span class="fu">sum</span>(deaths)<span class="sc">/</span><span class="fu">sum</span>(scotpop)<span class="sc">*</span><span class="fl">1e5</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="co"># as multiplication of factors: </span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">cr2 =</span> <span class="fu">sum</span>( hdr <span class="sc">*</span> hr <span class="sc">*</span> scotpop<span class="sc">/</span><span class="fu">sum</span>(scotpop) )<span class="sc">*</span><span class="fl">1e5</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 3
+   year    cr   cr2
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1  2017  6.60  6.60
+2  2018  7.96  7.96
+3  2019  8.43  8.43
+4  2020  4.49  4.49
+5  2021  5.87  5.87
+6  2022  4.34  4.34
+7  2023  4.20  4.20
+8  2024  5.71  5.71</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dgnpop</span>(hd, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">pop=</span><span class="st">"year"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"hr"</span>,<span class="st">"hdr"</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">id_vars=</span><span class="st">"age_group"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">crossclassified =</span> <span class="st">"scotpop"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">ratefunction =</span> <span class="st">"hr*hdr*1e5"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dg_plot</span>(dgres, <span class="at">legend.position=</span><span class="st">"bottomright"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="workshop02_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dgres <span class="sc">|&gt;</span> <span class="fu">dg_table</span>(<span class="dv">2017</span>,<span class="dv">2024</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     2017     2024       diff decomp
+age_group_struct 7.164069 4.807217 -2.3568521 265.03
+hdr              5.140728 6.020515  0.8797877 -98.93
+hr               7.883407 8.471193  0.5877855 -66.10
+crude            6.595107 5.705828 -0.8892788 100.00</code></pre>
+</div>
+</div>
+<p>because there is just one sub-population grouping here, we could alternatively do:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>hd <span class="ot">&lt;-</span> hd <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">popshare =</span> scotpop<span class="sc">/</span><span class="fu">sum</span>(scotpop)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>dgres.a <span class="ot">&lt;-</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dgnpop</span>(hd, </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">pop=</span><span class="st">"year"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"hr"</span>,<span class="st">"hdr"</span>,<span class="st">"popshare"</span>),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">ratefunction =</span> <span class="st">"sum(popshare*hr*hdr*1e5)"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dg_plot</span>(dgres.a, <span class="at">legend.position=</span><span class="st">"bottomright"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>decomposing total deaths:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hd <span class="ot">&lt;-</span> hd <span class="sc">|&gt;</span> <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">tpop =</span> <span class="fu">sum</span>(scotpop)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>dgres2 <span class="ot">&lt;-</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dgnpop</span>(hd, </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">pop=</span><span class="st">"year"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"hr"</span>,<span class="st">"hdr"</span>,<span class="st">"tpop"</span>),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">id_vars=</span><span class="st">"age_group"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">crossclassified =</span> <span class="st">"scotpop"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dg_plot</span>(dgres2, <span class="at">legend.position=</span><span class="st">"bottomright"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="workshop02_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dgres <span class="sc">|&gt;</span> <span class="fu">dg_table</span>(<span class="dv">2017</span>,<span class="dv">2024</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     2017     2024       diff decomp
+age_group_struct 7.164069 4.807217 -2.3568521 265.03
+hdr              5.140728 6.020515  0.8797877 -98.93
+hr               7.883407 8.471193  0.5877855 -66.10
+crude            6.595107 5.705828 -0.8892788 100.00</code></pre>
+</div>
+</div>
+</div>
+<p class="solution-end">
+</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Rate of Homeless Deaths in Scotland across time
+Scotland’s Recycling
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Homeless death rate_i = A*B</p>
-<ol type="A">
-<li>Homeless deaths_i / homeless_applications_i</li>
-<li>Homeless_applications_i / total_population_i Groups i = agegroups</li>
-</ol>
+<p>In the first workshop, one example saw the decomposition of the “kg recycled waste per person”:<br>
+<span class="math display">\[
+\text{Recycled Tonnes per Person} = \frac{\text{Total Waste}}{\text{Nr People}} \cdot \frac{\text{Recycled Waste}}{\text{Total Waste}}
+\]</span></p>
+<p>But we could also consider decomposing the total tonnage that is recycled, and include the population size as another factor:<br>
+<span class="math display">\[
+\text{Recycled Tonnes} = \text{Nr People} \cdot \frac{\text{Total Waste}}{\text{Nr People}} \cdot \frac{\text{Recycled Waste}}{\text{Total Waste}}
+\]</span></p>
+<p>SEPA provides data on this every year from 2011 onwards, providing us with a good example for decomposition across a time series.</p>
+<p>The data are available at <a href="https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv" target="_blank">https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv</a></p>
 </div>
 </div>
 </div>
+<div style="display:none;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/recycling_timeseries.csv"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">wpp =</span> totalwaste<span class="sc">/</span>pop,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">recp =</span> recycled<span class="sc">/</span>totalwaste,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">lfp =</span> landfilled<span class="sc">/</span>totalwaste,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">incp =</span> diverted<span class="sc">/</span>totalwaste</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># recycling tonnes per person:</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(df,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"year"</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"wpp"</span>,<span class="st">"recp"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_plot</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="workshop02_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recycling tonnage</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(df,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"year"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"pop"</span>,<span class="st">"wpp"</span>,<span class="st">"recp"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_plot</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="workshop02_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p class="solution-end">
+</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Scotland’s Business 5 year Survival Rate
+age-specific death rates in POP1 and POP2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Rate = survivey1/births * survivey3/survivey1 * survivey5/survivey3</p>
-<p>do it across sectors i</p>
+<p>two countries age-specific death rates (deaths / total)<br>
+Rate = sum( deaths_g / total_g )<br>
+age-specific deaths will probs be found separately from age-specific population estimates</p>
 </div>
 </div>
 </div>
@@ -295,13 +530,14 @@ Scotland’s Business 5 year Survival Rate
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Scotland’s Drug Deaths, two timepoints
+Scotland’s Business 5 year Survival Rate
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>rate_age,sex,area</p>
+<p>Rate = survivey1/births * survivey3/survivey1 * survivey5/survivey3</p>
+<p>do it across sectors i</p>
 </div>
 </div>
 </div>
@@ -311,16 +547,13 @@ Scotland’s Drug Deaths, two timepoints
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Scotland’s Recycling
+Scotland’s Heroin Deaths 2020 vs 2024
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Total Carbon Impact = population * (generated waste / population) * (carbon impact / generated waste)</p>
-<p>split by LAA</p>
-<p>total tonnage recycled = population * (generated waste / population) * (recycled / generated waste)</p>
-<p>time series</p>
+
 </div>
 </div>
 </div>
