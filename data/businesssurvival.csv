@@ -1,0 +1,106 @@
+cohort,industry,births,surv1,surv3,surv5
+2013,Production,17890,16285,10380,7555
+2013,Construction,38295,35710,22640,16645
+2013,Motor trades,6925,6510,4270,3115
+2013,Wholesale,11830,11020,6425,4595
+2013,Retail,27285,25635,15195,10755
+2013,Transport and storage (inc. postal),12330,11550,7005,4710
+2013,Accommodation and food services,25265,23435,13830,8360
+2013,Information and communication,33535,31850,21855,16000
+2013,Finance and insurance (Excl 6420),6080,4885,3650,2295
+2013,Property,10510,9185,6325,4910
+2013,"Professional, scientific and technical",77080,73505,49875,34745
+2013,Business administration and support services,44725,41555,26480,16765
+2013,Education,4700,4400,3165,2325
+2013,Health,11740,11175,8270,5705
+2013,"Arts, entertainment, recreation and other services",18085,17110,11440,8430
+2014,Production,16720,14915,9725,7220
+2014,Construction,40930,37185,24500,18175
+2014,Motor trades,6700,6290,4120,3100
+2014,Wholesale,10640,9815,5810,4265
+2014,Retail,23465,21740,13530,9705
+2014,Transport and storage (inc. postal),15560,14625,9285,5725
+2014,Accommodation and food services,23650,21995,12765,7840
+2014,Information and communication,34105,32230,23040,16845
+2014,Finance and insurance (Excl 6420),6910,5570,3705,2410
+2014,Property,10745,8845,6215,5005
+2014,"Professional, scientific and technical",77820,73800,50825,35145
+2014,Business administration and support services,49125,44420,28385,18195
+2014,Education,4665,4300,3045,2230
+2014,Health,12045,11320,8530,4910
+2014,"Arts, entertainment, recreation and other services",17225,16055,10980,8100
+2015,Production,20305,16550,10105,7365
+2015,Construction,48740,44045,27675,20865
+2015,Motor trades,7190,6710,4285,3200
+2015,Wholesale,10415,9320,5315,3850
+2015,Retail,23225,21515,13235,9400
+2015,Transport and storage (inc. postal),20500,19210,10940,7155
+2015,Accommodation and food services,24330,22465,12470,7900
+2015,Information and communication,36785,34335,23470,17400
+2015,Finance and insurance (Excl 6420),6375,4400,2975,2375
+2015,Property,12960,9085,6185,5070
+2015,"Professional, scientific and technical",81100,73740,47655,34015
+2015,Business administration and support services,51450,45695,24915,17075
+2015,Education,4805,4315,2870,2225
+2015,Health,15360,14375,7830,4910
+2015,"Arts, entertainment, recreation and other services",19215,17760,11570,8695
+2016,Production,17185,16430,10045,7430
+2016,Construction,50235,47240,29505,22020
+2016,Motor trades,8455,8050,5105,3795
+2016,Wholesale,9425,8900,5175,3800
+2016,Retail,26750,25445,14275,10065
+2016,Transport and storage (inc. postal),27175,26100,10780,7000
+2016,Accommodation and food services,25430,24280,13830,8960
+2016,Information and communication,32625,31660,21080,14725
+2016,Finance and insurance (Excl 6420),4635,4240,2925,2200
+2016,Property,10205,9770,6790,5570
+2016,"Professional, scientific and technical",83100,79475,47920,32990
+2016,Business administration and support services,60645,56585,27045,18220
+2016,Education,9285,9095,2950,2285
+2016,Health,16020,15590,6820,5150
+2016,"Arts, entertainment, recreation and other services",16370,15645,10840,8285
+2017,Production,16250,15395,9595,7190
+2017,Construction,51550,48140,30125,22210
+2017,Motor trades,8140,7690,4790,3765
+2017,Wholesale,9285,8770,5080,3870
+2017,Retail,29685,27985,15510,11210
+2017,Transport and storage (inc. postal),24140,22015,10270,5785
+2017,Accommodation and food services,26920,25500,14475,10270
+2017,Information and communication,30000,28745,19005,12035
+2017,Finance and insurance (Excl 6420),4490,4135,2930,2200
+2017,Property,10735,10275,7290,6000
+2017,"Professional, scientific and technical",63165,59935,38525,25810
+2017,Business administration and support services,47555,43875,21795,14550
+2017,Education,5440,4575,3120,2455
+2017,Health,11445,10120,6445,5120
+2017,"Arts, entertainment, recreation and other services",18095,17295,11405,8845
+2018,Production,16160,15350,9440,6735
+2018,Construction,48335,45995,29385,21730
+2018,Motor trades,8575,8115,4845,3655
+2018,Wholesale,9610,9090,5090,3860
+2018,Retail,32290,30395,17215,11020
+2018,Transport and storage (inc. postal),23925,22480,11395,5935
+2018,Accommodation and food services,27705,26160,15420,10765
+2018,Information and communication,30900,29785,18960,11590
+2018,Finance and insurance (Excl 6420),4495,4195,2945,2230
+2018,Property,10335,9870,6785,5530
+2018,"Professional, scientific and technical",60695,58045,37020,24185
+2018,Business administration and support services,43915,40380,21095,13895
+2018,Education,4560,4415,3105,2445
+2018,Health,9120,8845,6420,4990
+2018,"Arts, entertainment, recreation and other services",18010,17210,11530,8870
+2019,Production,15315,14430,8615,6300
+2019,Construction,48570,45490,29145,21050
+2019,Motor trades,7420,6940,4580,3445
+2019,Wholesale,9390,8790,5305,3920
+2019,Retail,31935,30100,16555,11025
+2019,Transport and storage (inc. postal),32415,30185,12780,6630
+2019,Accommodation and food services,28790,27115,17465,10970
+2019,Information and communication,30080,28835,16830,11135
+2019,Finance and insurance (Excl 6420),3925,3670,2525,1970
+2019,Property,10460,9905,6845,5480
+2019,"Professional, scientific and technical",62305,59475,36375,24985
+2019,Business administration and support services,53795,51025,26250,17575
+2019,Education,4430,4235,3040,2315
+2019,Health,9060,8730,6420,5080
+2019,"Arts, entertainment, recreation and other services",15935,15210,10740,7965

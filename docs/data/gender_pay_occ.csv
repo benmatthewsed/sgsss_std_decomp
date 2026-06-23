@@ -1,0 +1,53 @@
+sex,soc2d,soc2dcode,thousand,mean_hourly
+male,Corporate managers and directors,11,1504,41.4
+male,Other managers and proprietors,12,384,23.51
+male,"Science, research, engineering and technology professionals",21,1510,29.87
+male,Health professionals,22,566,33.51
+male,Teaching and other educational professionals,23,593,31.02
+male,"Business, media and public service professionals",24,1298,30.45
+male,"Science, engineering and technology associate professionals",31,583,20.36
+male,Health and social care associate professionals,32,132,17.35
+male,Protective service occupations,33,275,22.74
+male,"Culture, media and sports occupations",34,149,28.86
+male,Business and public service associate professionals,35,1099,26.97
+male,Administrative occupations,41,752,18.03
+male,Secretarial and related occupations,42,57,15.55
+male,Skilled agricultural and related trades,51,100,15.09
+male,"Skilled metal, electrical and electronic trades",52,787,19.96
+male,Skilled construction and building trades,53,288,18.45
+male,"Textiles, printing and other skilled trades",54,256,15.52
+male,Caring personal service occupations,61,415,15.05
+male,"Leisure, travel and related personal service occupations",62,176,16.71
+male,Community and civil enforcement occupations,63,19,16.33
+male,Sales occupations,71,485,14.51
+male,Customer service occupations,72,176,15.89
+male,"Process, plant and machine operatives",81,532,16.62
+male,Transport and mobile machine drivers and operatives,82,713,17.34
+male,Elementary trades and related occupations,91,205,14.77
+male,Elementary administration and service occupations,92,1273,14.38
+female,Corporate managers and directors,11,993,34.94
+female,Other managers and proprietors,12,282,21.85
+female,"Science, research, engineering and technology professionals",21,451,26.72
+female,Health professionals,22,1561,25.59
+female,Teaching and other educational professionals,23,1052,28.92
+female,"Business, media and public service professionals",24,1073,27.28
+female,"Science, engineering and technology associate professionals",31,222,18.37
+female,Health and social care associate professionals,32,560,16.62
+female,Protective service occupations,33,132,22.04
+female,"Culture, media and sports occupations",34,135,20.24
+female,Business and public service associate professionals,35,1113,21.81
+female,Administrative occupations,41,1700,16.99
+female,Secretarial and related occupations,42,457,16
+female,Skilled agricultural and related trades,51,15,14.9
+female,"Skilled metal, electrical and electronic trades",52,40,19.39
+female,Skilled construction and building trades,53,12,17.49
+female,"Textiles, printing and other skilled trades",54,142,14.8
+female,Caring personal service occupations,61,1706,14.9
+female,"Leisure, travel and related personal service occupations",62,237,15.18
+female,Community and civil enforcement occupations,63,8,18.05
+female,Sales occupations,71,800,13.6
+female,Customer service occupations,72,287,15.52
+female,"Process, plant and machine operatives",81,137,14.48
+female,Transport and mobile machine drivers and operatives,82,44,17.53
+female,Elementary trades and related occupations,91,61,13.84
+female,Elementary administration and service occupations,92,1343,13.61

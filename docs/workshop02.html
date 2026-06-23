@@ -356,14 +356,14 @@ Both of these measures are provided broken down into four coarse age groups.</p>
 <pre><code># A tibble: 8 × 3
    year    cr   cr2
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1  2017  6.60  6.60
-2  2018  7.96  7.96
-3  2019  8.43  8.43
+1  2017  6.62  6.62
+2  2018  7.50  7.50
+3  2019  8.37  8.37
 4  2020  4.49  4.49
-5  2021  5.87  5.87
-6  2022  4.34  4.34
-7  2023  4.20  4.20
-8  2024  5.71  5.71</code></pre>
+5  2021  6.09  6.09
+6  2022  4.40  4.40
+7  2023  5.87  5.87
+8  2024  4.00  4.00</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dgnpop</span>(hd, </span>
@@ -384,10 +384,10 @@ Both of these measures are provided broken down into four coarse age groups.</p>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dgres <span class="sc">|&gt;</span> <span class="fu">dg_table</span>(<span class="dv">2017</span>,<span class="dv">2024</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     2017     2024       diff decomp
-age_group_struct 7.164069 4.807217 -2.3568521 265.03
-hdr              5.140728 6.020515  0.8797877 -98.93
-hr               7.883407 8.471193  0.5877855 -66.10
-crude            6.595107 5.705828 -0.8892788 100.00</code></pre>
+age_group_struct 7.527840 5.324294 -2.2035461  83.86
+hdr              5.123772 6.098038  0.9742662 -37.08
+hr               7.577199 6.178977 -1.3982216  53.21
+crude            6.622848 3.995347 -2.6275015 100.00</code></pre>
 </div>
 </div>
 <p>because there is just one sub-population grouping here, we could alternatively do:</p>
@@ -432,10 +432,10 @@ crude            6.595107 5.705828 -0.8892788 100.00</code></pre>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dgres <span class="sc">|&gt;</span> <span class="fu">dg_table</span>(<span class="dv">2017</span>,<span class="dv">2024</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     2017     2024       diff decomp
-age_group_struct 7.164069 4.807217 -2.3568521 265.03
-hdr              5.140728 6.020515  0.8797877 -98.93
-hr               7.883407 8.471193  0.5877855 -66.10
-crude            6.595107 5.705828 -0.8892788 100.00</code></pre>
+age_group_struct 7.527840 5.324294 -2.2035461  83.86
+hdr              5.123772 6.098038  0.9742662 -37.08
+hr               7.577199 6.178977 -1.3982216  53.21
+crude            6.622848 3.995347 -2.6275015 100.00</code></pre>
 </div>
 </div>
 </div>
@@ -512,35 +512,151 @@ Scotland’s Recycling
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-age-specific death rates in POP1 and POP2
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>two countries age-specific death rates (deaths / total)<br>
-Rate = sum( deaths_g / total_g )<br>
-age-specific deaths will probs be found separately from age-specific population estimates</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
 Scotland’s Business 5 year Survival Rate
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Rate = survivey1/births * survivey3/survivey1 * survivey5/survivey3</p>
 <p>do it across sectors i</p>
 </div>
 </div>
 </div>
+<div style="display:none;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>bs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/businesssurvival.csv"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">a =</span> surv5<span class="sc">/</span>surv3,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">b =</span> surv3<span class="sc">/</span>surv1,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">c =</span> surv1<span class="sc">/</span>births,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cohort) <span class="sc">|&gt;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">iprop =</span> births<span class="sc">/</span><span class="fu">sum</span>(births))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>bs <span class="sc">|&gt;</span> <span class="fu">group_by</span>(cohort) <span class="sc">|&gt;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">crude =</span> <span class="fu">sum</span>(surv5)<span class="sc">/</span><span class="fu">sum</span>(births),</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">crude2=</span> <span class="fu">sum</span>(c<span class="sc">*</span>b<span class="sc">*</span>a<span class="sc">*</span>iprop)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 3
+  cohort crude crude2
+   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1   2013 0.424  0.424
+2   2014 0.425  0.425
+3   2015 0.396  0.396
+4   2016 0.384  0.384
+5   2017 0.396  0.396
+6   2018 0.394  0.394
+7   2019 0.384  0.384</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(bs, <span class="at">pop=</span><span class="st">"cohort"</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="st">"iprop"</span>),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">ratefunction =</span> <span class="st">"sum(a*b*c*iprop)"</span>) <span class="sc">|&gt;</span> <span class="fu">dg_plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="workshop02_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(bs, <span class="at">pop=</span><span class="st">"cohort"</span>,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>),</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">id_vars=</span><span class="st">"industry"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">crossclassified=</span><span class="st">"births"</span>) <span class="sc">|&gt;</span> <span class="fu">dg_plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="workshop02_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 10
+# Groups:   cohort [1]
+  cohort industry              births surv1 surv3 surv5     a     b     c  iprop
+   &lt;dbl&gt; &lt;chr&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1   2013 Production             17890 16285 10380  7555 0.728 0.637 0.910 0.0517
+2   2013 Construction           38295 35710 22640 16645 0.735 0.634 0.932 0.111 
+3   2013 Motor trades            6925  6510  4270  3115 0.730 0.656 0.940 0.0200
+4   2013 Wholesale              11830 11020  6425  4595 0.715 0.583 0.932 0.0342
+5   2013 Retail                 27285 25635 15195 10755 0.708 0.593 0.940 0.0788
+6   2013 Transport and storag…  12330 11550  7005  4710 0.672 0.606 0.937 0.0356</code></pre>
+</div>
+</div>
+</div>
+<p class="solution-end">
+</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+UK’s Occupation-adjusted Gender Pay Gap
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The Gender Pay Gap is typically quantified as the difference in Female earnings as a percentage of Male earnings.</p>
+<p>A common discussion point of this measure is that Males and Females tend to work in different occupations, and different occupations tend to pay different amounts. The obvious question then is whether there continues to exist a difference in earnings between Males and Females should the proportions working in each occupation be held constant. This differentiates the a direct bias (Females being paid less than Males for the same work) from a longstanding systemic bias (Females being discouraged from the higher earning occupations).</p>
+<p>Note, we are continuing to talk about population level quantities here, and <strong>not</strong> individuals. Looking at a system level quantities can’t tell us about discrimination against individuals, although it can help to point us at where to look.</p>
+<p>In 2025 across the UK, Mean Hourly Earnings for Females was £20.7, and for Males was £24.5, resulting in a pay gap of 15.5%</p>
+<p>By considering Male and Female earners as different “populations”, we can consider their population level mean hourly earnings as a weighted sum of occupation level mean hourly earnings:</p>
+<p><span class="math display">\[
+\text{Mean Hourly Earnings} = \sum\limits_{\text{occupation }i}\frac{\text{Nr Workers}_i}{\text{Nr Workers}} \cdot \text{Mean Hourly Earnings}_i
+\]</span></p>
+<p>Using Das Gupta’s methodology, we can calculate the occupation-adjusted earnings for each population.<br>
+These are the counterfactual quantities of “what would the mean earnings be for Ms and Fs if they had the same proportions of workers in each occupation?”</p>
+<p>We can then use these quantities to calculate an occupation-adjusted pay gap.</p>
+</div>
+</div>
+</div>
+<div style="display:none;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>gdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/gender_pay_occ.csv"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># crude GPayGap: </span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># female median as a percentage of male median</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>gdat <span class="sc">|&gt;</span> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">sum</span>( mean_hourly <span class="sc">*</span> thousand<span class="sc">/</span><span class="fu">sum</span>(thousand) ),</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>sex,<span class="at">values_from=</span>mean) <span class="sc">|&gt;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">pgap =</span> (<span class="dv">1</span><span class="sc">-</span>(female<span class="sc">/</span>male))<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  female  male  pgap
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1   20.7  24.5  15.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># occupation-adjusted GPayGap: </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(gdat,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"sex"</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="st">"mean_hourly"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">id_vars =</span> <span class="st">"soc2dcode"</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">crossclassified =</span> <span class="st">"thousand"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(factor <span class="sc">==</span> <span class="st">"mean_hourly"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pop,rate,factor) <span class="sc">|&gt;</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>pop,<span class="at">values_from=</span>rate) <span class="sc">|&gt;</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">pgap =</span> (<span class="dv">1</span><span class="sc">-</span>(female<span class="sc">/</span>male))<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  factor      female  male  pgap
+  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 mean_hourly   21.3  23.9  11.1</code></pre>
+</div>
+</div>
+</div>
+<p class="solution-end">
+</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -554,6 +670,137 @@ Scotland’s Heroin Deaths 2020 vs 2024
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 
+</div>
+</div>
+</div>
+<div style="display:none;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>hdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/heroin.csv"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>hdat<span class="sc">$</span>totpop <span class="ot">&lt;-</span> <span class="fu">ave</span>(hdat<span class="sc">$</span>pop, hdat<span class="sc">$</span>year, <span class="at">FUN=</span>sum)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>hdat <span class="ot">&lt;-</span> hdat <span class="sc">|&gt;</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">hr =</span> nheroin<span class="sc">/</span>ndeaths,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">ddr =</span> ndeaths<span class="sc">/</span>pop</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>hdat <span class="sc">|&gt;</span> <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">crude =</span> <span class="fu">sum</span>(nheroin),</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">crude2 =</span> <span class="fu">sum</span>(hr <span class="sc">*</span> ddr <span class="sc">*</span> (pop<span class="sc">/</span>totpop) <span class="sc">*</span> totpop )</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+   year crude crude2
+  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1  2010   254    254
+2  2015   345    345
+3  2020   605    605
+4  2024   327    327</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(hdat, </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"year"</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"hr"</span>,<span class="st">"ddr"</span>, <span class="st">"totpop"</span>),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">id_vars =</span> <span class="fu">c</span>(<span class="st">"agegroup"</span>,<span class="st">"sex"</span>),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">crossclassified =</span> <span class="st">"pop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_plot</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="workshop02_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p class="solution-end">
+</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Age-Sex Standardised Death Rates, Scotland 1981-2024
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>two countries age-specific death rates (deaths / total)<br>
+Rate = sum( deaths_g / total_g )<br>
+age-specific deaths will probs be found separately from age-specific population estimates</p>
+</div>
+</div>
+</div>
+<div style="display:none;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ddat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/scotland_deaths_1981_2024.csv"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ddat <span class="sc">|&gt;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">crude1 =</span> <span class="fu">sum</span>(deaths)<span class="sc">/</span><span class="fu">sum</span>(n),</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">crude2 =</span> <span class="fu">sum</span>( (deaths<span class="sc">/</span>n) <span class="sc">*</span> (n<span class="sc">/</span><span class="fu">sum</span>(n)) )</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 44 × 3
+    year crude1 crude2
+   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1  1981 0.0123 0.0123
+ 2  1982 0.0126 0.0126
+ 3  1983 0.0123 0.0123
+ 4  1984 0.0121 0.0121
+ 5  1985 0.0125 0.0125
+ 6  1986 0.0124 0.0124
+ 7  1987 0.0122 0.0122
+ 8  1988 0.0122 0.0122
+ 9  1989 0.0128 0.0128
+10  1990 0.0121 0.0121
+# ℹ 34 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ddat <span class="ot">&lt;-</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  ddat <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">rate =</span> deaths<span class="sc">/</span>n</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># # takes time.. </span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># deaths_dc &lt;- dgnpop(deaths_ddat, </span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                     pop = "year",</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                     factors = "rate",</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                     id_vars = c("age","sex"),</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                     crossclassified = "n", quietly = FALSE)</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/deaths_age_sex_full.rdata"</span>)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dg_plot</span>(deaths_dc,<span class="at">legend.position=</span><span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="workshop02_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p class="solution-end">
+</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Age-Sex-LAA Standardised Birth Rates, Scotland 1991-2024
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>two countries age-specific death rates (deaths / total)<br>
+Rate = sum( deaths_g / total_g )<br>
+age-specific deaths will probs be found separately from age-specific population estimates</p>
 </div>
 </div>
 </div>
