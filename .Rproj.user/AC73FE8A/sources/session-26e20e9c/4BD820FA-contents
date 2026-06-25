@@ -1,0 +1,157 @@
+library(tidyverse)
+library(DasGuptR)
+df <- reconv |> filter(year %in% c(2010,2016)) |>
+  mutate(
+    rate = prev_rate,
+    agesex = interaction(Age,Sex),
+  )
+
+df$weight <- df$offenders/ave(df$offenders,df$year,FUN=sum)
+dgnpop(df, 
+       pop="year",
+       factors=c("weight","rate"),
+       ratefunction="sum(weight * rate)") |>
+  dg_table()
+
+dgnpop(df, 
+       pop="year",
+       factors=c("rate"),
+       id_vars=c("agesex"),
+       crossclassified = "offenders") |>
+  dg_table()
+
+
+df$weight_sex <- ave(df$offenders,df$year,df$Sex,FUN=sum)/
+  ave(df$offenders,df$year,FUN=sum)
+df$weight_age <- ave(df$offenders,df$year,df$Age,FUN=sum)/
+  ave(df$offenders,df$year,FUN=sum)
+
+dgnpop(df, 
+       pop="year",
+       factors=c("rate","weight_sex","weight_age"),
+       ratefunction="sum(weight_sex*weight_age*rate)") |>
+  dg_table()
+
+
+dgnpop(df, 
+       pop="year",
+       factors=c("rate"),
+       id_vars=c("Age","Sex"),
+       crossclassified = "offenders") |>
+  dg_table()
+
+opt_dg <- rbind(
+  split_popstr(df[df$year==2004, ],c("Age","Sex"),"offenders"),
+  split_popstr(df[df$year==2016, ],c("Age","Sex"),"offenders")
+)
+
+bind_cols(df, opt_dg) |>
+  group_by(year) |>
+  summarise(
+    crude = sum(reconvicted)/sum(offenders),
+    opt1 = sum(weight * rate),
+    # missing a bit!! 
+    opt2 = sum(weight_sex*weight_age*rate),
+    # opt DG
+    optdg = sum(Age_struct*Sex_struct*rate)
+  )
+
+
+
+
+# remove.packages("DasGuptR")
+# install.packages("DasGuptR")
+# remotes::install_github("josiahpjking/DasGuptR@develop")
+library(tidyverse)
+library(DasGuptR)
+eg5.3 <- data.frame(
+  pop = rep(c(1985, 1970), e = 22),
+  age = rep(rep(1:11, 2), 2),
+  race = rep(rep(1:2, e = 11), 2),
+  # number of people in age-race-group
+  size = c(
+    3041, 11577, 27450, 32711, 35480, 27411, 19555, 19795, 15254, 8022, 
+    2472, 707, 2692, 6473, 6841, 6547, 4352, 3034, 2540, 1749, 804, 236,
+    2968, 11484, 34614, 30992, 21983, 20314, 20928, 16897, 11339, 5720, 
+    1315, 535, 2162, 6120, 4781, 3096, 2718, 2363, 1767, 1149, 448, 117
+  ),
+  # death rate in age-race-group
+  rate = c(
+    9.163, 0.462, 0.248, 0.929, 1.084, 1.810, 4.715, 12.187, 27.728, 64.068, 157.570, 
+    17.208, 0.738, 0.328, 1.103, 2.045, 3.724, 8.052, 17.812, 34.128, 68.276, 125.161, 
+    18.469, 0.751, 0.391, 1.146, 1.287, 2.672, 6.636, 15.691, 34.723, 79.763, 176.837, 
+    36.993, 1.352,0.541, 2.040, 3.523, 6.746, 12.967, 24.471, 45.091, 74.902, 123.205
+  )
+) |> 
+  group_by(pop) |>
+  mutate(
+    agerace = interaction(age,race),
+    agerace_w = size/sum(size),
+    .after = race
+  ) |> ungroup()
+
+set.seed(888)
+df = eg5.3
+df$size = round(rnorm(nrow(df), df$age*30+df$race*20+df$age*df$race*50,10))
+df$rate = rnorm(nrow(df),df$size*.03,5)
+df <- df |> group_by(pop) |>
+  mutate(
+    agerace = interaction(age,race),
+    agerace_w = size/sum(size),
+    .after = race
+  ) |> ungroup()
+eg5.3<-df
+
+eg5.3 <- 
+  eg5.3 |> 
+  mutate(
+    age_w = with(eg5.3, ave(size, pop, age, FUN = sum)) /
+      with(eg5.3, ave(size, pop, FUN = sum)),
+    race_w = with(eg5.3, ave(size, pop, race, FUN = sum)) /
+      with(eg5.3, ave(size, pop, FUN = sum)),
+    .after = agerace_w
+  )
+
+
+dgnpop(x = eg5.3,
+       pop = "pop",
+       factors = c("age_w","race_w","rate"),
+       ratefunction = "sum(age_w * race_w * rate)") |>
+  dg_table() -> dd
+dd[1:3,3] |> sum()
+dd[4,1:2] |> unlist() |> diff()
+dd[4,3]
+dd
+
+
+dgnpop(x = eg5.3,
+       pop = "pop",
+       factors = c("rate"),
+       id_vars=c("age","race"),
+       crossclassified = "size") |>
+  dg_table() -> dd
+
+dd
+dd[1:3,3] |> sum()
+dd[4,1:2] |> unlist() |> diff()
+dd[4,3]
+dd
+
+
+
+dgnpop(x = eg5.3,
+       pop = "pop",
+       factors = c("agerace_w","rate"),
+       ratefunction="sum(agerace_w*rate)")  |>
+  dg_table() -> dd
+dd[1:2,3] |> sum()
+dd[3,1:2] |> unlist() |> diff()
+dd
+
+
+
+
+
+
+
+

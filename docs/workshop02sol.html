@@ -205,11 +205,11 @@ window.Quarto = {
   </li>  
         <li>
     <a class="dropdown-item" href="./lecture-stddecompbasics.html">
- <span class="dropdown-text">2 and 3 factor decomposition</span></a>
+ <span class="dropdown-text">Standardisation and Decomposition of Rates</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./lecture-crossclass.html">
- <span class="dropdown-text">Crossclassified Data Structures</span></a>
+ <span class="dropdown-text">Crossclassified Data Structures, More Populations</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./lecture-uncertainty.html">
@@ -361,14 +361,14 @@ Solution
 <pre><code># A tibble: 8 × 3
    year    cr   cr2
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1  2017  2.84  2.84
-2  2018  4.83  4.83
-3  2019  8.38  8.38
-4  2020  6.32  6.32
-5  2021  9.49  9.49
-6  2022  5.87  5.87
+1  2017  6.50  6.50
+2  2018  3.40  3.40
+3  2019  5.10  5.10
+4  2020  9.86  9.86
+5  2021  4.49  4.49
+6  2022  9.89  9.89
 7  2023  5.95  5.95
-8  2024  4.11  4.11</code></pre>
+8  2024  4.04  4.04</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dgres <span class="ot">&lt;-</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dgnpop</span>(hd, </span>
@@ -389,10 +389,10 @@ Solution
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dgres <span class="sc">|&gt;</span> <span class="fu">dg_table</span>(<span class="dv">2017</span>,<span class="dv">2024</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     2017     2024       diff decomp
-age_group_struct 7.599311 7.673049 0.07373781   5.83
-hdr              5.708320 6.265479 0.55715810  44.02
-hr               4.011609 4.646428 0.63481876  50.15
-crude            2.842421 4.108135 1.26571467 100.00</code></pre>
+age_group_struct 6.532335 8.489067  1.9567314 -79.50
+hdr              5.256147 6.194849  0.9387019 -38.14
+hr               8.850383 3.493603 -5.3567804 217.64
+crude            6.500775 4.039428 -2.4613470 100.00</code></pre>
 </div>
 </div>
 <p>because there is just one sub-population grouping here, we could alternatively do:</p>
@@ -437,10 +437,10 @@ crude            2.842421 4.108135 1.26571467 100.00</code></pre>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dgres <span class="sc">|&gt;</span> <span class="fu">dg_table</span>(<span class="dv">2017</span>,<span class="dv">2024</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     2017     2024       diff decomp
-age_group_struct 7.599311 7.673049 0.07373781   5.83
-hdr              5.708320 6.265479 0.55715810  44.02
-hr               4.011609 4.646428 0.63481876  50.15
-crude            2.842421 4.108135 1.26571467 100.00</code></pre>
+age_group_struct 6.532335 8.489067  1.9567314 -79.50
+hdr              5.256147 6.194849  0.9387019 -38.14
+hr               8.850383 3.493603 -5.3567804 217.64
+crude            6.500775 4.039428 -2.4613470 100.00</code></pre>
 </div>
 </div>
 </div>
@@ -460,11 +460,19 @@ Scotland’s Recycling
 <div class="callout-body-container callout-body">
 <p>In the first workshop, one example saw the decomposition of the “kg recycled waste per person”:<br>
 <span class="math display">\[
-\text{Recycled Tonnes per Person} = \frac{\text{Total Waste}}{\text{Nr People}} \cdot \frac{\text{Recycled Waste}}{\text{Total Waste}}
+\begin{align}
+\text{Recycled Tonnes per Person} &amp;= \frac{\text{Recycled Waste}}{\text{Nr People}} \\
+\quad \\
+&amp;= \frac{\text{Total Waste}}{\text{Nr People}} \cdot \frac{\text{Recycled Waste}}{\text{Total Waste}} \\
+\end{align}
 \]</span></p>
 <p>But we could also consider decomposing the total tonnage that is recycled, and include the population size as another factor:<br>
 <span class="math display">\[
-\text{Recycled Tonnes} = \text{Nr People} \cdot \frac{\text{Total Waste}}{\text{Nr People}} \cdot \frac{\text{Recycled Waste}}{\text{Total Waste}}
+\begin{align}
+\text{Recycled Tonnes} &amp;= \text{Recycled Waste} \\
+\quad \\
+&amp;= \text{Nr People} \cdot \frac{\text{Total Waste}}{\text{Nr People}} \cdot \frac{\text{Recycled Waste}}{\text{Total Waste}} \\
+\end{align}
 \]</span></p>
 <p>SEPA provides data on this every year from 2011 onwards, providing us with a good example for decomposition across a time series.</p>
 <p>The data are available at <a href="https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv" target="_blank">https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv</a></p>
@@ -529,8 +537,13 @@ Scotland’s Business 5 year Survival Rate
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Rate = survivey1/births * survivey3/survivey1 * survivey5/survivey3</p>
-<p>do it across sectors i</p>
+<p><span class="math display">\[ \small
+\begin{align}
+\text{5 year survival rate} &amp;= \frac{\text{Nr Survived after 5yrs}}{\text{Nr Established}} \\
+\quad \\
+\text{5 year survival rate} &amp;= \sum\limits_{\text{sector }i}\frac{\text{Nr Established}_i}{\text{Nr Established}} \cdot \frac{\text{Nr Survived 1yr}_i}{\text{Nr Established}_i} \cdot \frac{\text{Nr Survived 3yr}_i}{\text{Nr Survived 1yr}_i} \cdot \frac{\text{Nr Survived 5yr}_i}{\text{Nr Survived 3yr}_i}
+\end{align}
+\]</span></p>
 </div>
 </div>
 </div>
@@ -692,7 +705,9 @@ Scotland’s Heroin Deaths 2020 vs 2024
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p><span class="math display">\[ \small
+\text{Nr Deaths Involving Heroin} = \sum\limits_{\text{age }i,\text{ sex }j}  \frac{\text{Nr People}_{ij}}{\text{Nr People}} \cdot \text{Nr People} \cdot \frac{\text{Nr Drug Deaths}_{ij}}{\text{Nr People}_{ij}} \cdot \frac{\text{Nr Heroin Deaths}_{ij}}{\text{Nr Drug Deaths}_{ij}}
+\]</span></p>
 </div>
 </div>
 </div>
@@ -756,6 +771,13 @@ Age-Sex Standardised Death Rates, Scotland 1981-2024
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align}
+\text{Death Rate} &amp;= \frac{\text{Nr Deaths}}{\text{Nr People}} \\
+\quad \\
+&amp;= \sum\limits_{\text{age }i,\text{ sex }j} \frac{\text{Nr People}_{ij}}{\text{Nr People}} \cdot \frac{\text{Nr Deaths}_{ij}}{\text{Nr People}_{ij}}
+\end{align}
+\]</span></p>
 <p>two countries age-specific death rates (deaths / total)<br>
 Rate = sum( deaths_g / total_g )<br>
 age-specific deaths will probs be found separately from age-specific population estimates</p>
@@ -800,8 +822,8 @@ Solution
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">rate =</span> deaths<span class="sc">/</span>n</span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># # takes time.. </span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># deaths_dc &lt;- dgnpop(deaths_ddat, </span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># # takes a lot of time.. </span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># deaths_dc &lt;- dgnpop(ddat,</span></span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                     pop = "year",</span></span>
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                     factors = "rate",</span></span>
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                     id_vars = c("age","sex"),</span></span>
@@ -833,6 +855,13 @@ Age-Sex-LAA Standardised Birth Rates, Scotland 1991-2024
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align}
+\text{Birth Rate} &amp;= \frac{\text{Nr Births}}{\text{Nr People}} \\
+\quad \\
+&amp;= \sum\limits_{\text{age }i,\text{ sex }j,\text{ area } k} \frac{\text{Nr People}_{ijk}}{\text{Nr People}} \cdot \frac{\text{Nr Births}_{ijk}}{\text{Nr People}_{ijk}}
+\end{align}
+\]</span></p>
 <p>two countries age-specific death rates (deaths / total)<br>
 Rate = sum( deaths_g / total_g )<br>
 age-specific deaths will probs be found separately from age-specific population estimates</p>

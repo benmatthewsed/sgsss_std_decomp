@@ -13,6 +13,10 @@ format:
     code-annotations: hover
     code-copy: hover
     chalkboard: true
+filters: 
+  - "assets/inverse_part.lua"
+title-slide-attributes:
+  data-background-color: "#006938"        
 bibliography: bibliography.bib
 ---
 

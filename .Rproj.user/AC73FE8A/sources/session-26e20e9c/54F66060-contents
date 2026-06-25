@@ -1,0 +1,84 @@
+library(tidyverse)
+df <- read_csv("decomp_data/drugdeaths_age_sex.csv")[,-c(3,24:28)] |>
+  janitor::clean_names() |>
+  filter(sex!="Persons") |> 
+  pivot_longer(3:last_col()) |>
+  transmute(
+    year,sex,agegroup=name,ddeaths=value
+  )
+
+unique(df$agegroup)
+
+
+pop <- read_csv("decomp_data/pop_midyear_age_sex_council_areas.csv") |> 
+  janitor::clean_names() |>
+  filter(area_name=="Scotland",sex!="Persons") |>
+  select(-all_ages) |>
+  pivot_longer(x0:x90_and_over,names_to="age") |>
+  mutate(age=parse_number(age)) |>
+  mutate(
+    agegroup = case_when(
+      age<=24 ~ "Under 25",
+      age>=25 & age<=34 ~ "25-34",
+      age>=35 & age<=44 ~ "35-44",
+      age>=45 & age<=54 ~ "45-54",
+      TRUE ~ "55 and over",
+    )
+  ) |> group_by(sex,year,agegroup) |>
+  summarise(
+    pop = sum(value)
+  )
+  
+  
+
+pd <- pop
+
+hd <- read_csv("data/heroin.csv") |>
+  rename(agegroup=age) |>
+  mutate(
+    hr = nheroin/ndeaths
+  ) |> arrange(year)
+
+df <- left_join(hd,pd) |>
+  filter(year %in% c(2010,2015,2020,2024))
+
+
+# write_csv(df, file="jk_projects/sgsss_std_decomp/data/heroin.csv")
+  
+df <- df |> mutate(
+    hr = nheroin/ndeaths,
+    ddr = ndeaths/pop
+  ) 
+
+
+
+
+
+# crude
+df |> group_by(year) |>
+  summarise(
+    crude = sum(nheroin),
+    crude2 = sum(hr*ddr)
+  ) 
+
+
+
+
+# proportion of drug deaths involving heroin
+dgnpop(df, 
+       pop="year",
+       factors=c("hr"),
+       id_vars = c("agegroup","sex"),
+       crossclassified = "ndeaths") |>
+  dg_table(2010,2024)
+
+df$totpop <- ave(df$pop, df$year, FUN=sum)
+
+dgnpop(df, 
+       pop="year",
+       factors=c("hr","ddr", "totpop"),
+       id_vars = c("agegroup","sex"),
+       crossclassified = "pop") |>
+  dg_table(2010,2024)
+
+
