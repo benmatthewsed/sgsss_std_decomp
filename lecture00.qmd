@@ -1,9 +1,9 @@
 ---
-title: "Welcome/Course Intro"
+title: "Welcome/Intro"
 format:
   revealjs:
     theme: [default, assets/mystyle.scss]
-    footer: "[Workshop Home](./index.html)"
+    footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade
     slide-number: true
     preview-links: auto

@@ -1,0 +1,7 @@
+"0","set.seed(34)"
+"0","dfD <- tibble("
+"0","  ppt = paste0(""ppt"",sprintf(""%03d"",1:200)),"
+"0","  score = pmax(0,pmin(50,round(rnorm(200, 31,9)))),"
+"0","  conf = pmax(0,pmin(100,round(rnorm(200,50-scale(score)*1.9,18))))"
+"0",")"
+"0","with(dfD,plot(score,conf))"

@@ -1,0 +1,18 @@
+"0","with(dfE, table(schooltravel)) |>
+  print() |>
+  #chisq.test(p = c(.35,.15,.5))
+  # wrong answers:
+  #chisq.test(p = c(.15,.35,.5))
+  #chisq.test(p = c(.5,.15,.35))
+  chisq.test(p = c(.5,.35,.15))
+"
+"1","schooltravel
+          Driven Public Transport       Walk/Cycle 
+            1602              770             2316 
+
+	Chi-squared test for given probabilities
+
+data:  print(with(dfE, table(schooltravel)))
+X-squared = 4396, df = 2, p-value < 2.2e-16
+
+"

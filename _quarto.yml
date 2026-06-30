@@ -16,10 +16,12 @@ website:
       - text: "Lectures"
         menu:
           - lecture00.qmd
-          - lecture-whole-game.qmd
+          - lecture-conceptual.qmd
           - lecture-stddecompbasics.qmd
           - lecture-crossclass.qmd
           - lecture-uncertainty.qmd
+          - lecture-whole-game.qmd
+          - lecture-othermethods.qmd
       - text: "Worksheets"
         menu:
           - workshop01.qmd

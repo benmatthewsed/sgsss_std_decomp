@@ -1,0 +1,5 @@
+"0","fruits <- c(""apple"", ""orange"", ""orange"", ""lemon"", ""orange"", ""apple"", ""grape"", ""lemon"")"
+"0",""
+"0","min(fruits)"
+"1","[1] ""apple""
+"

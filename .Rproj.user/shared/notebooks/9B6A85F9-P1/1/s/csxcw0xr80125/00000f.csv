@@ -1,0 +1,9 @@
+"0","mynumbers <- c(1,4,45,7,54,32,3,8,-3)
+mean(vec = mynumbers)
+"
+"2","G1;H1;Errorh in mean.default(vec = mynumbers) : 
+  argument ""x"" is missing, with no default
+g"
+"2","G1;H1;Error during wrapuph: not that many frames on the stack
+Error: no more error handlers available (recursive errors?); invoking 'abort' restart
+g"
