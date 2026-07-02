@@ -26,6 +26,7 @@ editor_options:
 options(digits=4)
 library(tidyverse)
 library(DasGuptR)
+library(marginaleffects)
 scot_v_eng <- 
   tribble(
     ~country, ~n_people, ~n_women1544, ~n_births,
@@ -241,7 +242,7 @@ tibble(
 | Counterfactual |  <span style="font-size:.8em">What would the difference in Y be if group B had group A's 'endowments' $\mathbb{E}_a[X]$, but kept the same 'returns' $\mathbb{E}_b[Y|X]$?<br>What would the difference in $Y$ be if group B kept its own characteristics X but had the same X-Y relationship as in group A?</span>  |
 
 
-## Oaxaca-Blinder 
+## Oaxaca-Blinder? 
 
 - [Rahimi & Nazari 2021:](https://pubmed.ncbi.nlm.nih.gov/34362385/){target="_blank"} A detailed explanation and graphical representation of the Blinder-Oaxaca decomposition method with its application in health inequalities
 
@@ -249,28 +250,28 @@ tibble(
 
 - A rabbit hole: [Oaxaca & Sierminska 2025](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0321874){target="_blank"} Oaxaca-Blinder meets Kitagawa: What is the link?
 
-## Group effect or Group difference?  
+## Group difference or Group effect?  
 
 ::::{.columns}
-:::{.column width="45%"}
-### group "effect" 
-
-aim is to understand **how** a process/mechanism works  
-
-<br>
-How much of the effect on Y of being in group A vs B is *because* the grouping has an effect on M and M has an effect on Y?  
-
-:::
-:::{.column width="10%"}
-
-:::
 :::{.column width="45%"}
 ### group "difference"  
 
 aim is to understand **why** (structurally) a disparity exists
 
 <br>
-How much of the total difference in Y between groups can be attributed to the fact that groups have different distributions/effects of X on Y?
+How much of the *difference* in Y between groups can be attributed to the fact that groups have different distributions/effects of X on Y?
+
+:::
+:::{.column width="10%"}
+
+:::
+:::{.column width="45%"}
+### group "effect" 
+
+aim is to understand **how** a process/mechanism works  
+
+<br>
+How much of the *effect* on Y of being in group A vs B is *because* the grouping has an effect on M and M has an effect on Y?  
 
 :::
 ::::
@@ -291,10 +292,7 @@ How much of the total difference in Y between groups can be attributed to the fa
 
 - requires much more stringent causal assumptions that are almost impossible to satisfy (no unmeasured confounding of Group -> Y, of Group -> M, of M -> Y).  
 
-
-
-
-## Mediation
+<br><br>
 
 - [Rohrer et al., 2022](https://journals.sagepub.com/doi/10.1177/25152459221095827){target="_blank"} That’s a Lot to Process! Pitfalls of Popular Path Models
 
@@ -303,31 +301,57 @@ How much of the total difference in Y between groups can be attributed to the fa
 - [uoepsy.github.io/lv Chapters 6](https://uoepsy.github.io/lv/06_intropath.html){target="_blank"} and [7](https://uoepsy.github.io/lv/07_mediation.html){target="_blank"}.  
 
 
-## prevalence, effect
 
-recent work: elwert yu
+## baseline, prevalence, effect
 
-references & tutorials
+![](images/pres1/Slide41.PNG){fig-align="center" width="100%"}
+## baseline, prevalence, effect
+
+![](images/pres1/Slide43.png){fig-align="center" width="100%"}
+
+## group disparity
+
+![](images/pres1/Slide44.png){fig-align="center" width="100%"}
+
+## baseline
+
+![](images/pres1/Slide45.png){fig-align="center" width="100%"}
+
+## prevalence
+
+![](images/pres1/Slide46.png){fig-align="center" width="100%"}
+
+## effect
+
+![](images/pres1/Slide47.png){fig-align="center" width="100%"}
+
+## baseline, prevalence, effect, selection
+
+![](images/pres1/Slide48.png){fig-align="center" width="100%"}
+---
+
+![](images/pres1/Slide49.png){fig-align="center" width="100%"}
+---
+
+![](images/pres1/Slide50.png){fig-align="center" width="100%"}
+---
 
 
+![](images/pres1/Slide51.png){fig-align="center" width="100%"}
+---
 
+![](images/pres1/Slide52.png){fig-align="center" width="100%"}
 
+---
 
+![](images/pres1/Slide53.png){fig-align="center" width="100%"}
 
-    - $\mathbb{E}[Y|X=x] \,\,\,\text{vs}\,\,\, \mathbb{E}[Y|X=x+1]$ - for each datazone what would we expect the number of births to do if we increased the number of tescos by 1.  
-    - $\mathbb{E}[Y|X=0] \,\,\,\text{vs}\,\,\, \mathbb{E}[Y|X=1]$ - for each person, what would we expect probability of birth to be if we they had a tesco (vs if they didn't)  
-        
-- moves us into the realms of potential outcomes (and all of the challenges that come with that!)
+---
 
+![](images/pres1/Slide54.png){fig-align="center" width="100%"}
 
-## regression decomposition methods: 
-
-- Oaxaca-Blinder
-
-- Mediation
-
-- Others 
-
-
+:::{.aside}
+See [Yu & Elwert 2023: Nonparametric causal decomposition of group disparities](https://projecteuclid.org/journals/annals-of-applied-statistics/volume-19/issue-1/Nonparametric-causal-decomposition-of-group-disparities/10.1214/24-AOAS1990.pdf){target="_blank"}
+:::
 
 # End

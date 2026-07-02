@@ -1,0 +1,224 @@
+---
+title: "Untitled"
+---
+
+## decomposing a disparity: Das Gupta
+
+$$Y^d \perp D \mid g, x, \forall d, g, x$$
+
+
+
+## baseline
+
+
+```{r}
+df <- tibble(
+  C = rnorm(200), 
+  G = rep(0:1,e=100),
+  D = rep(0:1,100),
+  ptd = rnorm(200,2,1), # individual D treatment effects
+  Y = rnorm(200,G+ptd*D,1),
+  Yb = rbinom(200,1,plogis(scale(G+ptd*D)))
+) 
+df1 = df |> mutate(
+  X = factor(D),
+  Group = factor(G,labels=letters[1:2])
+)
+
+```
+
+group G disparity in Y:
+```{r}
+lm(Y~Group,df1) |> summary() |> pluck(coefficients)
+lm(Y~Group,df1) |> plot_predictions(by=c("Group"))
+```
+
+not because of more D:
+```{r}
+with(df1, table(Group, X))
+```
+
+not because of D having different effects:  
+```{r}
+m = lm(Y~X,df1[df1$Group=="a", ])
+m1 = lm(Y~X,df1[df1$Group=="b", ])
+library(patchwork)
+(plot_predictions(m, by=c("X")) + labs(title="group A") ) +
+  (plot_predictions(m1, by=c("X")) + labs(title="group B") )
+```
+
+
+## prevalence
+
+no difference in G that isn't because of D.  
+it's just that there's more D1 in G1 than in G0
+```{r}
+df <- tibble(
+  C = rnorm(200), 
+  G = rep(0:1,e=100),
+  D = rep(c(0,1,0,1),times=c(50,50,20,80)), # more D in G1
+  umC = rnorm(200,2,1),
+  ptd = rnorm(200,2+umC,1), # individual D treatment effects
+  Y = rnorm(200,umC+ptd*D,1),
+  Yb = rbinom(200,1,plogis(scale(ptd*D)))
+) 
+
+df1 = df |> mutate(
+  X = factor(D),
+  Group = factor(G,labels=letters[1:2])
+)
+```
+
+group G disparity in Y:
+```{r}
+lm(Y~Group,df1) |> plot_predictions(by=c("Group"))
+```
+
+equal X in both groups
+```{r}
+with(df1, table(Group,X))
+```
+
+clue here is in the SEs. X has an effect on Y, and there's more X in groupB, resulting in group disparity in Y.  
+```{r}
+m = lm(Y~X,df1[df1$Group=="a", ])
+m1 = lm(Y~X,df1[df1$Group=="b", ])
+(plot_predictions(m, by=c("X")) + labs(title="group A") ) +
+  (plot_predictions(m1, by=c("X")) + labs(title="group B") )
+```
+
+group difference disappears after removing effect of X
+```{r}
+lm(Y~Group,df1) |> summary()
+lm(Y~X+Group,df1) |> summary()
+```
+
+
+## effects
+
+```{r}
+set.seed(44)
+df <- tibble(
+  G = rep(0:1,e=100),
+  D = rep(c(0,1,0,1),times=c(50,50,50,50)), # equal D in groups
+  ptd = rnorm(200,2,1), # individual D treatment effects
+  Y = rnorm(200,ptd*D*(G==1),1), # effect of D is only in group 1
+  Yb = rbinom(200,1,plogis(scale(ptd*D)))
+) 
+
+df1 = df |> mutate(
+  X = factor(D),
+  Group = factor(G,labels=letters[1:2])
+)
+```
+
+group G disparity in Y:
+```{r}
+lm(Y~Group,df1) |> plot_predictions(by=c("Group"))
+```
+
+equal X in both groups. 
+```{r}
+with(df1, table(Group,X))
+```
+
+X has an effect in group B but not in group A
+```{r}
+m = lm(Y~X,df1[df1$Group=="a", ])
+m1 = lm(Y~X,df1[df1$Group=="b", ])
+(plot_predictions(m, by=c("X")) + labs(title="group A") ) +
+  (plot_predictions(m1, by=c("X")) + labs(title="group B") )
+```
+
+we're estimating Y~X, so this is assumed no unmeasured confounds. 
+```{r}
+set.seed(44)
+df <- tibble(
+  G = rep(0:1,e=100),
+  D = rep(c(0,1,0,1),times=c(50,50,50,50)), # equal D in groups
+  umC = rnorm(200,4,1),
+  ptd = rnorm(200,2+umC,1), # individual D treatment effects
+  Y = rnorm(200,umC+ptd*D*(G==1),1), # effect of D is only in group 1
+  Yb = rbinom(200,1,plogis(scale(ptd*D)))
+) 
+```
+
+
+## selection
+
+```{r}
+df <- tibble(
+  G = rep(0:1,e=100),
+  C = rnorm(200,1,1),
+  ptd = rnorm(200,2*C,1), # individual D treatment effects
+) |> group_by(G) |>
+  mutate(ptd2 = cut(ptd,2,labels=F)) |>
+  ungroup() |>
+  mutate(
+    D = case_when(
+      G==0 & ptd2 == 1 ~ 1,
+      G==0 & ptd2 == 2 ~ 0,
+      G==1 & ptd2 == 1 ~ 0,
+      G==1 & ptd2 == 2 ~ 1
+    ),
+    Y = rnorm(200,ptd*D,1), # effect of D is only in group 1
+    Yb = rbinom(200,1,plogis(scale(ptd*D)))
+  ) 
+
+df1 = df |> mutate(
+  X = factor(D),
+  Group = factor(G,labels=letters[1:2])
+)
+```
+
+group G disparity in Y:
+```{r}
+lm(Y~Group,df1) |> plot_predictions(by=c("Group"))
+```
+
+equal X in both groups. 
+```{r}
+with(df1, table(Group,X))
+```
+
+X has an effect in group B but not in group A
+```{r}
+m = lm(Y~X,df1[df1$Group=="a", ])
+m1 = lm(Y~X,df1[df1$Group=="b", ])
+(plot_predictions(m, by=c("X")) + labs(title="group A") ) +
+  (plot_predictions(m1, by=c("X")) + labs(title="group B") )
+```
+
+```{r}
+library(cdgd)
+results0 <- cdgd0_pa(Y="Y",D="D",G="G",
+                     X="C",
+                     data=df,
+                     alpha=0.05)
+results0$results
+```
+
+
+recent work: elwert yu
+
+references & tutorials
+
+
+
+
+
+
+    - $\mathbb{E}[Y|X=x] \,\,\,\text{vs}\,\,\, \mathbb{E}[Y|X=x+1]$ - for each datazone what would we expect the number of births to do if we increased the number of tescos by 1.  
+    - $\mathbb{E}[Y|X=0] \,\,\,\text{vs}\,\,\, \mathbb{E}[Y|X=1]$ - for each person, what would we expect probability of birth to be if we they had a tesco (vs if they didn't)  
+        
+- moves us into the realms of potential outcomes (and all of the challenges that come with that!)
+
+
+## regression decomposition methods: 
+
+- Oaxaca-Blinder
+
+- Mediation
+
+- Others 
+

@@ -466,26 +466,26 @@ crude      9.685    8.250 -1.4343 100.00</code></pre>
 </table>
 </section>
 <section id="oaxaca-blinder-1" class="slide level2">
-<h2>Oaxaca-Blinder</h2>
+<h2>Oaxaca-Blinder?</h2>
 <ul>
 <li><p><a href="https://pubmed.ncbi.nlm.nih.gov/34362385/" target="_blank">Rahimi &amp; Nazari 2021:</a> A detailed explanation and graphical representation of the Blinder-Oaxaca decomposition method with its application in health inequalities</p></li>
 <li><p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2528391" target="_blank">Hlavac 2014:</a> oaxaca: Blinder-Oaxaca Decomposition in R</p></li>
 <li><p>A rabbit hole: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0321874" target="_blank">Oaxaca &amp; Sierminska 2025</a> Oaxaca-Blinder meets Kitagawa: What is the link?</p></li>
 </ul>
 </section>
-<section id="group-effect-or-group-difference" class="slide level2">
-<h2>Group effect or Group difference?</h2>
+<section id="group-difference-or-group-effect" class="slide level2">
+<h2>Group difference or Group effect?</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<h3 id="group-effect">group “effect”</h3>
-<p>aim is to understand <strong>how</strong> a process/mechanism works</p>
-<p><br> How much of the effect on Y of being in group A vs B is <em>because</em> the grouping has an effect on M and M has an effect on Y?</p>
+<h3 id="group-difference">group “difference”</h3>
+<p>aim is to understand <strong>why</strong> (structurally) a disparity exists</p>
+<p><br> How much of the <em>difference</em> in Y between groups can be attributed to the fact that groups have different distributions/effects of X on Y?</p>
 </div><div class="column" style="width:10%;">
 
 </div><div class="column" style="width:45%;">
-<h3 id="group-difference">group “difference”</h3>
-<p>aim is to understand <strong>why</strong> (structurally) a disparity exists</p>
-<p><br> How much of the total difference in Y between groups can be attributed to the fact that groups have different distributions/effects of X on Y?</p>
+<h3 id="group-effect">group “effect”</h3>
+<p>aim is to understand <strong>how</strong> a process/mechanism works</p>
+<p><br> How much of the <em>effect</em> on Y of being in group A vs B is <em>because</em> the grouping has an effect on M and M has an effect on Y?</p>
 </div></div>
 </section>
 <section id="mediation" class="slide level2">
@@ -519,36 +519,75 @@ crude      9.685    8.250 -1.4343 100.00</code></pre>
 <h2>Mediation?</h2>
 <ul>
 <li><p>it’s probably not want you want.</p></li>
-<li><p>requires much more stringent causal assumptions that are almost impossible to satisfy (no confounding of Group &gt; Y, of Group &gt; M, of M &gt; Y).</p></li>
+<li><p>requires much more stringent causal assumptions that are almost impossible to satisfy (no unmeasured confounding of Group -&gt; Y, of Group -&gt; M, of M -&gt; Y).</p></li>
 </ul>
-</section>
-<section id="mediation-2" class="slide level2">
-<h2>Mediation</h2>
+<p><br><br></p>
 <ul>
 <li><p><a href="https://journals.sagepub.com/doi/10.1177/25152459221095827" target="_blank">Rohrer et al., 2022</a> That’s a Lot to Process! Pitfalls of Popular Path Models</p></li>
 <li><p><a href="https://www.the100.ci/2025/03/20/reviewer-notes-thats-a-very-nice-mediation-analysis-you-have-there-it-would-be-a-shame-if-something-happened-to-it/">The 100% CI Blog, 2025</a> Reviewer notes: That’s a very nice mediation analysis you have there. It would be a shame if something happened to it.</p></li>
 <li><p><a href="https://uoepsy.github.io/lv/06_intropath.html" target="_blank">uoepsy.github.io/lv Chapters 6</a> and <a href="https://uoepsy.github.io/lv/07_mediation.html" target="_blank">7</a>.</p></li>
 </ul>
 </section>
-<section id="prevalence-effect" class="slide level2">
-<h2>prevalence, effect</h2>
-<p>recent work: elwert yu</p>
-<p>references &amp; tutorials</p>
-<pre><code>- $\mathbb{E}[Y|X=x] \,\,\,\text{vs}\,\,\, \mathbb{E}[Y|X=x+1]$ - for each datazone what would we expect the number of births to do if we increased the number of tescos by 1.  
-- $\mathbb{E}[Y|X=0] \,\,\,\text{vs}\,\,\, \mathbb{E}[Y|X=1]$ - for each person, what would we expect probability of birth to be if we they had a tesco (vs if they didn't)  
-    </code></pre>
-<ul>
-<li>moves us into the realms of potential outcomes (and all of the challenges that come with that!)</li>
-</ul>
+<section id="baseline-prevalence-effect" class="slide level2">
+<h2>baseline, prevalence, effect</h2>
+<p><img data-src="images/pres1/Slide41.PNG" class="quarto-figure quarto-figure-center" style="width:100.0%"> ## baseline, prevalence, effect</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/pres1/Slide43.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
 </section>
-<section id="regression-decomposition-methods" class="slide level2">
-<h2>regression decomposition methods:</h2>
-<ul>
-<li><p>Oaxaca-Blinder</p></li>
-<li><p>Mediation</p></li>
-<li><p>Others</p></li>
-</ul>
-</section></section>
+<section id="group-disparity" class="slide level2">
+<h2>group disparity</h2>
+
+<img data-src="images/pres1/Slide44.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="baseline" class="slide level2">
+<h2>baseline</h2>
+
+<img data-src="images/pres1/Slide45.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="prevalence" class="slide level2">
+<h2>prevalence</h2>
+
+<img data-src="images/pres1/Slide46.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="effect" class="slide level2">
+<h2>effect</h2>
+
+<img data-src="images/pres1/Slide47.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="baseline-prevalence-effect-selection" class="slide level2">
+<h2>baseline, prevalence, effect, selection</h2>
+
+<img data-src="images/pres1/Slide48.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="images/pres1/Slide49.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="images/pres1/Slide50.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="images/pres1/Slide51.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="images/pres1/Slide52.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+
+<img data-src="images/pres1/Slide53.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section class="slide level2">
+
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/pres1/Slide54.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+
+<aside><div>
+<p>See <a href="https://projecteuclid.org/journals/annals-of-applied-statistics/volume-19/issue-1/Nonparametric-causal-decomposition-of-group-disparities/10.1214/24-AOAS1990.pdf" target="_blank">Yu &amp; Elwert 2023: Nonparametric causal decomposition of group disparities</a></p>
+</div></aside></section></section>
 <section id="end" class="title-slide slide level1 center" data-background-color="#006938">
 <h1>End</h1>
 
