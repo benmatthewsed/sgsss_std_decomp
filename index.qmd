@@ -29,6 +29,7 @@ lapply(list.files("data",full.names=TRUE), \(x) file.copy(x,"docs/data"))
 | 13:45 | [Practical 2](workshop02.html) |
 | 14:15 | coffee |
 | 14:30 | [Uncertainty](lecture-uncertainty.html) |
+| 15:00 | [Practical 3](workshop03.html) |
 | | [The whole game](lecture-whole-game.html) |
 | | [Other Methods of Decomposition](lecture-othermethods.html) |
 

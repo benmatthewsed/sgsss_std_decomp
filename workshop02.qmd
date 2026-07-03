@@ -132,32 +132,87 @@ dgnpop(reconv2,
 
 `r qbegin(qcounter())`
 Returning to the reconvictions data where we have it split by **both** age-group and sex, and we have it for all populations between 2004 and 2016.   
+
+One way to capture the different combinations of age and sex breakdowns is to simply combine them:  
+
 ```{r}
-reconv |> head()
+reconv3 <- 
+  reconv |>
+  mutate(
+    agesex = interaction(Age,Sex)
+  )
+
+head(reconv3)
 ```
 
+Decompose the crude rate difference between 2004 and 2016 into the contributions from these group-specific rates and the group-specific weights (much like in the previous questions). Then do the decomposition while separating contributions of age composition from those of sex composition.  
 
-
+You can do all of this including _all_ years in the standardisation, and pulling out the specific years in `dg_table(pop1 = 2004, pop2 = 2016)`.   
 `r qend()`
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
 ```{r}
-dgnpop(reconv, 
+rr1 <- dgnpop(reconv3, 
+       pop = "year",
+       factors = "prev_rate",
+       id_vars = "agesex",
+       crossclassified = "offenders")
+
+rr1 |> dg_table(2004,2016)
+rr1 |> dg_plot()
+
+rr2 <- dgnpop(reconv3, 
        pop = "year",
        factors = "prev_rate",
        id_vars = c("Age","Sex"),
-       crossclassified = "offenders") |>
-  dg_plot()
+       crossclassified = "offenders")
 
-dgnpop(reconv |> mutate(agesex=interaction(Age,Sex)), 
-       pop = "year",
-       factors = "prev_rate",
-       id_vars = c("agesex"),
-       crossclassified = "offenders") |>
-  dg_plot()
+rr2 |> dg_table(2004,2016)
+rr2 |> dg_plot()
 ```
 
+`r solend()`
+
+`r qbegin(paste0("Optional: ", qcounter()))`
+To help understand things, let's start changing our data to see what happens. 
+
+The code below will add an extra 1000 Females to the convicted population for each year (200 in each age group). So in 2005 we have added 1000 Females, in 2006 we added 2000, 2007 we add 3000, and so on. 
+We keep the rate of reconvictions the same within the age-sex groups (we can update the `reconvicted` variable just for completeness):  
+```{r}
+reconv4 <- 
+  reconv |>
+  mutate(
+    extra_F = ifelse(Sex=="Female",200*(year-2004),0),
+    offenders = offenders + extra_F,
+    reconvicted = offenders * prev_rate
+  )
+```
+
+How will the plot below change when we run it on this fake data?  
+```{r}
+#| echo: false
+rr2 |> dg_plot()
+```
+
+`r qend()`
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+
+Because Females tend to have lower rates of reconvictions than Males, if they make up a greater and greater proportion of the population each year, then we would expect the crude rate to decrease _even if the distribution of ages, and the rates of reconvictions within each age-sex group stayed the same_.  
+
+So the line in the plot for "K-sex_struct adjusted" should be going down! 
+
+```{r}
+rr3 <- dgnpop(reconv4, 
+       pop = "year",
+       factors = "prev_rate",
+       id_vars = c("Age","Sex"),
+       crossclassified = "offenders")
+
+rr3 |> dg_plot()
+```
 
 `r solend()`
+
+
 
 
 
@@ -416,9 +471,11 @@ For example, we may be interested in decomposing the proportion of energy genera
 $$ \small
 \begin{align}
 \text{Wind & Solar Share} &= \frac{\text{Electricity Generated from Wind & Solar}}{\text{Electricity Generated}} \\
+\quad \\
 &=\sum\limits_{\text{country }i}\frac{\text{from W&S}_i}{\text{from Renewables}_i} \cdot \frac{\text{from Renewables}_i}{\text{from Clean Energy}_i} \cdot \frac{\text{from Clean Energy}_i}{\text{Total}_i} \\
 \end{align}
-$$  
+$$
+
 
 
 Over the past decade, Wind & Solar has gone from generating ~5% of all electricity to generating ~15%. Our decomposition will allow us to investigate the extent to which this is driven by changes in electricity generation from Wind & Solar in comparison to other renewables, or by generating energy from renewables in general as opposed to from nuclear, or from a general move away from fossil fuels.  
@@ -518,6 +575,12 @@ left_join(
 ::: {.callout-note collapse="true"}
 #### Scotland's Business 5 year Survival Rate
 
+Scotland provides information on the number of business established in a given year, as well as the number that have survived 1 year, 3 years, and 5 years. It also provides this information split across various industries (Production, Construction, Motor, Retail etc.. ).  
+
+The 5-year survival rate for business dropped from 42% in 2013 to 38% in 2019.  
+
+This could be because of a changing composition of businesses across industries, or it could be due to it being harder for businesses to survive. Because a business that survives 5 years needs to have, by definition, survived 3 years first, we can decompose the 5-year survival rate into short-term, medium-term and longer term survival:  
+
 
 $$ \small
 \begin{align} 
@@ -526,6 +589,7 @@ $$ \small
 \text{5 year survival rate} &= \sum\limits_{\text{sector }i}\frac{\text{Nr Established}_i}{\text{Nr Established}} \cdot \frac{\text{Nr Survived 1yr}_i}{\text{Nr Established}_i} \cdot \frac{\text{Nr Survived 3yr}_i}{\text{Nr Survived 1yr}_i} \cdot \frac{\text{Nr Survived 5yr}_i}{\text{Nr Survived 3yr}_i}
 \end{align}
 $$
+Data can be found at [https://josiahpjking.github.io/sgsss_std_decomp/data/businesssurvival.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/businesssurvival.csv){target="_blank"}  
 
 :::
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
@@ -563,17 +627,24 @@ head(bs)
 
 
 
-
-
 ::: {.callout-note collapse="true"}
 #### Scotland's Heroin Deaths 2020 vs 2024
+
+The total number of deaths in Scotland involving heroin was 254 in 2010, and 327 in 2024. The number of deaths involving drugs has gone from 485 to 1017.  
+
+To decompose the total number of heroin deaths, we might find it useful to include the total population size in our decomposition, because in a larger population we would expect more deaths.  
+
+From the available data, we could perform a decomposition of the total number of heroin deaths in Scotland into contributions from: 
+
+- total population size (a bigger populations results in more deaths, even with the same death rate)
+- population composition (with heroin deaths more common in certain age groups, a population for which that group makes up a larger proportion will result in greater numbers of deaths)
+- drug mortality rates (numbers of heroin deaths might increase due to more drugs deaths generally)
+- heroin mortality fraction (the extent to which drug deaths involve heroin, vs some other drug)
 
 $$ \small
 \text{Nr Deaths Involving Heroin} = \sum\limits_{\text{age }i,\text{ sex }j}  \frac{\text{Nr People}_{ij}}{\text{Nr People}} \cdot \text{Nr People} \cdot \frac{\text{Nr Drug Deaths}_{ij}}{\text{Nr People}_{ij}} \cdot \frac{\text{Nr Heroin Deaths}_{ij}}{\text{Nr Drug Deaths}_{ij}}
 $$
-
-
-[https://josiahpjking.github.io/sgsss_std_decomp/data/heroin.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/heroin.csv){target="_blank"}  
+Data for the various numbers required for this decomposition are available at [https://josiahpjking.github.io/sgsss_std_decomp/data/heroin.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/heroin.csv){target="_blank"}  
 
 :::
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
@@ -613,6 +684,14 @@ dgnpop(hdat,
 ::: {.callout-note collapse="true"}
 #### Age-Sex Standardised Death Rates, Scotland 1981-2024 
 
+A very common use of standardisation is to create age-sex-standardised rates. Populations differ considerably in their age distributions. A good way of visualising this is via "population pyramids".
+
+Play around at [populationpyramid.net](https://www.populationpyramid.net/){target="_blank"} (e.g., see how Italy differs from Kenya).  
+
+The same age-sex mix of the population for a given country will also change over time. With rates of deaths varying across different age-sex groups, it can be problematic to compare crude death rates across a long time frame. In 1981 the death rate was 12.3 deaths per 1000 people. In 2024, it was 11.2.  
+
+If a larger proportion of the 2024 population is older, then this actually *hides* the improvements made over the last 40 years. 
+
 $$
 \begin{align}
 \text{Death Rate} &= \frac{\text{Nr Deaths}}{\text{Nr People}} \\
@@ -622,11 +701,34 @@ $$
 $$
 
 
-two countries age-specific death rates (deaths / total)  
-Rate = sum( deaths_g / total_g )  
-age-specific deaths will probs be found separately from age-specific population estimates
+Data can be found at: [https://josiahpjking.github.io/sgsss_std_decomp/data/scotland_deaths_1981_2024.xsv](https://josiahpjking.github.io/sgsss_std_decomp/data/scotland_deaths_1981_2024.csv){target="_blank"}  
 
-[https://josiahpjking.github.io/sgsss_std_decomp/data/scotland_deaths_1981_2024.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/scotland_deaths_1981_2024.csv){target="_blank"}  
+Doing this process on the entire set of 43 years will take a lot of time, so you could consider filtering to every 5th year at the outset.  
+
+Alternatively, here's one we made earlier: 
+```{r}
+load(url("https://josiahpjking.github.io/sgsss_std_decomp/data/deaths_age_sex_full.rdata"))
+```
+
+If you want some fun, the code below will create an animation of the population pyramid in Scotland for the last 40 years: 
+```{r}
+#| code-fold: true
+#| eval: false
+library(gganimate)
+popdat <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/scotland_deaths_1981_2024.csv")
+
+popdat |>
+  mutate(
+    n = ifelse(sex=="Males",-n,n)
+  ) |>
+  ggplot(aes(x=age,y=n,fill=sex))+
+  geom_col()+
+  coord_flip()+
+  transition_time(year) +
+  labs(title = "Year: {round(frame_time)}")
+```
+
+
 
 :::
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
@@ -653,7 +755,7 @@ ddat <-
 #                     id_vars = c("age","sex"),
 #                     crossclassified = "n", quietly = FALSE)
 
-load("data/deaths_age_sex_full.rdata")
+load(url("https://josiahpjking.github.io/sgsss_std_decomp/data/deaths_age_sex_full.rdata"))
 
 dg_plot(deaths_dc,legend.position="bottom")
 ```
