@@ -1,5 +1,5 @@
 ---
-title: "Crossclassified Data Structures, More Populations"
+title: "Crossclassified Data & Multiple Populations"
 format:
   revealjs:
     theme: [default, assets/mystyle.scss]

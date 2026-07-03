@@ -259,7 +259,7 @@ Data are available at [https://josiahpjking.github.io/sgsss_std_decomp/data/hdea
 
 decomposing deaths per 100,000 people:  
 ```{r}
-hd <- read_csv("data/hdeaths.csv")
+hd <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/hdeaths.csv")
 
 hd <- 
   hd |> mutate(
@@ -367,7 +367,7 @@ The data are available at [https://josiahpjking.github.io/sgsss_std_decomp/data/
 
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
 ```{r}
-df <- read_csv("data/recycling_timeseries.csv")
+df <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv")
 
 df <- df |>
   mutate(
@@ -422,7 +422,7 @@ We can then use these quantities to calculate an occupation-adjusted pay gap.
 
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
 ```{r}
-gdat <- read_csv("data/gender_pay_occ.csv")
+gdat <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/gender_pay_occ.csv")
 
 # crude GPayGap: 
 # female median as a percentage of male median
@@ -498,7 +498,7 @@ $$
 :::
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
 ```{r}
-egen <- read_csv("data/elec_gen.csv") 
+egen <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/elec_gen.csv") 
 
 egen <- egen |>
  mutate(
@@ -531,7 +531,7 @@ dg_plot(eresuk, legend.position="topleft")
 
 capacity patterns well with generation, but moves more smoothly because infrastructure changes slowly! 
 ```{r}
-ecap <- read_csv("data/elec_cap.csv")
+ecap <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/elec_cap.csv")
 
 ecap <- ecap |>
  mutate(
@@ -594,7 +594,7 @@ Data can be found at [https://josiahpjking.github.io/sgsss_std_decomp/data/busin
 :::
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
 ```{r}
-bs <- read_csv("data/businesssurvival.csv") |> 
+bs <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/businesssurvival.csv") |> 
   mutate(
     a = surv5/surv3,
     b = surv3/surv1,
@@ -649,7 +649,7 @@ Data for the various numbers required for this decomposition are available at [h
 :::
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
 ```{r}
-hdat <- read_csv("data/heroin.csv")
+hdat <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/heroin.csv")
 hdat$totpop <- ave(hdat$pop, hdat$year, FUN=sum)
   
 hdat <- hdat |> 
@@ -676,9 +676,6 @@ dgnpop(hdat,
 
 
 `r solend()`
-
-
-
 
 
 ::: {.callout-note collapse="true"}
@@ -780,14 +777,13 @@ $$
 $$
 
 
-two countries age-specific death rates (deaths / total)  
-Rate = sum( deaths_g / total_g )  
-age-specific deaths will probs be found separately from age-specific population estimates
+TODO JK upload data. 
 
 :::
 
 
 
+TODO add any further examples
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Standardisation and Decomposition of Rates"
+title: "Standardisation and Decomposition of Rates as Products"
 format:
   revealjs:
     theme: [default, assets/mystyle.scss]

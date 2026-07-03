@@ -27,6 +27,7 @@ website:
         menu:
           - workshop01.qmd
           - workshop02.qmd
+          - workshop03.qmd
       - text: "Resources"
         menu:
           - text: "DasGuptR Tutorial Paper (Under Review)"

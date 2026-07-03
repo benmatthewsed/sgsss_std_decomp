@@ -205,11 +205,11 @@ window.Quarto = {
   </li>  
         <li>
     <a class="dropdown-item" href="./lecture-stddecompbasics.html">
- <span class="dropdown-text">Standardisation and Decomposition of Rates</span></a>
+ <span class="dropdown-text">Standardisation and Decomposition of Rates as Products</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./lecture-crossclass.html">
- <span class="dropdown-text">Crossclassified Data Structures, More Populations</span></a>
+ <span class="dropdown-text">Crossclassified Data &amp; Multiple Populations</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./lecture-uncertainty.html">
@@ -237,6 +237,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="./workshop02.html">
  <span class="dropdown-text">Practical 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./workshop03.html">
+ <span class="dropdown-text">Practical 3</span></a>
   </li>  
     </ul>
   </li>
@@ -647,7 +651,7 @@ Solution
 <div id="sol-body-7" class="solution-body proof solution" style="display: none;">
 <p><span class="proof-title"><em>Solution 7</em>. </span>decomposing deaths per 100,000 people:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>hd <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/hdeaths.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>hd <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://josiahpjking.github.io/sgsss_std_decomp/data/hdeaths.csv"</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>hd <span class="ot">&lt;-</span> </span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  hd <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
@@ -793,7 +797,7 @@ Solution
 <div id="sol-body-8" class="solution-body proof solution" style="display: none;">
 <p><span class="proof-title"><em>Solution 8</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/recycling_timeseries.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv"</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -866,7 +870,7 @@ Solution
 <div id="sol-body-9" class="solution-body proof solution" style="display: none;">
 <p><span class="proof-title"><em>Solution 9</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>gdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/gender_pay_occ.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>gdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://josiahpjking.github.io/sgsss_std_decomp/data/gender_pay_occ.csv"</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># crude GPayGap: </span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># female median as a percentage of male median</span></span>
@@ -952,7 +956,7 @@ Solution
 <div id="sol-body-10" class="solution-body proof solution" style="display: none;">
 <p><span class="proof-title"><em>Solution 10</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>egen <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/elec_gen.csv"</span>) </span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>egen <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://josiahpjking.github.io/sgsss_std_decomp/data/elec_gen.csv"</span>) </span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>egen <span class="ot">&lt;-</span> egen <span class="sc">|&gt;</span></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(</span>
@@ -996,7 +1000,7 @@ Solution
 </div>
 <p>capacity patterns well with generation, but moves more smoothly because infrastructure changes slowly!</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ecap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/elec_cap.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ecap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://josiahpjking.github.io/sgsss_std_decomp/data/elec_cap.csv"</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>ecap <span class="ot">&lt;-</span> ecap <span class="sc">|&gt;</span></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(</span>
@@ -1079,7 +1083,7 @@ Solution
 <div id="sol-body-11" class="solution-body proof solution" style="display: none;">
 <p><span class="proof-title"><em>Solution 11</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>bs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/businesssurvival.csv"</span>) <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>bs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://josiahpjking.github.io/sgsss_std_decomp/data/businesssurvival.csv"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">a =</span> surv5<span class="sc">/</span>surv3,</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">b =</span> surv3<span class="sc">/</span>surv1,</span>
@@ -1178,7 +1182,7 @@ Solution
 <div id="sol-body-12" class="solution-body proof solution" style="display: none;">
 <p><span class="proof-title"><em>Solution 12</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>hdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/heroin.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>hdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://josiahpjking.github.io/sgsss_std_decomp/data/heroin.csv"</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>hdat<span class="sc">$</span>totpop <span class="ot">&lt;-</span> <span class="fu">ave</span>(hdat<span class="sc">$</span>pop, hdat<span class="sc">$</span>year, <span class="at">FUN=</span>sum)</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>hdat <span class="ot">&lt;-</span> hdat <span class="sc">|&gt;</span> </span>
@@ -1346,12 +1350,11 @@ Age-Sex-LAA Standardised Birth Rates, Scotland 1991-2024
 &amp;= \sum\limits_{\text{age }i,\text{ sex }j,\text{ area } k} \frac{\text{Nr People}_{ijk}}{\text{Nr People}} \cdot \frac{\text{Nr Births}_{ijk}}{\text{Nr People}_{ijk}}
 \end{align}
 \]</span></p>
-<p>two countries age-specific death rates (deaths / total)<br>
-Rate = sum( deaths_g / total_g )<br>
-age-specific deaths will probs be found separately from age-specific population estimates</p>
+<p>TODO JK upload data.</p>
 </div>
 </div>
 </div>
+<p>TODO add any further examples</p>
 
 
 </section>

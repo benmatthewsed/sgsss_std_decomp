@@ -1,0 +1,37 @@
+---
+title: "Practical 3"
+params: 
+    SHOW_SOLS: FALSE
+    TOGGLE: TRUE
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+source('assets/setup.R')
+library(tidyverse)
+qcounter <- function(){
+  if(!exists("qcounter_i")){
+    qcounter_i <<- 1
+  }else{
+    qcounter_i <<- qcounter_i + 1
+  }
+  qcounter_i
+}
+library(xaringanExtra)
+use_panelset()
+library(DasGuptR)
+```
+
+# TODO
+
+
+
+
+
+
+
+
+

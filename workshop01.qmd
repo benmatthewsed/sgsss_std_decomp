@@ -617,7 +617,7 @@ Data are available at [https://josiahpjking.github.io/sgsss_std_decomp/data/recy
 
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
 ```{r}
-df <- read_csv("data/recycling_2011_2022.csv")
+df <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_2011_2022.csv")
 
 # crude rates and factors
 df <- df |>
