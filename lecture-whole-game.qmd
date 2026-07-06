@@ -28,7 +28,7 @@ options(digits=2)
 
 # A motivating example: Why is Scotland's reconviction rate falling?
 
-# Background
+## Background
 
 -   The crime drop has changed the demographics of people being convicted
 -   Changing demographics of people convicted complicates comparisons in the aggregate reconviction rate over time
@@ -84,7 +84,7 @@ options(digits=2)
 
 -   There has been *a lot* written about the causes of the crime drop [@farrellWhyCrimeDrop2014; @tonryWhyCrimeRates2014; @ballGreatDeclineAdolescent2023], including previous attempts to describe changes in the demographics of crime and use these descriptions to build explanations for why there is less crime now than in the past [@matthewsRethinkingOneCriminologys2018; @tuttleEndAgeCrimeCurve2024; @farrellDebutsLegaciesCrime2015]
 -   There haven't - at least as far as I'm aware - been any studies which go on to explore the *consequences* of these changing demographics for the justice system more broadly
--   One area these changing demographics can matter are when measuring CJS 'performance'
+-   One area these changing demographics can matter are when measuring Criminal Justice System 'performance'
 
 # Part Two: Measuring 'Performance' {background-color="#006938"}
 
@@ -115,13 +115,13 @@ options(digits=2)
 
 ## Standardized reconviction rates as performance indicators
 
--   This compositional problem is well known, and typically what people do is come up with some counterfactual 'standardized' reconviction rate to facilitate comparisons across years when measuring performance [@francisPredictingReconvictionRates2005; @cunliffeReoffendingAdultsResults2007; @drakeWashingtonsOffenderAccountability2010] to correct for the problem of changing 'offender mix'
+-   This compositional problem is well known, and typically what people have done is come up with some counterfactual 'standardized' reconviction rate to facilitate comparisons across years when measuring performance [@francisPredictingReconvictionRates2005; @cunliffeReoffendingAdultsResults2007; @drakeWashingtonsOffenderAccountability2010] to correct for the problem of changing 'offender mix'
 
 -   These methods typically focus on whether the observed reconviction rate is higher or lower than the standardized (read: made up with maths) rate
 
 -   These methods do not directly assess the drivers of any change in the observed rate - specifically the relative importance of demographic changes and change in 'sub-group' reconviction rates in producing change in the aggregate rate
 
--   To date, no studies have assessed the extent to which these long-term demographic changes as reflected in the crime drop can influence aggregate performance measures
+-   They just say whether the observed rate is lower than a standardized rate; there is no assessment of why it is higher (or lower)
 
 # Part Three: An alternative approach {background-color="#006938"}
 
@@ -130,7 +130,7 @@ options(digits=2)
 -   The methods of standardization and decomposition can separate out changes in the reconviction rate that are due to demographic change from those due to change in the underlying reconviction rate for different age groups
 -   Standardization and decomposition can also separate out the relative importance of different factors in driving aggregate change (e.g. age and sex)
 -   Previous regression-based approaches [@francisPredictingReconvictionRates2005; @cunliffeReoffendingAdultsResults2007; @drakeWashingtonsOffenderAccountability2010]  to correct for the problem of changing 'offender mix' can perform this standardization part, but don't focus on the decomposition part
--   We illustrate this approach using the standardization and decomposition methods described by [@dasguptaStandardizationDecompositionRates1993] and implemented in the `{dasguptr}` R package [@kingDasGuptRGuptaStandardisation2025] to Scottish reconvictions data from 1997-2022
+
 
 # Research design {background-color="#006938"}
 
@@ -167,9 +167,7 @@ Sex is "generally based on how a person presents and is recorded when a personâ€
 
 ## Method
 
--   The @dasguptaStandardizationDecompositionRates1993 approach to standardization and decomposition calculates what the reconviction rate 'would have been' in each comparison year if each year had the average demographic composition
-
--   The differences between these 'standardized' rates to the observed rates are then used to calculate how much of the change in the observed rate is due to changes in the underlying reconviction rates for each age group, and how much is due to the change in the mix of the age groups
+-   We will talk about this at length for the rest of the day!
 
 # Results {background-color="#006938"}
 

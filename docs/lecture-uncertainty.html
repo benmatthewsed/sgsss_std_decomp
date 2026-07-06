@@ -583,46 +583,11 @@
 </div>
 </section>
 <section>
-<section id="bonus-slides-with-where-this-can-go-wrong" class="title-slide slide level1 center" data-background-color="#006938">
-<h1>Bonus slides with where this can go wrong?</h1>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-20-2.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-20-3.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-20-4.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="bonus-slides-where-this-can-all-go-wrong" class="title-slide slide level1 center" data-background-color="#006938">
+<h1>Bonus slides: Where this can all go wrong</h1>
+
 </section>
 <section id="a-nice-example" class="slide level2">
-<h2>A nice example</h2>
-<ul>
-<li>Add in results for 2004/2016</li>
-</ul>
-</section>
-<section id="a-nice-example-1" class="slide level2">
 <h2>A nice example</h2>
 
 <img data-src="figs/fine-fig.png" class="r-stretch quarto-figure-center"><p class="caption">fine-fig</p></section>
@@ -642,19 +607,23 @@
 <section id="a-not-so-nice-example-1" class="slide level2">
 <h2>A not-so-nice example</h2>
 
-<img data-src="figs/haywire-fig.png" class="r-stretch quarto-figure-center"><p class="caption">haywire-fig</p></section>
-<section id="its-the-same-problem" class="slide level2">
-<h2>It’s the same problem!</h2>
+<img data-src="figs/haywire1-fig.png" class="r-stretch quarto-figure-center"><p class="caption">haywire-fig</p></section>
+<section id="a-not-so-nice-example-2" class="slide level2">
+<h2>A not-so-nice example</h2>
+
+<img data-src="figs/haywire2-fig.png" class="r-stretch quarto-figure-center"><p class="caption">haywire-fig</p></section>
+<section id="how-can-this-be" class="slide level2">
+<h2>How can this be?</h2>
 <ul>
 <li>I was very confused by the bad decomposition - why would the bootstrapping lead to these wild estimates (huge confidence intervals not centered on the true values!)</li>
 <li>The thing I was bootstrapping was the underlying data - and the bootstrapped distribution <em>of the crude rates</em> is fine</li>
 <li>But the decomposition is a transformation of these rates, and the properties of the rates do not necessarily transfer downstream to the transformation</li>
 </ul>
 </section>
-<section id="its-the-same-problem-1" class="slide level2">
-<h2>It’s the same problem!</h2>
+<section id="how-can-this-be-1" class="slide level2">
+<h2>How can this be?</h2>
 <ul>
-<li>Maybe you could argue that you don’t need to factor in uncertainty in the underlying rates - it’s admin data, the reconviction cohorts are what they are, what are you a Bayesian or something <span class="citation" data-cites="verlaan2024use">(see <a href="#/references" role="doc-biblioref" onclick=""><strong>verlaan2024use?</strong></a>)</span></li>
+<li>Maybe you could argue that you don’t need to factor in uncertainty in the underlying rates - it’s admin data, the reconviction cohorts are what they are, what are you a Bayesian or something <span class="citation" data-cites="verlaanUseInferentialStatistics2024">(see <a href="#/references" role="doc-biblioref" onclick="">Verlaan and Langton 2024</a>)</span></li>
 <li>But it’s still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons</li>
 <li>Bootstrapping the raw data (nonparametric simulation <span class="citation" data-cites="carseyMonteCarloSimulation2014">(see <a href="#/references" role="doc-biblioref" onclick="">Carsey and Harden 2014</a>)</span>) can show when your results are fragile to small permutations in the data <span class="citation" data-cites="giordanoAutomaticFinitesampleRobustness2026">(see also <a href="#/references" role="doc-biblioref" onclick="">Giordano, Meager, and Broderick 2026</a>)</span></li>
 </ul>
@@ -675,6 +644,9 @@ Giordano, Ryan, Rachael Meager, and Tamara Broderick. 2026. <span>“An Automati
 </div>
 <div id="ref-raineyCarefulConsiderationCLARIFY2024" class="csl-entry" role="listitem">
 Rainey, Carlisle. 2024. <span>“A Careful Consideration of <span>CLARIFY</span>: Simulation-Induced Bias in Point Estimates of Quantities of Interest.”</span> <em>Political Science Research and Methods</em> 12 (3): 614–23. <a href="https://doi.org/10.1017/psrm.2023.8">https://doi.org/10.1017/psrm.2023.8</a>.
+</div>
+<div id="ref-verlaanUseInferentialStatistics2024" class="csl-entry" role="listitem">
+Verlaan, Tim, and Samuel Langton. 2024. <span>“On the Use of Inferential Statistics on Administrative Police Data.”</span> In <em>The Crime Data Handbook</em>, 197–210. Bristol University Press.
 </div>
 <div id="ref-wickhamR4DS2023" class="csl-entry" role="listitem">
 Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for <span>Data Science</span> (2e)</em>. Second.

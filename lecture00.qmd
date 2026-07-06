@@ -30,7 +30,6 @@ format:
 - Materials will live online here so you can access them any time
 
 ## Learning outcomes
-Learning outcomes
 
 By the end of the workshop you will:
 
@@ -49,3 +48,9 @@ By the end of the workshop you will:
 - If you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) [Ben post the link in the chat now]
 - For Stata you're relying on your own copy
 
+## Software
+
+- R examples use the [DasGuptR](https://cran.r-project.org/web/packages/DasGuptR/index.html) package. We (mainly Josiah) wrote this!
+- Stata examples use the rdecompose command [@liRateDecompositionAggregate2017]. Seems neat!
+- For obvious reasons we are more familiar with the R version, and so focus on that
+- For some of the more complex examples we only provide R examples. You (or a friendly LLM) may be able to translate these to Stata
