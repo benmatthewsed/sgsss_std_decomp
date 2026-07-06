@@ -1,0 +1,14 @@
+"0","with(dfD,cor.test(score,conf))"
+"1","
+	Pearson's product-moment correlation
+
+data:  score and conf
+t = -1.3485, df = 198, p-value = 0.179
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.23107891  0.04392608
+sample estimates:
+        cor 
+-0.09539631 
+
+"

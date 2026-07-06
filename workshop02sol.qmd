@@ -1,0 +1,790 @@
+---
+title: "Practical 2"
+params: 
+    SHOW_SOLS: TRUE
+    TOGGLE: TRUE
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+#| include: false
+source('assets/setup.R')
+library(tidyverse)
+qcounter <- function(){
+  if(!exists("qcounter_i")){
+    qcounter_i <<- 1
+  }else{
+    qcounter_i <<- qcounter_i + 1
+  }
+  qcounter_i
+}
+library(xaringanExtra)
+use_panelset()
+
+library(DasGuptR)
+```
+
+# Example: Reconvictions by age group
+
+`r qbegin(qcounter())`
+The prevalence of reconvictions among Scottish offenders (i.e., the proportion of offenders who have a reconviction) has decreased from 32% in 2004 to 27% in 2016.  
+
+The data, broken down by sex and age-group, can be found along with the DasGuptR package. 
+For these questions, we're going to combine the sexes, and aggregate up to just the age-group. You can do this with:  
+```{r}
+reconv2 <- 
+  reconv |> 
+  filter(year %in% c(2004, 2016)) |>
+  group_by(year, Age) |>
+  summarise(
+    convicted_population = unique(convicted_population),
+    offenders = sum(offenders),
+    reconvicted = sum(reconvicted)
+  )
+```
+
+Using the data above, calculate the crude rate each year, using two different calculations: 
+
+1. $$\frac{\text{Total Nr Reconvicted}}{\text{Total Nr Convicted Population}}$$  
+2. $$\sum\limits_{\text{group }i}\frac{\text{Nr Reconvicted}_i}{\text{Nr Offenders}_i} \cdot \frac{\text{Nr Offenders}_i}{\text{Total Nr Convicted Population}}$$  
+
+
+`r qend()`
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+
+```{r}
+reconv2 |>
+  group_by(year) |>
+  summarise(
+    total_reconvictions = sum(reconvicted),
+    total_convicted_pop = sum(offenders),
+    crude1 = total_reconvictions / total_convicted_pop,
+    
+    crude2 = sum( (reconvicted/offenders) * (offenders/convicted_population) )
+  )
+```
+
+`r solend()`
+
+`r qbegin(qcounter())`
+
+We're going to decompose the crude rate difference between 2004 and 2016, into the contributions from: 
+
+- the reconvictions rate within a given age-group
+- the share of the convited population that belong to a given age-group
+
+Create new variables representing these components. 
+
+`r qend()`
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+```{r}
+reconv2 <-
+  reconv2 |> 
+  mutate(
+    rate = reconvicted/offenders, 
+    weight = offenders/convicted_population
+  )
+```
+`r solend()`
+
+
+`r qbegin(qcounter())`
+The variables created in the previous question are essentially "rates" and "weights". 
+
+Decompose the crude rate difference between 2004 and 2016 into the contributions from these two parts. 
+
+For each population we have a vector of each of these, so we need to ensure we use a rate function that gives the summary value `ratefunction = "sum(rate * weight)"`.  
+
+`r qend()`
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+
+```{r}
+dgnpop(reconv2,
+       pop = "year",
+       factors = c("rate","weight"),
+       ratefunction = "sum(rate*weight)") |>
+  dg_table()
+```
+
+`r solend()`
+
+`r qbegin(qcounter())`
+Now conduct the same decomposition, but instead of using the age-group population share as a "factor" in the decomposition, utilise the `id_vars` and `crossclassified` arguments to indicate the rate as being aggregated over these different subgroups.  
+
+(You should get the same output)  
+`r qend()`
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+```{r}
+dgnpop(reconv2,
+       pop = "year",
+       factors = c("rate"),
+       id_vars = "Age",
+       crossclassified = "offenders") |>
+  dg_table()
+```
+
+`r solend()`
+
+
+# Example 2: Reconvictions by age and sex 
+
+`r qbegin(qcounter())`
+Returning to the reconvictions data where we have it split by **both** age-group and sex, and we have it for all populations between 2004 and 2016.   
+
+One way to capture the different combinations of age and sex breakdowns is to simply combine them:  
+
+```{r}
+reconv3 <- 
+  reconv |>
+  mutate(
+    agesex = interaction(Age,Sex)
+  )
+
+head(reconv3)
+```
+
+Decompose the crude rate difference between 2004 and 2016 into the contributions from these group-specific rates and the group-specific weights (much like in the previous questions). Then do the decomposition while separating contributions of age composition from those of sex composition.  
+
+You can do all of this including _all_ years in the standardisation, and pulling out the specific years in `dg_table(pop1 = 2004, pop2 = 2016)`.   
+`r qend()`
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+```{r}
+rr1 <- dgnpop(reconv3, 
+       pop = "year",
+       factors = "prev_rate",
+       id_vars = "agesex",
+       crossclassified = "offenders")
+
+rr1 |> dg_table(2004,2016)
+rr1 |> dg_plot()
+
+rr2 <- dgnpop(reconv3, 
+       pop = "year",
+       factors = "prev_rate",
+       id_vars = c("Age","Sex"),
+       crossclassified = "offenders")
+
+rr2 |> dg_table(2004,2016)
+rr2 |> dg_plot()
+```
+
+`r solend()`
+
+`r qbegin(paste0("Optional: ", qcounter()))`
+To help understand things, let's start changing our data to see what happens. 
+
+The code below will add an extra 1000 Females to the convicted population for each year (200 in each age group). So in 2005 we have added 1000 Females, in 2006 we added 2000, 2007 we add 3000, and so on. 
+We keep the rate of reconvictions the same within the age-sex groups (we can update the `reconvicted` variable just for completeness):  
+```{r}
+reconv4 <- 
+  reconv |>
+  mutate(
+    extra_F = ifelse(Sex=="Female",200*(year-2004),0),
+    offenders = offenders + extra_F,
+    reconvicted = offenders * prev_rate
+  )
+```
+
+How will the plot below change when we run it on this fake data?  
+```{r}
+#| echo: false
+rr2 |> dg_plot()
+```
+
+`r qend()`
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+
+Because Females tend to have lower rates of reconvictions than Males, if they make up a greater and greater proportion of the population each year, then we would expect the crude rate to decrease _even if the distribution of ages, and the rates of reconvictions within each age-sex group stayed the same_.  
+
+So the line in the plot for "K-sex_struct adjusted" should be going down! 
+
+```{r}
+rr3 <- dgnpop(reconv4, 
+       pop = "year",
+       factors = "prev_rate",
+       id_vars = c("Age","Sex"),
+       crossclassified = "offenders")
+
+rr3 |> dg_plot()
+```
+
+`r solend()`
+
+
+
+
+
+
+# choose your own
+
+
+::: {.callout-note collapse="true"}
+#### Scotland's Homelessness Deaths
+
+Scotland tracks the numbers of homeless deaths each year.  
+It also tracks the number of applicants assessed as homeless each year.  
+Both of these measures are provided broken down into four coarse age groups.  
+
+
+__Homeless Deaths per 100,000 people__  
+
+One way in which we could choose to approach this question is to decompose the number of homeless deaths per 100,000 people in the population.  
+This crude rate has moved from 4 deaths per 100,000 people in 2017, to 5.5 in 2024.  
+
+We might consider decomposing this into the relative contributions of the prevalence of homelessness and the rate of deaths in the homeless population, alongside the changes in the age distribution of the overall scottish population:  
+
+$$ \small
+\begin{align}
+\text{Homelessness Death Rate} &= \sum\limits_{\text{agegroup }i} \frac{\text{Nr Deaths}_i}{\text{Nr People}_i} \cdot 100,000\\
+&= \sum\limits_{\text{agegroup }i}\frac{\text{Nr Homeless}_i}{\text{Nr People}_i} \cdot \frac{\text{Nr Deaths}_i}{\text{Nr Homeless}_i} \cdot 100,000 \\
+\end{align}
+$$
+
+There is an important note here that the number of homeless here is a measure that doesn't represent the entire homeless population, but rather those that are currently known to the system in a given year. As such it captures the mortality risk of the population that has engaged with homelessness applications, and *not* the mortality risk of the entire homeless population.  
+
+An alternative approach we might choose here is to decompose the *total* number of homeless deaths. The benefit here is that we can include the raw total population size as a contributing factor:  
+
+$$ \small
+\text{Total Homelessness Deaths} = \sum\limits_{\text{agegroup }i} \text{Nr People} \cdot \frac{\text{Nr People}_i}{\text{Nr People}} \cdot \frac{\text{Nr Homeless}_i}{\text{Nr People}_i} \cdot \frac{\text{Nr Deaths}_i}{\text{Nr Homeless}_i} \\
+$$
+
+If our conversation is focused on the raw totals (homeless deaths are up from 164 in 2017 to 231 in 2024), this may be preferable as we can provide the % due to population growth, the % due to an aging demographic, the % due to changes in applications, and the % due to the change in mortality risk per application.  
+
+Data are available at [https://josiahpjking.github.io/sgsss_std_decomp/data/hdeaths.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/hdeaths.csv){target="_blank"}  
+
+:::
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+
+decomposing deaths per 100,000 people:  
+```{r}
+hd <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/hdeaths.csv")
+
+hd <- 
+  hd |> mutate(
+    hdr = deaths/homeless,
+    hr = homeless/scotpop,
+  ) 
+  
+#crude rates
+hd |> 
+  group_by(year) |>
+    summarise(
+      cr = sum(deaths)/sum(scotpop)*1e5,
+      # as multiplication of factors: 
+      cr2 = sum( hdr * hr * scotpop/sum(scotpop) )*1e5
+    )
+  
+
+dgres <- 
+  dgnpop(hd, 
+         pop="year",
+         factors=c("hr","hdr"),
+         id_vars="age_group",
+         crossclassified = "scotpop",
+         ratefunction = "hr*hdr*1e5")
+
+dg_plot(dgres, legend.position="bottomright")
+dgres |> dg_table(2017,2024)
+
+```
+
+because there is just one sub-population grouping here, we could alternatively do: 
+```{r}
+#| eval: false
+hd <- hd |>
+  group_by(year) |>
+  mutate(
+    popshare = scotpop/sum(scotpop)
+  )
+
+dgres.a <- 
+  dgnpop(hd, 
+         pop="year",
+         factors=c("hr","hdr","popshare"),
+         ratefunction = "sum(popshare*hr*hdr*1e5)")
+
+dg_plot(dgres.a, legend.position="bottomright")
+```
+
+
+decomposing total deaths: 
+```{r}
+hd <- hd |> group_by(year) |>
+  mutate(
+    tpop = sum(scotpop)
+  )
+
+
+dgres2 <- 
+  dgnpop(hd, 
+         pop="year",
+         factors=c("hr","hdr","tpop"),
+         id_vars="age_group",
+         crossclassified = "scotpop")
+
+dg_plot(dgres2, legend.position="bottomright")
+dgres |> dg_table(2017,2024)
+```
+
+
+
+`r solend()`
+
+
+
+
+
+
+::: {.callout-note collapse="true"}
+#### Scotland's Recycling
+
+In the first workshop, one example saw the decomposition of the "kg recycled waste per person", to separate out contributions of overall waste production and recycling efficiency:  
+
+$$
+\begin{align}
+\text{Recycled Tonnes per Person} &= \frac{\text{Recycled Waste}}{\text{Nr People}} \\
+\quad \\
+ &= \frac{\text{Total Waste}}{\text{Nr People}} \cdot \frac{\text{Recycled Waste}}{\text{Total Waste}} \\
+\end{align}
+$$
+
+An alternative would be to consider decomposing the total tonnage that is recycled, and include the population size as another factor:  
+$$
+\begin{align}
+\text{Recycled Tonnes} &= \text{Recycled Waste} \\
+\quad \\
+&= \text{Nr People} \cdot \frac{\text{Total Waste}}{\text{Nr People}} \cdot \frac{\text{Recycled Waste}}{\text{Total Waste}} \\
+\end{align}
+$$
+
+SEPA provides data allowing for either of these decompositions for every year from 2011 onwards, providing us with a good example for decomposition across a time series.  
+
+The data are available at [https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv){target="_blank"}  
+
+:::
+
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+```{r}
+df <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv")
+
+df <- df |>
+  mutate(
+    wpp = totalwaste/pop,
+    recp = recycled/totalwaste,
+    lfp = landfilled/totalwaste,
+    incp = diverted/totalwaste
+  )
+
+# recycling tonnes per person:
+dgnpop(df,
+       pop="year",
+       factors=c("wpp","recp")) |> 
+  dg_plot(legend.position="bottom")
+
+# recycling tonnage
+dgnpop(df,
+       pop="year",
+       factors=c("pop","wpp","recp")) |> 
+  dg_plot(legend.position="bottom")
+
+
+```
+
+`r solend()`
+
+::: {.callout-note collapse="true"}
+#### UK's Occupation-adjusted Gender Pay Gap
+
+The Gender Pay Gap is typically quantified as the difference in Female earnings as a percentage of Male earnings.  
+
+A common discussion point of this measure is that Males and Females tend to work in different occupations, and different occupations tend to pay different amounts. The obvious question then is whether there continues to exist a difference in earnings between Males and Females should the proportions working in each occupation be held constant. This differentiates the a direct bias (Females being paid less than Males for the same work) from a longstanding systemic bias (Females being discouraged from the higher earning occupations).  
+
+Note, we are continuing to talk about population level quantities here, and **not** individuals. Looking at a system level quantities can't tell us about discrimination against individuals, although it can help to point us at where to look.  
+
+In 2025 across the UK, Mean Hourly Earnings for Females was £20.7, and for Males was £24.5, resulting in a pay gap of `r round((1-(20.7/24.5))*100,1)`%  
+
+By considering Male and Female earners as different "populations", we can consider their population level mean hourly earnings as a weighted sum of occupation level mean hourly earnings:  
+
+$$
+\text{Mean Hourly Earnings} = \sum\limits_{\text{occupation }i}\frac{\text{Nr Workers}_i}{\text{Nr Workers}} \cdot \text{Mean Hourly Earnings}_i
+$$
+
+Using Das Gupta's methodology, we can calculate the occupation-adjusted earnings for each population.  
+These are the counterfactual quantities of "what would the mean earnings be for Ms and Fs if they had the same proportions of workers in each occupation?"  
+
+We can then use these quantities to calculate an occupation-adjusted pay gap.  
+
+[https://josiahpjking.github.io/sgsss_std_decomp/data/gender_pay_occ.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/gender_pay_occ.csv){target="_blank"}  
+
+:::
+
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+```{r}
+gdat <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/gender_pay_occ.csv")
+
+# crude GPayGap: 
+# female median as a percentage of male median
+gdat |> 
+  group_by(sex) |>
+  summarise(
+    mean = sum( mean_hourly * thousand/sum(thousand) ),
+  ) |> pivot_wider(names_from=sex,values_from=mean) |>
+  mutate(
+    pgap = (1-(female/male))*100
+  )
+
+# occupation-adjusted GPayGap: 
+dgnpop(gdat,
+       pop = "sex",
+       factors = "mean_hourly",
+       id_vars = "soc2dcode",
+       crossclassified = "thousand") |>
+  filter(factor == "mean_hourly") |>
+  select(pop,rate,factor) |>
+  pivot_wider(names_from=pop,values_from=rate) |>
+  mutate(
+    pgap = (1-(female/male))*100
+  )
+```
+
+
+`r solend()`
+
+
+
+::: {.callout-note collapse="true"}
+#### Global Proportion of Energy from Renewable Sources
+
+[Ember-Energy](https://ember-energy.org/data/electricity-data-explorer/){target="_blank"} provides estimated yearly energy production, capacity, and demand for the vast majority of countries in the world, broken down by the energy source.  
+
+There are various common ways to group of energy sources:  
+
+- Non-clean: Gas, Coal, Other fossil
+- Clean: Solar, Wind, Hydro, Bioenergy, Other renewables, Nuclear
+- Renewable: Solar, Wind, Hydro, Bioenergy, Other renewables
+
+This makes for many potentially useful decompositions. 
+For example, we may be interested in decomposing the proportion of energy generated from Wind & Solar:  
+
+$$ \small
+\begin{align}
+\text{Wind & Solar Share} &= \frac{\text{Electricity Generated from Wind & Solar}}{\text{Electricity Generated}} \\
+\quad \\
+&=\sum\limits_{\text{country }i}\frac{\text{from W&S}_i}{\text{from Renewables}_i} \cdot \frac{\text{from Renewables}_i}{\text{from Clean Energy}_i} \cdot \frac{\text{from Clean Energy}_i}{\text{Total}_i} \\
+\end{align}
+$$
+
+
+
+Over the past decade, Wind & Solar has gone from generating ~5% of all electricity to generating ~15%. Our decomposition will allow us to investigate the extent to which this is driven by changes in electricity generation from Wind & Solar in comparison to other renewables, or by generating energy from renewables in general as opposed to from nuclear, or from a general move away from fossil fuels.  
+
+The data are available at [https://josiahpjking.github.io/sgsss_std_decomp/data/elec_gen.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/elec_gen.csv){target="_blank"}.  
+
+To do this decomposition globally, we need to have the same countries at all years. 2012 to 2022 will work as a range for this.  
+
+You could alternatively do this decomposition for a single country, and use whatever years we have for that country.  
+
+
+You can do a similar decomposition, not of changes in energy *production*, but of the changes in *infrastructure*, because the same breakdowns of data are available for **installed capacity.** Those data can be found at [https://josiahpjking.github.io/sgsss_std_decomp/data/elec_cap.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/elec_cap.csv){target="_blank"}. It would even be possible to join these two data sources, allowing us to decompose the total TWh of fossil fuel generated electricity into: 
+
+$$
+\text{Fossil Fuel TWh} = \frac{\text{Fossil Fuel TWh}}{\text{Fossil Fuel Capacity}} \cdot \frac{\text{Fossil Fuel Capacity}}{\text{Total Capacity}} \cdot \text{Total Capacity} 
+$$
+
+
+
+:::
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+```{r}
+egen <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/elec_gen.csv") 
+
+egen <- egen |>
+ mutate(
+    total_gen = total_generation,
+    total_imp = net_imports,
+    pfossil = fossil/total_gen,
+    pclean = clean/total_gen,
+    prenew_clean = renewables/clean,
+    pws_ren = wind_and_solar/renewables,
+  ) |> mutate(across(4:last_col(),~ifelse(is.na(.),0,.)))
+
+egen |>
+  filter(year>=2012,year<=2022) |>
+  dgnpop(pop="year",
+       factors=c("pws_ren","prenew_clean","pclean"),
+       id_vars="country",
+       crossclassified = "total_gen") -> eres
+
+dg_plot(eres, legend.position="topleft")
+
+
+# within a subgroup
+egen |>
+  filter(grepl("United Kingdom",country)) |>
+  dgnpop(pop="year",
+       factors=c("pws_ren","prenew_clean","pclean")) -> eresuk
+
+dg_plot(eresuk, legend.position="topleft")
+```
+
+capacity patterns well with generation, but moves more smoothly because infrastructure changes slowly! 
+```{r}
+ecap <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/elec_cap.csv")
+
+ecap <- ecap |>
+ mutate(
+    country,year,
+    total = clean+fossil,
+    pfossil = fossil/total,
+    pclean = clean/total,
+    prenew_clean = renewables/clean,
+    pws_ren = wind_and_solar/renewables,
+  ) |> mutate(across(3:last_col(),~ifelse(is.na(.),0,.)))
+
+ecap |>
+  filter(grepl("United Kingdom",country)) |>
+  dgnpop(pop="year",
+       factors=c("pws_ren","prenew_clean","pclean")) -> erescapuk
+
+dg_plot(erescapuk, legend.position="topleft")
+```
+
+if we want to look at fossil fuel generation: 
+
+```{r}
+left_join(
+  ecap |> transmute(country,year,fcap=fossil,tcap=total),
+  egen |> transmute(country,year,fgen=fossil)
+) |> 
+  mutate(
+    ftcap = fcap/tcap,
+    fgc = fgen/fcap
+  ) |>
+  filter(grepl("United States",country)) |>
+  dgnpop(pop="year",factors=c("fgc","ftcap","tcap")) |> 
+  dg_plot()
+
+```
+
+
+`r solend()`
+
+
+::: {.callout-note collapse="true"}
+#### Scotland's Business 5 year Survival Rate
+
+Scotland provides information on the number of business established in a given year, as well as the number that have survived 1 year, 3 years, and 5 years. It also provides this information split across various industries (Production, Construction, Motor, Retail etc.. ).  
+
+The 5-year survival rate for business dropped from 42% in 2013 to 38% in 2019.  
+
+This could be because of a changing composition of businesses across industries, or it could be due to it being harder for businesses to survive. Because a business that survives 5 years needs to have, by definition, survived 3 years first, we can decompose the 5-year survival rate into short-term, medium-term and longer term survival:  
+
+
+$$ \small
+\begin{align} 
+\text{5 year survival rate} &= \frac{\text{Nr Survived after 5yrs}}{\text{Nr Established}} \\
+\quad \\
+\text{5 year survival rate} &= \sum\limits_{\text{sector }i}\frac{\text{Nr Established}_i}{\text{Nr Established}} \cdot \frac{\text{Nr Survived 1yr}_i}{\text{Nr Established}_i} \cdot \frac{\text{Nr Survived 3yr}_i}{\text{Nr Survived 1yr}_i} \cdot \frac{\text{Nr Survived 5yr}_i}{\text{Nr Survived 3yr}_i}
+\end{align}
+$$
+Data can be found at [https://josiahpjking.github.io/sgsss_std_decomp/data/businesssurvival.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/businesssurvival.csv){target="_blank"}  
+
+:::
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+```{r}
+bs <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/businesssurvival.csv") |> 
+  mutate(
+    a = surv5/surv3,
+    b = surv3/surv1,
+    c = surv1/births,
+  ) |> 
+  group_by(cohort) |>
+  mutate(iprop = births/sum(births))
+
+bs |> group_by(cohort) |>
+  summarise(
+    crude = sum(surv5)/sum(births),
+    crude2= sum(c*b*a*iprop)
+  )
+
+
+dgnpop(bs, pop="cohort",
+       factors=c("a","b","c","iprop"),
+       ratefunction = "sum(a*b*c*iprop)") |> dg_plot()
+
+dgnpop(bs, pop="cohort",
+       factors=c("a","b","c"),
+       id_vars="industry",
+       crossclassified="births") |> dg_plot()
+
+head(bs)
+```
+
+
+`r solend()`
+
+
+
+::: {.callout-note collapse="true"}
+#### Scotland's Heroin Deaths 2020 vs 2024
+
+The total number of deaths in Scotland involving heroin was 254 in 2010, and 327 in 2024. The number of deaths involving drugs has gone from 485 to 1017.  
+
+To decompose the total number of heroin deaths, we might find it useful to include the total population size in our decomposition, because in a larger population we would expect more deaths.  
+
+From the available data, we could perform a decomposition of the total number of heroin deaths in Scotland into contributions from: 
+
+- total population size (a bigger populations results in more deaths, even with the same death rate)
+- population composition (with heroin deaths more common in certain age groups, a population for which that group makes up a larger proportion will result in greater numbers of deaths)
+- drug mortality rates (numbers of heroin deaths might increase due to more drugs deaths generally)
+- heroin mortality fraction (the extent to which drug deaths involve heroin, vs some other drug)
+
+$$ \small
+\text{Nr Deaths Involving Heroin} = \sum\limits_{\text{age }i,\text{ sex }j}  \frac{\text{Nr People}_{ij}}{\text{Nr People}} \cdot \text{Nr People} \cdot \frac{\text{Nr Drug Deaths}_{ij}}{\text{Nr People}_{ij}} \cdot \frac{\text{Nr Heroin Deaths}_{ij}}{\text{Nr Drug Deaths}_{ij}}
+$$
+Data for the various numbers required for this decomposition are available at [https://josiahpjking.github.io/sgsss_std_decomp/data/heroin.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/heroin.csv){target="_blank"}  
+
+:::
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+```{r}
+hdat <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/heroin.csv")
+hdat$totpop <- ave(hdat$pop, hdat$year, FUN=sum)
+  
+hdat <- hdat |> 
+  mutate(
+    hr = nheroin/ndeaths,
+    ddr = ndeaths/pop
+  )
+
+hdat |> group_by(year) |>
+  summarise(
+    crude = sum(nheroin),
+    crude2 = sum(hr * ddr * (pop/totpop) * totpop )
+  ) 
+
+
+dgnpop(hdat, 
+       pop="year",
+       factors=c("hr","ddr", "totpop"),
+       id_vars = c("agegroup","sex"),
+       crossclassified = "pop") |>
+  dg_plot(legend.position="bottom")
+```
+
+
+
+`r solend()`
+
+
+::: {.callout-note collapse="true"}
+#### Age-Sex Standardised Death Rates, Scotland 1981-2024 
+
+A very common use of standardisation is to create age-sex-standardised rates. Populations differ considerably in their age distributions. A good way of visualising this is via "population pyramids".
+
+Play around at [populationpyramid.net](https://www.populationpyramid.net/){target="_blank"} (e.g., see how Italy differs from Kenya).  
+
+The same age-sex mix of the population for a given country will also change over time. With rates of deaths varying across different age-sex groups, it can be problematic to compare crude death rates across a long time frame. In 1981 the death rate was 12.3 deaths per 1000 people. In 2024, it was 11.2.  
+
+If a larger proportion of the 2024 population is older, then this actually *hides* the improvements made over the last 40 years. 
+
+$$
+\begin{align}
+\text{Death Rate} &= \frac{\text{Nr Deaths}}{\text{Nr People}} \\
+\quad \\
+&= \sum\limits_{\text{age }i,\text{ sex }j} \frac{\text{Nr People}_{ij}}{\text{Nr People}} \cdot \frac{\text{Nr Deaths}_{ij}}{\text{Nr People}_{ij}}
+\end{align}
+$$
+
+
+Data can be found at: [https://josiahpjking.github.io/sgsss_std_decomp/data/scotland_deaths_1981_2024.xsv](https://josiahpjking.github.io/sgsss_std_decomp/data/scotland_deaths_1981_2024.csv){target="_blank"}  
+
+Doing this process on the entire set of 43 years will take a lot of time, so you could consider filtering to every 5th year at the outset.  
+
+Alternatively, here's one we made earlier: 
+```{r}
+load(url("https://josiahpjking.github.io/sgsss_std_decomp/data/deaths_age_sex_full.rdata"))
+```
+
+If you want some fun, the code below will create an animation of the population pyramid in Scotland for the last 40 years: 
+```{r}
+#| code-fold: true
+#| eval: false
+library(gganimate)
+popdat <- read_csv("https://josiahpjking.github.io/sgsss_std_decomp/data/scotland_deaths_1981_2024.csv")
+
+popdat |>
+  mutate(
+    n = ifelse(sex=="Males",-n,n)
+  ) |>
+  ggplot(aes(x=age,y=n,fill=sex))+
+  geom_col()+
+  coord_flip()+
+  transition_time(year) +
+  labs(title = "Year: {round(frame_time)}")
+```
+
+
+
+:::
+`r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+```{r}
+ddat <- read_csv("data/scotland_deaths_1981_2024.csv")
+
+ddat |>
+  group_by(year) |>
+  summarise(
+    crude1 = sum(deaths)/sum(n),
+    crude2 = sum( (deaths/n) * (n/sum(n)) )
+  )
+
+ddat <- 
+  ddat |>
+  mutate(
+    rate = deaths/n
+  )
+
+# # takes a lot of time.. 
+# deaths_dc <- dgnpop(ddat,
+#                     pop = "year",
+#                     factors = "rate",
+#                     id_vars = c("age","sex"),
+#                     crossclassified = "n", quietly = FALSE)
+
+load(url("https://josiahpjking.github.io/sgsss_std_decomp/data/deaths_age_sex_full.rdata"))
+
+dg_plot(deaths_dc,legend.position="bottom")
+```
+
+
+
+`r solend()`
+
+
+
+
+
+::: {.callout-note collapse="true"}
+#### Age-Sex-LAA Standardised Birth Rates, Scotland 1991-2024 
+
+$$
+\begin{align}
+\text{Birth Rate} &= \frac{\text{Nr Births}}{\text{Nr People}} \\
+\quad \\
+&= \sum\limits_{\text{age }i,\text{ sex }j,\text{ area } k} \frac{\text{Nr People}_{ijk}}{\text{Nr People}} \cdot \frac{\text{Nr Births}_{ijk}}{\text{Nr People}_{ijk}}
+\end{align}
+$$
+
+
+TODO JK upload data. 
+
+:::
+
+
+
+TODO add any further examples
+
+
+
+

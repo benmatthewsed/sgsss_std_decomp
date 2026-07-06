@@ -1,0 +1,37 @@
+head(egen)
+head(ecap)
+
+
+left_join(
+  ecap |> transmute(country,year,fcap = pfossil*total,tcap=total),
+  egen |> transmute(country,year,fgen = pfossil*total_gen,)
+) |> 
+  mutate(
+    tcap = tcap*8760/1e3,
+    fcap = fcap*8760/1e3,
+    ftcap = fcap/tcap,
+    fgc = fgen/fcap
+  ) |>
+  filter(grepl("Denmark",country)) |>
+  dgnpop(pop="year",factors=c("fgc","ftcap","tcap")) |> 
+  dg_plot()
+
+
+left_join(
+  ecap |> transmute(country,year,fcap = pfossil*total,tcap=total),
+  egen |> transmute(country,year,fgen = pfossil*total_gen,)
+) |> 
+  mutate(
+    tcap = tcap*8760/1e3,
+    fcap = fcap*8760/1e3,
+    ftcap = fcap/tcap,
+    fgc = fgen/fcap
+  ) |>
+  filter(grepl("United King",country)) |>
+  group_by(year) |>
+  summarise(
+    cr = fgen
+  )
+
+
+

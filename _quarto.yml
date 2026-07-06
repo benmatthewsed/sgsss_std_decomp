@@ -1,0 +1,54 @@
+project:
+  type: website
+  render: 
+    - "*.qmd"
+    - "!todo/*"
+    - "!images/notes.qmd"
+  output-dir: docs/
+
+website:
+  title: "SGSSS Decomp Workshop 2026"
+  page-footer: Site licensed under the [GNU AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html) license.
+  navbar:
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Lectures"
+        menu:
+          - lecture00.qmd
+          - lecture-conceptual.qmd
+          - lecture-stddecompbasics.qmd
+          - lecture-crossclass.qmd
+          - lecture-uncertainty.qmd
+          - lecture-whole-game.qmd
+          - lecture-othermethods.qmd
+      - text: "Worksheets"
+        menu:
+          - workshop01.qmd
+          - workshop02.qmd
+          - workshop03.qmd
+      - text: "Resources"
+        menu:
+          - text: "DasGuptR Tutorial Paper (Under Review)"
+            href: dgp_preprint.pdf
+          - text: "Das Gupta's 1993 Manual"
+            href: dg1993_manual.pdf
+
+format:
+  html:
+    toc: true
+    toc_float: true
+    code-annotations: hover
+    link-citations: true
+    theme: 
+      - united
+      - assets/style-labs.scss
+    include-in-header: "assets/toggling.html"
+    number-sections: false
+    
+    
+
+
+
+

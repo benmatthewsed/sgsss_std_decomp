@@ -1,0 +1,92 @@
+opd <- read_csv("../../decomp_data/opiodprev.csv") |> janitor::clean_names()
+opd <- opd |> select(nhs_board,fy,sex,age_group,number_mean,on_oat) |>
+  filter(nhs_board!="Scotland") |>
+  transmute(
+    area_name = gsub("NHS ","",gsub("&","and",nhs_board)),
+    year = map_dbl(fy, ~as.numeric(substr(.,1,4))),
+    agec=age_group,
+    sex,
+    estop = number_mean,
+    onOAT = on_oat
+  )
+
+pops <- read_csv("../../decomp_data/pop_midyear_age_sex_nhsboards.csv") |>
+  select(-`All ages`) |>
+  pivot_longer(5:last_col()) |>
+  mutate(age = parse_number(name)) |>
+  janitor::clean_names() |>
+  mutate(
+    agec = cut(age, breaks=c(-1,15,35,50,70),labels=c("a","15-34","35-49","50-69"))
+  ) |> 
+  group_by(area_name, sex, year, agec) |>
+  summarise(
+    pop = sum(value)
+  ) |> filter(!is.na(agec)) |>
+  filter(agec!="a") |>
+  filter(area_name!="Scotland") |> filter(year%in%c(2014:2025))
+
+
+# pops <- pops |> arrange(area_name,sex,agec) |>
+#   group_by(area_name,sex,agec) |>
+#   mutate(
+#     pop2 = (pop + lead(pop,1))/2
+#   ) 
+
+opd <- left_join(opd,pops) |>
+  mutate(
+    prevop = estop/pop
+  ) #|> filter(year %in% c(2014,2023))
+
+opd$totpop <- ave(opd$pop, opd$year, FUN=sum)
+
+opd |> group_by(year) |>
+  summarise(
+    crude = sum(estop),
+    crude2 = sum( (estop/pop) * (pop/totpop) )
+  )
+
+opdc <- dgnpop(opd, pop="year",factors=c("prevop","totpop"),
+               id_vars=c("agec","sex","area_name"),
+               crossclassified = "pop", quietly=FALSE)
+
+dg_plot(opdc)
+
+
+
+hdat <- read_csv("data/heroin.csv")
+
+opd |> count(year)
+hdat |> count(year)
+
+opd |> count(agec)
+hdat |> count(agegroup)
+
+
+t1 = opd |> filter(year %in% c(2015,2020)) |>
+  mutate(
+    agegroup = ifelse(agec=="15-34","<34","35+")
+  ) |> 
+  group_by(year,agegroup,sex) |>
+  summarise(
+    estop = sum(estop),
+    pop = sum(pop)
+  )
+
+t2 = hdat |> filter(year %in% c(2015,2020)) |>
+  mutate(
+    agegroup = ifelse(agegroup%in%c("Under 25","25-34"),"<34","35+")
+  ) |>
+  group_by(year,agegroup,sex) |> summarise(
+    nheroind = sum(nheroin)
+  )
+
+full_join(t1,t2) |> 
+  group_by(year) |>
+  mutate(
+    dpo = nheroind/estop*1e3,
+    po = estop/pop,
+    asp = pop/sum(pop)
+  ) |> 
+  dgnpop(pop="year",factors=c("asp","dpo","po"),
+         ratefunction="sum(asp*dpo*po)") |> dg_table()
+  

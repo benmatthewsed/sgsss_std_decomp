@@ -1,0 +1,13 @@
+"0","with(dfC,table(resp,role)) |> print() |> chisq.test()
+"
+"1","    role
+resp executive junior mid-level senior
+   0        12     57        69     34
+   1         5     38        22     16
+
+	Pearson's Chi-squared test
+
+data:  print(with(dfC, table(resp, role)))
+X-squared = 5.4051, df = 3, p-value = 0.1444
+
+"

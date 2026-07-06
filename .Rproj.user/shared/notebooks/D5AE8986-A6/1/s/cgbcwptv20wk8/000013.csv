@@ -1,0 +1,21 @@
+"0","library(tidyverse)"
+"0","set.seed(876543)"
+"0","dfB <- tibble("
+"0","  participant = paste0(""p"",sprintf(""%02d"", 1:38)),"
+"0","  dominant = round(rnorm(38, 463.6, 56)),"
+"0","  nondominant = round(rnorm(38, dominant+24.3, 77)) "
+"0",")"
+"0","with(dfB, t.test(x=dominant,y=nondominant, paired=T))"
+"1","
+	Paired t-test
+
+data:  dominant and nondominant
+t = -3.46, df = 37, p-value = 0.001377
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -47.19269 -12.33362
+sample estimates:
+mean difference 
+      -29.76316 
+
+"

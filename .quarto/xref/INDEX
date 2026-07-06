@@ -1,0 +1,50 @@
+{
+  "about.qmd": {
+    "about.html": "9dcabe85"
+  },
+  "csstests.qmd": {
+    "csstests.html": "dc559e3d"
+  },
+  "index.qmd": {
+    "index.html": "b3924216"
+  },
+  "lecture00.qmd": {
+    "lecture00.html": "312a153d"
+  },
+  "lecture01.qmd": {
+    "lecture01.html": "7f295770"
+  },
+  "lecture02.qmd": {
+    "lecture02.html": "f8256747"
+  },
+  "lecture-uncertainty.qmd": {
+    "lecture-uncertainty.html": "f085e5be"
+  },
+  "lecture-conceptual.qmd": {
+    "lecture-conceptual.html": "61479ce5"
+  },
+  "lecture-whole-game.qmd": {
+    "lecture-whole-game.html": "9ada0482"
+  },
+  "lecture-crossclass.qmd": {
+    "lecture-crossclass.html": "2c88b538"
+  },
+  "lecture-stddecompbasics.qmd": {
+    "lecture-stddecompbasics.html": "36f1d712"
+  },
+  "workshop01.qmd": {
+    "workshop01.html": "46509de9"
+  },
+  "workshop02.qmd": {
+    "workshop02.html": "ac4a7b79"
+  },
+  "workshop01sol.qmd": {
+    "workshop01sol.html": "c7e20bae"
+  },
+  "workshop02sol.qmd": {
+    "workshop02sol.html": "111c8979"
+  },
+  "lecture-othermethods.qmd": {
+    "lecture-othermethods.html": "7c292e98"
+  }
+}
