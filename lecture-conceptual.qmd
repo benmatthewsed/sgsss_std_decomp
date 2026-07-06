@@ -47,7 +47,7 @@ options(digits=2)
 
 - Conceptually the focus is on _aggregate_/_marginal_ rates, not individual effects
 - Aggregate rates are really common as [performance indicators](https://www.gov.scot/collections/national-performance-framework/): the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate... were all part of Scotland's National Performance Framework
-- Individual effects can aggregate in non-intuitive ways [see @good1987 or @simpson1951]
+- Individual effects can aggregate in non-intuitive ways [see @good1987 or @simpsonInterpretationInteractionContingency1951]
 
 ::: aside
 'Marginal' has two opposite meanings in statistics - either it can be an average or it can be a small change [@gelmanMarginal2006]. To get technical, it can be either an integral or a derivative
