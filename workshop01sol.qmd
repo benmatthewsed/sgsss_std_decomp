@@ -243,10 +243,11 @@ How much of this is due to Stirling having relatively fewer 'women of child bear
 p01 |>
   transmute(
     LAA,
-    `crude rate` = c("R1","R2"),
-    `w15-44 / people` = c("A1","A2"),
-    `births / w15-44` = c("B1","B2"),
-  ) |> gt::gt()
+    `crude rate` = c("R1", "R2"),
+    `w15-44 / people` = c("A1", "A2"),
+    `births / w15-44` = c("B1", "B2"),
+  ) |>
+  gt::gt()
 ```
 
 :::
@@ -283,9 +284,6 @@ install_github("josiahpjking/DasGuptR@develop")
 ```
 
 In Stata: **rdecompose**
-
-TODO (Ben)
-
 
 `r qend()`
 
@@ -345,6 +343,11 @@ dg_table(dres)
 
 `r qend()`
 `r solbegin(show=params$SHOW_SOLS, toggle=params$TOGGLE)`
+
+::::panelset
+:::panel
+#### R
+
 ```{r}
 library(tidyverse)
 library(DasGuptR)
@@ -360,6 +363,22 @@ dres <- dgnpop(x = p01,
 
 dg_table(dres)
 ```
+
+:::
+:::panel
+#### Stata
+
+```
+* Compute factors
+gen women_prop = n_women15to44 / n_people
+gen births_prop = n_births / n_women15to44 * 1000
+
+* Decomposition
+rdecompose women_prop births_prop, group(LAA)
+```
+
+
+
 `r solend()`
 
 `r qbegin(qcounter())`

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,15 +65,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-33292a589ea9797582940b4560cfe6d3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-cc9c921b97e619dececfd4d9f733df73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -101,37 +103,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <script>
-
 function toggle_visibility(id1, id2) {
-
 var e = document.getElementById(id1);
-
 var f = document.getElementById(id2);
-
 e.style.display = ((e.style.display!='none') ? 'none' : 'block');
-
 if(f.classList.contains('jk-circle-right')) {
-
     f.classList.add('jk-circle-down')
-
     f.classList.remove('jk-circle-right')
-
 } else {
-
     f.classList.add('jk-circle-right')
-
     f.classList.remove('jk-circle-down')
-
 }
-
 }
-
 </script>
 
-
-
 <!---<script src="https://kit.fontawesome.com/120b08a6f5.js" crossorigin="anonymous"></script>-->
-
 <link href="site_libs/panelset-0.3.0/panelset.css" rel="stylesheet">
 
 <script src="site_libs/panelset-0.3.0/panelset.js"></script>
@@ -169,7 +155,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -277,7 +263,6 @@ window.Quarto = {
   <ul>
   <li><a href="#example-birth-rates-in-stirling-vs-glasgow" id="toc-example-birth-rates-in-stirling-vs-glasgow" class="nav-link active" data-scroll-target="#example-birth-rates-in-stirling-vs-glasgow">Example: Birth Rates in Stirling vs Glasgow</a></li>
   <li><a href="#get-the-software" id="toc-get-the-software" class="nav-link" data-scroll-target="#get-the-software">Get The Software</a></li>
-  <li><a href="#choose-your-own" id="toc-choose-your-own" class="nav-link" data-scroll-target="#choose-your-own">Choose your own</a></li>
   </ul>
 </nav>
     </div>
@@ -317,23 +302,23 @@ Question 1
 <p>Calculate the birth rate for each LAA</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="qatkdoixtm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qatkdoixtm table {
+<div id="ywvzcgtydo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ywvzcgtydo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qatkdoixtm thead, #qatkdoixtm tbody, #qatkdoixtm tfoot, #qatkdoixtm tr, #qatkdoixtm td, #qatkdoixtm th {
+#ywvzcgtydo thead, #ywvzcgtydo tbody, #ywvzcgtydo tfoot, #ywvzcgtydo tr, #ywvzcgtydo td, #ywvzcgtydo th {
   border-style: none;
 }
 
-#qatkdoixtm p {
+#ywvzcgtydo p {
   margin: 0;
   padding: 0;
 }
 
-#qatkdoixtm .gt_table {
+#ywvzcgtydo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -359,12 +344,12 @@ Question 1
   border-left-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_caption {
+#ywvzcgtydo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qatkdoixtm .gt_title {
+#ywvzcgtydo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -376,7 +361,7 @@ Question 1
   border-bottom-width: 0;
 }
 
-#qatkdoixtm .gt_subtitle {
+#ywvzcgtydo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -388,7 +373,7 @@ Question 1
   border-top-width: 0;
 }
 
-#qatkdoixtm .gt_heading {
+#ywvzcgtydo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -400,13 +385,13 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_bottom_border {
+#ywvzcgtydo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_col_headings {
+#ywvzcgtydo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -421,7 +406,7 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_col_heading {
+#ywvzcgtydo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -441,7 +426,7 @@ Question 1
   overflow-x: hidden;
 }
 
-#qatkdoixtm .gt_column_spanner_outer {
+#ywvzcgtydo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -453,15 +438,15 @@ Question 1
   padding-right: 4px;
 }
 
-#qatkdoixtm .gt_column_spanner_outer:first-child {
+#ywvzcgtydo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qatkdoixtm .gt_column_spanner_outer:last-child {
+#ywvzcgtydo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qatkdoixtm .gt_column_spanner {
+#ywvzcgtydo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -473,11 +458,11 @@ Question 1
   width: 100%;
 }
 
-#qatkdoixtm .gt_spanner_row {
+#ywvzcgtydo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qatkdoixtm .gt_group_heading {
+#ywvzcgtydo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -503,7 +488,7 @@ Question 1
   text-align: left;
 }
 
-#qatkdoixtm .gt_empty_group_heading {
+#ywvzcgtydo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -518,15 +503,15 @@ Question 1
   vertical-align: middle;
 }
 
-#qatkdoixtm .gt_from_md > :first-child {
+#ywvzcgtydo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qatkdoixtm .gt_from_md > :last-child {
+#ywvzcgtydo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qatkdoixtm .gt_row {
+#ywvzcgtydo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -545,7 +530,7 @@ Question 1
   overflow-x: hidden;
 }
 
-#qatkdoixtm .gt_stub {
+#ywvzcgtydo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -558,7 +543,7 @@ Question 1
   padding-right: 5px;
 }
 
-#qatkdoixtm .gt_stub_row_group {
+#ywvzcgtydo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -572,15 +557,15 @@ Question 1
   vertical-align: top;
 }
 
-#qatkdoixtm .gt_row_group_first td {
+#ywvzcgtydo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qatkdoixtm .gt_row_group_first th {
+#ywvzcgtydo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qatkdoixtm .gt_summary_row {
+#ywvzcgtydo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -590,16 +575,16 @@ Question 1
   padding-right: 5px;
 }
 
-#qatkdoixtm .gt_first_summary_row {
+#ywvzcgtydo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_first_summary_row.thick {
+#ywvzcgtydo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qatkdoixtm .gt_last_summary_row {
+#ywvzcgtydo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -609,7 +594,7 @@ Question 1
   border-bottom-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_grand_summary_row {
+#ywvzcgtydo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -619,7 +604,7 @@ Question 1
   padding-right: 5px;
 }
 
-#qatkdoixtm .gt_first_grand_summary_row {
+#ywvzcgtydo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -629,7 +614,7 @@ Question 1
   border-top-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_last_grand_summary_row_top {
+#ywvzcgtydo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -639,11 +624,11 @@ Question 1
   border-bottom-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_striped {
+#ywvzcgtydo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qatkdoixtm .gt_table_body {
+#ywvzcgtydo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -652,7 +637,7 @@ Question 1
   border-bottom-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_footnotes {
+#ywvzcgtydo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -666,7 +651,7 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_footnote {
+#ywvzcgtydo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -675,7 +660,7 @@ Question 1
   padding-right: 5px;
 }
 
-#qatkdoixtm .gt_sourcenotes {
+#ywvzcgtydo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -689,7 +674,7 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#qatkdoixtm .gt_sourcenote {
+#ywvzcgtydo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -697,72 +682,72 @@ Question 1
   padding-right: 5px;
 }
 
-#qatkdoixtm .gt_left {
+#ywvzcgtydo .gt_left {
   text-align: left;
 }
 
-#qatkdoixtm .gt_center {
+#ywvzcgtydo .gt_center {
   text-align: center;
 }
 
-#qatkdoixtm .gt_right {
+#ywvzcgtydo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qatkdoixtm .gt_font_normal {
+#ywvzcgtydo .gt_font_normal {
   font-weight: normal;
 }
 
-#qatkdoixtm .gt_font_bold {
+#ywvzcgtydo .gt_font_bold {
   font-weight: bold;
 }
 
-#qatkdoixtm .gt_font_italic {
+#ywvzcgtydo .gt_font_italic {
   font-style: italic;
 }
 
-#qatkdoixtm .gt_super {
+#ywvzcgtydo .gt_super {
   font-size: 65%;
 }
 
-#qatkdoixtm .gt_footnote_marks {
+#ywvzcgtydo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qatkdoixtm .gt_asterisk {
+#ywvzcgtydo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qatkdoixtm .gt_indent_1 {
+#ywvzcgtydo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qatkdoixtm .gt_indent_2 {
+#ywvzcgtydo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qatkdoixtm .gt_indent_3 {
+#ywvzcgtydo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qatkdoixtm .gt_indent_4 {
+#ywvzcgtydo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qatkdoixtm .gt_indent_5 {
+#ywvzcgtydo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qatkdoixtm .katex-display {
+#ywvzcgtydo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qatkdoixtm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ywvzcgtydo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -807,23 +792,23 @@ Solution
 <p><span class="proof-title"><em>Solution 1</em>. </span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="vdzkdibvyd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vdzkdibvyd table {
+<div id="zwyzyiyquf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zwyzyiyquf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vdzkdibvyd thead, #vdzkdibvyd tbody, #vdzkdibvyd tfoot, #vdzkdibvyd tr, #vdzkdibvyd td, #vdzkdibvyd th {
+#zwyzyiyquf thead, #zwyzyiyquf tbody, #zwyzyiyquf tfoot, #zwyzyiyquf tr, #zwyzyiyquf td, #zwyzyiyquf th {
   border-style: none;
 }
 
-#vdzkdibvyd p {
+#zwyzyiyquf p {
   margin: 0;
   padding: 0;
 }
 
-#vdzkdibvyd .gt_table {
+#zwyzyiyquf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -849,12 +834,12 @@ Solution
   border-left-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_caption {
+#zwyzyiyquf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vdzkdibvyd .gt_title {
+#zwyzyiyquf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -866,7 +851,7 @@ Solution
   border-bottom-width: 0;
 }
 
-#vdzkdibvyd .gt_subtitle {
+#zwyzyiyquf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -878,7 +863,7 @@ Solution
   border-top-width: 0;
 }
 
-#vdzkdibvyd .gt_heading {
+#zwyzyiyquf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -890,13 +875,13 @@ Solution
   border-right-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_bottom_border {
+#zwyzyiyquf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_col_headings {
+#zwyzyiyquf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -911,7 +896,7 @@ Solution
   border-right-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_col_heading {
+#zwyzyiyquf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -931,7 +916,7 @@ Solution
   overflow-x: hidden;
 }
 
-#vdzkdibvyd .gt_column_spanner_outer {
+#zwyzyiyquf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -943,15 +928,15 @@ Solution
   padding-right: 4px;
 }
 
-#vdzkdibvyd .gt_column_spanner_outer:first-child {
+#zwyzyiyquf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vdzkdibvyd .gt_column_spanner_outer:last-child {
+#zwyzyiyquf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vdzkdibvyd .gt_column_spanner {
+#zwyzyiyquf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -963,11 +948,11 @@ Solution
   width: 100%;
 }
 
-#vdzkdibvyd .gt_spanner_row {
+#zwyzyiyquf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vdzkdibvyd .gt_group_heading {
+#zwyzyiyquf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -993,7 +978,7 @@ Solution
   text-align: left;
 }
 
-#vdzkdibvyd .gt_empty_group_heading {
+#zwyzyiyquf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1008,15 +993,15 @@ Solution
   vertical-align: middle;
 }
 
-#vdzkdibvyd .gt_from_md > :first-child {
+#zwyzyiyquf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vdzkdibvyd .gt_from_md > :last-child {
+#zwyzyiyquf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vdzkdibvyd .gt_row {
+#zwyzyiyquf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1035,7 +1020,7 @@ Solution
   overflow-x: hidden;
 }
 
-#vdzkdibvyd .gt_stub {
+#zwyzyiyquf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1048,7 +1033,7 @@ Solution
   padding-right: 5px;
 }
 
-#vdzkdibvyd .gt_stub_row_group {
+#zwyzyiyquf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1062,15 +1047,15 @@ Solution
   vertical-align: top;
 }
 
-#vdzkdibvyd .gt_row_group_first td {
+#zwyzyiyquf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vdzkdibvyd .gt_row_group_first th {
+#zwyzyiyquf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vdzkdibvyd .gt_summary_row {
+#zwyzyiyquf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1080,16 +1065,16 @@ Solution
   padding-right: 5px;
 }
 
-#vdzkdibvyd .gt_first_summary_row {
+#zwyzyiyquf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_first_summary_row.thick {
+#zwyzyiyquf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vdzkdibvyd .gt_last_summary_row {
+#zwyzyiyquf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1099,7 +1084,7 @@ Solution
   border-bottom-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_grand_summary_row {
+#zwyzyiyquf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1109,7 +1094,7 @@ Solution
   padding-right: 5px;
 }
 
-#vdzkdibvyd .gt_first_grand_summary_row {
+#zwyzyiyquf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1119,7 +1104,7 @@ Solution
   border-top-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_last_grand_summary_row_top {
+#zwyzyiyquf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1129,11 +1114,11 @@ Solution
   border-bottom-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_striped {
+#zwyzyiyquf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vdzkdibvyd .gt_table_body {
+#zwyzyiyquf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1142,7 +1127,7 @@ Solution
   border-bottom-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_footnotes {
+#zwyzyiyquf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1156,7 +1141,7 @@ Solution
   border-right-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_footnote {
+#zwyzyiyquf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1165,7 +1150,7 @@ Solution
   padding-right: 5px;
 }
 
-#vdzkdibvyd .gt_sourcenotes {
+#zwyzyiyquf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1179,7 +1164,7 @@ Solution
   border-right-color: #D3D3D3;
 }
 
-#vdzkdibvyd .gt_sourcenote {
+#zwyzyiyquf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1187,72 +1172,72 @@ Solution
   padding-right: 5px;
 }
 
-#vdzkdibvyd .gt_left {
+#zwyzyiyquf .gt_left {
   text-align: left;
 }
 
-#vdzkdibvyd .gt_center {
+#zwyzyiyquf .gt_center {
   text-align: center;
 }
 
-#vdzkdibvyd .gt_right {
+#zwyzyiyquf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vdzkdibvyd .gt_font_normal {
+#zwyzyiyquf .gt_font_normal {
   font-weight: normal;
 }
 
-#vdzkdibvyd .gt_font_bold {
+#zwyzyiyquf .gt_font_bold {
   font-weight: bold;
 }
 
-#vdzkdibvyd .gt_font_italic {
+#zwyzyiyquf .gt_font_italic {
   font-style: italic;
 }
 
-#vdzkdibvyd .gt_super {
+#zwyzyiyquf .gt_super {
   font-size: 65%;
 }
 
-#vdzkdibvyd .gt_footnote_marks {
+#zwyzyiyquf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vdzkdibvyd .gt_asterisk {
+#zwyzyiyquf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vdzkdibvyd .gt_indent_1 {
+#zwyzyiyquf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vdzkdibvyd .gt_indent_2 {
+#zwyzyiyquf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vdzkdibvyd .gt_indent_3 {
+#zwyzyiyquf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vdzkdibvyd .gt_indent_4 {
+#zwyzyiyquf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vdzkdibvyd .gt_indent_5 {
+#zwyzyiyquf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vdzkdibvyd .katex-display {
+#zwyzyiyquf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vdzkdibvyd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zwyzyiyquf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1301,23 +1286,23 @@ Question 2
 <p>Calculate these below, and then multiply them to demonstrate to yourselves that this returns the same rates (give or take some rounding!) as the previous question.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="lrwpxyqzsg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lrwpxyqzsg table {
+<div id="licmpqvgjh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#licmpqvgjh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lrwpxyqzsg thead, #lrwpxyqzsg tbody, #lrwpxyqzsg tfoot, #lrwpxyqzsg tr, #lrwpxyqzsg td, #lrwpxyqzsg th {
+#licmpqvgjh thead, #licmpqvgjh tbody, #licmpqvgjh tfoot, #licmpqvgjh tr, #licmpqvgjh td, #licmpqvgjh th {
   border-style: none;
 }
 
-#lrwpxyqzsg p {
+#licmpqvgjh p {
   margin: 0;
   padding: 0;
 }
 
-#lrwpxyqzsg .gt_table {
+#licmpqvgjh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1343,12 +1328,12 @@ Question 2
   border-left-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_caption {
+#licmpqvgjh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lrwpxyqzsg .gt_title {
+#licmpqvgjh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1360,7 +1345,7 @@ Question 2
   border-bottom-width: 0;
 }
 
-#lrwpxyqzsg .gt_subtitle {
+#licmpqvgjh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1372,7 +1357,7 @@ Question 2
   border-top-width: 0;
 }
 
-#lrwpxyqzsg .gt_heading {
+#licmpqvgjh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1384,13 +1369,13 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_bottom_border {
+#licmpqvgjh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_col_headings {
+#licmpqvgjh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1405,7 +1390,7 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_col_heading {
+#licmpqvgjh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1425,7 +1410,7 @@ Question 2
   overflow-x: hidden;
 }
 
-#lrwpxyqzsg .gt_column_spanner_outer {
+#licmpqvgjh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1437,15 +1422,15 @@ Question 2
   padding-right: 4px;
 }
 
-#lrwpxyqzsg .gt_column_spanner_outer:first-child {
+#licmpqvgjh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lrwpxyqzsg .gt_column_spanner_outer:last-child {
+#licmpqvgjh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lrwpxyqzsg .gt_column_spanner {
+#licmpqvgjh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1457,11 +1442,11 @@ Question 2
   width: 100%;
 }
 
-#lrwpxyqzsg .gt_spanner_row {
+#licmpqvgjh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lrwpxyqzsg .gt_group_heading {
+#licmpqvgjh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1487,7 +1472,7 @@ Question 2
   text-align: left;
 }
 
-#lrwpxyqzsg .gt_empty_group_heading {
+#licmpqvgjh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1502,15 +1487,15 @@ Question 2
   vertical-align: middle;
 }
 
-#lrwpxyqzsg .gt_from_md > :first-child {
+#licmpqvgjh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lrwpxyqzsg .gt_from_md > :last-child {
+#licmpqvgjh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lrwpxyqzsg .gt_row {
+#licmpqvgjh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1529,7 +1514,7 @@ Question 2
   overflow-x: hidden;
 }
 
-#lrwpxyqzsg .gt_stub {
+#licmpqvgjh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1542,7 +1527,7 @@ Question 2
   padding-right: 5px;
 }
 
-#lrwpxyqzsg .gt_stub_row_group {
+#licmpqvgjh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1556,15 +1541,15 @@ Question 2
   vertical-align: top;
 }
 
-#lrwpxyqzsg .gt_row_group_first td {
+#licmpqvgjh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lrwpxyqzsg .gt_row_group_first th {
+#licmpqvgjh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lrwpxyqzsg .gt_summary_row {
+#licmpqvgjh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1574,16 +1559,16 @@ Question 2
   padding-right: 5px;
 }
 
-#lrwpxyqzsg .gt_first_summary_row {
+#licmpqvgjh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_first_summary_row.thick {
+#licmpqvgjh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lrwpxyqzsg .gt_last_summary_row {
+#licmpqvgjh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1593,7 +1578,7 @@ Question 2
   border-bottom-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_grand_summary_row {
+#licmpqvgjh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1603,7 +1588,7 @@ Question 2
   padding-right: 5px;
 }
 
-#lrwpxyqzsg .gt_first_grand_summary_row {
+#licmpqvgjh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1613,7 +1598,7 @@ Question 2
   border-top-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_last_grand_summary_row_top {
+#licmpqvgjh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1623,11 +1608,11 @@ Question 2
   border-bottom-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_striped {
+#licmpqvgjh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lrwpxyqzsg .gt_table_body {
+#licmpqvgjh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1636,7 +1621,7 @@ Question 2
   border-bottom-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_footnotes {
+#licmpqvgjh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1650,7 +1635,7 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_footnote {
+#licmpqvgjh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1659,7 +1644,7 @@ Question 2
   padding-right: 5px;
 }
 
-#lrwpxyqzsg .gt_sourcenotes {
+#licmpqvgjh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1673,7 +1658,7 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#lrwpxyqzsg .gt_sourcenote {
+#licmpqvgjh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1681,72 +1666,72 @@ Question 2
   padding-right: 5px;
 }
 
-#lrwpxyqzsg .gt_left {
+#licmpqvgjh .gt_left {
   text-align: left;
 }
 
-#lrwpxyqzsg .gt_center {
+#licmpqvgjh .gt_center {
   text-align: center;
 }
 
-#lrwpxyqzsg .gt_right {
+#licmpqvgjh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lrwpxyqzsg .gt_font_normal {
+#licmpqvgjh .gt_font_normal {
   font-weight: normal;
 }
 
-#lrwpxyqzsg .gt_font_bold {
+#licmpqvgjh .gt_font_bold {
   font-weight: bold;
 }
 
-#lrwpxyqzsg .gt_font_italic {
+#licmpqvgjh .gt_font_italic {
   font-style: italic;
 }
 
-#lrwpxyqzsg .gt_super {
+#licmpqvgjh .gt_super {
   font-size: 65%;
 }
 
-#lrwpxyqzsg .gt_footnote_marks {
+#licmpqvgjh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lrwpxyqzsg .gt_asterisk {
+#licmpqvgjh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lrwpxyqzsg .gt_indent_1 {
+#licmpqvgjh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lrwpxyqzsg .gt_indent_2 {
+#licmpqvgjh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lrwpxyqzsg .gt_indent_3 {
+#licmpqvgjh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lrwpxyqzsg .gt_indent_4 {
+#licmpqvgjh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lrwpxyqzsg .gt_indent_5 {
+#licmpqvgjh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lrwpxyqzsg .katex-display {
+#licmpqvgjh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lrwpxyqzsg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#licmpqvgjh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1800,23 +1785,23 @@ Solution
 <p><span class="proof-title"><em>Solution 2</em>. </span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="hlbyxqxjwd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hlbyxqxjwd table {
+<div id="pbpvvxszfw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pbpvvxszfw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hlbyxqxjwd thead, #hlbyxqxjwd tbody, #hlbyxqxjwd tfoot, #hlbyxqxjwd tr, #hlbyxqxjwd td, #hlbyxqxjwd th {
+#pbpvvxszfw thead, #pbpvvxszfw tbody, #pbpvvxszfw tfoot, #pbpvvxszfw tr, #pbpvvxszfw td, #pbpvvxszfw th {
   border-style: none;
 }
 
-#hlbyxqxjwd p {
+#pbpvvxszfw p {
   margin: 0;
   padding: 0;
 }
 
-#hlbyxqxjwd .gt_table {
+#pbpvvxszfw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1842,12 +1827,12 @@ Solution
   border-left-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_caption {
+#pbpvvxszfw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hlbyxqxjwd .gt_title {
+#pbpvvxszfw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1859,7 +1844,7 @@ Solution
   border-bottom-width: 0;
 }
 
-#hlbyxqxjwd .gt_subtitle {
+#pbpvvxszfw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1871,7 +1856,7 @@ Solution
   border-top-width: 0;
 }
 
-#hlbyxqxjwd .gt_heading {
+#pbpvvxszfw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1883,13 +1868,13 @@ Solution
   border-right-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_bottom_border {
+#pbpvvxszfw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_col_headings {
+#pbpvvxszfw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1904,7 +1889,7 @@ Solution
   border-right-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_col_heading {
+#pbpvvxszfw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1924,7 +1909,7 @@ Solution
   overflow-x: hidden;
 }
 
-#hlbyxqxjwd .gt_column_spanner_outer {
+#pbpvvxszfw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1936,15 +1921,15 @@ Solution
   padding-right: 4px;
 }
 
-#hlbyxqxjwd .gt_column_spanner_outer:first-child {
+#pbpvvxszfw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hlbyxqxjwd .gt_column_spanner_outer:last-child {
+#pbpvvxszfw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hlbyxqxjwd .gt_column_spanner {
+#pbpvvxszfw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1956,11 +1941,11 @@ Solution
   width: 100%;
 }
 
-#hlbyxqxjwd .gt_spanner_row {
+#pbpvvxszfw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hlbyxqxjwd .gt_group_heading {
+#pbpvvxszfw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1986,7 +1971,7 @@ Solution
   text-align: left;
 }
 
-#hlbyxqxjwd .gt_empty_group_heading {
+#pbpvvxszfw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2001,15 +1986,15 @@ Solution
   vertical-align: middle;
 }
 
-#hlbyxqxjwd .gt_from_md > :first-child {
+#pbpvvxszfw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hlbyxqxjwd .gt_from_md > :last-child {
+#pbpvvxszfw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hlbyxqxjwd .gt_row {
+#pbpvvxszfw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2028,7 +2013,7 @@ Solution
   overflow-x: hidden;
 }
 
-#hlbyxqxjwd .gt_stub {
+#pbpvvxszfw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2041,7 +2026,7 @@ Solution
   padding-right: 5px;
 }
 
-#hlbyxqxjwd .gt_stub_row_group {
+#pbpvvxszfw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2055,15 +2040,15 @@ Solution
   vertical-align: top;
 }
 
-#hlbyxqxjwd .gt_row_group_first td {
+#pbpvvxszfw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hlbyxqxjwd .gt_row_group_first th {
+#pbpvvxszfw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hlbyxqxjwd .gt_summary_row {
+#pbpvvxszfw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2073,16 +2058,16 @@ Solution
   padding-right: 5px;
 }
 
-#hlbyxqxjwd .gt_first_summary_row {
+#pbpvvxszfw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_first_summary_row.thick {
+#pbpvvxszfw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hlbyxqxjwd .gt_last_summary_row {
+#pbpvvxszfw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2092,7 +2077,7 @@ Solution
   border-bottom-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_grand_summary_row {
+#pbpvvxszfw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2102,7 +2087,7 @@ Solution
   padding-right: 5px;
 }
 
-#hlbyxqxjwd .gt_first_grand_summary_row {
+#pbpvvxszfw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2112,7 +2097,7 @@ Solution
   border-top-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_last_grand_summary_row_top {
+#pbpvvxszfw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2122,11 +2107,11 @@ Solution
   border-bottom-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_striped {
+#pbpvvxszfw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hlbyxqxjwd .gt_table_body {
+#pbpvvxszfw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2135,7 +2120,7 @@ Solution
   border-bottom-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_footnotes {
+#pbpvvxszfw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2149,7 +2134,7 @@ Solution
   border-right-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_footnote {
+#pbpvvxszfw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2158,7 +2143,7 @@ Solution
   padding-right: 5px;
 }
 
-#hlbyxqxjwd .gt_sourcenotes {
+#pbpvvxszfw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2172,7 +2157,7 @@ Solution
   border-right-color: #D3D3D3;
 }
 
-#hlbyxqxjwd .gt_sourcenote {
+#pbpvvxszfw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2180,72 +2165,72 @@ Solution
   padding-right: 5px;
 }
 
-#hlbyxqxjwd .gt_left {
+#pbpvvxszfw .gt_left {
   text-align: left;
 }
 
-#hlbyxqxjwd .gt_center {
+#pbpvvxszfw .gt_center {
   text-align: center;
 }
 
-#hlbyxqxjwd .gt_right {
+#pbpvvxszfw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hlbyxqxjwd .gt_font_normal {
+#pbpvvxszfw .gt_font_normal {
   font-weight: normal;
 }
 
-#hlbyxqxjwd .gt_font_bold {
+#pbpvvxszfw .gt_font_bold {
   font-weight: bold;
 }
 
-#hlbyxqxjwd .gt_font_italic {
+#pbpvvxszfw .gt_font_italic {
   font-style: italic;
 }
 
-#hlbyxqxjwd .gt_super {
+#pbpvvxszfw .gt_super {
   font-size: 65%;
 }
 
-#hlbyxqxjwd .gt_footnote_marks {
+#pbpvvxszfw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hlbyxqxjwd .gt_asterisk {
+#pbpvvxszfw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hlbyxqxjwd .gt_indent_1 {
+#pbpvvxszfw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hlbyxqxjwd .gt_indent_2 {
+#pbpvvxszfw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hlbyxqxjwd .gt_indent_3 {
+#pbpvvxszfw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hlbyxqxjwd .gt_indent_4 {
+#pbpvvxszfw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hlbyxqxjwd .gt_indent_5 {
+#pbpvvxszfw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hlbyxqxjwd .katex-display {
+#pbpvvxszfw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hlbyxqxjwd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pbpvvxszfw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2313,23 +2298,23 @@ Hints
 <p>A1 * B2!</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="vllghtowra" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vllghtowra table {
+<div id="xwfcbubqey" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xwfcbubqey table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vllghtowra thead, #vllghtowra tbody, #vllghtowra tfoot, #vllghtowra tr, #vllghtowra td, #vllghtowra th {
+#xwfcbubqey thead, #xwfcbubqey tbody, #xwfcbubqey tfoot, #xwfcbubqey tr, #xwfcbubqey td, #xwfcbubqey th {
   border-style: none;
 }
 
-#vllghtowra p {
+#xwfcbubqey p {
   margin: 0;
   padding: 0;
 }
 
-#vllghtowra .gt_table {
+#xwfcbubqey .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2355,12 +2340,12 @@ Hints
   border-left-color: #D3D3D3;
 }
 
-#vllghtowra .gt_caption {
+#xwfcbubqey .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vllghtowra .gt_title {
+#xwfcbubqey .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2372,7 +2357,7 @@ Hints
   border-bottom-width: 0;
 }
 
-#vllghtowra .gt_subtitle {
+#xwfcbubqey .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2384,7 +2369,7 @@ Hints
   border-top-width: 0;
 }
 
-#vllghtowra .gt_heading {
+#xwfcbubqey .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2396,13 +2381,13 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#vllghtowra .gt_bottom_border {
+#xwfcbubqey .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vllghtowra .gt_col_headings {
+#xwfcbubqey .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2417,7 +2402,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#vllghtowra .gt_col_heading {
+#xwfcbubqey .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2437,7 +2422,7 @@ Hints
   overflow-x: hidden;
 }
 
-#vllghtowra .gt_column_spanner_outer {
+#xwfcbubqey .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2449,15 +2434,15 @@ Hints
   padding-right: 4px;
 }
 
-#vllghtowra .gt_column_spanner_outer:first-child {
+#xwfcbubqey .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vllghtowra .gt_column_spanner_outer:last-child {
+#xwfcbubqey .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vllghtowra .gt_column_spanner {
+#xwfcbubqey .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2469,11 +2454,11 @@ Hints
   width: 100%;
 }
 
-#vllghtowra .gt_spanner_row {
+#xwfcbubqey .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vllghtowra .gt_group_heading {
+#xwfcbubqey .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2499,7 +2484,7 @@ Hints
   text-align: left;
 }
 
-#vllghtowra .gt_empty_group_heading {
+#xwfcbubqey .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2514,15 +2499,15 @@ Hints
   vertical-align: middle;
 }
 
-#vllghtowra .gt_from_md > :first-child {
+#xwfcbubqey .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vllghtowra .gt_from_md > :last-child {
+#xwfcbubqey .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vllghtowra .gt_row {
+#xwfcbubqey .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2541,7 +2526,7 @@ Hints
   overflow-x: hidden;
 }
 
-#vllghtowra .gt_stub {
+#xwfcbubqey .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2554,7 +2539,7 @@ Hints
   padding-right: 5px;
 }
 
-#vllghtowra .gt_stub_row_group {
+#xwfcbubqey .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2568,15 +2553,15 @@ Hints
   vertical-align: top;
 }
 
-#vllghtowra .gt_row_group_first td {
+#xwfcbubqey .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vllghtowra .gt_row_group_first th {
+#xwfcbubqey .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vllghtowra .gt_summary_row {
+#xwfcbubqey .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2586,16 +2571,16 @@ Hints
   padding-right: 5px;
 }
 
-#vllghtowra .gt_first_summary_row {
+#xwfcbubqey .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vllghtowra .gt_first_summary_row.thick {
+#xwfcbubqey .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vllghtowra .gt_last_summary_row {
+#xwfcbubqey .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2605,7 +2590,7 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#vllghtowra .gt_grand_summary_row {
+#xwfcbubqey .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2615,7 +2600,7 @@ Hints
   padding-right: 5px;
 }
 
-#vllghtowra .gt_first_grand_summary_row {
+#xwfcbubqey .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2625,7 +2610,7 @@ Hints
   border-top-color: #D3D3D3;
 }
 
-#vllghtowra .gt_last_grand_summary_row_top {
+#xwfcbubqey .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2635,11 +2620,11 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#vllghtowra .gt_striped {
+#xwfcbubqey .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vllghtowra .gt_table_body {
+#xwfcbubqey .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2648,7 +2633,7 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#vllghtowra .gt_footnotes {
+#xwfcbubqey .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2662,7 +2647,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#vllghtowra .gt_footnote {
+#xwfcbubqey .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2671,7 +2656,7 @@ Hints
   padding-right: 5px;
 }
 
-#vllghtowra .gt_sourcenotes {
+#xwfcbubqey .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2685,7 +2670,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#vllghtowra .gt_sourcenote {
+#xwfcbubqey .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2693,72 +2678,72 @@ Hints
   padding-right: 5px;
 }
 
-#vllghtowra .gt_left {
+#xwfcbubqey .gt_left {
   text-align: left;
 }
 
-#vllghtowra .gt_center {
+#xwfcbubqey .gt_center {
   text-align: center;
 }
 
-#vllghtowra .gt_right {
+#xwfcbubqey .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vllghtowra .gt_font_normal {
+#xwfcbubqey .gt_font_normal {
   font-weight: normal;
 }
 
-#vllghtowra .gt_font_bold {
+#xwfcbubqey .gt_font_bold {
   font-weight: bold;
 }
 
-#vllghtowra .gt_font_italic {
+#xwfcbubqey .gt_font_italic {
   font-style: italic;
 }
 
-#vllghtowra .gt_super {
+#xwfcbubqey .gt_super {
   font-size: 65%;
 }
 
-#vllghtowra .gt_footnote_marks {
+#xwfcbubqey .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vllghtowra .gt_asterisk {
+#xwfcbubqey .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vllghtowra .gt_indent_1 {
+#xwfcbubqey .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vllghtowra .gt_indent_2 {
+#xwfcbubqey .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vllghtowra .gt_indent_3 {
+#xwfcbubqey .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vllghtowra .gt_indent_4 {
+#xwfcbubqey .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vllghtowra .gt_indent_5 {
+#xwfcbubqey .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vllghtowra .katex-display {
+#xwfcbubqey .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vllghtowra div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xwfcbubqey div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2855,23 +2840,23 @@ A1 * ((B1+B2)/2)<br>
 A2 * ((B1+B2)/2)</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="cxipyrgafv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cxipyrgafv table {
+<div id="elvsvxceby" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#elvsvxceby table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cxipyrgafv thead, #cxipyrgafv tbody, #cxipyrgafv tfoot, #cxipyrgafv tr, #cxipyrgafv td, #cxipyrgafv th {
+#elvsvxceby thead, #elvsvxceby tbody, #elvsvxceby tfoot, #elvsvxceby tr, #elvsvxceby td, #elvsvxceby th {
   border-style: none;
 }
 
-#cxipyrgafv p {
+#elvsvxceby p {
   margin: 0;
   padding: 0;
 }
 
-#cxipyrgafv .gt_table {
+#elvsvxceby .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2897,12 +2882,12 @@ A2 * ((B1+B2)/2)</p>
   border-left-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_caption {
+#elvsvxceby .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cxipyrgafv .gt_title {
+#elvsvxceby .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2914,7 +2899,7 @@ A2 * ((B1+B2)/2)</p>
   border-bottom-width: 0;
 }
 
-#cxipyrgafv .gt_subtitle {
+#elvsvxceby .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2926,7 +2911,7 @@ A2 * ((B1+B2)/2)</p>
   border-top-width: 0;
 }
 
-#cxipyrgafv .gt_heading {
+#elvsvxceby .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2938,13 +2923,13 @@ A2 * ((B1+B2)/2)</p>
   border-right-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_bottom_border {
+#elvsvxceby .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_col_headings {
+#elvsvxceby .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2959,7 +2944,7 @@ A2 * ((B1+B2)/2)</p>
   border-right-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_col_heading {
+#elvsvxceby .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2979,7 +2964,7 @@ A2 * ((B1+B2)/2)</p>
   overflow-x: hidden;
 }
 
-#cxipyrgafv .gt_column_spanner_outer {
+#elvsvxceby .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2991,15 +2976,15 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 4px;
 }
 
-#cxipyrgafv .gt_column_spanner_outer:first-child {
+#elvsvxceby .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cxipyrgafv .gt_column_spanner_outer:last-child {
+#elvsvxceby .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cxipyrgafv .gt_column_spanner {
+#elvsvxceby .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3011,11 +2996,11 @@ A2 * ((B1+B2)/2)</p>
   width: 100%;
 }
 
-#cxipyrgafv .gt_spanner_row {
+#elvsvxceby .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cxipyrgafv .gt_group_heading {
+#elvsvxceby .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3041,7 +3026,7 @@ A2 * ((B1+B2)/2)</p>
   text-align: left;
 }
 
-#cxipyrgafv .gt_empty_group_heading {
+#elvsvxceby .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3056,15 +3041,15 @@ A2 * ((B1+B2)/2)</p>
   vertical-align: middle;
 }
 
-#cxipyrgafv .gt_from_md > :first-child {
+#elvsvxceby .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cxipyrgafv .gt_from_md > :last-child {
+#elvsvxceby .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cxipyrgafv .gt_row {
+#elvsvxceby .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3083,7 +3068,7 @@ A2 * ((B1+B2)/2)</p>
   overflow-x: hidden;
 }
 
-#cxipyrgafv .gt_stub {
+#elvsvxceby .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3096,7 +3081,7 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 5px;
 }
 
-#cxipyrgafv .gt_stub_row_group {
+#elvsvxceby .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3110,15 +3095,15 @@ A2 * ((B1+B2)/2)</p>
   vertical-align: top;
 }
 
-#cxipyrgafv .gt_row_group_first td {
+#elvsvxceby .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cxipyrgafv .gt_row_group_first th {
+#elvsvxceby .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cxipyrgafv .gt_summary_row {
+#elvsvxceby .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3128,16 +3113,16 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 5px;
 }
 
-#cxipyrgafv .gt_first_summary_row {
+#elvsvxceby .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_first_summary_row.thick {
+#elvsvxceby .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cxipyrgafv .gt_last_summary_row {
+#elvsvxceby .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3147,7 +3132,7 @@ A2 * ((B1+B2)/2)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_grand_summary_row {
+#elvsvxceby .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3157,7 +3142,7 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 5px;
 }
 
-#cxipyrgafv .gt_first_grand_summary_row {
+#elvsvxceby .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3167,7 +3152,7 @@ A2 * ((B1+B2)/2)</p>
   border-top-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_last_grand_summary_row_top {
+#elvsvxceby .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3177,11 +3162,11 @@ A2 * ((B1+B2)/2)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_striped {
+#elvsvxceby .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cxipyrgafv .gt_table_body {
+#elvsvxceby .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3190,7 +3175,7 @@ A2 * ((B1+B2)/2)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_footnotes {
+#elvsvxceby .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3204,7 +3189,7 @@ A2 * ((B1+B2)/2)</p>
   border-right-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_footnote {
+#elvsvxceby .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3213,7 +3198,7 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 5px;
 }
 
-#cxipyrgafv .gt_sourcenotes {
+#elvsvxceby .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3227,7 +3212,7 @@ A2 * ((B1+B2)/2)</p>
   border-right-color: #D3D3D3;
 }
 
-#cxipyrgafv .gt_sourcenote {
+#elvsvxceby .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3235,72 +3220,72 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 5px;
 }
 
-#cxipyrgafv .gt_left {
+#elvsvxceby .gt_left {
   text-align: left;
 }
 
-#cxipyrgafv .gt_center {
+#elvsvxceby .gt_center {
   text-align: center;
 }
 
-#cxipyrgafv .gt_right {
+#elvsvxceby .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cxipyrgafv .gt_font_normal {
+#elvsvxceby .gt_font_normal {
   font-weight: normal;
 }
 
-#cxipyrgafv .gt_font_bold {
+#elvsvxceby .gt_font_bold {
   font-weight: bold;
 }
 
-#cxipyrgafv .gt_font_italic {
+#elvsvxceby .gt_font_italic {
   font-style: italic;
 }
 
-#cxipyrgafv .gt_super {
+#elvsvxceby .gt_super {
   font-size: 65%;
 }
 
-#cxipyrgafv .gt_footnote_marks {
+#elvsvxceby .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cxipyrgafv .gt_asterisk {
+#elvsvxceby .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cxipyrgafv .gt_indent_1 {
+#elvsvxceby .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cxipyrgafv .gt_indent_2 {
+#elvsvxceby .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cxipyrgafv .gt_indent_3 {
+#elvsvxceby .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cxipyrgafv .gt_indent_4 {
+#elvsvxceby .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cxipyrgafv .gt_indent_5 {
+#elvsvxceby .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cxipyrgafv .katex-display {
+#elvsvxceby .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cxipyrgafv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#elvsvxceby div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3388,23 +3373,23 @@ Hints
 <p>(A2 - A1) * ((B1+B2)/2) / (R2 - R1)</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="anzjbalbjp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#anzjbalbjp table {
+<div id="amhdldbyfs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#amhdldbyfs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#anzjbalbjp thead, #anzjbalbjp tbody, #anzjbalbjp tfoot, #anzjbalbjp tr, #anzjbalbjp td, #anzjbalbjp th {
+#amhdldbyfs thead, #amhdldbyfs tbody, #amhdldbyfs tfoot, #amhdldbyfs tr, #amhdldbyfs td, #amhdldbyfs th {
   border-style: none;
 }
 
-#anzjbalbjp p {
+#amhdldbyfs p {
   margin: 0;
   padding: 0;
 }
 
-#anzjbalbjp .gt_table {
+#amhdldbyfs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3430,12 +3415,12 @@ Hints
   border-left-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_caption {
+#amhdldbyfs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#anzjbalbjp .gt_title {
+#amhdldbyfs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3447,7 +3432,7 @@ Hints
   border-bottom-width: 0;
 }
 
-#anzjbalbjp .gt_subtitle {
+#amhdldbyfs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3459,7 +3444,7 @@ Hints
   border-top-width: 0;
 }
 
-#anzjbalbjp .gt_heading {
+#amhdldbyfs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3471,13 +3456,13 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_bottom_border {
+#amhdldbyfs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_col_headings {
+#amhdldbyfs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3492,7 +3477,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_col_heading {
+#amhdldbyfs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3512,7 +3497,7 @@ Hints
   overflow-x: hidden;
 }
 
-#anzjbalbjp .gt_column_spanner_outer {
+#amhdldbyfs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3524,15 +3509,15 @@ Hints
   padding-right: 4px;
 }
 
-#anzjbalbjp .gt_column_spanner_outer:first-child {
+#amhdldbyfs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#anzjbalbjp .gt_column_spanner_outer:last-child {
+#amhdldbyfs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#anzjbalbjp .gt_column_spanner {
+#amhdldbyfs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3544,11 +3529,11 @@ Hints
   width: 100%;
 }
 
-#anzjbalbjp .gt_spanner_row {
+#amhdldbyfs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#anzjbalbjp .gt_group_heading {
+#amhdldbyfs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3574,7 +3559,7 @@ Hints
   text-align: left;
 }
 
-#anzjbalbjp .gt_empty_group_heading {
+#amhdldbyfs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3589,15 +3574,15 @@ Hints
   vertical-align: middle;
 }
 
-#anzjbalbjp .gt_from_md > :first-child {
+#amhdldbyfs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#anzjbalbjp .gt_from_md > :last-child {
+#amhdldbyfs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#anzjbalbjp .gt_row {
+#amhdldbyfs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3616,7 +3601,7 @@ Hints
   overflow-x: hidden;
 }
 
-#anzjbalbjp .gt_stub {
+#amhdldbyfs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3629,7 +3614,7 @@ Hints
   padding-right: 5px;
 }
 
-#anzjbalbjp .gt_stub_row_group {
+#amhdldbyfs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3643,15 +3628,15 @@ Hints
   vertical-align: top;
 }
 
-#anzjbalbjp .gt_row_group_first td {
+#amhdldbyfs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#anzjbalbjp .gt_row_group_first th {
+#amhdldbyfs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#anzjbalbjp .gt_summary_row {
+#amhdldbyfs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3661,16 +3646,16 @@ Hints
   padding-right: 5px;
 }
 
-#anzjbalbjp .gt_first_summary_row {
+#amhdldbyfs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_first_summary_row.thick {
+#amhdldbyfs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#anzjbalbjp .gt_last_summary_row {
+#amhdldbyfs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3680,7 +3665,7 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_grand_summary_row {
+#amhdldbyfs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3690,7 +3675,7 @@ Hints
   padding-right: 5px;
 }
 
-#anzjbalbjp .gt_first_grand_summary_row {
+#amhdldbyfs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3700,7 +3685,7 @@ Hints
   border-top-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_last_grand_summary_row_top {
+#amhdldbyfs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3710,11 +3695,11 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_striped {
+#amhdldbyfs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#anzjbalbjp .gt_table_body {
+#amhdldbyfs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3723,7 +3708,7 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_footnotes {
+#amhdldbyfs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3737,7 +3722,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_footnote {
+#amhdldbyfs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3746,7 +3731,7 @@ Hints
   padding-right: 5px;
 }
 
-#anzjbalbjp .gt_sourcenotes {
+#amhdldbyfs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3760,7 +3745,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#anzjbalbjp .gt_sourcenote {
+#amhdldbyfs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3768,72 +3753,72 @@ Hints
   padding-right: 5px;
 }
 
-#anzjbalbjp .gt_left {
+#amhdldbyfs .gt_left {
   text-align: left;
 }
 
-#anzjbalbjp .gt_center {
+#amhdldbyfs .gt_center {
   text-align: center;
 }
 
-#anzjbalbjp .gt_right {
+#amhdldbyfs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#anzjbalbjp .gt_font_normal {
+#amhdldbyfs .gt_font_normal {
   font-weight: normal;
 }
 
-#anzjbalbjp .gt_font_bold {
+#amhdldbyfs .gt_font_bold {
   font-weight: bold;
 }
 
-#anzjbalbjp .gt_font_italic {
+#amhdldbyfs .gt_font_italic {
   font-style: italic;
 }
 
-#anzjbalbjp .gt_super {
+#amhdldbyfs .gt_super {
   font-size: 65%;
 }
 
-#anzjbalbjp .gt_footnote_marks {
+#amhdldbyfs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#anzjbalbjp .gt_asterisk {
+#amhdldbyfs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#anzjbalbjp .gt_indent_1 {
+#amhdldbyfs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#anzjbalbjp .gt_indent_2 {
+#amhdldbyfs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#anzjbalbjp .gt_indent_3 {
+#amhdldbyfs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#anzjbalbjp .gt_indent_4 {
+#amhdldbyfs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#anzjbalbjp .gt_indent_5 {
+#amhdldbyfs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#anzjbalbjp .katex-display {
+#amhdldbyfs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#anzjbalbjp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#amhdldbyfs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3918,7 +3903,6 @@ We would recommend installing the development version</p>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">"josiahpjking/DasGuptR@develop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In Stata: <strong>rdecompose</strong></p>
-<p>TODO (Ben)</p>
 </div>
 <p class="question-end">
 </p>
@@ -3977,7 +3961,10 @@ Solution
 </button>
 </div>
 <div id="sol-body-6" class="solution-body proof solution" style="display: none;">
-<p><span class="proof-title"><em>Solution 6</em>. </span></p>
+<p><span class="proof-title"><em>Solution 10</em>. </span></p>
+<div class="panelset">
+<section id="r-1" class="level4 panel">
+<h4 class="anchored" data-anchor-id="r-1">R</h4>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
@@ -3999,7 +3986,17 @@ propw     9.303243 7.112697 -2.1905460  88.97
 crude     9.457174 6.995011 -2.4621625 100.00</code></pre>
 </div>
 </div>
-</div>
+</section>
+<div class="panel">
+<section id="stata-1" class="level4">
+<h4 class="anchored" data-anchor-id="stata-1">Stata</h4>
+<pre><code>* Compute factors
+gen women_prop = n_women15to44 / n_people
+gen births_prop = n_births / n_women15to44 * 1000
+
+* Decomposition
+rdecompose women_prop births_prop, group(LAA)</code></pre>
+</section></div>
 <p class="solution-end">
 </p>
 <div class="question-begin">
@@ -4012,20 +4009,20 @@ Question 8
 \]</span></p>
 <p>Perform this decomposition now.</p>
 <div class="panelset">
-<section id="r-1" class="level3 panel">
-<h3 class="anchored" data-anchor-id="r-1">R</h3>
+<section id="r-2" class="level3 panel">
+<h3 class="anchored" data-anchor-id="r-2">R</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>p01a <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">LAA =</span> <span class="fu">c</span>(<span class="st">"Glasgow City"</span>,<span class="st">"Stirling"</span>),</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_people =</span> <span class="fu">c</span>(<span class="dv">650300</span>,<span class="dv">94210</span>),</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women =</span> <span class="fu">c</span>(<span class="dv">332054</span>, <span class="dv">48731</span>),</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women15to44 =</span> <span class="fu">c</span>(<span class="dv">161105</span>,<span class="dv">17844</span>),</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_births =</span> <span class="fu">c</span>(<span class="dv">6150</span>,<span class="dv">659</span>)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>p01a <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">LAA =</span> <span class="fu">c</span>(<span class="st">"Glasgow City"</span>,<span class="st">"Stirling"</span>),</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_people =</span> <span class="fu">c</span>(<span class="dv">650300</span>,<span class="dv">94210</span>),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women =</span> <span class="fu">c</span>(<span class="dv">332054</span>, <span class="dv">48731</span>),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women15to44 =</span> <span class="fu">c</span>(<span class="dv">161105</span>,<span class="dv">17844</span>),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_births =</span> <span class="fu">c</span>(<span class="dv">6150</span>,<span class="dv">659</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="stata-1" class="level3 panel">
-<h3 class="anchored" data-anchor-id="stata-1">Stata</h3>
+<section id="stata-2" class="level3 panel">
+<h3 class="anchored" data-anchor-id="stata-2">Stata</h3>
 <p>TODO ben check</p>
 <pre><code>clear
 input str12 LAA long n_people long n_women long n_women15to44 int n_births
@@ -4043,18 +4040,18 @@ Solution
 </button>
 </div>
 <div id="sol-body-7" class="solution-body proof solution" style="display: none;">
-<p><span class="proof-title"><em>Solution 7</em>. </span></p>
+<p><span class="proof-title"><em>Solution 6</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>p01a <span class="ot">&lt;-</span> p01a <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">propw =</span> n_women<span class="sc">/</span>n_people,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">propw1544 =</span> n_women15to44<span class="sc">/</span>n_women,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">bpw =</span> n_births<span class="sc">/</span>n_women15to44<span class="sc">*</span><span class="dv">1000</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(p01a,</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"LAA"</span>,</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"propw"</span>,<span class="st">"propw1544"</span>,<span class="st">"bpw"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>p01a <span class="ot">&lt;-</span> p01a <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">propw =</span> n_women<span class="sc">/</span>n_people,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">propw1544 =</span> n_women15to44<span class="sc">/</span>n_women,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">bpw =</span> n_births<span class="sc">/</span>n_women15to44<span class="sc">*</span><span class="dv">1000</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(p01a,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"LAA"</span>,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"propw"</span>,<span class="st">"propw1544"</span>,<span class="st">"bpw"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Glasgow City Stirling       diff decomp
 propw         8.168592 8.274858  0.1062662  -4.32
@@ -4066,7 +4063,7 @@ crude         9.457174 6.995011 -2.4621625 100.00</code></pre>
 </div>
 <p class="solution-end">
 </p>
-</section>
+</div></div></section>
 <section id="choose-your-own" class="level1">
 <h1>Choose your own</h1>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -4087,19 +4084,19 @@ Birth Rates Across England and Scotland
 \]</span></p>
 <p><strong>Data:</strong></p>
 <div class="panelset">
-<section id="r-2" class="level4 panel">
-<h4 class="anchored" data-anchor-id="r-2">R</h4>
+<section id="r-3" class="level4 panel">
+<h4 class="anchored" data-anchor-id="r-3">R</h4>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>country, <span class="sc">~</span>n_people, <span class="sc">~</span>n_women, <span class="sc">~</span>n_women1544, <span class="sc">~</span>n_births,</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Scotland"</span>, <span class="dv">5546900</span>, <span class="dv">2851740</span>, <span class="dv">1064441</span>, <span class="dv">45763</span>,</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"England"</span>, <span class="dv">58620101</span>, <span class="dv">29895762</span>, <span class="dv">11583779</span>, <span class="dv">567708</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>country, <span class="sc">~</span>n_people, <span class="sc">~</span>n_women, <span class="sc">~</span>n_women1544, <span class="sc">~</span>n_births,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Scotland"</span>, <span class="dv">5546900</span>, <span class="dv">2851740</span>, <span class="dv">1064441</span>, <span class="dv">45763</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"England"</span>, <span class="dv">58620101</span>, <span class="dv">29895762</span>, <span class="dv">11583779</span>, <span class="dv">567708</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="stata-2" class="level4 panel">
-<h4 class="anchored" data-anchor-id="stata-2">Stata</h4>
+<section id="stata-3" class="level4 panel">
+<h4 class="anchored" data-anchor-id="stata-3">Stata</h4>
 <p>TODO ben check</p>
 <pre><code>clear
 input str8 country long n_people long n_women long n_women1544 long n_births
@@ -4117,21 +4114,21 @@ Solution
 </button>
 </div>
 <div id="sol-body-8" class="solution-body proof solution" style="display: none;">
-<p><span class="proof-title"><em>Solution 8</em>. </span></p>
+<p><span class="proof-title"><em>Solution 7</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>country, <span class="sc">~</span>n_people, <span class="sc">~</span>n_women, <span class="sc">~</span>n_women1544, <span class="sc">~</span>n_births,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Scotland"</span>, <span class="dv">5546900</span>, <span class="dv">2851740</span>, <span class="dv">1064441</span>, <span class="dv">45763</span>,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"England"</span>, <span class="dv">58620101</span>, <span class="dv">29895762</span>, <span class="dv">11583779</span>, <span class="dv">567708</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="sc">|&gt;</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    country, </span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">cr =</span> n_births<span class="sc">/</span>n_people<span class="sc">*</span><span class="fl">1e3</span></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>country, <span class="sc">~</span>n_people, <span class="sc">~</span>n_women, <span class="sc">~</span>n_women1544, <span class="sc">~</span>n_births,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Scotland"</span>, <span class="dv">5546900</span>, <span class="dv">2851740</span>, <span class="dv">1064441</span>, <span class="dv">45763</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"England"</span>, <span class="dv">58620101</span>, <span class="dv">29895762</span>, <span class="dv">11583779</span>, <span class="dv">567708</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="sc">|&gt;</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    country, </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">cr =</span> n_births<span class="sc">/</span>n_people<span class="sc">*</span><span class="fl">1e3</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   country     cr
@@ -4139,20 +4136,20 @@ Solution
 1 Scotland  8.25
 2 England   9.68</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create factors:</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  scot_v_eng <span class="sc">|&gt;</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw =</span> n_women<span class="sc">/</span>n_people,</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw1544 =</span> n_women1544<span class="sc">/</span>n_women,</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">bpw =</span> n_births<span class="sc">/</span>n_women1544</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># decomposition</span></span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(scot_v_eng, </span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"country"</span>,</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"propw"</span>,<span class="st">"propw1544"</span>,<span class="st">"bpw"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create factors:</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  scot_v_eng <span class="sc">|&gt;</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw =</span> n_women<span class="sc">/</span>n_people,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw1544 =</span> n_women1544<span class="sc">/</span>n_women,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">bpw =</span> n_births<span class="sc">/</span>n_women1544</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># decomposition</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(scot_v_eng, </span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"country"</span>,</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"propw"</span>,<span class="st">"propw1544"</span>,<span class="st">"bpw"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              England    Scotland          diff decomp
 propw     0.008927015 0.008999177  7.216193e-05  -5.03
@@ -4201,21 +4198,21 @@ The Gender Earnings-Gap
 </ul>
 <p>You can find this data for a whole load of different countries at <a href="https://ilostat.ilo.org/data/?cat_mode=subject" target="_blank">https://ilostat.ilo.org/data/?cat_mode=subject</a>, if you would like to do this for somewhere else.</p>
 <div class="panelset">
-<section id="r-3" class="level4 panel">
-<h4 class="anchored" data-anchor-id="r-3">R</h4>
+<section id="r-4" class="level4 panel">
+<h4 class="anchored" data-anchor-id="r-4">R</h4>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>work25 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">pop =</span> <span class="fu">c</span>(<span class="st">"males"</span>,<span class="st">"females"</span>),</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">working_age =</span> <span class="fu">c</span>(<span class="dv">23718900</span>, <span class="dv">24613110</span>),</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">labour_force =</span> <span class="fu">c</span>(<span class="dv">18442860</span>, <span class="dv">5767405</span>),</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">employees =</span> <span class="fu">c</span>(<span class="dv">4823169</span>, <span class="dv">280557</span>),</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">avg_hours_pp =</span> <span class="fu">c</span>(<span class="fl">37.9</span>, <span class="fl">31.7</span>),</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_weekly_earnings =</span> <span class="fu">c</span>(<span class="dv">4240916038</span>, <span class="dv">178762504</span>)</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>work25 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">pop =</span> <span class="fu">c</span>(<span class="st">"males"</span>,<span class="st">"females"</span>),</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">working_age =</span> <span class="fu">c</span>(<span class="dv">23718900</span>, <span class="dv">24613110</span>),</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">labour_force =</span> <span class="fu">c</span>(<span class="dv">18442860</span>, <span class="dv">5767405</span>),</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">employees =</span> <span class="fu">c</span>(<span class="dv">4823169</span>, <span class="dv">280557</span>),</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">avg_hours_pp =</span> <span class="fu">c</span>(<span class="fl">37.9</span>, <span class="fl">31.7</span>),</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_weekly_earnings =</span> <span class="fu">c</span>(<span class="dv">4240916038</span>, <span class="dv">178762504</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="stata-3" class="level4 panel">
-<h4 class="anchored" data-anchor-id="stata-3">Stata</h4>
+<section id="stata-4" class="level4 panel">
+<h4 class="anchored" data-anchor-id="stata-4">Stata</h4>
 <p>TODO ben check</p>
 <pre><code>clear
 input str7 pop long working_age long labour_force long employees float avg_hours_pp double total_weekly_earnings
@@ -4233,35 +4230,35 @@ Solution
 </button>
 </div>
 <div id="sol-body-9" class="solution-body proof solution" style="display: none;">
-<p><span class="proof-title"><em>Solution 9</em>. </span></p>
+<p><span class="proof-title"><em>Solution 8</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>work25 <span class="sc">|&gt;</span> <span class="fu">transmute</span>(</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  pop,</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weeklyearnings_perperson =</span> total_weekly_earnings<span class="sc">/</span>working_age</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>work25 <span class="sc">|&gt;</span> <span class="fu">transmute</span>(</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  pop,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weeklyearnings_perperson =</span> total_weekly_earnings<span class="sc">/</span>working_age</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      pop weeklyearnings_perperson
 1   males               178.799018
 2 females                 7.262898</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create factors</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>work25 <span class="ot">&lt;-</span> </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  work25 <span class="sc">|&gt;</span> </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    pop,</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> working_age,</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">participation =</span> labour_force <span class="sc">/</span> working_age,</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">employment =</span> employees <span class="sc">/</span> labour_force,</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours =</span> avg_hours_pp,</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">earnings =</span> total_weekly_earnings<span class="sc">/</span>hours<span class="sc">/</span>employees</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co"># decompose</span></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(work25, </span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"pop"</span>,</span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"participation"</span>,<span class="st">"employment"</span>,<span class="st">"hours"</span>,<span class="st">"earnings"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create factors</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>work25 <span class="ot">&lt;-</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  work25 <span class="sc">|&gt;</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    pop,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> working_age,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">participation =</span> labour_force <span class="sc">/</span> working_age,</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">employment =</span> employees <span class="sc">/</span> labour_force,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours =</span> avg_hours_pp,</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">earnings =</span> total_weekly_earnings<span class="sc">/</span>hours<span class="sc">/</span>employees</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co"># decompose</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(work25, </span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"pop"</span>,</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"participation"</span>,<span class="st">"employment"</span>,<span class="st">"hours"</span>,<span class="st">"earnings"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                females     males       diff decomp
 participation 28.443354  94.38448  65.941123  38.44
@@ -4315,21 +4312,21 @@ Solution
 </button>
 </div>
 <div id="sol-body-10" class="solution-body proof solution" style="display: none;">
-<p><span class="proof-title"><em>Solution 10</em>. </span></p>
+<p><span class="proof-title"><em>Solution 9</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/recycling_2011_2022.csv"</span>)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates and factors</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># crude rate</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">rpp =</span> recycled<span class="sc">/</span>pop<span class="sc">*</span><span class="fl">1e3</span>,</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># factors</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">wpp =</span> totalwaste<span class="sc">/</span>pop<span class="sc">*</span><span class="fl">1e3</span>,</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">recp =</span> recycled<span class="sc">/</span>totalwaste,</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/recycling_2011_2022.csv"</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates and factors</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># crude rate</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">rpp =</span> recycled<span class="sc">/</span>pop<span class="sc">*</span><span class="fl">1e3</span>,</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># factors</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">wpp =</span> totalwaste<span class="sc">/</span>pop<span class="sc">*</span><span class="fl">1e3</span>,</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">recp =</span> recycled<span class="sc">/</span>totalwaste,</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 9
    year     pop recycled landfilled diverted totalwaste   rpp   wpp  recp
@@ -4337,10 +4334,10 @@ Solution
 1  2011 5299900  1032156    1453789   120688    2606633  195.  492. 0.396
 2  2022 5447000  1012045     585461   736277    2333783  186.  428. 0.434</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(df,</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"year"</span>,</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"wpp"</span>,<span class="st">"recp"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(df,</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"year"</span>,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"wpp"</span>,<span class="st">"recp"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          2011     2022       diff  decomp
 wpp   204.0154 177.7272 -26.288226  293.67
@@ -4384,239 +4381,249 @@ Avg Earnings in Black and White Populations (Das Gupta Example 2.1)
 
 
 </section>
+</main></div>
 
-</main> <!-- /main -->
+
+
+
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -4624,225 +4631,201 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
-      for (let i=0; i<annoteTargets.length; i++) {
-        const annoteTarget = annoteTargets[i];
-        const targetCell = annoteTarget.getAttribute("data-target-cell");
-        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
-        const contentFn = () => {
-          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          if (content) {
-            const tipContent = content.cloneNode(true);
-            tipContent.classList.add("code-annotation-tip-content");
-            return tipContent.outerHTML;
-          }
-        }
-        const config = {
-          allowHTML: true,
-          content: contentFn,
-          onShow: (instance) => {
-            selectCodeLines(instance.reference);
-            instance.reference.classList.add('code-annotation-active');
-            window.tippy.hideAll();
-          },
-          onHide: (instance) => {
-            unselectCodeLines();
-            instance.reference.classList.remove('code-annotation-active');
-          },
-          maxWidth: 300,
-          delay: [50, 0],
-          duration: [200, 0],
-          offset: [5, 10],
-          arrow: true,
-          appendTo: function(el) {
-            return el.parentElement.parentElement.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'quarto',
-          placement: 'right',
-          popperOptions: {
-            modifiers: [
-            {
-              name: 'flip',
-              options: {
-                flipVariations: false, // true by default
-                allowedAutoPlacements: ['right'],
-                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
-              },
-            },
-            {
-              name: 'preventOverflow',
-              options: {
-                mainAxis: false,
-                altAxis: false
-              }
-            }
-            ]        
-          }      
-        };
-        window.tippy(annoteTarget, config); 
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
-</div> <!-- /content -->
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
+            }
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+ <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">

@@ -68,17 +68,15 @@ options(digits=2)
 
 ## The overall reconviction rate is falling
 
-```{r}
-# just add figure
 
-```
+![reconviciton-rate](figs/reconviction-rate.png)
+
 
 ## The demographics of convictions are changing
 
-```{r}
-# just add figure
 
-```
+![age-composition](figs/age-composition.png)
+
 
 ## A gap in the crime drop
 
@@ -172,24 +170,30 @@ Sex is "generally based on how a person presents and is recorded when a person�
 # Results {background-color="#006938"}
 
 ## Change in reconviciton rate by age group
+![reconvictions-by-age](figs/reconvictions-by-age.png)
 
-```{r}
-### just add figure
+## Remember the changing demographic mix!
+![age-composition](figs/age-composition.png)
 
-```
-
-## Changing demographic mix
-
-```{r}
-### just add figure
-
-```
 
 ## How much change in the reconviction rate is due to demographic mix?
+![standardized-rates](figs/standardized-rates.png)
 
-```{r}
-### just add table
-```
+
+## Decomposition
+
+
+## Standardization and Decomposition of Reconviction Rates in Scotland
+
+| Impact of... | Reconviction cohort 1997–98 | Reconviction cohort 2020–21 | Difference in rates | % of crude difference |
+|------------|----------------------------:|----------------------------:|-------------------:|---------------------:|
+| Age structure | 0.31 | 0.28 | -0.03 | 70.30 |
+| Sex | 0.30 | 0.30 | 0.00 | 1.45 |
+| Reconviction rate | 0.30 | 0.29 | -0.01 | 28.25 |
+| **Crude rate** | **0.32** | **0.27** | **-0.05** | **100.00** |
+
+*Data from Scottish Government (2024). Calculations authors' own.
+
 
 ## Analysis
 

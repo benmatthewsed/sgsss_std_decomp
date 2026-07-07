@@ -57,7 +57,7 @@ options(digits=2)
 ## Kitagawa's example
 - "For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition" @kitagawaComponentsDifferenceTwo1955
 - Take the observed age/sex/race death rates for your two areas
-- Multiply these by some standard age, sex and race profile
+- Multiply these by some standard age, sex and race [sic] profile
 - You have 'standardized' rates!
 
 ## Picking a standard population
@@ -69,6 +69,8 @@ options(digits=2)
   - Something else?
 
 # Student discussion
+
+- Mentimeter?
 
 ## Decomposition
 

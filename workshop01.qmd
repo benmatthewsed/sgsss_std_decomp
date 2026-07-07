@@ -284,7 +284,13 @@ install_github("josiahpjking/DasGuptR@develop")
 
 In Stata: **rdecompose**
 
-TODO (Ben)
+```
+clear
+input str12 LAA long n_people long n_women15to44 int n_births
+"Glasgow City" 650300 161105 6150
+"Stirling" 94210 17844 659
+end
+```
 
 
 `r qend()`
@@ -307,7 +313,6 @@ p01 <- data.frame(
 :::panel
 #### Stata
 
-TODO Ben check
 ```
 clear
 input str12 LAA long n_people long n_women15to44 int n_births
