@@ -192,3 +192,20 @@ gen incp = diverted/totalwaste
 rdecompose wpp recp, group(year) multi
 
 rdecompose pop wpp recp, group(year) multi
+
+
+* gender pay gap
+
+import delimited "https://josiahpjking.github.io/sgsss_std_decomp/data/gender_pay_occ.csv", varnames(1) clear
+
+
+* create the variables
+
+gen wpp = totalwaste/pop
+gen recp = recycled/totalwaste
+gen lfp = landfilled/totalwaste
+gen incp = diverted/totalwaste
+
+rdecompose wpp recp, group(year) multi
+
+rdecompose pop wpp recp, group(year) multi
