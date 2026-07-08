@@ -30,10 +30,10 @@ options(digits=2)
 
 ## Background
 
--   The crime drop has changed the demographics of people being convicted
+-   The crime drop [@farrellWhyCrimeDrop2014] has changed the demographics of people being convicted [@matthewsRethinkingOneCriminologys2018]
 -   Changing demographics of people convicted complicates comparisons in the aggregate reconviction rate over time
--   The overall change in the reconvictions rate in Scotland is partly due to less reconvictions and partly due to changing demographics
--   This creates statistical bias in the aggregate reconviction rate if it's used as a measure of 'effectiveness' of the justice system, an example of a statistical phenomenon known as the 'amalgamation paradox'
+-   The overall change in the reconvictions rate in Scotland is partly due to fewer reconvictions and partly due to changing demographics
+-   This creates statistical bias in the aggregate reconviction rate if it's used as a measure of 'effectiveness' of the justice system
 -   We demonstrate this problem with a worked example using Scottish reconvictions data
 
 # Part One: The crime drop in Scotland {background-color="#006938"}
@@ -111,21 +111,11 @@ options(digits=2)
 
 > "If the target for a reduction in the overall reconviction rate is met, and this is mainly due to more people with a lower likelihood of re-offending being brought into the criminal justice system and being convicted, rather than through a reduction in rates of re-offending among those who would normally be brought into the system, this would bring little cause for celebration." [@kirkwoodEvidencingImpactCriminal2008, p9]
 
-## Standardized reconviction rates as performance indicators
-
--   This compositional problem is well known, and typically what people have done is come up with some counterfactual 'standardized' reconviction rate to facilitate comparisons across years when measuring performance [@francisPredictingReconvictionRates2005; @cunliffeReoffendingAdultsResults2007; @drakeWashingtonsOffenderAccountability2010] to correct for the problem of changing 'offender mix'
-
--   These methods typically focus on whether the observed reconviction rate is higher or lower than the standardized (read: made up with maths) rate
-
--   These methods do not directly assess the drivers of any change in the observed rate - specifically the relative importance of demographic changes and change in 'sub-group' reconviction rates in producing change in the aggregate rate
-
--   They just say whether the observed rate is lower than a standardized rate; there is no assessment of why it is higher (or lower)
-
 # Part Three: An alternative approach {background-color="#006938"}
 
 ## Standardization and decomposition
 
--   The methods of standardization and decomposition can separate out changes in the reconviction rate that are due to demographic change from those due to change in the underlying reconviction rate for different age groups
+-   Standardization and decomposition can separate out changes in the reconviction rate that are due to demographic change from those due to change in the underlying reconviction rate for different age groups
 -   Standardization and decomposition can also separate out the relative importance of different factors in driving aggregate change (e.g. age and sex)
 -   Previous regression-based approaches [@francisPredictingReconvictionRates2005; @cunliffeReoffendingAdultsResults2007; @drakeWashingtonsOffenderAccountability2010]  to correct for the problem of changing 'offender mix' can perform this standardization part, but don't focus on the decomposition part
 
@@ -142,7 +132,7 @@ smaller: false
 
 ## Data
 
--   We analyse data from 'reconviciton cohorts' in Scotland between 1997/1998-2020/21. These are made available by Scottish Government as part of their Reconvictions Bulletin [@scottishgovernmentReconvictionRatesScotland2024]
+-   We analyse data from 'reconviciton cohorts' in Scotland between 1997/1998-2020/21[@scottishgovernmentReconvictionRatesScotland2024]
 
 -   A reconviction cohort is "all offenders who either received a non-custodial conviction or were released from a custodial sentence in a given financial year, from the 1st April to the 31st March the following year" [@scottishgovernmentReconvictionRatesScotland2024, p40]
 

@@ -81,7 +81,7 @@
     "href": "lecture-whole-game.html#standardization-and-decomposition",
     "title": "The Whole Game",
     "section": "Standardization and decomposition",
-    "text": "Standardization and decomposition\n\nThe methods of standardization and decomposition can separate out changes in the reconviction rate that are due to demographic change from those due to change in the underlying reconviction rate for different age groups\nStandardization and decomposition can also separate out the relative importance of different factors in driving aggregate change (e.g. age and sex)\nPrevious regression-based approaches (Francis, Harman, and Humphreys 2005; Cunliffe and Shepherd 2007; Drake, Aos, and Barnoski 2010) to correct for the problem of changing ‘offender mix’ can perform this standardization part, but don’t focus on the decomposition part"
+    "text": "Standardization and decomposition\n\nStandardization and decomposition can separate out changes in the reconviction rate that are due to demographic change from those due to change in the underlying reconviction rate for different age groups\nStandardization and decomposition can also separate out the relative importance of different factors in driving aggregate change (e.g. age and sex)\nPrevious regression-based approaches (Francis, Harman, and Humphreys 2005; Cunliffe and Shepherd 2007; Drake, Aos, and Barnoski 2010) to correct for the problem of changing ‘offender mix’ can perform this standardization part, but don’t focus on the decomposition part"
   },
   {
     "objectID": "lecture-whole-game.html#research-question",
@@ -95,7 +95,7 @@
     "href": "lecture-whole-game.html#data",
     "title": "The Whole Game",
     "section": "Data",
-    "text": "Data\n\nWe analyse data from ‘reconviciton cohorts’ in Scotland between 1997/1998-2020/21. These are made available by Scottish Government as part of their Reconvictions Bulletin (Scottish Government 2024)\nA reconviction cohort is “all offenders who either received a non-custodial conviction or were released from a custodial sentence in a given financial year, from the 1st April to the 31st March the following year” (Scottish Government 2024, p40)\nThere is nothing particularly special about these time points, and the same approach would work for other time periods and other characteristics\nSome evidence that Scotland might be an extreme case here with larger demographic changes than in other countries (Matthews 2023)"
+    "text": "Data\n\nWe analyse data from ‘reconviciton cohorts’ in Scotland between 1997/1998-2020/21(Scottish Government 2024)\nA reconviction cohort is “all offenders who either received a non-custodial conviction or were released from a custodial sentence in a given financial year, from the 1st April to the 31st March the following year” (Scottish Government 2024, p40)\nThere is nothing particularly special about these time points, and the same approach would work for other time periods and other characteristics\nSome evidence that Scotland might be an extreme case here with larger demographic changes than in other countries (Matthews 2023)"
   },
   {
     "objectID": "lecture-whole-game.html#measures",
@@ -599,7 +599,7 @@
     "href": "lecture-uncertainty.html#bootstrapping-1",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping",
-    "text": "Bootstrapping\n\nThere are different ways to achieve this\nWe adopt a non-parametric bootstrap where you sample with replacement from the original data and re-run the analysis on each bootstrap draw\nThe way we do it rate decomposition essentially expands the data out to unit-level data, re-samples, then aggregates back up\nPros: this will always* work, makes no assumptions about distributions or anything\nCons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire"
+    "text": "Bootstrapping\n\nThere are different ways to achieve this\nHere We adopt a non-parametric bootstrap (Carsey and Harden 2014) where you sample with replacement from the original data and re-run the analysis on each bootstrap draw\nThis is also what Li (2017) does"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-in-practice",
@@ -613,7 +613,7 @@
     "href": "lecture-uncertainty.html#bootstrapping-in-practice-1",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping in practice",
-    "text": "Bootstrapping in practice\n\n‘Explode’ the aggregate data\nResample the exploded data 200 times (NB more is always better)\nAggregate each of the 200 datasets\nStandardize and decompose 200 times\nVisualize the results"
+    "text": "Bootstrapping in practice\n\n‘Explode’ the aggregate data\nResample the exploded data 200 times (NB more is always better)\nAggregate each of the 200 datasets\nStandardize and decompose 200 times\nSummarise the results"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-exploding-the-data",
@@ -823,7 +823,7 @@
     "href": "lecture-uncertainty.html#references",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "References",
-    "text": "References\n\n\n\n\nCarsey, Thomas M., and Jeffrey J. Harden. 2014. Monte Carlo Simulation and Resampling Methods for Social Science. SAGE Publications, Inc. https://doi.org/10.4135/9781483319605.\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual.\n\n\nGiordano, Ryan, Rachael Meager, and Tamara Broderick. 2026. “An Automatic Finite-Sample Robustness Metric: When Can Dropping a Little Data Change Conclusions? Part I: Definitions and Experiments.” Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences 384 (2321): 20250001. https://doi.org/10.1098/rsta.2025.0001.\n\n\nRainey, Carlisle. 2024. “A Careful Consideration of CLARIFY: Simulation-Induced Bias in Point Estimates of Quantities of Interest.” Political Science Research and Methods 12 (3): 614–23. https://doi.org/10.1017/psrm.2023.8.\n\n\nVerlaan, Tim, and Samuel Langton. 2024. “On the Use of Inferential Statistics on Administrative Police Data.” In The Crime Data Handbook, 197–210. Bristol University Press.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science (2e). Second."
+    "text": "References\n\n\n\n\nCarsey, Thomas M., and Jeffrey J. Harden. 2014. Monte Carlo Simulation and Resampling Methods for Social Science. SAGE Publications, Inc. https://doi.org/10.4135/9781483319605.\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual.\n\n\nGiordano, Ryan, Rachael Meager, and Tamara Broderick. 2026. “An Automatic Finite-Sample Robustness Metric: When Can Dropping a Little Data Change Conclusions? Part I: Definitions and Experiments.” Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences 384 (2321): 20250001. https://doi.org/10.1098/rsta.2025.0001.\n\n\nLi, Jinjing. 2017. “Rate Decomposition for Aggregate Data Using Das Gupta’s Method.” The Stata Journal 17 (2): 490–502.\n\n\nRainey, Carlisle. 2024. “A Careful Consideration of CLARIFY: Simulation-Induced Bias in Point Estimates of Quantities of Interest.” Political Science Research and Methods 12 (3): 614–23. https://doi.org/10.1017/psrm.2023.8.\n\n\nVerlaan, Tim, and Samuel Langton. 2024. “On the Use of Inferential Statistics on Administrative Police Data.” In The Crime Data Handbook, 197–210. Bristol University Press.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science (2e). Second."
   },
   {
     "objectID": "lecture00.html#hello",
@@ -907,7 +907,7 @@
     "href": "lecture-whole-game.html#background",
     "title": "The Whole Game",
     "section": "Background",
-    "text": "Background\n\nThe crime drop has changed the demographics of people being convicted\nChanging demographics of people convicted complicates comparisons in the aggregate reconviction rate over time\nThe overall change in the reconvictions rate in Scotland is partly due to less reconvictions and partly due to changing demographics\nThis creates statistical bias in the aggregate reconviction rate if it’s used as a measure of ‘effectiveness’ of the justice system, an example of a statistical phenomenon known as the ‘amalgamation paradox’\nWe demonstrate this problem with a worked example using Scottish reconvictions data"
+    "text": "Background\n\nThe crime drop (Farrell, Tilley, and Tseloni 2014) has changed the demographics of people being convicted (Matthews and Minton 2018)\nChanging demographics of people convicted complicates comparisons in the aggregate reconviction rate over time\nThe overall change in the reconvictions rate in Scotland is partly due to fewer reconvictions and partly due to changing demographics\nThis creates statistical bias in the aggregate reconviction rate if it’s used as a measure of ‘effectiveness’ of the justice system\nWe demonstrate this problem with a worked example using Scottish reconvictions data"
   },
   {
     "objectID": "lecture-whole-game.html#remember-the-changing-demographic-mix",
@@ -929,5 +929,54 @@
     "title": "The Whole Game",
     "section": "Standardization and Decomposition of Reconviction Rates in Scotland",
     "text": "Standardization and Decomposition of Reconviction Rates in Scotland\n\n\n\n\n\n\n\n\n\n\nImpact of…\nReconviction cohort 1997–98\nReconviction cohort 2020–21\nDifference in rates\n% of crude difference\n\n\n\n\nAge structure\n0.31\n0.28\n-0.03\n70.30\n\n\nSex\n0.30\n0.30\n0.00\n1.45\n\n\nReconviction rate\n0.30\n0.29\n-0.01\n28.25\n\n\nCrude rate\n0.32\n0.27\n-0.05\n100.00\n\n\n\n*Data from Scottish Government (2024). Calculations authors’ own."
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-example",
+    "href": "lecture-uncertainty.html#bootstrapping-example",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping example",
+    "text": "Bootstrapping example\n\nset.seed(387) # for reproducibility\n\nresults &lt;- c(1, 3, 2.7, 10, 1)\n\nresults\n\n[1]  1.0  3.0  2.7 10.0  1.0"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-2",
+    "href": "lecture-uncertainty.html#bootstrapping-2",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\n\nPros: this will always* work, makes no assumptions about distributions or anything\nCons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire (if you are analysing population level data from India this approach will take a lot longer than if you are analysing population data from Scotland)"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-example-1",
+    "href": "lecture-uncertainty.html#bootstrapping-example-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping example",
+    "text": "Bootstrapping example\n\nSample with replacement from the results to create a new set of results the same size as the original results\n\n\nboot_1 &lt;- sample(results, size = length(results), replace = TRUE)\n\nboot_1\n\n[1] 1.0 1.0 3.0 1.0 2.7"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-example-2",
+    "href": "lecture-uncertainty.html#bootstrapping-example-2",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping example",
+    "text": "Bootstrapping example\n\nAnd do it again…\n\n\nboot_2 &lt;- sample(results, size = length(results), replace = TRUE)\n\nboot_2\n\n[1] 1 3 1 3 1"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-example-3",
+    "href": "lecture-uncertainty.html#bootstrapping-example-3",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping example",
+    "text": "Bootstrapping example\n\n… and again …\n\n\nboot_3 &lt;- sample(results, size = length(results), replace = TRUE)\n\nboot_3\n\n[1] 10.0 10.0  1.0  1.0  2.7"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-example-4",
+    "href": "lecture-uncertainty.html#bootstrapping-example-4",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping example",
+    "text": "Bootstrapping example\n\n… like 1000 times\n\n\nboot_1000 &lt;- sample(results, size = length(results), replace = TRUE)\n\nboot_1000\n\n[1]  1  1  1 10 10"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#exploding-count-data",
+    "href": "lecture-uncertainty.html#exploding-count-data",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Exploding count data",
+    "text": "Exploding count data\n\nDecomposition is often using aggregate data\nTo use the non-parametric bootstrap here you need1 to expand the data out to unit-level data, then take the re-samples, then aggregate each re-sample back up to perform the standardization and decomposition\n\nAt least, I don’t know of any! This is also what Li (2017) does. If there are other clever ways to do this let me know!"
   }
 ]

@@ -88,13 +88,6 @@ options(digits=2)
 - Decomposition lets you say how much of the difference between crude rates of your outcome between your comparison cases are due to the various factors you choose to control for
 - In Kitagawa's example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is 'left over'
 
-
-## My motivating example
-
-- I (Ben) wrote my PhD thesis on the 'crime drop' in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level [@matthewsCriminalCareersCrime2017]
-- There is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)
-- Standardization and decomposition appealed to me because I was trying to separate out how much of the change in the *aggregate* conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted
-
 ## A conjecture
 - A lot of social science research either aims to identify the 'effect' of some independent variable on an outcome
 - In either an associational or causal way [@hollandStatisticsCausalInference1986]
@@ -107,7 +100,48 @@ options(digits=2)
 
 ## A conjecture
 - You can be interested in (average?) individual effects, or the aggregation of individual effects in different populations
+- We can think of these as 'direct' and 'compositional' effects [@vaupelDecomposingDemographicChange2002]
 - But you need to be clear what you are interested in
-- Individual effects may aggregate in unintuitive ways in different populations [@roseSickIndividualsSick1985]
+
+::: aside
+ And uh oh individual effects may aggregate in unintuitive ways in different populations [@roseSickIndividualsSick1985], but we won't really go into this today
+:::
+
+
+## My motivating example
+
+- I (Ben) wrote my PhD thesis on the 'crime drop' in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level [@matthewsCriminalCareersCrime2017]
+- There is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)
+- Standardization and decomposition appealed to me because I was trying to separate out how much of the change in the *aggregate* conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted
+
+# Any questions?
+
+# An exercise
+
+## Thinking about direct and compositional effects
+- Next we're going to look at a worked example about age and reconviction
+- There is a direct effect of age[^2] on reconviction: younger people typically are reconvicted at higher rates than older people
+- There is also a compositional effect: typically younger people make up more of 'reconviction cohorts' because younger people are more likely to be convicted in the first place than older people
+
+## Thinking about direct and compositional effects
+- Next we're going to look at a worked example about age and reconviction
+- There is a direct effect of age[^2] on reconviction: younger people typically are reconvicted at higher rates than older people
+- There is also a compositional effect: typically younger people make up more of 'reconviction cohorts' because younger people are more likely to be convicted in the first place than older people
+
+## Thinking about direct and compositional effects
+- Imagine you are researching the link between breastfeeding and children's height at age two
+- What would be a direct effect? And what would be a compositional effect?
+
+## Thinking about direct and compositional effects
+- Imagine you are researching the link between breastfeeding and children's height at age two
+- What would be a direct effect? And what would be a compositional effect?
+
+[Mentimeter for answers?]
+
+## Thinking about direct and compositional effects
+- Take two minutes to think about your own research topic
+- What is your key 'independent' variable?
+- What might that look like as a direct effect? And what might it look like as a compositional effect?
+
 
 ## References
