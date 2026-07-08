@@ -26,25 +26,27 @@ bibliography: bibliography.bib
 options(digits = 2)
 ```
 
+
 ## Whence uncertainty?
 
 - The Das Gupta method doesn't really have a concept of an error term - all results are calculate algebraically [@dasguptaStandardizationDecompositionRates1993]
 - But we might still want to quantify uncertainty in the results of a standardization and decomposition
 - Bootstrapping is a general purpose way to achieve this [@carseyMonteCarloSimulation2014]
-
+- It can also show where results might be sensitive to small changes in the data (typically if the absolute difference between the rates you are decomposing is small)
 
 ## Bootstrapping
 
 - Bootstrapping is a resampling method where you create an empirical distribution of estimates of your quantity of interest through resampling
-- It is, as it were, a dumb strategy - it doesn't try to be clever, just reshuffles your data a bunch and re-runs your analysis on each resampled dataset
+- It is, as it were, a dumb strategy - it doesn't try to be clever and use maths to calculate the appropriate uncertainty with appeals to asymptotics, it just reshuffles your data a bunch and re-runs your analysis on each resampled dataset
 - Computer go brrr
 
 
 ## Bootstrapping
 
 - There are different ways to achieve this
-- Here We adopt a _non-parametric_ bootstrap [@carseyMonteCarloSimulation2014] where you sample with replacement from the original data and re-run the analysis on each bootstrap draw
+- Here we adopt a _non-parametric_ bootstrap [@carseyMonteCarloSimulation2014] where you sample with replacement from the original data and re-run the analysis on each bootstrap draw
 - This is also what Li [-@liRateDecompositionAggregate2017] does
+- There is a worked example if we have time and options in the practical
 
 ## Bootstrapping example
 
@@ -94,13 +96,14 @@ boot_1000
 
 ```
 
-
-## Bootstrapping
+## Boostrapping example
+- In this method you bootstrap *the data* and then perform whatever analysis you like on each resample
+- You then get an empirical distribution of results
 - Pros: this will always* work, makes no assumptions about distributions or anything
 - Cons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire (if you are analysing population level data from India this approach will take a lot longer than if you are analysing population data from Scotland)
 
-## Exploding count data
-- Decomposition is often using aggregate data
+## Bootstrapping standardization and decomposition
+- Standardization and Decomposition is often using aggregate data
 - To use the non-parametric bootstrap here you need[^3] to expand the data out to unit-level data, then take the re-samples, then aggregate each re-sample back up to perform the standardization and decomposition
 
 [^3]: At least, I don't know of any! This is also what Li [-@liRateDecompositionAggregate2017] does. If there are other clever ways to do this let me know!
@@ -108,15 +111,75 @@ boot_1000
 
 ## Bootstrapping in practice
 
-- First create a function to essentially “uncount” data into individual level data (where nrow = size of total population), then re-sample with replacement, then aggregate back up to the level of the original data
-- Standardize and decompose each resampled dataset
+- To do this in practice you need to create a function (in R; program in Stata) to essentially “uncount”/explode the data into individual level data (where nrow = size of total population), then re-sample the unit-level data with replacement, then aggregate back up to the level of the original data
+- Then you standardize and decompose each resampled dataset
 
 ## Bootstrapping in practice
 1. 'Explode' the aggregate data
-2. Resample the exploded data 200 times (NB more is always better)
+2. Resample the exploded data say 200 times (NB more is always better)
 3. Aggregate each of the 200 datasets
 4. Standardize and decompose 200 times
 5. Summarise the results
+
+## Summarising the results
+- You can calculate a standard error or confidence interval if you want (see @liRateDecompositionAggregate2017)
+- There are lots of ways to do this - people have [written](https://hastie.su.domains/CASI/) [books](https://www.cambridge.org/core/books/bootstrap-methods-and-their-application/ED2FD043579F27952363566DC09CBD6A) on it
+- Or you can visualize the empirical distribution
+- If everything goes well then the 'real' results from the underlying data will be in the middle of the distribution of bootstrapped estimates
+
+## A nice example
+![fine-fig](figs/fine-fig.png)
+
+# When things go wrong
+
+## When things go wrong
+- Decomposition will decompose whatever difference there is - even if it is very small
+- If there isn't much difference in the underlying crude rate you are decomposing (in a hand-wavy way, if the difference is not statistically significant) then things can do haywire
+- The sampling distribution of underlying rates is usually quite nice (a Normal approximation is probably fine)
+- But a decomposition is essentially a ratio - a transformation of the standardized rates
+- The sampling distribution of ratios can be nice or really not nice [@franzRatiosShortGuide2007]
+
+## The sampling distribution of decomposition
+- Decomposition will decompose whatever difference there is - even if it is very small
+- If there isn't much difference in the underlying crude rate you are decomposing (in a hand-wavy way, if the difference is not statistically significant) then things can go haywire
+- If the standardized rates are very close together then the decomposition can involve dividing by very small numbers
+- Uh oh
+
+## An example
+
+![reconviciton-rate](figs/reconviction-rate.png)
+
+## A not-so-nice example
+![haywire-fig](figs/haywire1-fig.png)
+
+## A not-so-nice example
+- The scale runs from -10,000% to +10,000%!
+- 'Accurate but not precise'
+- So lets zoom in
+
+## A not-so-nice example
+![haywire-fig](figs/haywire2-fig.png)
+
+## A not-so-nice example
+- The average bootstrap replication (the blue dot) does not match the observed data (the red dot)
+- This isn't a sample size problem - more bootstrap replications will give the same results
+
+## How can this be?
+
+- I was very confused by the bad decomposition - why would the bootstrapping lead to these wild estimates (huge confidence intervals not centered on the true values!)
+- The thing I was bootstrapping was the underlying data - and the bootstrapped distribution _of the crude rates_ is fine
+- But the decomposition is a transformation of these rates, and the properties of the rates do not necessarily transfer downstream to the transformation
+
+## How can this be?
+- Maybe you could argue that you don't need to factor in uncertainty in the underlying rates - it's admin data, the reconviction cohorts are what they are, what are you a Bayesian or something [see @verlaanUseInferentialStatistics2024]
+- But it's still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons
+- Bootstrapping the raw data (nonparametric simulation [see @carseyMonteCarloSimulation2014]) can show when your results are fragile to small permutations in the data [see also @giordanoAutomaticFinitesampleRobustness2026]
+
+## Two practical suggestions
+- Check whether the difference in crude rates between comparator is statistically significant before you do your standardization and decomposition?
+- Bootstrap your results a few times as a matter of course just to see if something breaks?
+
+# Bonus slides: Bootstrapping in practice
 
 
 ## Bootstrapping in practice: Exploding the data
@@ -417,35 +480,5 @@ decomp_draws |>
   names_from = cis)
 ```
 
-# Bonus slides: Where this can all go wrong
-
-
-## A nice example
-![fine-fig](figs/fine-fig.png)
-
-## Where things go wrong
-- Decomposition will decompose whatever difference there is - even if it is very small
-- If there isn't much difference in the underlying crude rate you are decomposing (in a hand-wavy way, if the difference is not statistically significant) then things can do haywire
-
-## A not-so-nice example
-- Add in results for 2004/2016
-
-## A not-so-nice example
-![haywire-fig](figs/haywire1-fig.png)
-
-## A not-so-nice example
-![haywire-fig](figs/haywire2-fig.png)
-
-
-## How can this be?
-
-- I was very confused by the bad decomposition - why would the bootstrapping lead to these wild estimates (huge confidence intervals not centered on the true values!)
-- The thing I was bootstrapping was the underlying data - and the bootstrapped distribution _of the crude rates_ is fine
-- But the decomposition is a transformation of these rates, and the properties of the rates do not necessarily transfer downstream to the transformation
-
-## How can this be?
-- Maybe you could argue that you don't need to factor in uncertainty in the underlying rates - it's admin data, the reconviction cohorts are what they are, what are you a Bayesian or something [see @verlaanUseInferentialStatistics2024]
-- But it's still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons
-- Bootstrapping the raw data (nonparametric simulation [see @carseyMonteCarloSimulation2014]) can show when your results are fragile to small permutations in the data [see also @giordanoAutomaticFinitesampleRobustness2026]
 
 ## References

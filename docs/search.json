@@ -585,35 +585,35 @@
     "href": "lecture-uncertainty.html#whence-uncertainty",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Whence uncertainty?",
-    "text": "Whence uncertainty?\n\nThe Das Gupta method doesn’t really have a concept of an error term - all results are calculate algebraically (Das Gupta 1993)\nBut we might still want to quantify uncertainty in the results of a standardization and decomposition\nBootstrapping is a general purpose way to achieve this (Carsey and Harden 2014)"
+    "text": "Whence uncertainty?\n\nThe Das Gupta method doesn’t really have a concept of an error term - all results are calculate algebraically (Das Gupta 1993)\nBut we might still want to quantify uncertainty in the results of a standardization and decomposition\nBootstrapping is a general purpose way to achieve this (Carsey and Harden 2014)\nIt can also show where results might be sensitive to small changes in the data (typically if the absolute difference between the rates you are decomposing is small)"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping",
     "href": "lecture-uncertainty.html#bootstrapping",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping",
-    "text": "Bootstrapping\n\nBootstrapping is a resampling method where you create an empirical distribution of estimates of your quantity of interest through resampling\nIt is, as it were, a dumb strategy - it doesn’t try to be clever, just reshuffles your data a bunch and re-runs your analysis on each resampled dataset\nComputer go brrr"
+    "text": "Bootstrapping\n\nBootstrapping is a resampling method where you create an empirical distribution of estimates of your quantity of interest through resampling\nIt is, as it were, a dumb strategy - it doesn’t try to be clever and use maths to calculate the appropriate uncertainty with appeals to asymptotics, it just reshuffles your data a bunch and re-runs your analysis on each resampled dataset\nComputer go brrr"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-1",
     "href": "lecture-uncertainty.html#bootstrapping-1",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping",
-    "text": "Bootstrapping\n\nThere are different ways to achieve this\nHere We adopt a non-parametric bootstrap (Carsey and Harden 2014) where you sample with replacement from the original data and re-run the analysis on each bootstrap draw\nThis is also what Li (2017) does"
+    "text": "Bootstrapping\n\nThere are different ways to achieve this\nHere we adopt a non-parametric bootstrap (Carsey and Harden 2014) where you sample with replacement from the original data and re-run the analysis on each bootstrap draw\nThis is also what Li (2017) does\nThere is a worked example if we have time and options in the practical"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-in-practice",
     "href": "lecture-uncertainty.html#bootstrapping-in-practice",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping in practice",
-    "text": "Bootstrapping in practice\n\nFirst create a function to essentially “uncount” data into individual level data (where nrow = size of total population), then re-sample with replacement, then aggregate back up to the level of the original data\nStandardize and decompose each resampled dataset"
+    "text": "Bootstrapping in practice\n\nTo do this in practice you need to create a function (in R; program in Stata) to essentially “uncount”/explode the data into individual level data (where nrow = size of total population), then re-sample the unit-level data with replacement, then aggregate back up to the level of the original data\nThen you standardize and decompose each resampled dataset"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-1",
     "href": "lecture-uncertainty.html#bootstrapping-in-practice-1",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Bootstrapping in practice",
-    "text": "Bootstrapping in practice\n\n‘Explode’ the aggregate data\nResample the exploded data 200 times (NB more is always better)\nAggregate each of the 200 datasets\nStandardize and decompose 200 times\nSummarise the results"
+    "text": "Bootstrapping in practice\n\n‘Explode’ the aggregate data\nResample the exploded data say 200 times (NB more is always better)\nAggregate each of the 200 datasets\nStandardize and decompose 200 times\nSummarise the results"
   },
   {
     "objectID": "lecture-uncertainty.html#bootstrapping-in-practice-exploding-the-data",
@@ -795,14 +795,14 @@
     "href": "lecture-uncertainty.html#a-not-so-nice-example",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "A not-so-nice example",
-    "text": "A not-so-nice example\n\nAdd in results for 2004/2016"
+    "text": "A not-so-nice example\n\nhaywire-fig"
   },
   {
     "objectID": "lecture-uncertainty.html#a-not-so-nice-example-1",
     "href": "lecture-uncertainty.html#a-not-so-nice-example-1",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "A not-so-nice example",
-    "text": "A not-so-nice example\n\nhaywire-fig"
+    "text": "A not-so-nice example\n\nThe scale runs from -10,000% to +10,000%!\n‘Accurate but not precise’\nSo lets zoom in"
   },
   {
     "objectID": "lecture-uncertainty.html#its-the-same-problem",
@@ -823,7 +823,7 @@
     "href": "lecture-uncertainty.html#references",
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "References",
-    "text": "References\n\n\n\n\nCarsey, Thomas M., and Jeffrey J. Harden. 2014. Monte Carlo Simulation and Resampling Methods for Social Science. SAGE Publications, Inc. https://doi.org/10.4135/9781483319605.\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual.\n\n\nGiordano, Ryan, Rachael Meager, and Tamara Broderick. 2026. “An Automatic Finite-Sample Robustness Metric: When Can Dropping a Little Data Change Conclusions? Part I: Definitions and Experiments.” Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences 384 (2321): 20250001. https://doi.org/10.1098/rsta.2025.0001.\n\n\nLi, Jinjing. 2017. “Rate Decomposition for Aggregate Data Using Das Gupta’s Method.” The Stata Journal 17 (2): 490–502.\n\n\nRainey, Carlisle. 2024. “A Careful Consideration of CLARIFY: Simulation-Induced Bias in Point Estimates of Quantities of Interest.” Political Science Research and Methods 12 (3): 614–23. https://doi.org/10.1017/psrm.2023.8.\n\n\nVerlaan, Tim, and Samuel Langton. 2024. “On the Use of Inferential Statistics on Administrative Police Data.” In The Crime Data Handbook, 197–210. Bristol University Press.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science (2e). Second."
+    "text": "References\n\n\n\n\nCarsey, Thomas M., and Jeffrey J. Harden. 2014. Monte Carlo Simulation and Resampling Methods for Social Science. SAGE Publications, Inc. https://doi.org/10.4135/9781483319605.\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual.\n\n\nFranz, Volker H. 2007. “Ratios: A Short Guide to Confidence Limits and Proper Use.” arXiv. https://doi.org/10.48550/arXiv.0710.2024.\n\n\nGiordano, Ryan, Rachael Meager, and Tamara Broderick. 2026. “An Automatic Finite-Sample Robustness Metric: When Can Dropping a Little Data Change Conclusions? Part I: Definitions and Experiments.” Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences 384 (2321): 20250001. https://doi.org/10.1098/rsta.2025.0001.\n\n\nLi, Jinjing. 2017. “Rate Decomposition for Aggregate Data Using Das Gupta’s Method.” The Stata Journal 17 (2): 490–502.\n\n\nRainey, Carlisle. 2024. “A Careful Consideration of CLARIFY: Simulation-Induced Bias in Point Estimates of Quantities of Interest.” Political Science Research and Methods 12 (3): 614–23. https://doi.org/10.1017/psrm.2023.8.\n\n\nVerlaan, Tim, and Samuel Langton. 2024. “On the Use of Inferential Statistics on Administrative Police Data.” In The Crime Data Handbook, 197–210. Bristol University Press.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science (2e). Second."
   },
   {
     "objectID": "lecture00.html#hello",
@@ -978,5 +978,61 @@
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Exploding count data",
     "text": "Exploding count data\n\nDecomposition is often using aggregate data\nTo use the non-parametric bootstrap here you need1 to expand the data out to unit-level data, then take the re-samples, then aggregate each re-sample back up to perform the standardization and decomposition\n\nAt least, I don’t know of any! This is also what Li (2017) does. If there are other clever ways to do this let me know!"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#boostrapping-example",
+    "href": "lecture-uncertainty.html#boostrapping-example",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Boostrapping example",
+    "text": "Boostrapping example\n\nIn this method you bootstrap the data and then perform whatever analysis you like on each resample\nYou then get an empirical distribution of results\nPros: this will always* work, makes no assumptions about distributions or anything\nCons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire (if you are analysing population level data from India this approach will take a lot longer than if you are analysing population data from Scotland)"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#bootstrapping-standardization-and-decomposition",
+    "href": "lecture-uncertainty.html#bootstrapping-standardization-and-decomposition",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Bootstrapping standardization and decomposition",
+    "text": "Bootstrapping standardization and decomposition\n\nStandardization and Decomposition is often using aggregate data\nTo use the non-parametric bootstrap here you need1 to expand the data out to unit-level data, then take the re-samples, then aggregate each re-sample back up to perform the standardization and decomposition\n\nAt least, I don’t know of any! This is also what Li (2017) does. If there are other clever ways to do this let me know!"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#summarising-the-results",
+    "href": "lecture-uncertainty.html#summarising-the-results",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Summarising the results",
+    "text": "Summarising the results\n\nYou can calculate a standard error or confidence interval if you want (see Li (2017))\nThere are lots of ways to do this - people have written books on it\nOr you can visualize the empirical distribution\nIf everything goes well then the ‘real’ results from the underlying data will be in the middle of the distribution of bootstrapped estimates"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#when-things-go-wrong-1",
+    "href": "lecture-uncertainty.html#when-things-go-wrong-1",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "When things go wrong",
+    "text": "When things go wrong\n\nDecomposition will decompose whatever difference there is - even if it is very small\nIf there isn’t much difference in the underlying crude rate you are decomposing (in a hand-wavy way, if the difference is not statistically significant) then things can do haywire\nThe sampling distribution of underlying rates is usually quite nice (a Normal approximation is probably fine)\nBut a decomposition is essentially a ratio - a transformation of the standardized rates\nThe sampling distribution of ratios can be nice or really not nice (Franz 2007)"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#the-sampling-distribution-of-decomposition",
+    "href": "lecture-uncertainty.html#the-sampling-distribution-of-decomposition",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "The sampling distribution of decomposition",
+    "text": "The sampling distribution of decomposition\n\nDecomposition will decompose whatever difference there is - even if it is very small\nIf there isn’t much difference in the underlying crude rate you are decomposing (in a hand-wavy way, if the difference is not statistically significant) then things can go haywire\nIf the standardized rates are very close together then the decomposition can involve dividing by very small numbers\nUh oh"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#an-example",
+    "href": "lecture-uncertainty.html#an-example",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "An example",
+    "text": "An example\n\nreconviciton-rate"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#a-not-so-nice-example-3",
+    "href": "lecture-uncertainty.html#a-not-so-nice-example-3",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "A not-so-nice example",
+    "text": "A not-so-nice example\n\nThe average bootstrap replication (the blue dot) does not match the observed data (the red dot)\nThis isn’t a sample size problem - more bootstrap replications will give the same results"
+  },
+  {
+    "objectID": "lecture-uncertainty.html#two-practical-suggestions",
+    "href": "lecture-uncertainty.html#two-practical-suggestions",
+    "title": "Uncertainty in Standardization and Decomposition",
+    "section": "Two practical suggestions",
+    "text": "Two practical suggestions\n\nCheck whether the difference in crude rates between comparator is statistically significant before you do your standardization and decomposition?\nBootstrap your results a few times as a matter of course just to see if something breaks?"
   }
 ]
