@@ -21,7 +21,9 @@ format:
 ## Hello! 
 - Who we are
   - Ben; Josiah; Chloe; Trystan
-- Who you are (Mentimeter: Your background? What you want to get from this session?)
+- Who you are (Ben open https://www.menti.com/ala23cd37ta7)
+
+
 
 ## Housekeeping
 

@@ -368,7 +368,7 @@
     "href": "lecture-conceptual.html#kitagawas-example",
     "title": "Standardization and decomposition: A conceptual introduction",
     "section": "Kitagawa’s example",
-    "text": "Kitagawa’s example\n\n“For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition” Kitagawa (1955)\nTake the observed age/sex/race death rates for your two areas\nMultiply these by some standard age, sex and race profile\nYou have ‘standardized’ rates!"
+    "text": "Kitagawa’s example\n\n“For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition” Kitagawa (1955)\nTake the observed age/sex/race death rates for your two areas\nMultiply these by some standard age, sex and race [sic] profile\nYou have ‘standardized’ rates!"
   },
   {
     "objectID": "lecture-conceptual.html#picking-a-standard-population",
@@ -424,7 +424,7 @@
     "href": "lecture-conceptual.html#references",
     "title": "Standardization and decomposition: A conceptual introduction",
     "section": "References",
-    "text": "References\n\n\n\n\nGelman, Andrew. 2006. “Marginal and Marginal.” Statistical Modeling, Causal Inference, and Social Science.\n\n\nGood, I. J., and Y. Mittal. 1987. “The Amalgamation and Geometry of Two-by-Two Contingency Tables.” The Annals of Statistics 15 (2): 694–711. https://www.jstor.org/stable/2241334.\n\n\nHolland, Paul W. 1986. “Statistics and Causal Inference.” Journal of the American Statistical Association 81 (396): 945–60. https://doi.org/10.2307/2289064.\n\n\nKeiding, Niels, and David Clayton. 2014. “Standardization and Control for Confounding in Observational Studies: A Historical Perspective.” Statistical Science 29 (4): 529–58. https://doi.org/10.1214/13-STS453.\n\n\nKitagawa, Evelyn M. 1955. “Components of a Difference Between Two Rates.” Journal of the American Statistical Association 50 (272): 1168–94. https://doi.org/10.1080/01621459.1955.10501299.\n\n\nLundberg, Ian, Rebecca Johnson, and Brandon M. Stewart. 2021. “What Is Your Estimand? Defining the Target Quantity Connects Statistical Evidence to Theory.” American Sociological Review 86 (3): 532–65. https://doi.org/10.1177/00031224211004187.\n\n\nMatthews, Ben. 2017. “Criminal Careers and the Crime Drop in Scotland, 1989-2011: An Exploration of Conviction Trends Across Age and Sex.” PhD thesis, University of Edinburgh.\n\n\nROSE, GEOFFREY. 1985. “Sick Individuals and Sick Populations.” International Journal of Epidemiology 14 (1): 32–38. https://doi.org/10.1093/ije/14.1.32.\n\n\nSimpson, E. H. 1951. “The Interpretation of Interaction in Contingency Tables.” Journal of the Royal Statistical Society: Series B (Methodological) 13 (2): 238–41. https://doi.org/10.1111/j.2517-6161.1951.tb00088.x."
+    "text": "References\n\n\n\n\nGelman, Andrew. 2006. “Marginal and Marginal.” Statistical Modeling, Causal Inference, and Social Science.\n\n\nGood, I. J., and Y. Mittal. 1987. “The Amalgamation and Geometry of Two-by-Two Contingency Tables.” The Annals of Statistics 15 (2): 694–711. https://www.jstor.org/stable/2241334.\n\n\nHolland, Paul W. 1986. “Statistics and Causal Inference.” Journal of the American Statistical Association 81 (396): 945–60. https://doi.org/10.2307/2289064.\n\n\nKeiding, Niels, and David Clayton. 2014. “Standardization and Control for Confounding in Observational Studies: A Historical Perspective.” Statistical Science 29 (4): 529–58. https://doi.org/10.1214/13-STS453.\n\n\nKitagawa, Evelyn M. 1955. “Components of a Difference Between Two Rates.” Journal of the American Statistical Association 50 (272): 1168–94. https://doi.org/10.1080/01621459.1955.10501299.\n\n\nLundberg, Ian, Rebecca Johnson, and Brandon M. Stewart. 2021. “What Is Your Estimand? Defining the Target Quantity Connects Statistical Evidence to Theory.” American Sociological Review 86 (3): 532–65. https://doi.org/10.1177/00031224211004187.\n\n\nMatthews, Ben. 2017. “Criminal Careers and the Crime Drop in Scotland, 1989-2011: An Exploration of Conviction Trends Across Age and Sex.” PhD thesis, University of Edinburgh.\n\n\nROSE, GEOFFREY. 1985. “Sick Individuals and Sick Populations.” International Journal of Epidemiology 14 (1): 32–38. https://doi.org/10.1093/ije/14.1.32.\n\n\nSimpson, E. H. 1951. “The Interpretation of Interaction in Contingency Tables.” Journal of the Royal Statistical Society: Series B (Methodological) 13 (2): 238–41. https://doi.org/10.1111/j.2517-6161.1951.tb00088.x.\n\n\nVaupel, James W., and Vladimir Canudas-Romo. 2002. “Decomposing Demographic Change into Direct Vs. Compositional Components.” Demographic Research 7 (July): 1–14. https://doi.org/10.4054/DemRes.2002.7.1."
   },
   {
     "objectID": "lecture-othermethods.html#a-misnomer..",
@@ -879,7 +879,7 @@
     "href": "lecture-conceptual.html#a-conjecture-2",
     "title": "Standardization and decomposition: A conceptual introduction",
     "section": "A conjecture",
-    "text": "A conjecture\n\nYou can be interested in (average?) individual effects, or the aggregation of individual effects in different populations\nBut you need to be clear what you are interested in\nIndividual effects may aggregate in unintuitive ways in different populations (ROSE 1985)"
+    "text": "A conjecture\n\nYou can be interested in (average?) individual effects, or the aggregation of individual effects in different populations\nWe can think of these as ‘direct’ and ‘compositional’ effects (Vaupel and Canudas-Romo 2002)\nBut you need to be clear what you are interested in\n\n\n\nAnd uh oh individual effects may aggregate in unintuitive ways in different populations (ROSE 1985), but we won’t really go into this today"
   },
   {
     "objectID": "lecture-uncertainty.html#a-not-so-nice-example-2",
@@ -1090,5 +1090,26 @@
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "Do I need to worry about this?",
     "text": "Do I need to worry about this?\n\nMaybe you could argue that you don’t need to factor in uncertainty in the underlying rates - in this case we are working with adminisrative, the reconviction cohorts are what they are\nThis is an actual philosophical debate (see Verlaan and Langton 2024)\nBut maybe you are working with survey data when you have a rate and a standard error\nI (Ben) also think it’s useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons\nBootstrapping the raw data (nonparametric simulation (see Carsey and Harden 2014)) can show when your results are fragile to small permutations in the data (see also Giordano, Meager, and Broderick 2026)"
+  },
+  {
+    "objectID": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects",
+    "href": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Thinking about direct and compositional effects",
+    "text": "Thinking about direct and compositional effects\n\nNext we’re going to look at a worked example about age and reconviction\nThere is a direct effect of age[^2] on reconviction: younger people typically are reconvicted at higher rates than older people\nThere is also a compositional effect: typically younger people make up more of ‘reconviction cohorts’ because younger people are more likely to be convicted in the first place than older people"
+  },
+  {
+    "objectID": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects-1",
+    "href": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects-1",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Thinking about direct and compositional effects",
+    "text": "Thinking about direct and compositional effects\n\nImagine you are researching whether breastfeeding practices can explain differences in children’s height at age two between areas of high and low deprivation\nWhat would be a direct effect? And what would be a compositional effect?\n\nhttps://www.menti.com/al47qfxs37jv"
+  },
+  {
+    "objectID": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects-2",
+    "href": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects-2",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Thinking about direct and compositional effects",
+    "text": "Thinking about direct and compositional effects\n\nTake two minutes to think about your own research topic\nWhat is your key ‘independent’ variable?\nWhat might that look like as a direct effect? And what might it look like as a compositional effect?"
   }
 ]

@@ -70,7 +70,8 @@ options(digits=2)
 
 # Student discussion
 
-- Mentimeter?
+- Have a think about it, talk it over if you like (in person or the Teams chat)
+- Vote at https://www.menti.com/alj2qykb376m
 
 ## Decomposition
 
@@ -123,20 +124,12 @@ options(digits=2)
 - There is a direct effect of age[^2] on reconviction: younger people typically are reconvicted at higher rates than older people
 - There is also a compositional effect: typically younger people make up more of 'reconviction cohorts' because younger people are more likely to be convicted in the first place than older people
 
-## Thinking about direct and compositional effects
-- Next we're going to look at a worked example about age and reconviction
-- There is a direct effect of age[^2] on reconviction: younger people typically are reconvicted at higher rates than older people
-- There is also a compositional effect: typically younger people make up more of 'reconviction cohorts' because younger people are more likely to be convicted in the first place than older people
 
 ## Thinking about direct and compositional effects
-- Imagine you are researching the link between breastfeeding and children's height at age two
+- Imagine you are researching whether breastfeeding practices can explain differences in children's height at age two between areas of high and low deprivation
 - What would be a direct effect? And what would be a compositional effect?
 
-## Thinking about direct and compositional effects
-- Imagine you are researching the link between breastfeeding and children's height at age two
-- What would be a direct effect? And what would be a compositional effect?
-
-[Mentimeter for answers?]
+https://www.menti.com/al47qfxs37jv
 
 ## Thinking about direct and compositional effects
 - Take two minutes to think about your own research topic
