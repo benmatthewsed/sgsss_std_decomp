@@ -467,7 +467,7 @@
       of how much that statistic would bounce around if the world handed you a different sample.
     </p>
 
-    <svg class="flow" viewBox="0 0 860 130" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Diagram: your sample leads to many resamples with replacement, each producing a statistic, which together form a bootstrap distribution.">
+    <svg class="flow" viewBox="0 0 820 118" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Diagram: your sample leads to many resamples with replacement, each producing a statistic, which together form a bootstrap distribution.">
       <g id="flowStages"></g>
     </svg>
   </header>
@@ -698,20 +698,26 @@
   /* ---------------- flow diagram (hero) ---------------- */
   (function drawFlow(){
     var g = document.getElementById("flowStages");
+    var boxW = 178, boxH = 78, y = 26, gap = 30;
     var stages = [
-      {x:10,  title:"Your sample", sub:"n observations"},
-      {x:230, title:"Resample, with replacement", sub:"drawn B times"},
-      {x:480, title:"Recompute the statistic", sub:"once per resample"},
-      {x:730, title:"Bootstrap distribution", sub:"the spread of B statistics"}
+      {title:["Your","sample"], sub:"n observations"},
+      {title:["Resample, with","replacement"], sub:"drawn B times"},
+      {title:["Recompute the","statistic"], sub:"once per resample"},
+      {title:["Bootstrap","distribution"], sub:"spread of B statistics"}
     ];
     var html = "";
     stages.forEach(function(s, i){
-      var boxW = 130, boxH = 62, y = 30;
-      html += '<rect x="'+s.x+'" y="'+y+'" width="'+boxW+'" height="'+boxH+'" rx="8" fill="#fff" stroke="var(--line-strong)"></rect>';
-      html += '<text x="'+(s.x+12)+'" y="'+(y+24)+'" class="flow-stage-title">'+s.title+'</text>';
-      html += '<text x="'+(s.x+12)+'" y="'+(y+42)+'" class="flow-stage-label">'+s.sub+'</text>';
+      var x = 6 + i * (boxW + gap);
+      var cx = x + boxW/2;
+      html += '<rect x="'+x+'" y="'+y+'" width="'+boxW+'" height="'+boxH+'" rx="8" fill="#fff" stroke="var(--line-strong)"></rect>';
+      var titleY1 = y + boxH/2 - 12;
+      var titleY2 = y + boxH/2 + 6;
+      var subY   = y + boxH - 14;
+      html += '<text x="'+cx+'" y="'+titleY1+'" text-anchor="middle" class="flow-stage-title">'+s.title[0]+'</text>';
+      html += '<text x="'+cx+'" y="'+titleY2+'" text-anchor="middle" class="flow-stage-title">'+s.title[1]+'</text>';
+      html += '<text x="'+cx+'" y="'+subY+'" text-anchor="middle" class="flow-stage-label">'+s.sub+'</text>';
       if(i < stages.length - 1){
-        var ax1 = s.x + boxW + 6, ax2 = stages[i+1].x - 6, ay = y + boxH/2;
+        var ax1 = x + boxW + 6, ax2 = x + boxW + gap - 6, ay = y + boxH/2;
         html += '<line x1="'+ax1+'" y1="'+ay+'" x2="'+ax2+'" y2="'+ay+'" stroke="var(--teal)" stroke-width="2"></line>';
         html += '<polygon points="'+ax2+','+(ay-5)+' '+ax2+','+(ay+5)+' '+(ax2+7)+','+ay+'" fill="var(--teal)"></polygon>';
       }

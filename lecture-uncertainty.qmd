@@ -26,19 +26,22 @@ bibliography: bibliography.bib
 options(digits = 2)
 ```
 
-
 ## Whence uncertainty?
 
-- The Das Gupta method doesn't really have a concept of an error term - all results are calculate algebraically [@dasguptaStandardizationDecompositionRates1993]
+- Unlike regression the Das Gupta method doesn't really have a concept of an error term - all results are calculate algebraically [@dasguptaStandardizationDecompositionRates1993]
 - But we might still want to quantify uncertainty in the results of a standardization and decomposition
 - Bootstrapping is a general purpose way to achieve this [@carseyMonteCarloSimulation2014]
-- It can also show where results might be sensitive to small changes in the data (typically if the absolute difference between the rates you are decomposing is small)
+- It can also show where results might be sensitive to small changes in the data (typically if the absolute difference between the rates you are decomposing is small) - we will see an example of this later
+
+# Part One: Bootstrapping
 
 ## Bootstrapping
 
 - Bootstrapping is a resampling method where you create an empirical distribution of estimates of your quantity of interest through resampling
 - It is, as it were, a dumb strategy - it doesn't try to be clever and use maths to calculate the appropriate uncertainty with appeals to asymptotics, it just reshuffles your data a bunch and re-runs your analysis on each resampled dataset
-- Computer go brrr
+- The maths way assumes your data comes from a nice smooth distribution; bootstrapping makes an empirical distribution via resampling
+
+# An example of sampling with replacement
 
 
 ## Bootstrapping
@@ -57,6 +60,8 @@ set.seed(387) # for reproducibility
 results <- c(1, 3, 2.7, 10, 1)
 
 results
+
+mean(results)
 ```
 
 ## Bootstrapping example
@@ -65,7 +70,9 @@ results
 ```{r echo=TRUE}
 boot_1 <- sample(results, size = length(results), replace = TRUE)
 
-boot_1
+data.frame(results = results, boot_1 = boot_1)
+
+data.frame(results = mean(results), boot_1 = mean(boot_1))
 
 ```
 
@@ -74,7 +81,9 @@ boot_1
 ```{r echo=TRUE}
 boot_2 <- sample(results, size = length(results), replace = TRUE)
 
-boot_2
+data.frame(results = results, boot_1 = boot_1, boot_2 = boot_2)
+
+data.frame(results = mean(results), boot_1 = mean(boot_1), boot_2 = mean(boot_2))
 
 ```
 
@@ -83,24 +92,64 @@ boot_2
 ```{r echo=TRUE}
 boot_3 <- sample(results, size = length(results), replace = TRUE)
 
-boot_3
+data.frame(results = results, boot_1 = boot_1, boot_2 = boot_2, boot_3 = boot_3)
 
+data.frame(results = mean(results), boot_1 = mean(boot_1), boot_2 = mean(boot_2), boot_3 = mean(boot_3))
 ```
 
 ## Bootstrapping example
-- ... like 1000 times
+- ... like 1000 times. Then we can see the range of results from the resampling.
 ```{r echo=TRUE}
 boot_1000 <- sample(results, size = length(results), replace = TRUE)
 
-boot_1000
+data.frame(results = results, boot_1 = boot_1, boot_2 = boot_2, boot_3 = boot_3, boot_1000 = boot_1000)
 
+data.frame(results = mean(results), boot_1 = mean(boot_1), boot_2 = mean(boot_2), boot_3 = mean(boot_3), boot_1000 = mean(boot_1000))
 ```
+
+## Bootstrapping example
+- 
+```{r echo=FALSE}
+library(tidyr)
+library(dplyr)
+library(purrr)
+library(ggplot2)
+
+res_df <- 
+tibble(
+  draw = 1:10000
+) |> 
+  mutate(sample = map(draw, ~ sample(results, size = length(results), replace = TRUE))) |> 
+  unnest(sample) |> 
+  group_by(draw) |> 
+  summarise(mean = mean(sample)) |> 
+  ungroup()
+
+res_df |> 
+  ggplot(aes(x = mean)) +
+  geom_histogram() +
+  geom_vline(xintercept = mean(results), colour = "red") +
+  geom_vline(xintercept = median(res_df$mean), colour = "blue", linetype = "dashed") +
+  labs(caption = "Histogram showing 10,000 bootstrap resamples. Red line is mean of original results. Blue line is median of bootstrapped means")
+```
+
+
+# Example
+
+## Try it for yourself
+- Navigate to https://benmatthewsed.github.io/sgsss_std_decomp/bootstrap_demo
+- Play around with the different options
+
+
+
 
 ## Boostrapping example
 - In this method you bootstrap *the data* and then perform whatever analysis you like on each resample
-- You then get an empirical distribution of results
-- Pros: this will always* work, makes no assumptions about distributions or anything
+- You then get an empirical distribution of results (remember this histogram!)
+- Pros: this will (almost) always work, makes no assumptions about distributions or anything
 - Cons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire (if you are analysing population level data from India this approach will take a lot longer than if you are analysing population data from Scotland)
+- Your computer probably won't _really_ catch on fire, but if you are planning to bootstrap some large data you will have to think about the practicalities (feel free to ask us if you are planning this!)
+
 
 ## Bootstrapping standardization and decomposition
 - Standardization and Decomposition is often using aggregate data
@@ -121,26 +170,91 @@ boot_1000
 4. Standardize and decompose 200 times
 5. Summarise the results
 
+## Exploding data
+
+::::{.columns}
+:::{.column width="50%"}
+__Aggregate counts__
+```{r}
+
+## pick up here
+tibble::tribble(
+    ~population, ~n_people, ~n_died,
+    "Scotland", 500, 20,
+    "England", 6000, 200
+  )
+```
+:::
+:::{.column width="50%"}
+__Individual People__  
+```{r}
+deaths <- 
+data.frame(
+  population = sample(c(rep("England",6000),rep("Scotland",500)), replace = FALSE,
+  size = 6000+500),
+  died = c(sample(c(rep(1, 200), rep(0, 6000-200)), replace = FALSE), 
+  sample(c(rep(1, 20), rep(0, 500-20)), replace = FALSE))
+)
+
+deaths
+```
+:::
+::::
+
+## Resampling the exploded data
+
+```{r}
+
+boot_1 <- 
+deaths |> 
+  dplyr::sample_n(size = nrow(deaths),
+  replace = TRUE)
+
+boot_1
+
+```
+
+## Aggregating
+
+
+```{r}
+
+agg_boot_1 <- 
+boot_1 |> 
+  dplyr::count(population, died)
+
+deaths |> 
+  dplyr::count(population, died)
+
+```
+
+
 ## Summarising the results
-- You can calculate a standard error or confidence interval if you want (see @liRateDecompositionAggregate2017)
+- After all this you can calculate a standard error or confidence interval around the decomposition results (see @liRateDecompositionAggregate2017)
 - There are lots of ways to do this - people have [written](https://hastie.su.domains/CASI/) [books](https://www.cambridge.org/core/books/bootstrap-methods-and-their-application/ED2FD043579F27952363566DC09CBD6A) on it
-- Or you can visualize the empirical distribution
-- If everything goes well then the 'real' results from the underlying data will be in the middle of the distribution of bootstrapped estimates
+- Or you can visualize the empirical distribution of the results as we did before
 
 ## A nice example
 ![fine-fig](figs/fine-fig.png)
 
-# When things go wrong
+# Add in practical example here 
+
+
+
+
+
+# Part Two: When things go wrong
 
 ## When things go wrong
 - Decomposition will decompose whatever difference there is - even if it is very small
 - If there isn't much difference in the underlying crude rate you are decomposing (in a hand-wavy way, if the difference is not statistically significant) then things can do haywire
 - The sampling distribution of underlying rates is usually quite nice (a Normal approximation is probably fine)
 - But a decomposition is essentially a ratio - a transformation of the standardized rates
-- The sampling distribution of ratios can be nice or really not nice [@franzRatiosShortGuide2007]
+- The sampling distribution of a transformed quantity will not necessarily be the same as the sampling distribution of the two underlying quantities
+- In particular the sampling distribution of ratios can be nice or really not nice [@franzRatiosShortGuide2007]
+
 
 ## The sampling distribution of decomposition
-- Decomposition will decompose whatever difference there is - even if it is very small
 - If there isn't much difference in the underlying crude rate you are decomposing (in a hand-wavy way, if the difference is not statistically significant) then things can go haywire
 - If the standardized rates are very close together then the decomposition can involve dividing by very small numbers
 - Uh oh
@@ -154,8 +268,7 @@ boot_1000
 
 ## A not-so-nice example
 - The scale runs from -10,000% to +10,000%!
-- 'Accurate but not precise'
-- So lets zoom in
+- So lets zoom in for a closer look
 
 ## A not-so-nice example
 ![haywire-fig](figs/haywire2-fig.png)
@@ -170,14 +283,17 @@ boot_1000
 - The thing I was bootstrapping was the underlying data - and the bootstrapped distribution _of the crude rates_ is fine
 - But the decomposition is a transformation of these rates, and the properties of the rates do not necessarily transfer downstream to the transformation
 
-## How can this be?
-- Maybe you could argue that you don't need to factor in uncertainty in the underlying rates - it's admin data, the reconviction cohorts are what they are, what are you a Bayesian or something [see @verlaanUseInferentialStatistics2024]
-- But it's still I think useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons
+## Do I need to worry about this?
+- Maybe you could argue that you don't need to factor in uncertainty in the underlying rates - in this case we are working with adminisrative, the reconviction cohorts are what they are
+- This is an actual philosophical debate [see @verlaanUseInferentialStatistics2024]
+- But maybe you are working with survey data when you have a rate and a standard error
+- I (Ben) also think it's useful to know how sensitive your results are to small changes in the input data, as much for pragmatic reasons as philosophical reasons
 - Bootstrapping the raw data (nonparametric simulation [see @carseyMonteCarloSimulation2014]) can show when your results are fragile to small permutations in the data [see also @giordanoAutomaticFinitesampleRobustness2026]
 
+
 ## Two practical suggestions
-- Check whether the difference in crude rates between comparator is statistically significant before you do your standardization and decomposition?
-- Bootstrap your results a few times as a matter of course just to see if something breaks?
+- Check whether the difference in crude rates between comparator is statistically significant before you do your standardization and decomposition
+- Bootstrap your results a few times as a matter of course just to see if something breaks
 
 # Bonus slides: Bootstrapping in practice
 

@@ -20,6 +20,7 @@ format:
 
 ## Hello! 
 - Who we are
+  - Ben; Josiah; Chloe; Trystan
 - Who you are (Mentimeter: Your background? What you want to get from this session?)
 
 ## Housekeeping
@@ -54,3 +55,8 @@ By the end of the workshop you will:
 - Stata examples use the rdecompose command [@liRateDecompositionAggregate2017]. Seems neat!
 - For obvious reasons we are more familiar with the R version, and so focus on that
 - For some of the more complex examples we only provide R examples. You (or a friendly LLM) may be able to translate these to Stata
+
+:::aside
+Or maybe not. I found that LLMs (the free ChatGPT one) was not at all good with rdecompose - perhaps because the documentation isn't that extensive
+:::
+
