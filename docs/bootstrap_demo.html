@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Nonparametric Bootstrap — A Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #E8ECE6;
+    --surface: #FCFCF9;
+    --ink: #1C2A26;
+    --ink-soft: #56655F;
+    --line: #C7D0C6;
+    --line-strong: #9FAE9C;
+    --teal: #1F6F63;
+    --teal-dark: #164F46;
+    --ochre: #B8842A;
+    --ochre-soft: #EAD9B0;
+    --indigo: #3C4A73;
+    --rose: #A6473C;
+    --paper-shadow: 0 1px 0 rgba(28,42,38,0.06);
+    --radius: 10px;
+    --max-w: 900px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px 96px;
+  }
+
+  h1,h2,h3{
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .mono{ font-family: "IBM Plex Mono", monospace; }
+
+  a{ color: var(--teal-dark); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before{
+    content: "";
+    width: 18px; height: 1px;
+    background: var(--teal-dark);
+    display: inline-block;
+  }
+  .hero h1{
+    font-size: clamp(34px, 5vw, 50px);
+    line-height: 1.08;
+    max-width: 14ch;
+  }
+  .hero p.lede{
+    max-width: 60ch;
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-top: 18px;
+  }
+
+  .flow{
+    margin-top: 36px;
+    display: block;
+    width: 100%;
+    overflow: visible;
+  }
+  .flow-stage-label{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    fill: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .flow-stage-title{
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    fill: var(--ink);
+  }
+
+  /* ---------- STEP SECTIONS ---------- */
+  .step{
+    padding: 52px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .step:last-of-type{ border-bottom: none; }
+
+  .step-head{
+    display:flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .step-num{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--teal-dark);
+    background: var(--ochre-soft);
+    border: 1px solid var(--ochre);
+    border-radius: 999px;
+    padding: 2px 10px;
+    flex-shrink: 0;
+  }
+  .step h2{ font-size: 26px; }
+  .step-sub{
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 10px 0 28px;
+    font-size: 15.5px;
+  }
+
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--paper-shadow);
+    padding: 22px 24px;
+  }
+  .card + .card{ margin-top: 18px; }
+
+  /* tabs */
+  .tabs{
+    display: flex;
+    gap: 4px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .tab-btn{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+    background: none;
+    border: none;
+    color: var(--ink-soft);
+    padding: 9px 14px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transform: translateY(1px);
+  }
+  .tab-btn.active{
+    color: var(--teal-dark);
+    border-bottom-color: var(--teal);
+    font-weight: 600;
+  }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:block; }
+
+  label{
+    display:block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .field{ margin-bottom: 14px; }
+  .field-row{
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .field-row > .field{ flex: 1; min-width: 140px; }
+
+  input[type="text"], input[type="number"], select, textarea{
+    width: 100%;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+    padding: 9px 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--ink);
+  }
+  textarea{ resize: vertical; min-height: 64px; }
+  input:focus, select:focus, textarea:focus, button:focus-visible{
+    outline: 2px solid var(--teal);
+    outline-offset: 1px;
+  }
+
+  input[type="range"]{
+    width: 100%;
+    accent-color: var(--teal);
+  }
+
+  .btn{
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 7px;
+    border: 1px solid var(--teal-dark);
+    background: var(--teal);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.08s ease, background 0.15s ease;
+  }
+  .btn:hover{ background: var(--teal-dark); }
+  .btn:active{ transform: translateY(1px); }
+  .btn.secondary{
+    background: transparent;
+    color: var(--teal-dark);
+    border: 1px solid var(--line-strong);
+  }
+  .btn.secondary:hover{ background: rgba(31,111,99,0.08); }
+  .btn:disabled{ opacity: 0.45; cursor: not-allowed; }
+
+  .btn-row{ display:flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
+
+  .preset-row{ display:flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .chip{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    background: #fff;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 5px 12px;
+    cursor: pointer;
+    color: var(--ink-soft);
+  }
+  .chip:hover{ border-color: var(--teal); color: var(--teal-dark); }
+  .chip.active{ background: var(--teal); color: #fff; border-color: var(--teal-dark); }
+
+  .radio-group{ display:flex; gap: 10px; flex-wrap: wrap; }
+  .radio-pill{
+    display:flex; align-items:center; gap:7px;
+    font-size: 13.5px;
+    background:#fff;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 7px 13px 7px 10px;
+    cursor:pointer;
+  }
+  .radio-pill input{ width:auto; accent-color: var(--teal); }
+  .radio-pill.checked{ border-color: var(--teal); background: rgba(31,111,99,0.07); }
+
+  .hint{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .error-msg{
+    font-size: 13px;
+    color: var(--rose);
+    margin-top: 8px;
+    display:none;
+  }
+
+  /* data strip */
+  .strip-wrap{ margin-top: 22px; }
+  .strip-label{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: 6px;
+  }
+  svg.chart{ width: 100%; height: auto; display:block; }
+  .dot-original{ fill: var(--indigo); fill-opacity: 0.85; stroke: #fff; stroke-width: 1; }
+  .dot-resample{ fill: var(--ochre); fill-opacity: 0.55; }
+  .axis-line{ stroke: var(--line-strong); stroke-width: 1; }
+  .axis-tick{ stroke: var(--line-strong); stroke-width: 1; }
+  .axis-text{ font-family:"IBM Plex Mono",monospace; font-size: 10.5px; fill: var(--ink-soft); }
+
+  .stat-table{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px,1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .stat-box{
+    background: #fff;
+    border:1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .stat-box .k{
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--ink-soft);
+  }
+  .stat-box .v{
+    font-family:"IBM Plex Mono",monospace;
+    font-size: 18px;
+    color: var(--ink);
+    margin-top: 3px;
+  }
+
+  /* ledger (resample rows) */
+  .ledger{
+    margin-top: 20px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .ledger-empty{
+    padding: 30px 20px;
+    text-align:center;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+  }
+  .ledger-row{
+    display:grid;
+    grid-template-columns: 56px 1fr 170px;
+    align-items:center;
+    padding: 6px 14px;
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(-4px);
+    animation: rowIn 0.35s ease forwards;
+  }
+  .ledger-row:last-child{ border-bottom:none; }
+  @keyframes rowIn{ to{ opacity:1; transform:translateY(0); } }
+  .ledger-num{
+    font-family:"IBM Plex Mono",monospace;
+    font-size: 12px;
+    color: var(--teal-dark);
+  }
+  .ledger-strip{ height: 34px; }
+  .ledger-stat{
+    font-family:"IBM Plex Mono",monospace;
+    font-size: 12.5px;
+    text-align:right;
+    color: var(--ink-soft);
+  }
+  .ledger-stat b{ color: var(--ink); }
+  .ledger-more{
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    font-family:"IBM Plex Mono",monospace;
+    background: var(--bg);
+  }
+
+  .progress-wrap{
+    margin-top:14px;
+    height: 6px;
+    background: var(--line);
+    border-radius: 4px;
+    overflow:hidden;
+    display:none;
+  }
+  .progress-bar{
+    height:100%;
+    width:0%;
+    background: var(--teal);
+    transition: width 0.15s linear;
+  }
+
+  /* histogram / results */
+  .results-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 22px;
+    align-items:start;
+  }
+  @media (max-width: 700px){ .results-grid{ grid-template-columns: 1fr; } }
+
+  .bar-boot{ fill: var(--teal); fill-opacity: 0.82; }
+  .ref-line{ stroke: var(--indigo); stroke-width: 2; stroke-dasharray: 5 4; }
+  .ci-band{ fill: var(--ochre); fill-opacity: 0.16; }
+  .ci-edge{ stroke: var(--ochre); stroke-width: 1.5; }
+
+  .legend{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10px; font-size:12px; color:var(--ink-soft); }
+  .legend span{ display:inline-flex; align-items:center; gap:6px; }
+  .swatch{ width:11px; height:11px; border-radius:2px; display:inline-block; }
+
+  .note-box{
+    background: var(--ochre-soft);
+    border: 1px solid var(--ochre);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    color: #4a3411;
+    margin-top: 16px;
+  }
+  .note-box b{ color: #38290c; }
+
+  .compare-line{
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  details.peek{ margin-top: 20px; }
+  details.peek summary{
+    cursor:pointer;
+    font-family:"IBM Plex Mono",monospace;
+    font-size: 12.5px;
+    color: var(--teal-dark);
+    padding: 6px 0;
+  }
+  table.peek-table{
+    width:100%;
+    border-collapse: collapse;
+    font-family:"IBM Plex Mono",monospace;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  table.peek-table th, table.peek-table td{
+    border-bottom: 1px solid var(--line);
+    padding: 6px 8px;
+    text-align:left;
+  }
+  table.peek-table th{ color: var(--ink-soft); font-weight:600; }
+
+  footer.explain{
+    padding-top: 44px;
+  }
+  footer.explain h3{ font-size: 19px; margin-bottom: 10px; }
+  footer.explain p{ color: var(--ink-soft); max-width: 66ch; font-size: 14.5px; }
+  footer.explain .warn{ color: var(--rose); font-weight:600; }
+
+  .sr-only{
+    position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .ledger-row{ animation: none; opacity:1; transform:none; }
+    .progress-bar{ transition:none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">A hands-on guide for applied researchers</div>
+    <h1>What would your estimate look like, if you'd sampled again?</h1>
+    <p class="lede">
+      The nonparametric bootstrap answers that question without a second data collection wave.
+      It treats your one sample as a stand-in for the population, draws new samples from it
+      <em>with replacement</em>, and recomputes your statistic each time — building up a picture
+      of how much that statistic would bounce around if the world handed you a different sample.
+    </p>
+
+    <svg class="flow" viewBox="0 0 860 130" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Diagram: your sample leads to many resamples with replacement, each producing a statistic, which together form a bootstrap distribution.">
+      <g id="flowStages"></g>
+    </svg>
+  </header>
+
+  <!-- STEP 1 -->
+  <section class="step" id="step1">
+    <div class="step-head">
+      <span class="step-num mono">STEP 01</span>
+      <h2>Bring in a sample</h2>
+    </div>
+    <p class="step-sub">Type your own values, paste a list from a spreadsheet, or generate a sample from a known
+      distribution to see the logic play out on data you already trust.</p>
+
+    <div class="card">
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="type" role="tab">Type values</button>
+        <button class="tab-btn" data-tab="generate" role="tab">Generate a sample</button>
+      </div>
+
+      <div class="tab-panel active" data-panel="type">
+        <div class="field">
+          <label for="rawInput">Values (comma, space, or newline separated)</label>
+          <textarea id="rawInput" placeholder="e.g. 4.2, 5.1, 3.8, 6.0, 4.9, 5.6, 3.3, 4.7, 5.9, 4.4">4.2, 5.1, 3.8, 6.0, 4.9, 5.6, 3.3, 4.7, 5.9, 4.4, 5.0, 4.1, 6.3, 3.6, 5.4</textarea>
+        </div>
+        <button class="btn" id="useTypedBtn">Use this sample</button>
+        <div class="error-msg" id="typeError"></div>
+      </div>
+
+      <div class="tab-panel" data-panel="generate">
+        <div class="field-row">
+          <div class="field">
+            <label for="distSelect">Shape</label>
+            <select id="distSelect">
+              <option value="normal">Roughly symmetric (normal)</option>
+              <option value="skew">Right-skewed (e.g. response times, income)</option>
+              <option value="uniform">Uniform (evenly spread)</option>
+              <option value="bimodal">Two subgroups (bimodal)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="nInput">Sample size (n)</label>
+            <input type="number" id="nInput" value="20" min="5" max="60" step="1">
+          </div>
+          <div class="field">
+            <label for="seedInput">Random seed <span style="text-transform:none;font-weight:400;">(optional — same seed, same sample)</span></label>
+            <input type="text" id="seedInput" placeholder="e.g. 42">
+          </div>
+        </div>
+        <button class="btn" id="generateBtn">Generate sample</button>
+        <div class="error-msg" id="genError"></div>
+      </div>
+
+      <div class="strip-wrap">
+        <div class="strip-label">Your sample, plotted at true value (each point is one observation)</div>
+        <svg class="chart" id="dataStrip" viewBox="0 0 820 90" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Strip plot of the current sample"></svg>
+        <div class="stat-table" id="sampleStats"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step" id="step2">
+    <div class="step-head">
+      <span class="step-num mono">STEP 02</span>
+      <h2>Draw resamples, with replacement</h2>
+    </div>
+    <p class="step-sub">Each resample below is drawn from your <span id="nEcho1">n</span> observations — same size, drawn
+      with replacement, so some observations appear more than once and others not at all. We'll draw
+      this many resamples, and compute one statistic from each.</p>
+
+    <div class="card">
+      <div class="field-row">
+        <div class="field">
+          <label for="statSelect">Statistic to track</label>
+          <div class="radio-group" id="statGroup">
+            <label class="radio-pill checked"><input type="radio" name="stat" value="mean" checked> Mean</label>
+            <label class="radio-pill"><input type="radio" name="stat" value="median"> Median</label>
+            <label class="radio-pill"><input type="radio" name="stat" value="sd"> Std. deviation</label>
+            <label class="radio-pill"><input type="radio" name="stat" value="trimmed"> 10% trimmed mean</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:6px;">
+        <label for="bInput">Number of resamples (B): <span class="mono" id="bEcho">1000</span></label>
+        <input type="range" id="bInput" min="20" max="5000" step="20" value="1000">
+        <div class="preset-row">
+          <span class="chip" data-b="100">B = 100</span>
+          <span class="chip active" data-b="1000">B = 1000</span>
+          <span class="chip" data-b="5000">B = 5000</span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn" id="runBtn">Run bootstrap</button>
+        <button class="btn secondary" id="resetBootBtn">Clear results</button>
+      </div>
+      <div class="progress-wrap" id="progressWrap"><div class="progress-bar" id="progressBar"></div></div>
+
+      <div class="ledger" id="ledger">
+        <div class="ledger-empty">Resamples will appear here as they're drawn — the first several are shown in full so you can see the mechanics; the rest are drawn instantly and folded into the distribution below.</div>
+      </div>
+      <div class="ledger-more" id="ledgerMore" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step" id="step3">
+    <div class="step-head">
+      <span class="step-num mono">STEP 03</span>
+      <h2>Read the bootstrap distribution</h2>
+    </div>
+    <p class="step-sub">This histogram is the distribution of your chosen statistic across every resample —
+      the bootstrap's estimate of how that statistic would vary from sample to sample.</p>
+
+    <div class="card">
+      <div class="results-grid">
+        <div>
+          <svg class="chart" id="histogram" viewBox="0 0 560 300" preserveAspectRatio="xMinYMid meet" role="img" aria-label="Histogram of the bootstrap statistic"></svg>
+          <div class="legend">
+            <span><span class="swatch" style="background:var(--teal);"></span>bootstrap resamples</span>
+            <span><span class="swatch" style="background:var(--indigo);"></span>statistic in your original sample</span>
+            <span><span class="swatch" style="background:var(--ochre);"></span>95% bootstrap interval</span>
+          </div>
+        </div>
+        <div class="stat-table" id="resultStats" style="grid-template-columns:1fr;"></div>
+      </div>
+      <div class="compare-line" id="compareLine"></div>
+      <div class="note-box" id="noteBox" style="display:none;"></div>
+
+      <details class="peek">
+        <summary>Peek under the hood — see the first resamples' actual draws</summary>
+        <table class="peek-table" id="peekTable"></table>
+      </details>
+    </div>
+  </section>
+
+  <footer class="explain">
+    <h3>Why this is allowed to work</h3>
+    <p>
+      Classical formulas for a standard error (like <span class="mono">s / √n</span> for a mean) assume a
+      particular sampling distribution. The bootstrap sidesteps that assumption: it treats the sample itself
+      as the best available stand-in for the population, and lets resampling reveal the statistic's variability
+      directly — useful for medians, trimmed means, ratios, or anything without a tidy textbook formula.
+    </p>
+    <p class="warn">It is not magic. If your original sample is small, biased, or a poor representation of the
+      population you care about, the bootstrap will faithfully reproduce those flaws — it cannot manufacture
+      information that was never collected.</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- utilities ---------------- */
+  function mulberry32(a){
+    return function(){
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function hashSeed(str){
+    var h = 2166136261;
+    for(var i=0;i<str.length;i++){
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+  var rng = Math.random;
+
+  function mean(a){ return a.reduce(function(s,v){return s+v;},0) / a.length; }
+  function sortedCopy(a){ return a.slice().sort(function(x,y){return x-y;}); }
+  function median(a){
+    var s = sortedCopy(a), n = s.length, mid = Math.floor(n/2);
+    return n % 2 ? s[mid] : (s[mid-1] + s[mid]) / 2;
+  }
+  function sd(a){
+    if(a.length < 2) return 0;
+    var m = mean(a);
+    var ss = a.reduce(function(s,v){ return s + (v-m)*(v-m); },0);
+    return Math.sqrt(ss / (a.length - 1));
+  }
+  function trimmedMean(a, prop){
+    var s = sortedCopy(a), n = s.length;
+    var k = Math.floor(n * prop);
+    var core = s.slice(k, n - k);
+    return core.length ? mean(core) : mean(s);
+  }
+  function percentile(sortedArr, p){
+    var n = sortedArr.length;
+    if(n === 0) return NaN;
+    var idx = (p/100) * (n-1);
+    var lo = Math.floor(idx), hi = Math.ceil(idx);
+    if(lo === hi) return sortedArr[lo];
+    var frac = idx - lo;
+    return sortedArr[lo] + (sortedArr[hi] - sortedArr[lo]) * frac;
+  }
+  function fmt(v, d){
+    if(v === undefined || v === null || isNaN(v)) return "—";
+    d = d === undefined ? 3 : d;
+    return v.toFixed(d);
+  }
+  function statFn(name){
+    if(name === "mean") return mean;
+    if(name === "median") return median;
+    if(name === "sd") return sd;
+    if(name === "trimmed") return function(a){ return trimmedMean(a, 0.1); };
+    return mean;
+  }
+  function statLabel(name){
+    return { mean:"Mean", median:"Median", sd:"Standard deviation", trimmed:"10% trimmed mean" }[name] || name;
+  }
+
+  /* ---------------- state ---------------- */
+  var state = {
+    data: [4.2,5.1,3.8,6.0,4.9,5.6,3.3,4.7,5.9,4.4,5.0,4.1,6.3,3.6,5.4],
+    stat: "mean",
+    B: 1000,
+    bootStats: [],
+    resampleLog: [] // {indices, values, stat}
+  };
+
+  /* ---------------- flow diagram (hero) ---------------- */
+  (function drawFlow(){
+    var g = document.getElementById("flowStages");
+    var stages = [
+      {x:10,  title:"Your sample", sub:"n observations"},
+      {x:230, title:"Resample, with replacement", sub:"drawn B times"},
+      {x:480, title:"Recompute the statistic", sub:"once per resample"},
+      {x:730, title:"Bootstrap distribution", sub:"the spread of B statistics"}
+    ];
+    var html = "";
+    stages.forEach(function(s, i){
+      var boxW = 130, boxH = 62, y = 30;
+      html += '<rect x="'+s.x+'" y="'+y+'" width="'+boxW+'" height="'+boxH+'" rx="8" fill="#fff" stroke="var(--line-strong)"></rect>';
+      html += '<text x="'+(s.x+12)+'" y="'+(y+24)+'" class="flow-stage-title">'+s.title+'</text>';
+      html += '<text x="'+(s.x+12)+'" y="'+(y+42)+'" class="flow-stage-label">'+s.sub+'</text>';
+      if(i < stages.length - 1){
+        var ax1 = s.x + boxW + 6, ax2 = stages[i+1].x - 6, ay = y + boxH/2;
+        html += '<line x1="'+ax1+'" y1="'+ay+'" x2="'+ax2+'" y2="'+ay+'" stroke="var(--teal)" stroke-width="2"></line>';
+        html += '<polygon points="'+ax2+','+(ay-5)+' '+ax2+','+(ay+5)+' '+(ax2+7)+','+ay+'" fill="var(--teal)"></polygon>';
+      }
+    });
+    g.innerHTML = html;
+  })();
+
+  /* ---------------- tabs ---------------- */
+  document.querySelectorAll(".tab-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll(".tab-btn").forEach(function(b){ b.classList.remove("active"); });
+      document.querySelectorAll(".tab-panel").forEach(function(p){ p.classList.remove("active"); });
+      btn.classList.add("active");
+      document.querySelector('.tab-panel[data-panel="'+btn.dataset.tab+'"]').classList.add("active");
+    });
+  });
+
+  /* ---------------- radio pill styling ---------------- */
+  document.querySelectorAll('input[name="stat"]').forEach(function(r){
+    r.addEventListener("change", function(){
+      document.querySelectorAll(".radio-pill").forEach(function(p){ p.classList.remove("checked"); });
+      r.closest(".radio-pill").classList.add("checked");
+      state.stat = r.value;
+    });
+  });
+
+  /* ---------------- data input: typed ---------------- */
+  document.getElementById("useTypedBtn").addEventListener("click", function(){
+    var raw = document.getElementById("rawInput").value;
+    var parts = raw.split(/[\s,]+/).map(function(s){return s.trim();}).filter(function(s){return s.length;});
+    var nums = parts.map(Number);
+    var errEl = document.getElementById("typeError");
+    if(nums.length < 5 || nums.some(isNaN)){
+      errEl.textContent = "Enter at least 5 numeric values, separated by commas, spaces, or line breaks.";
+      errEl.style.display = "block";
+      return;
+    }
+    if(nums.length > 200){
+      nums = nums.slice(0,200);
+    }
+    errEl.style.display = "none";
+    state.data = nums;
+    clearBootstrap();
+    renderDataStrip();
+  });
+
+  /* ---------------- data input: generated ---------------- */
+  function boxMuller(rand){
+    var u1 = 0, u2 = Math.random();
+    while(u1 === 0) u1 = rand();
+    u2 = rand();
+    return Math.sqrt(-2*Math.log(u1)) * Math.cos(2*Math.PI*u2);
+  }
+  function generateSample(dist, n, rand){
+    var out = [];
+    for(var i=0;i<n;i++){
+      var v;
+      if(dist === "normal"){
+        v = 50 + 10 * boxMuller(rand);
+      } else if(dist === "skew"){
+        var u = rand();
+        v = -Math.log(1-u) * 8 + 4; // exponential-ish, shifted
+      } else if(dist === "uniform"){
+        v = 10 + rand() * 40;
+      } else if(dist === "bimodal"){
+        v = (rand() < 0.5) ? (30 + 5*boxMuller(rand)) : (65 + 5*boxMuller(rand));
+      } else {
+        v = rand() * 100;
+      }
+      out.push(Math.round(v * 100) / 100);
+    }
+    return out;
+  }
+  document.getElementById("generateBtn").addEventListener("click", function(){
+    var dist = document.getElementById("distSelect").value;
+    var n = parseInt(document.getElementById("nInput").value, 10);
+    var errEl = document.getElementById("genError");
+    if(isNaN(n) || n < 5 || n > 60){
+      errEl.textContent = "Choose a sample size between 5 and 60.";
+      errEl.style.display = "block";
+      return;
+    }
+    errEl.style.display = "none";
+    var seedRaw = document.getElementById("seedInput").value.trim();
+    var rand = seedRaw ? mulberry32(hashSeed(seedRaw)) : Math.random;
+    state.data = generateSample(dist, n, rand);
+    clearBootstrap();
+    renderDataStrip();
+  });
+
+  /* ---------------- B slider + presets ---------------- */
+  var bInput = document.getElementById("bInput");
+  var bEcho = document.getElementById("bEcho");
+  bInput.addEventListener("input", function(){
+    state.B = parseInt(bInput.value, 10);
+    bEcho.textContent = state.B;
+    document.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("active"); });
+  });
+  document.querySelectorAll(".chip").forEach(function(chip){
+    chip.addEventListener("click", function(){
+      var b = parseInt(chip.dataset.b,10);
+      bInput.value = b;
+      state.B = b;
+      bEcho.textContent = b;
+      document.querySelectorAll(".chip").forEach(function(c){ c.classList.remove("active"); });
+      chip.classList.add("active");
+    });
+  });
+
+  /* ---------------- scales & rendering: data strip ---------------- */
+  function computeXScale(data, width, margin){
+    var min = Math.min.apply(null, data), max = Math.max.apply(null, data);
+    if(min === max){ min -= 1; max += 1; }
+    var pad = (max - min) * 0.08;
+    min -= pad; max += pad;
+    return {
+      min:min, max:max,
+      x: function(v){ return margin + (v-min)/(max-min) * (width - 2*margin); }
+    };
+  }
+
+  var lastScale = null;
+
+  function renderDataStrip(){
+    var svg = document.getElementById("dataStrip");
+    var W = 820, H = 90, margin = 24;
+    var scale = computeXScale(state.data, W, margin);
+    lastScale = scale;
+    var axisY = 60;
+    var html = "";
+    html += '<line class="axis-line" x1="'+margin+'" y1="'+axisY+'" x2="'+(W-margin)+'" y2="'+axisY+'" ></line>';
+    var ticks = 5;
+    for(var i=0;i<=ticks;i++){
+      var tv = scale.min + (scale.max-scale.min)*i/ticks;
+      var tx = scale.x(tv);
+      html += '<line class="axis-tick" x1="'+tx+'" y1="'+axisY+'" x2="'+tx+'" y2="'+(axisY+5)+'"></line>';
+      html += '<text class="axis-text" x="'+tx+'" y="'+(axisY+17)+'" text-anchor="middle">'+tv.toFixed(1)+'</text>';
+    }
+    state.data.forEach(function(v, idx){
+      var cx = scale.x(v);
+      var cy = axisY - 10 - (idx % 3) * 8;
+      html += '<circle class="dot-original" cx="'+cx+'" cy="'+cy+'" r="5"><title>obs '+(idx+1)+': '+v+'</title></circle>';
+    });
+    svg.innerHTML = html;
+
+    document.getElementById("nEcho1").textContent = state.data.length;
+
+    var boxes = [
+      {k:"n", v: state.data.length, d:0},
+      {k:"mean", v: mean(state.data)},
+      {k:"median", v: median(state.data)},
+      {k:"std. dev.", v: sd(state.data)},
+      {k:"min / max", v: null, custom: fmt(Math.min.apply(null,state.data),2) + " / " + fmt(Math.max.apply(null,state.data),2)}
+    ];
+    var statsHtml = boxes.map(function(b){
+      var val = b.custom !== undefined ? b.custom : fmt(b.v, b.d===0?0:2);
+      return '<div class="stat-box"><div class="k">'+b.k+'</div><div class="v">'+val+'</div></div>';
+    }).join("");
+    document.getElementById("sampleStats").innerHTML = statsHtml;
+  }
+
+  function renderMiniStrip(values, scale){
+    var W = 300, H = 34, margin = 6;
+    var html = '<svg class="chart" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMinYMid meet">';
+    var axisY = H/2 + 4;
+    html += '<line class="axis-line" x1="'+margin+'" y1="'+axisY+'" x2="'+(W-margin)+'" y2="'+axisY+'"></line>';
+    values.forEach(function(v){
+      var cx = margin + (v - scale.min)/(scale.max-scale.min) * (W - 2*margin);
+      html += '<circle class="dot-resample" cx="'+cx+'" cy="'+(axisY-6)+'" r="4"></circle>';
+    });
+    html += '</svg>';
+    return html;
+  }
+
+  /* ---------------- bootstrap engine ---------------- */
+  function drawResample(data, rand){
+    var n = data.length, idxs = new Array(n), vals = new Array(n);
+    for(var i=0;i<n;i++){
+      var j = Math.floor(rand() * n);
+      idxs[i] = j;
+      vals[i] = data[j];
+    }
+    return {indices: idxs, values: vals};
+  }
+
+  function clearBootstrap(){
+    state.bootStats = [];
+    state.resampleLog = [];
+    document.getElementById("ledger").innerHTML = '<div class="ledger-empty">Resamples will appear here as they\'re drawn — the first several are shown in full so you can see the mechanics; the rest are drawn instantly and folded into the distribution below.</div>';
+    document.getElementById("ledgerMore").style.display = "none";
+    document.getElementById("histogram").innerHTML = "";
+    document.getElementById("resultStats").innerHTML = "";
+    document.getElementById("compareLine").innerHTML = "";
+    document.getElementById("noteBox").style.display = "none";
+    document.getElementById("peekTable").innerHTML = "";
+    document.getElementById("progressWrap").style.display = "none";
+  }
+
+  document.getElementById("resetBootBtn").addEventListener("click", clearBootstrap);
+
+  var running = false;
+  document.getElementById("runBtn").addEventListener("click", function(){
+    if(running) return;
+    if(!lastScale) renderDataStrip();
+    running = true;
+    var runBtn = document.getElementById("runBtn");
+    runBtn.disabled = true;
+    clearBootstrap();
+
+    var data = state.data;
+    var fn = statFn(state.stat);
+    var B = state.B;
+    var animCount = Math.min(20, B);
+    var ledger = document.getElementById("ledger");
+    ledger.innerHTML = "";
+    var progressWrap = document.getElementById("progressWrap");
+    var progressBar = document.getElementById("progressBar");
+    progressWrap.style.display = "block";
+
+    var b = 0;
+
+    function animatedStep(){
+      var draw = drawResample(data, rng);
+      var s = fn(draw.values);
+      state.bootStats.push(s);
+      state.resampleLog.push({indices: draw.indices, values: draw.values, stat: s});
+
+      var row = document.createElement("div");
+      row.className = "ledger-row";
+      row.innerHTML =
+        '<div class="ledger-num">#'+(b+1)+'</div>' +
+        '<div class="ledger-strip">'+renderMiniStrip(draw.values, lastScale)+'</div>' +
+        '<div class="ledger-stat">'+statLabel(state.stat)+' = <b>'+fmt(s,3)+'</b></div>';
+      ledger.appendChild(row);
+
+      b++;
+      progressBar.style.width = Math.round(100*b/B) + "%";
+
+      if(b < animCount){
+        setTimeout(animatedStep, 90);
+      } else {
+        document.getElementById("ledgerMore").style.display = B > animCount ? "block" : "none";
+        if(B > animCount){
+          document.getElementById("ledgerMore").textContent =
+            "+ " + (B - animCount) + " more resamples drawn instantly and included in the distribution below.";
+        }
+        setTimeout(bulkStep, 30);
+      }
+    }
+
+    function bulkStep(){
+      // compute remaining resamples in fast batches, updating progress
+      var batchSize = Math.max(50, Math.floor(B/20));
+      var did = 0;
+      while(b < B && did < batchSize){
+        var draw = drawResample(data, rng);
+        var s = fn(draw.values);
+        state.bootStats.push(s);
+        if(state.resampleLog.length < 15){
+          state.resampleLog.push({indices: draw.indices, values: draw.values, stat: s});
+        }
+        b++; did++;
+      }
+      progressBar.style.width = Math.round(100*b/B) + "%";
+      if(b < B){
+        setTimeout(bulkStep, 0);
+      } else {
+        setTimeout(finish, 120);
+      }
+    }
+
+    function finish(){
+      progressWrap.style.display = "none";
+      renderResults();
+      renderPeekTable();
+      running = false;
+      runBtn.disabled = false;
+    }
+
+    if(B <= 0){ running = false; runBtn.disabled = false; return; }
+    animatedStep();
+  });
+
+  /* ---------------- results: histogram + stats ---------------- */
+  function renderResults(){
+    var stats = state.bootStats;
+    var sorted = sortedCopy(stats);
+    var observed = statFn(state.stat)(state.data);
+    var bootSE = sd(stats);
+    var ciLo = percentile(sorted, 2.5);
+    var ciHi = percentile(sorted, 97.5);
+
+    // histogram binning
+    var W = 560, H = 300, margin = {l:44,r:14,t:14,b:36};
+    var min = sorted[0], max = sorted[sorted.length-1];
+    if(min === max){ min -= 1; max += 1; }
+    var pad = (max-min)*0.06;
+    min -= pad; max += pad;
+    var nbins = Math.min(28, Math.max(10, Math.round(Math.sqrt(stats.length))));
+    var binW = (max-min)/nbins;
+    var counts = new Array(nbins).fill(0);
+    stats.forEach(function(s){
+      var bi = Math.min(nbins-1, Math.max(0, Math.floor((s-min)/binW)));
+      counts[bi]++;
+    });
+    var maxCount = Math.max.apply(null, counts);
+
+    var plotW = W - margin.l - margin.r, plotH = H - margin.t - margin.b;
+    function xPix(v){ return margin.l + (v-min)/(max-min) * plotW; }
+    function yPix(c){ return margin.t + plotH - (c/maxCount) * plotH; }
+
+    var html = "";
+    // CI band
+    var ciX1 = xPix(ciLo), ciX2 = xPix(ciHi);
+    html += '<rect class="ci-band" x="'+ciX1+'" y="'+margin.t+'" width="'+(ciX2-ciX1)+'" height="'+plotH+'"></rect>';
+    html += '<line class="ci-edge" x1="'+ciX1+'" y1="'+margin.t+'" x2="'+ciX1+'" y2="'+(margin.t+plotH)+'"></line>';
+    html += '<line class="ci-edge" x1="'+ciX2+'" y1="'+margin.t+'" x2="'+ciX2+'" y2="'+(margin.t+plotH)+'"></line>';
+
+    // bars
+    counts.forEach(function(c,i){
+      var bx = xPix(min + i*binW);
+      var bw = xPix(min + (i+1)*binW) - bx;
+      var by = yPix(c);
+      html += '<rect class="bar-boot" x="'+(bx+0.5)+'" y="'+by+'" width="'+Math.max(0,bw-1)+'" height="'+(margin.t+plotH-by)+'"></rect>';
+    });
+
+    // axis
+    html += '<line class="axis-line" x1="'+margin.l+'" y1="'+(margin.t+plotH)+'" x2="'+(margin.l+plotW)+'" y2="'+(margin.t+plotH)+'"></line>';
+    var ticks = 5;
+    for(var i=0;i<=ticks;i++){
+      var tv = min + (max-min)*i/ticks;
+      var tx = xPix(tv);
+      html += '<line class="axis-tick" x1="'+tx+'" y1="'+(margin.t+plotH)+'" x2="'+tx+'" y2="'+(margin.t+plotH+5)+'"></line>';
+      html += '<text class="axis-text" x="'+tx+'" y="'+(margin.t+plotH+18)+'" text-anchor="middle">'+tv.toFixed(2)+'</text>';
+    }
+
+    // observed ref line
+    var ox = xPix(observed);
+    html += '<line class="ref-line" x1="'+ox+'" y1="'+margin.t+'" x2="'+ox+'" y2="'+(margin.t+plotH)+'"></line>';
+
+    document.getElementById("histogram").innerHTML = html;
+
+    var boxes = [
+      {k:"statistic (your sample)", v: fmt(observed,3)},
+      {k:"bootstrap standard error", v: fmt(bootSE,3)},
+      {k:"95% bootstrap interval", v: fmt(ciLo,3)+" to "+fmt(ciHi,3)},
+      {k:"resamples drawn", v: stats.length}
+    ];
+    document.getElementById("resultStats").innerHTML = boxes.map(function(b){
+      return '<div class="stat-box"><div class="k">'+b.k+'</div><div class="v">'+b.v+'</div></div>';
+    }).join("");
+
+    var compareEl = document.getElementById("compareLine");
+    var noteEl = document.getElementById("noteBox");
+    if(state.stat === "mean"){
+      var classicalSE = sd(state.data)/Math.sqrt(state.data.length);
+      compareEl.innerHTML = 'For comparison, the classical formula <span class="mono">s/√n</span> gives a standard error of <b class="mono">'+fmt(classicalSE,3)+'</b> — usually close to the bootstrap figure above when the sample size is reasonable and the mean is well-behaved.';
+    } else {
+      compareEl.innerHTML = 'There is no simple textbook formula for the standard error of the '+statLabel(state.stat).toLowerCase()+' — this is exactly the situation the bootstrap is built for.';
+    }
+    if(state.data.length < 15){
+      noteEl.style.display = "block";
+      noteEl.innerHTML = '<b>Small sample, wide margins.</b> With only '+state.data.length+' observations, every resample is built from a very limited pool. The bootstrap distribution above reflects your sample\'s uncertainty honestly — but that uncertainty is large because the original evidence is limited, not because the method is failing.';
+    } else {
+      noteEl.style.display = "none";
+    }
+  }
+
+  function renderPeekTable(){
+    var rows = state.resampleLog.slice(0, 15);
+    var html = "<thead><tr><th>#</th><th>drawn indices (1-based)</th><th>" + statLabel(state.stat) + "</th></tr></thead><tbody>";
+    rows.forEach(function(r, i){
+      var idxStr = r.indices.map(function(j){ return j+1; }).join(", ");
+      html += "<tr><td>"+(i+1)+"</td><td>"+idxStr+"</td><td>"+fmt(r.stat,3)+"</td></tr>";
+    });
+    html += "</tbody>";
+    document.getElementById("peekTable").innerHTML = html;
+  }
+
+  /* ---------------- init ---------------- */
+  renderDataStrip();
+
+})();
+</script>
+</body>
+</html>
