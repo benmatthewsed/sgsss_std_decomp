@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Signal / Noise — The Ratio of Two Normals</title>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --bg: #E8ECE6;
+    --surface: #FCFCF9;
+    --ink: #1C2A26;
+    --ink-soft: #56655F;
+    --line: #C7D0C6;
+    --line-strong: #9FAE9C;
+    --teal: #1F6F63;
+    --teal-dark: #164F46;
+    --teal-soft: rgba(31,111,99,0.14);
+    --ochre: #B8842A;
+    --ochre-soft: #EAD9B0;
+    --ochre-soft-bg: rgba(184,132,42,0.16);
+    --indigo: #3C4A73;
+    --indigo-soft: rgba(60,74,115,0.14);
+    --rose: #A6473C;
+    --rose-soft: rgba(166,71,60,0.12);
+    --paper-shadow: 0 1px 0 rgba(28,42,38,0.06);
+    --radius: 10px;
+    --max-w: 980px;
+
+    --x-color: var(--teal);
+    --y-color: var(--ochre);
+    --ratio-color: var(--indigo);
+    --clip-color: var(--rose);
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: radial-gradient(circle at 20% 0%, #171a26 0%, var(--bg) 45%, var(--bg-alt) 100%);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 28px 20px 60px;
+    min-height: 100vh;
+  }
+
+  .app{ max-width: 980px; margin: 0 auto; }
+
+  header{ margin-bottom: 28px; }
+  .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  h1{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(26px, 4vw, 38px);
+    line-height: 1.1;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  h1 .accent-x{ color: var(--x-color); }
+  h1 .accent-y{ color: var(--y-color); }
+  .lede{
+    color: var(--text-dim);
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  .controls-bar{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+  }
+  .control{ display:flex; flex-direction:column; gap:8px; }
+  .control label{
+    font-size: 12px;
+    color: var(--text-dim);
+    font-weight: 500;
+    display:flex; gap:6px; align-items:baseline;
+  }
+  .control label span, .control label b{
+    font-family:'JetBrains Mono', monospace;
+    color: var(--text);
+    font-size: 13px;
+  }
+  input[type="range"]{
+    -webkit-appearance:none; appearance:none;
+    width: 220px; height: 4px;
+    background: linear-gradient(90deg, var(--panel-border), var(--panel-border));
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--focus);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--panel-border), 0 0 10px rgba(126,224,255,0.5);
+    cursor: pointer;
+    margin-top: -1px;
+  }
+  input[type="range"]::-moz-range-thumb{
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--focus); border: 3px solid var(--bg); cursor:pointer;
+  }
+  input[type="range"]:focus-visible::-webkit-slider-thumb{
+    outline: 2px solid var(--focus); outline-offset: 2px;
+  }
+
+  #muSlider{
+    background: linear-gradient(90deg, var(--x-color-soft), var(--panel-border) 50%, var(--y-color-soft));
+  }
+
+  .segmented{ display:flex; border:1px solid var(--panel-border); border-radius:8px; overflow:hidden; }
+  .segmented button{
+    background: transparent; border:none; color: var(--text-dim);
+    font-family:'JetBrains Mono', monospace; font-size:13px;
+    padding: 8px 14px; cursor:pointer; border-right: 1px solid var(--panel-border);
+    transition: background .15s, color .15s;
+  }
+  .segmented button:last-child{ border-right:none; }
+  .segmented button:hover{ background: rgba(255,255,255,0.04); color: var(--text); }
+  .segmented button.active{ background: var(--ratio-color-soft); color: var(--text); }
+  .segmented button:focus-visible{ outline: 2px solid var(--focus); outline-offset: -2px; }
+
+  .primary-btn{
+    background: var(--ratio-color);
+    color: var(--teal);
+    border: none;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 11px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: transform .12s, box-shadow .12s, background .12s;
+    box-shadow: 0 0 0 rgba(185,104,199,0);
+  }
+  .primary-btn:hover{ background:#c988da; box-shadow: 0 0 18px rgba(185,104,199,0.35); transform: translateY(-1px); }
+  .primary-btn:active{ transform: translateY(0); }
+  .primary-btn:focus-visible{ outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .panel{
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 18px 20px 20px;
+    margin-bottom: 22px;
+  }
+  .panel-head{
+    display:flex; justify-content: space-between; align-items: flex-end;
+    flex-wrap: wrap; gap: 14px; margin-bottom: 6px;
+  }
+  .panel-head h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 16px; font-weight: 600; margin: 0;
+    color: var(--text);
+  }
+  .legend{ display:flex; gap: 16px; font-size: 12px; color: var(--text-dim); }
+  .legend span{ display:inline-flex; align-items:center; gap:6px; }
+  .dot{ width:9px; height:9px; border-radius:50%; display:inline-block; }
+  .dot.x{ background: var(--x-color); }
+  .dot.y{ background: var(--y-color); }
+
+  svg{ width: 100%; height: auto; display:block; }
+
+  .annotation{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    margin: 10px 2px 0;
+    padding: 8px 12px;
+    border-left: 2px solid var(--clip-color);
+    background: var(--danger-band);
+    border-radius: 0 6px 6px 0;
+  }
+  .annotation.calm{ border-left-color: var(--x-color); background: rgba(79,209,197,0.06); }
+  .annotation.warn{ border-left-color: #f2a93b; background: rgba(242,169,59,0.06); }
+
+  .range-control{ align-items: flex-end; }
+  .range-control input[type="range"]{
+    background: var(--panel-border); width: 180px;
+  }
+
+  .clip-readout{
+    display:flex; align-items:center; justify-content: space-between;
+    gap: 16px; margin-top: 12px; flex-wrap: wrap;
+  }
+  .clip-light{
+    display:flex; flex-direction:column; align-items:center; gap:4px;
+    font-family:'JetBrains Mono', monospace; font-size: 10.5px;
+    color: var(--text-faint); letter-spacing: 0.06em;
+    min-width: 110px;
+  }
+  .clip-light span{
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #2a2e3d;
+    box-shadow: inset 0 0 0 2px #363a4a;
+    transition: background .2s, box-shadow .2s;
+  }
+  .clip-light.active span{
+    background: var(--clip-color);
+    box-shadow: 0 0 12px 3px var(--clip-glow), inset 0 0 0 2px rgba(255,255,255,0.15);
+    animation: pulse 1.1s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity: 1; }
+    50%{ opacity: 0.55; }
+  }
+  .clip-light b{ color: var(--text); font-size: 15px; font-weight: 500; }
+
+  .stat-block{ display:flex; gap: 22px; }
+  .stat-block div{ display:flex; flex-direction:column; align-items:center; gap:2px; }
+  .stat-block label{ font-size: 10.5px; color: var(--text-faint); text-transform: uppercase; letter-spacing: .06em; }
+  .stat-block b{ font-family:'JetBrains Mono', monospace; font-size: 16px; color: var(--text); font-weight: 500; }
+
+  footer{
+    color: var(--text-faint);
+    font-size: 12.5px;
+    line-height: 1.6;
+    max-width: 680px;
+    margin-top: 6px;
+  }
+  footer b{ color: var(--text-dim); }
+
+  @media (prefers-reduced-motion: reduce){
+    .clip-light.active span{ animation: none; }
+  }
+
+  @media (max-width: 560px){
+    .controls-bar{ flex-direction: column; align-items: stretch; }
+    input[type="range"], .range-control input[type="range"]{ width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <p class="eyebrow">Bootstrapping Lab · Monte Carlo Demo</p>
+    <h1>The Sampling Distribution of <span class="accent-x">X</span> / <span class="accent-y">Y</span></h1>
+    <p class="lede">
+      X is pinned at a standard normal. Drag Y's mean and watch what happens to the ratio
+      of sampled values when the two distributions overlap near zero — and what happens
+      when they pull apart.
+    </p>
+  </header>
+
+  <section class="controls-bar">
+    <div class="control">
+      <label>Mean of Y &nbsp;<span id="muVal">0.00</span></label>
+      <input type="range" id="muSlider" min="-10" max="10" step="0.05" value="0" aria-label="Mean of Y">
+    </div>
+    <div class="control">
+      <label>Sample size</label>
+      <div class="segmented" id="nButtons" role="group" aria-label="Sample size">
+        <button data-n="200">200</button>
+        <button data-n="1000" class="active">1,000</button>
+        <button data-n="5000">5,000</button>
+      </div>
+    </div>
+    <button id="resampleBtn" class="primary-btn">⟳ Draw new sample</button>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Where the samples land</h2>
+      <div class="legend">
+        <span><i class="dot x"></i>X ~ N(0, 1)</span>
+        <span><i class="dot y"></i>Y ~ N(μ, 1)</span>
+      </div>
+    </div>
+    <svg id="densitySvg" viewBox="0 0 900 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Overlapping density curves of X and Y with sample rug plots"></svg>
+    <p class="annotation" id="overlapNote">—</p>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Sampling distribution of X / Y <span style="color:var(--text-faint); font-weight:400;">(this sample's ratios)</span></h2>
+      <div class="control range-control">
+        <label>Display range &nbsp;±<span id="clipVal">8</span></label>
+        <input type="range" id="clipSlider" min="2" max="30" step="1" value="8" aria-label="Histogram display range">
+      </div>
+    </div>
+    <svg id="histSvg" viewBox="0 0 900 320" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Histogram of sampled ratios, values outside range are excluded and counted"></svg>
+
+    <div class="clip-readout">
+      <div class="clip-light" id="leftClipLight">
+        <span></span>
+        ◀ OUT OF RANGE (LOW)
+        <b id="leftClipCount">0</b>
+      </div>
+      <div class="stat-block">
+        <div><label>n</label><b id="statN">1000</b></div>
+        <div><label>median ratio</label><b id="statMedian">0.00</b></div>
+        <div><label>shown</label><b id="statInRange">100%</b></div>
+      </div>
+      <div class="clip-light" id="rightClipLight">
+        <span></span>
+        OUT OF RANGE (HIGH) ▶
+        <b id="rightClipCount">0</b>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <b>Why this matters for bootstrapping:</b> each click of "Draw new sample" is a fresh
+    Monte&nbsp;Carlo draw from the same population — exactly the resampling logic behind the
+    bootstrap. Notice how much the histogram's shape and spread change from sample to sample,
+    especially when μ is near 0. At μ = 0, X/Y follows a Cauchy distribution: it has no defined
+    mean or variance, because Y keeps landing arbitrarily close to zero and blowing the ratio up.
+    That's a case where the usual bootstrap standard-error intuition breaks down.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  // ---------- RNG ----------
+  let spareNormal = null;
+  function randNormal(){
+    if(spareNormal !== null){ const v = spareNormal; spareNormal = null; return v; }
+    let u, v, s;
+    do{
+      u = Math.random()*2-1;
+      v = Math.random()*2-1;
+      s = u*u+v*v;
+    } while(s===0 || s>=1);
+    const mul = Math.sqrt(-2*Math.log(s)/s);
+    spareNormal = v*mul;
+    return u*mul;
+  }
+  function normalPdf(x, mu, sigma){
+    const z = (x-mu)/sigma;
+    return Math.exp(-0.5*z*z) / (sigma*Math.sqrt(2*Math.PI));
+  }
+
+  // ---------- State ----------
+  const state = { mu: 0, n: 1000, clip: 8, xs: [], ys: [], ratios: [] };
+
+  function drawSample(){
+    const xs = new Array(state.n), ys = new Array(state.n), ratios = new Array(state.n);
+    for(let i=0;i<state.n;i++){
+      const x = randNormal();
+      const y = state.mu + randNormal();
+      xs[i]=x; ys[i]=y; ratios[i]=x/y;
+    }
+    state.xs = xs; state.ys = ys; state.ratios = ratios;
+  }
+
+  // ---------- DOM refs ----------
+  const muSlider = document.getElementById('muSlider');
+  const muVal = document.getElementById('muVal');
+  const clipSlider = document.getElementById('clipSlider');
+  const clipVal = document.getElementById('clipVal');
+  const resampleBtn = document.getElementById('resampleBtn');
+  const nButtons = document.querySelectorAll('#nButtons button');
+  const densitySvg = document.getElementById('densitySvg');
+  const histSvg = document.getElementById('histSvg');
+  const overlapNote = document.getElementById('overlapNote');
+  const leftClipLight = document.getElementById('leftClipLight');
+  const rightClipLight = document.getElementById('rightClipLight');
+  const leftClipCount = document.getElementById('leftClipCount');
+  const rightClipCount = document.getElementById('rightClipCount');
+  const statN = document.getElementById('statN');
+  const statMedian = document.getElementById('statMedian');
+  const statInRange = document.getElementById('statInRange');
+
+  function svgEl(tag, attrs){
+    const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for(const k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+
+  // ---------- Density panel ----------
+  const DX0 = -6, DX1 = 6, DPX0 = 40, DPX1 = 860, DBASE = 240, DTOP = 20;
+  function dxScale(x){ return DPX0 + (x-DX0)/(DX1-DX0)*(DPX1-DPX0); }
+
+  function renderDensity(){
+    densitySvg.innerHTML = '';
+    const gridGroup = svgEl('g', {});
+    // gridlines
+    for(let gx=-6; gx<=6; gx+=2){
+      const px = dxScale(gx);
+      gridGroup.appendChild(svgEl('line', {x1:px, y1:DTOP, x2:px, y2:DBASE, stroke:'#242838', 'stroke-width':1}));
+      const t = svgEl('text', {x:px, y:DBASE+18, fill:'#5c6076', 'font-size':11, 'font-family':'JetBrains Mono, monospace', 'text-anchor':'middle'});
+      t.textContent = gx;
+      gridGroup.appendChild(t);
+    }
+    gridGroup.appendChild(svgEl('line', {x1:DPX0, y1:DBASE, x2:DPX1, y2:DBASE, stroke:'#363a4a', 'stroke-width':1.2}));
+    densitySvg.appendChild(gridGroup);
+
+    // danger band around y=0 (where Y crosses zero -> denominator explosion)
+    const bandHalf = 0.35;
+    const bx0 = dxScale(-bandHalf), bx1 = dxScale(bandHalf);
+    densitySvg.appendChild(svgEl('rect', {x:bx0, y:DTOP, width:bx1-bx0, height:DBASE-DTOP, fill:'rgba(255,84,112,0.07)'}));
+    const dashLine = svgEl('line', {x1:dxScale(0), y1:DTOP, x2:dxScale(0), y2:DBASE, stroke:'#ff5470', 'stroke-width':1, 'stroke-dasharray':'4 4', opacity:0.6});
+    densitySvg.appendChild(dashLine);
+    const dLabel = svgEl('text', {x:dxScale(0)+6, y:DTOP+14, fill:'#ff8a9e', 'font-size':10.5, 'font-family':'JetBrains Mono, monospace'});
+    dLabel.textContent = 'Y ≈ 0 → ratio explodes';
+    densitySvg.appendChild(dLabel);
+
+    // pdf curves + overlap fill
+    const steps = 240;
+    let maxPdf = 0;
+    const ptsX = [], ptsY = [], ptsOverlap = [];
+    for(let i=0;i<=steps;i++){
+      const x = DX0 + (DX1-DX0)*i/steps;
+      const pX = normalPdf(x, 0, 1);
+      const pY = normalPdf(x, state.mu, 1);
+      ptsX.push([x,pX]); ptsY.push([x,pY]); ptsOverlap.push([x, Math.min(pX,pY)]);
+      maxPdf = Math.max(maxPdf, pX, pY);
+    }
+    const dyScale = p => DBASE - (p/maxPdf)*(DBASE-DTOP)*0.92;
+
+    function pathFor(pts){
+      return pts.map((p,i)=>`${i===0?'M':'L'}${dxScale(p[0]).toFixed(2)},${dyScale(p[1]).toFixed(2)}`).join(' ');
+    }
+    function areaPathFor(pts){
+      let d = `M${dxScale(pts[0][0]).toFixed(2)},${DBASE}`;
+      pts.forEach(p=> d += ` L${dxScale(p[0]).toFixed(2)},${dyScale(p[1]).toFixed(2)}`);
+      d += ` L${dxScale(pts[pts.length-1][0]).toFixed(2)},${DBASE} Z`;
+      return d;
+    }
+
+    densitySvg.appendChild(svgEl('path', {d: areaPathFor(ptsOverlap), fill:'rgba(255,255,255,0.10)'}));
+    densitySvg.appendChild(svgEl('path', {d: pathFor(ptsX), fill:'none', stroke:'var(--x-color)', 'stroke-width':2.2}));
+    densitySvg.appendChild(svgEl('path', {d: pathFor(ptsY), fill:'none', stroke:'var(--y-color)', 'stroke-width':2.2}));
+
+    // rug plots (subsample for clarity)
+    const rugCount = Math.min(state.n, 260);
+    const rugX = svgEl('g', {}); const rugY = svgEl('g', {});
+    for(let i=0;i<rugCount;i++){
+      const px = dxScale(Math.max(DX0, Math.min(DX1, state.xs[i])));
+      rugX.appendChild(svgEl('line', {x1:px, y1:255, x2:px, y2:263, stroke:'var(--x-color)', 'stroke-width':1, opacity:0.55}));
+      const py = dxScale(Math.max(DX0, Math.min(DX1, state.ys[i])));
+      rugY.appendChild(svgEl('line', {x1:py, y1:267, x2:py, y2:275, stroke:'var(--y-color)', 'stroke-width':1, opacity:0.55}));
+    }
+    densitySvg.appendChild(rugX);
+    densitySvg.appendChild(rugY);
+
+    // overlap annotation
+    let overlapArea = 0;
+    for(let i=0;i<ptsOverlap.length-1;i++){
+      overlapArea += (ptsOverlap[i][1]+ptsOverlap[i+1][1])/2 * (ptsOverlap[i+1][0]-ptsOverlap[i][0]);
+    }
+    overlapNote.classList.remove('calm','warn');
+    if(Math.abs(state.mu) < 0.5){
+      overlapNote.textContent = `Heavy overlap near zero (shared area ≈ ${overlapArea.toFixed(2)}). Y frequently lands close to 0 — expect extreme ratios.`;
+    } else if(Math.abs(state.mu) < 1.3){
+      overlapNote.classList.add('warn');
+      overlapNote.textContent = `Partial overlap (shared area ≈ ${overlapArea.toFixed(2)}). Y rarely lands near 0, but it still happens — occasional large ratios remain.`;
+    } else {
+      overlapNote.classList.add('calm');
+      overlapNote.textContent = `Distributions barely overlap (shared area ≈ ${overlapArea.toFixed(2)}). Y almost never nears 0 — the ratio behaves much closer to normal.`;
+    }
+  }
+
+  // ---------- Histogram panel ----------
+  const HPX0 = 55, HPX1 = 845, HBASE = 280, HTOP = 20;
+  function renderHist(){
+    histSvg.innerHTML = '';
+    const clip = state.clip;
+    const bins = 64;
+    const counts = new Array(bins).fill(0);
+    let left=0, right=0;
+    const r = state.ratios;
+    const width = (2*clip)/bins;
+    for(let i=0;i<r.length;i++){
+      const v = r[i];
+      if(v < -clip){ left++; continue; }
+      if(v > clip){ right++; continue; }
+      let b = Math.floor((v+clip)/width);
+      if(b>=bins) b = bins-1; if(b<0) b=0;
+      counts[b]++;
+    }
+    const maxCount = Math.max(1, ...counts);
+    function hx(v){ return HPX0 + (v+clip)/(2*clip)*(HPX1-HPX0); }
+    function hy(c){ return HBASE - (c/maxCount)*(HBASE-HTOP); }
+
+    // gridlines + axis labels
+    const gridGroup = svgEl('g', {});
+    const tickCount = 6;
+    for(let i=0;i<=tickCount;i++){
+      const v = -clip + (2*clip)*i/tickCount;
+      const px = hx(v);
+      gridGroup.appendChild(svgEl('line', {x1:px, y1:HTOP, x2:px, y2:HBASE, stroke:'#242838', 'stroke-width':1}));
+      const t = svgEl('text', {x:px, y:HBASE+18, fill:'#5c6076', 'font-size':11, 'font-family':'JetBrains Mono, monospace', 'text-anchor':'middle'});
+      t.textContent = v.toFixed(1);
+      gridGroup.appendChild(t);
+    }
+    gridGroup.appendChild(svgEl('line', {x1:HPX0, y1:HBASE, x2:HPX1, y2:HBASE, stroke:'#363a4a', 'stroke-width':1.2}));
+    histSvg.appendChild(gridGroup);
+
+    // bars
+    const barGroup = svgEl('g', {});
+    const barW = (HPX1-HPX0)/bins;
+    for(let i=0;i<bins;i++){
+      if(counts[i]===0) continue;
+      const x0 = HPX0 + i*barW;
+      const y1 = hy(counts[i]);
+      barGroup.appendChild(svgEl('rect', {
+        x:x0+0.6, y:y1, width: Math.max(0.6, barW-1.2), height: HBASE-y1,
+        fill:'var(--ratio-color)', opacity:0.85
+      }));
+    }
+    histSvg.appendChild(barGroup);
+
+    // clip zone shading + edge markers
+    if(left>0){
+      histSvg.appendChild(svgEl('rect', {x:HPX0-14, y:HTOP, width:14, height:HBASE-HTOP, fill:'rgba(255,84,112,0.18)'}));
+      const tri = svgEl('polygon', {points:`${HPX0-6},${HBASE-8} ${HPX0+4},${HBASE-16} ${HPX0+4},${HBASE-0}`, fill:'var(--clip-color)'});
+      histSvg.appendChild(tri);
+      const lbl = svgEl('text', {x:HPX0-8, y:HTOP+14, fill:'#ff8a9e', 'font-size':10.5, 'font-family':'JetBrains Mono, monospace', 'text-anchor':'end'});
+      lbl.textContent = `${left} clipped`;
+      histSvg.appendChild(lbl);
+    }
+    if(right>0){
+      histSvg.appendChild(svgEl('rect', {x:HPX1, y:HTOP, width:14, height:HBASE-HTOP, fill:'rgba(255,84,112,0.18)'}));
+      const tri = svgEl('polygon', {points:`${HPX1+6},${HBASE-8} ${HPX1-4},${HBASE-16} ${HPX1-4},${HBASE-0}`, fill:'var(--clip-color)'});
+      histSvg.appendChild(tri);
+      const lbl = svgEl('text', {x:HPX1+8, y:HTOP+14, fill:'#ff8a9e', 'font-size':10.5, 'font-family':'JetBrains Mono, monospace'});
+      lbl.textContent = `${right} clipped`;
+      histSvg.appendChild(lbl);
+    }
+
+    // clip lights + stats
+    leftClipLight.classList.toggle('active', left>0);
+    rightClipLight.classList.toggle('active', right>0);
+    leftClipCount.textContent = left;
+    rightClipCount.textContent = right;
+    statN.textContent = r.length.toLocaleString();
+    const sorted = [...r].sort((a,b)=>a-b);
+    const median = sorted.length%2===1 ? sorted[(sorted.length-1)/2] : (sorted[sorted.length/2-1]+sorted[sorted.length/2])/2;
+    statMedian.textContent = median.toFixed(3);
+    const shownPct = ((r.length-left-right)/r.length*100);
+    statInRange.textContent = shownPct.toFixed(1)+'%';
+  }
+
+  function renderAll(){
+    renderDensity();
+    renderHist();
+  }
+
+  // ---------- Events ----------
+  muSlider.addEventListener('input', ()=>{
+    state.mu = parseFloat(muSlider.value);
+    muVal.textContent = state.mu.toFixed(2);
+    drawSample();
+    renderAll();
+  });
+
+  clipSlider.addEventListener('input', ()=>{
+    state.clip = parseFloat(clipSlider.value);
+    clipVal.textContent = state.clip;
+    renderHist();
+  });
+
+  resampleBtn.addEventListener('click', ()=>{
+    drawSample();
+    renderAll();
+  });
+
+  nButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      nButtons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      state.n = parseInt(btn.dataset.n, 10);
+      drawSample();
+      renderAll();
+    });
+  });
+
+  // ---------- Init ----------
+  drawSample();
+  renderAll();
+})();
+</script>
+</body>
+</html>

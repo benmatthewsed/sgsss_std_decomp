@@ -20,7 +20,10 @@ format:
 
 ## Hello! 
 - Who we are
-- Who you are (Mentimeter: Your background? What you want to get from this session?)
+  - Ben; Josiah; Chloe; Trystan
+- Who you are (Ben open https://www.menti.com/ala23cd37ta7)
+
+
 
 ## Housekeeping
 
@@ -30,7 +33,6 @@ format:
 - Materials will live online here so you can access them any time
 
 ## Learning outcomes
-Learning outcomes
 
 By the end of the workshop you will:
 
@@ -46,6 +48,17 @@ By the end of the workshop you will:
 
 - You can follow along with the materials in a local installation of R and RStudio on your own computer
 - You can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp
-- If you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) [Ben post the link in the chat now]
+- If you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) https://posit.cloud/content/12653236
 - For Stata you're relying on your own copy
+
+## Software
+
+- R examples use the [DasGuptR](https://cran.r-project.org/web/packages/DasGuptR/index.html) package. We (mainly Josiah) wrote this!
+- Stata examples use the rdecompose command [@liRateDecompositionAggregate2017]. Seems neat!
+- For obvious reasons we are more familiar with the R version, and so focus on that
+- For some of the more complex examples we only provide R examples. You (or a friendly LLM) may be able to translate these to Stata
+
+:::aside
+Or maybe not. I found that LLMs (the free ChatGPT one) was not at all good with rdecompose - perhaps because the documentation isn't that extensive
+:::
 

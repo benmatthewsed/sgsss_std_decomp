@@ -284,7 +284,13 @@ install_github("josiahpjking/DasGuptR@develop")
 
 In Stata: **rdecompose**
 
-TODO (Ben)
+```
+clear
+input str12 LAA long n_people long n_women15to44 int n_births
+"Glasgow City" 650300 161105 6150
+"Stirling" 94210 17844 659
+end
+```
 
 
 `r qend()`
@@ -307,7 +313,6 @@ p01 <- data.frame(
 :::panel
 #### Stata
 
-TODO Ben check
 ```
 clear
 input str12 LAA long n_people long n_women15to44 int n_births
@@ -387,9 +392,7 @@ p01a <- data.frame(
 :::
 :::panel
 ### Stata
-
-TODO ben check
-```
+```default
 clear
 input str12 LAA long n_people long n_women long n_women15to44 int n_births
 "Glasgow City" 650300 332054 161105 6150
@@ -445,8 +448,7 @@ scot_v_eng <-
 :::panel
 #### Stata
 
-TODO ben check
-```
+```default
 clear
 input str8 country long n_people long n_women long n_women1544 long n_births
 "Scotland"  5546900  2851740  1064441  45763
@@ -539,8 +541,7 @@ work25 <- data.frame(
 :::
 :::panel
 #### Stata
-TODO ben check
-```
+```default
 clear
 input str7 pop long working_age long labour_force long employees float avg_hours_pp double total_weekly_earnings
 "males"   23718900 18442860 4823169 37.9 4240916038
@@ -651,14 +652,5 @@ together, we have this antagonistic relationship between these two factors and t
 
 `r solend()`
 
-
-
-::: {.callout-note collapse="true"}
-#### Avg Earnings in Black and White Populations (Das Gupta Example 2.1)
-
-TODO
-
-
-:::
 
 

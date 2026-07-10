@@ -47,17 +47,17 @@ options(digits=2)
 
 - Conceptually the focus is on _aggregate_/_marginal_ rates, not individual effects
 - Aggregate rates are really common as [performance indicators](https://www.gov.scot/collections/national-performance-framework/): the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate... were all part of Scotland's National Performance Framework
-- Individual effects can aggregate in non-intuitive ways [see @good1987 or @simpson1951]
+- Individual effects can aggregate in non-intuitive ways [see @goodAmalgamationGeometryTwobyTwo1987 or @simpsonInterpretationInteractionContingency1951]
 
 ::: aside
-'Marginal' has two opposite meanings in statistics - either it can be an average or it can be a small change [@gelmanMarginal2006]. To get technical, it can be either an integral or a derivative
+'Marginal' has two opposite meanings in statistics - either it can be an average or it can be a small change [@gelmanMarginal2006]. To get technical, it can be either an integral or a derivative. Fun!
 :::
 
 
 ## Kitagawa's example
 - "For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition" @kitagawaComponentsDifferenceTwo1955
 - Take the observed age/sex/race death rates for your two areas
-- Multiply these by some standard age, sex and race profile
+- Multiply these by some standard age, sex and race [sic] profile
 - You have 'standardized' rates!
 
 ## Picking a standard population
@@ -69,6 +69,9 @@ options(digits=2)
   - Something else?
 
 # Student discussion
+
+- Have a think about it, talk it over if you like (in person or the Teams chat)
+- Vote at https://www.menti.com/alj2qykb376m
 
 ## Decomposition
 
@@ -86,22 +89,52 @@ options(digits=2)
 - Decomposition lets you say how much of the difference between crude rates of your outcome between your comparison cases are due to the various factors you choose to control for
 - In Kitagawa's example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is 'left over'
 
+## A conjecture
+- A lot of social science research either aims to identify the 'effect' of some independent variable on an outcome
+- In either an associational or causal way [@hollandStatisticsCausalInference1986]
+- But this is only half the picture
+
+## A conjecture
+- The What is Your Estimand? approach to social science splits a target 'estimand' into "a unit-specific quantity ... aggregated over a target population of units" [@lundbergWhatYourEstimand2021, p535]
+- It's useful to be able to answer questions about macro-level phenomena, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes
+- Standardization and decomposition are one way to do this (there are others!)
+
+## A conjecture
+- You can be interested in (average?) individual effects, or the aggregation of individual effects in different populations
+- We can think of these as 'direct' and 'compositional' effects [@vaupelDecomposingDemographicChange2002]
+- But you need to be clear what you are interested in
+
+::: aside
+ And uh oh individual effects may aggregate in unintuitive ways in different populations [@roseSickIndividualsSick1985], but we won't really go into this today
+:::
+
 
 ## My motivating example
 
 - I (Ben) wrote my PhD thesis on the 'crime drop' in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level [@matthewsCriminalCareersCrime2017]
 - There is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)
-- Standardization and decomposition were part of my analysis in trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted
+- Standardization and decomposition appealed to me because I was trying to separate out how much of the change in the *aggregate* conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted
 
-## A conjecture
-- Most quantitative social science (implicitly?) focuses on individuals
-- "while the number of ACEs is a strong predictor of childhood offending, certain types of childhood adversity are of greater importance than others" [@jahanshahiACEsPlacesInequality2022]
-- How does the number of ACEs affect a child's probability of offending?
-- Not - how much of the change in Scotland's child offending rate is due to changes in the prevalence of ACEs?
+# Any questions?
 
-## A conjecture
-- There is nothing wrong with focusing on individuals!
-- But it's useful to be able to answer questions about macro-level phenomena too, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes
-- Standardization and decomposition are one way to do this (there are others!)
+# An exercise
+
+## Thinking about direct and compositional effects
+- Next we're going to look at a worked example about age and reconviction
+- There is a direct effect of age[^2] on reconviction: younger people typically are reconvicted at higher rates than older people
+- There is also a compositional effect: typically younger people make up more of 'reconviction cohorts' because younger people are more likely to be convicted in the first place than older people
+
+
+## Thinking about direct and compositional effects
+- Imagine you are researching whether breastfeeding practices can explain differences in children's height at age two between areas of high and low deprivation
+- What would be a direct effect? And what would be a compositional effect?
+
+https://www.menti.com/al47qfxs37jv
+
+## Thinking about direct and compositional effects
+- Take two minutes to think about your own research topic
+- What is your key 'independent' variable?
+- What might that look like as a direct effect? And what might it look like as a compositional effect?
+
 
 ## References

@@ -29,7 +29,7 @@ library(DasGuptR)
 # Example: Reconvictions by age group
 
 `r qbegin(qcounter())`
-The prevalence of reconvictions among Scottish offenders (i.e., the proportion of offenders who have a reconviction) has decreased from 32% in 2004 to 27% in 2016.  
+The prevalence of reconvictions among Scottish reconviction cohorts (i.e., the proportion of people released from prison/who receive a non-custodial sentence each year who have a reconviction) has decreased from 32% in 2004 to 27% in 2016.  
 
 The data, broken down by sex and age-group, can be found along with the DasGuptR package. 
 For these questions, we're going to combine the sexes, and aggregate up to just the age-group. You can do this with:  
@@ -44,6 +44,27 @@ reconv2 <-
     reconvicted = sum(reconvicted)
   )
 ```
+
+Or in Stata you can read in the data directly with
+
+```default
+clear
+
+input ///
+    year str10 age convicted_population offenders reconvicted
+2004 "21 to 25" 49351 10591 3861
+2004 "26 to 30" 49351  7522 2595
+2004 "31 to 40" 49351 12071 3487
+2004 "over 40"  49351  7528 1447
+2004 "under 21" 49351 11639 4587
+2016 "21 to 25" 40606  6901 2044
+2016 "26 to 30" 40606  6918 2024
+2016 "31 to 40" 40606 11222 3332
+2016 "over 40"  40606 11225 2237
+2016 "under 21" 40606  4340 1398
+end
+```
+
 
 Using the data above, calculate the crude rate each year, using two different calculations: 
 
@@ -87,6 +108,14 @@ reconv2 <-
     weight = offenders/convicted_population
   )
 ```
+
+```default
+gen rate = reconvicted/offenders
+gen weight = offenders/convicted_population
+
+tab weight
+```
+
 `r solend()`
 
 
@@ -106,6 +135,10 @@ dgnpop(reconv2,
        factors = c("rate","weight"),
        ratefunction = "sum(rate*weight)") |>
   dg_table()
+```
+
+```default
+rdecompose weight rate, group(year) sum(age)
 ```
 
 `r solend()`
@@ -145,6 +178,17 @@ reconv3 <-
 head(reconv3)
 ```
 
+```default
+clear
+import delimited "https://raw.githubusercontent.com/josiahpjking/sgsss_std_decomp/refs/heads/main/data/reconv.csv", varnames(1) clear
+
+gen agesex = age + "." + sex
+
+gen rate = reconvicted/offenders
+gen weight = offenders/convicted_population
+```
+
+
 Decompose the crude rate difference between 2004 and 2016 into the contributions from these group-specific rates and the group-specific weights (much like in the previous questions). Then do the decomposition while separating contributions of age composition from those of sex composition.  
 
 You can do all of this including _all_ years in the standardisation, and pulling out the specific years in `dg_table(pop1 = 2004, pop2 = 2016)`.   
@@ -169,6 +213,13 @@ rr2 <- dgnpop(reconv3,
 rr2 |> dg_table(2004,2016)
 rr2 |> dg_plot()
 ```
+
+The Stata package works differently: you can only decompose by pairs of years. Using `multi` lets you loop through each year in turn and compare with the earliest year:
+
+```default
+rdecompose weight rate, group(year) sum(age) multi detail
+```
+
 
 `r solend()`
 
@@ -242,7 +293,7 @@ $$ \small
 \end{align}
 $$
 
-There is an important note here that the number of homeless here is a measure that doesn't represent the entire homeless population, but rather those that are currently known to the system in a given year. As such it captures the mortality risk of the population that has engaged with homelessness applications, and *not* the mortality risk of the entire homeless population.  
+There is an important note here that the number of homeless people here is a measure that doesn't represent the entire homeless population, but rather those that are currently known to the system in a given year. As such it captures the mortality risk of the population that has engaged with homelessness applications, and *not* the mortality risk of the entire homeless population.  
 
 An alternative approach we might choose here is to decompose the *total* number of homeless deaths. The benefit here is that we can include the raw total population size as a contributing factor:  
 
@@ -309,6 +360,26 @@ dg_plot(dgres.a, legend.position="bottomright")
 ```
 
 
+```default
+import delimited "https://josiahpjking.github.io/sgsss_std_decomp/data/hdeaths.csv", varnames(1) clear
+
+gen hdr = deaths/homeless
+gen hr = homeless/scotpop
+
+summarize hr
+
+* descriptives
+
+table scotpop
+
+bysort year: egen total_scotpop = total(scotpop)
+gen popshare = scotpop / total_scotpop
+
+keep if year == 2017 | year == 2024
+
+rdecompose hr hdr popshare, group(year) sum(age_group) func(sum(popshare*hr*hdr*1e5))
+```
+
 decomposing total deaths: 
 ```{r}
 hd <- hd |> group_by(year) |>
@@ -331,8 +402,6 @@ dgres |> dg_table(2017,2024)
 
 
 `r solend()`
-
-
 
 
 
@@ -392,6 +461,23 @@ dgnpop(df,
 
 ```
 
+```default
+import delimited "https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv", varnames(1) clear
+
+
+* create the variables
+
+gen wpp = totalwaste/pop
+gen recp = recycled/totalwaste
+gen lfp = landfilled/totalwaste
+gen incp = diverted/totalwaste
+
+rdecompose wpp recp, group(year) multi
+
+rdecompose pop wpp recp, group(year) multi
+```
+
+
 `r solend()`
 
 ::: {.callout-note collapse="true"}
@@ -449,6 +535,22 @@ dgnpop(gdat,
   )
 ```
 
+
+```default
+import delimited "https://josiahpjking.github.io/sgsss_std_decomp/data/gender_pay_occ.csv", varnames(1) clear
+
+
+* create the variables
+
+gen wpp = totalwaste/pop
+gen recp = recycled/totalwaste
+gen lfp = landfilled/totalwaste
+gen incp = diverted/totalwaste
+
+rdecompose wpp recp, group(year) multi
+
+rdecompose pop wpp recp, group(year) multi
+```
 
 `r solend()`
 

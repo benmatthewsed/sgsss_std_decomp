@@ -1,0 +1,50 @@
+---
+title: "Practical sessions"
+format:
+  revealjs:
+    theme: [default, assets/mystyle.scss]
+    footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
+    transition: fade
+    slide-number: true
+    preview-links: auto
+    callout-appearance: simple
+    code-line-numbers: false
+    code-overflow: wrap
+    code-annotations: hover
+    code-copy: hover
+    chalkboard: true
+filters: 
+  - "assets/inverse_part.lua"
+title-slide-attributes:
+  data-background-color: "#006938"    
+bibliography: bibliography.bib
+---
+
+```{r}
+#| include: false
+options(digits=2)
+```
+
+## Practicalities
+
+- You can find the practical materials at the course homepage (see link at bottom)
+- We provide R and Stata code
+- We recommend picking one and sticking with it unless you are a confident user of one or both
+- We provide worked examples and then some questions
+- We have solutions for the questions, but encourage you to try to work out the solutions first
+
+## Software comparison
+- A good deal of the functionality is available in both R and Stata
+- For obvious reasons we are more familiar with the R version
+- From what I (Ben) can tell one difference is that rdecompose only allows pairwise standardization, whilst DasGuptR will standardize as many populations that you provide it
+- This means some of the examples in Exercise Two differ between the two implementations
+- This might also be me not understanding the package very well!
+
+## A note on data
+
+- We have curated a range of data examples for the practical sessions
+- As a result we are 'strangers' [@dignazio5UnicornsJanitors2020] to these data - we don't know the context of "the collection and maintenance process of the data"
+- There is always a risk of 'epistemic violence' [@dignazio5UnicornsJanitors2020 citing Gayatri Spivak] as a result
+- You may be less of a stranger to some of these topics than we are - so if we misunderstand something, or use terminology or concepts that someone more familiar would avoid, then please let us know
+
+## References
