@@ -829,36 +829,36 @@
     "objectID": "lecture00.html#hello",
     "href": "lecture00.html#hello",
     "title": "Welcome/Intro",
-    "section": "",
-    "text": "Who we are\n\nBen; Josiah; Chloe; Trystan\n\nWho you are (Ben open https://www.menti.com/ala23cd37ta7)"
+    "section": "Hello!",
+    "text": "Hello!\n\nWho we are\n\nBen; Josiah; Chloe; Trystan\n\nWho you are (Ben open https://www.menti.com/ala23cd37ta7)"
   },
   {
     "objectID": "lecture00.html#housekeeping",
     "href": "lecture00.html#housekeeping",
     "title": "Welcome/Intro",
-    "section": "",
-    "text": "Code of conduct\nAsk questions whenever 👍 You can do this through the Teams chat facility {demo this now}\nWe’ve structured the sessions with regular breaks, but if you need to leave just leave!\nMaterials will live online here so you can access them any time"
+    "section": "Housekeeping",
+    "text": "Housekeeping\n\nCode of conduct\nAsk questions whenever 👍 You can do this through the Teams chat facility {demo this now}\nWe’ve structured the sessions with regular breaks, but if you need to leave just leave!\nMaterials will live online here so you can access them any time"
   },
   {
     "objectID": "lecture00.html#learning-outcomes",
     "href": "lecture00.html#learning-outcomes",
     "title": "Welcome/Intro",
-    "section": "",
-    "text": "By the end of the workshop you will:\n\nUnderstand how standardization and decomposition can be used to answer social science research questions\nBe familiar with different approaches to standardization and decomposition\nBe able to apply standardization and decomposition to practical examples in R or Stata"
+    "section": "Learning outcomes",
+    "text": "Learning outcomes\nBy the end of the workshop you will:\n\nUnderstand how standardization and decomposition can be used to answer social science research questions\nBe familiar with different approaches to standardization and decomposition\nBe able to apply standardization and decomposition to practical examples in R or Stata"
   },
   {
     "objectID": "lecture00.html#course-schedule",
     "href": "lecture00.html#course-schedule",
     "title": "Welcome/Intro",
-    "section": "",
-    "text": "See the course website"
+    "section": "Course schedule",
+    "text": "Course schedule\n\nSee the course website"
   },
   {
     "objectID": "lecture00.html#practical-sessions",
     "href": "lecture00.html#practical-sessions",
     "title": "Welcome/Intro",
-    "section": "",
-    "text": "You can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp\nIf you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) https://posit.cloud/content/12653236\nFor Stata you’re relying on your own copy"
+    "section": "Practical sessions",
+    "text": "Practical sessions\n\nYou can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp\nIf you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) https://posit.cloud/content/12653236\nFor Stata you’re relying on your own copy"
   },
   {
     "objectID": "workshop01sol.html",
@@ -1123,8 +1123,8 @@
     "objectID": "lecture00.html#software",
     "href": "lecture00.html#software",
     "title": "Welcome/Intro",
-    "section": "",
-    "text": "R examples use the DasGuptR package. We (mainly Josiah) wrote this!\nStata examples use the rdecompose command [@liRateDecompositionAggregate2017]. Seems neat!\nFor obvious reasons we are more familiar with the R version, and so focus on that\nFor some of the more complex examples we only provide R examples. You (or a friendly LLM) may be able to translate these to Stata\n\n\n\n\n\nOr maybe not. I found that LLMs (the free ChatGPT one) was not at all good with rdecompose - perhaps because the documentation isn’t that extensive"
+    "section": "Software",
+    "text": "Software\n\nR examples use the DasGuptR package. We (mainly Josiah) wrote this!\nStata examples use the rdecompose command [@liRateDecompositionAggregate2017]. Seems neat!\nFor obvious reasons we are more familiar with the R version, and so focus on that\nFor some of the more complex examples we only provide R examples. You (or a friendly LLM) may be able to translate these to Stata\n\n\n\n\n\nOr maybe not. I found that LLMs (the free ChatGPT one) was not at all good with rdecompose - perhaps because the documentation isn’t that extensive"
   },
   {
     "objectID": "lecture-practical-introduction.html",
@@ -1202,5 +1202,89 @@
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "An example",
     "text": "An example\n\n\n\nreconviciton-rate"
+  },
+  {
+    "objectID": "code-of-conduct.html",
+    "href": "code-of-conduct.html",
+    "title": "Code of conduct",
+    "section": "",
+    "text": "(Adapted from NCRM code of conduct for online courses)"
+  },
+  {
+    "objectID": "code-of-conduct.html#expectations-about-respect-for-privacy-and-confidentiality-of-others",
+    "href": "code-of-conduct.html#expectations-about-respect-for-privacy-and-confidentiality-of-others",
+    "title": "Code of conduct",
+    "section": "Expectations about respect for privacy and confidentiality of others",
+    "text": "Expectations about respect for privacy and confidentiality of others\n\nContent should not be recorded, downloaded, shared or re-posted externally without explicit permission.\nThe platforms we will be using allow participants to interact with course presenters and other course delegates and to post content to discussion forums and other shared spaces. Remember that information that you share will be seen by other users. It can be helpful to know something about other delegates and their work, but do not share sensitive personal information about yourself or others.\nDo not post anything which you are not explicitly authorised to share, or which is not already subject to an open licence.\nIf you would like to re-use something posted by another user, please ask their permission directly or contact us."
+  },
+  {
+    "objectID": "code-of-conduct.html#expectations-about-behaviour",
+    "href": "code-of-conduct.html#expectations-about-behaviour",
+    "title": "Code of conduct",
+    "section": "Expectations about behaviour",
+    "text": "Expectations about behaviour\n\nWe want to create a supportive and inclusive learning environment. Treat other users with respect and avoid inflammatory or offensive language. Discuss ideas constructively and do not criticise or attack others personally.\nRemember that you have no knowledge of your fellow delegates’ personal circumstances. Think and choose your words carefully before commenting or posting about potentially sensitive subjects.\nDo not use the course platforms for campaigning, advertising or to post about issues irrelevant to the course, do not attempt to distribute spam or engage in any kind of unlawful activity."
+  },
+  {
+    "objectID": "lecture-close.html",
+    "href": "lecture-close.html",
+    "title": "Welcome/Intro",
+    "section": "",
+    "text": "Who we are\n\nBen; Josiah; Chloe; Trystan\n\nWho you are (Ben open https://www.menti.com/ala23cd37ta7)\n\n\n\n\n\nCode of conduct\nAsk questions whenever 👍 You can do this through the Teams chat facility {demo this now}\nWe’ve structured the sessions with regular breaks, but if you need to leave just leave!\nMaterials will live online here so you can access them any time\n\n\n\n\nBy the end of the workshop you will:\n\nUnderstand how standardization and decomposition can be used to answer social science research questions\nBe familiar with different approaches to standardization and decomposition\nBe able to apply standardization and decomposition to practical examples in R or Stata\n\n\n\n\n\nSee the course website\n\n\n\n\n\nYou can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp\nIf you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) https://posit.cloud/content/12653236\nFor Stata you’re relying on your own copy\n\n\n\n\n\nR examples use the DasGuptR package. We (mainly Josiah) wrote this!\nStata examples use the rdecompose command [@liRateDecompositionAggregate2017]. Seems neat!\nFor obvious reasons we are more familiar with the R version, and so focus on that\nFor some of the more complex examples we only provide R examples. You (or a friendly LLM) may be able to translate these to Stata\n\n\n\n\n\nOr maybe not. I found that LLMs (the free ChatGPT one) was not at all good with rdecompose - perhaps because the documentation isn’t that extensive"
+  },
+  {
+    "objectID": "lecture-close.html#hello",
+    "href": "lecture-close.html#hello",
+    "title": "Welcome/Intro",
+    "section": "",
+    "text": "Who we are\n\nBen; Josiah; Chloe; Trystan\n\nWho you are (Ben open https://www.menti.com/ala23cd37ta7)"
+  },
+  {
+    "objectID": "lecture-close.html#housekeeping",
+    "href": "lecture-close.html#housekeeping",
+    "title": "Welcome/Intro",
+    "section": "",
+    "text": "Code of conduct\nAsk questions whenever 👍 You can do this through the Teams chat facility {demo this now}\nWe’ve structured the sessions with regular breaks, but if you need to leave just leave!\nMaterials will live online here so you can access them any time"
+  },
+  {
+    "objectID": "lecture-close.html#learning-outcomes",
+    "href": "lecture-close.html#learning-outcomes",
+    "title": "Welcome/Intro",
+    "section": "",
+    "text": "By the end of the workshop you will:\n\nUnderstand how standardization and decomposition can be used to answer social science research questions\nBe familiar with different approaches to standardization and decomposition\nBe able to apply standardization and decomposition to practical examples in R or Stata"
+  },
+  {
+    "objectID": "lecture-close.html#course-schedule",
+    "href": "lecture-close.html#course-schedule",
+    "title": "Welcome/Intro",
+    "section": "",
+    "text": "See the course website"
+  },
+  {
+    "objectID": "lecture-close.html#practical-sessions",
+    "href": "lecture-close.html#practical-sessions",
+    "title": "Welcome/Intro",
+    "section": "",
+    "text": "You can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp\nIf you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) https://posit.cloud/content/12653236\nFor Stata you’re relying on your own copy"
+  },
+  {
+    "objectID": "lecture-close.html#software",
+    "href": "lecture-close.html#software",
+    "title": "Welcome/Intro",
+    "section": "",
+    "text": "R examples use the DasGuptR package. We (mainly Josiah) wrote this!\nStata examples use the rdecompose command [@liRateDecompositionAggregate2017]. Seems neat!\nFor obvious reasons we are more familiar with the R version, and so focus on that\nFor some of the more complex examples we only provide R examples. You (or a friendly LLM) may be able to translate these to Stata\n\n\n\n\n\nOr maybe not. I found that LLMs (the free ChatGPT one) was not at all good with rdecompose - perhaps because the documentation isn’t that extensive"
+  },
+  {
+    "objectID": "lecture-close.html#what-weve-covered",
+    "href": "lecture-close.html#what-weve-covered",
+    "title": "Close",
+    "section": "What we’ve covered",
+    "text": "What we’ve covered\nBy right now you will:\n\nUnderstand how standardization and decomposition can be used to answer social science research questions\nBe familiar with different approaches to standardization and decomposition\nBe able to apply standardization and decomposition to practical examples in R or Stata"
+  },
+  {
+    "objectID": "lecture-close.html#where-to-go-next",
+    "href": "lecture-close.html#where-to-go-next",
+    "title": "Close",
+    "section": "Where to go next",
+    "text": "Where to go next\n\nFor more methods training: lots more courses by SGSSS and NCRM\nIf you want to do standardization and decomposition you can find the DasGuptR at https://github.com/josiahpjking/DasGuptR and on CRAN\nThese resources will live online so you can find them at https://josiahpjking.github.io/sgsss_std_decomp/ (until linkrot comes for them, as for us all)"
   }
 ]

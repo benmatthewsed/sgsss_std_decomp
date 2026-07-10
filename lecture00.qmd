@@ -27,7 +27,7 @@ format:
 
 ## Housekeeping
 
-- Code of conduct
+- [Code of conduct](https://benmatthewsed.github.io/sgsss_std_decomp/code_of_conduct)
 - Ask questions whenever 👍 You can do this through the Teams chat facility {demo this now}
 - We’ve structured the sessions with regular breaks, but if you need to leave just leave!
 - Materials will live online here so you can access them any time

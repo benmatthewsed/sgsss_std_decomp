@@ -1,0 +1,17 @@
+---
+title: "Code of conduct"
+---
+
+(Adapted from [NCRM code of conduct for online courses](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/resources/ncrm-general-code-of-conduct.pdf))
+
+## Expectations about respect for privacy and confidentiality of others
+- Content should not be recorded, downloaded, shared or re-posted externally without explicit permission.
+- The platforms we will be using allow participants to interact with course presenters and other course delegates and to post content to discussion forums and other shared spaces. Remember that information that you share will be seen by other users. It can be helpful to know something about other delegates and their work, but do not share sensitive personal information about yourself or others.
+- Do not post anything which you are not explicitly authorised to share, or which is not already subject to an open licence.
+- If you would like to re-use something posted by another user, please ask their permission directly or contact us.
+
+
+## Expectations about behaviour
+- We want to create a supportive and inclusive learning environment. Treat other users with respect and avoid inflammatory or offensive language. Discuss ideas constructively and do not criticise or attack others personally.
+- Remember that you have no knowledge of your fellow delegates’ personal circumstances. Think and choose your words carefully before commenting or posting about potentially sensitive subjects.
+- Do not use the course platforms for campaigning, advertising or to post about issues irrelevant to the course, do not attempt to distribute spam or engage in any kind of unlawful activity.

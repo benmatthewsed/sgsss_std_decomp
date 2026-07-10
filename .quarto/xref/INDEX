@@ -52,5 +52,11 @@
   },
   "lecture-practical-introduction.qmd": {
     "lecture-practical-introduction.html": "940853d3"
+  },
+  "code-of-conduct.qmd": {
+    "code-of-conduct.html": "58357ec3"
+  },
+  "lecture-close.qmd": {
+    "lecture-close.html": "9e6f55d2"
   }
 }
