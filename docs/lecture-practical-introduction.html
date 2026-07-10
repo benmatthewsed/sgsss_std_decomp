@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Welcome/Intro – SGSSS Decomp Workshop 2026</title>
+<title>Practical sessions – SGSSS Decomp Workshop 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -193,24 +213,19 @@ if(f.classList.contains('jk-circle-right')) {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome-to-sgsss-decomposition-workshop" id="toc-welcome-to-sgsss-decomposition-workshop" class="nav-link active" data-scroll-target="#welcome-to-sgsss-decomposition-workshop">Welcome to SGSSS Decomposition Workshop!</a>
-  <ul class="collapse">
-  <li><a href="#hello" id="toc-hello" class="nav-link" data-scroll-target="#hello">Hello!</a></li>
-  <li><a href="#housekeeping" id="toc-housekeeping" class="nav-link" data-scroll-target="#housekeeping">Housekeeping</a></li>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning outcomes</a></li>
-  <li><a href="#course-schedule" id="toc-course-schedule" class="nav-link" data-scroll-target="#course-schedule">Course schedule</a></li>
-  <li><a href="#practical-sessions" id="toc-practical-sessions" class="nav-link" data-scroll-target="#practical-sessions">Practical sessions</a></li>
-  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
-  </ul></li>
+  <li><a href="#practicalities" id="toc-practicalities" class="nav-link active" data-scroll-target="#practicalities">Practicalities</a></li>
+  <li><a href="#software-comparison" id="toc-software-comparison" class="nav-link" data-scroll-target="#software-comparison">Software comparison</a></li>
+  <li><a href="#a-note-on-data" id="toc-a-note-on-data" class="nav-link" data-scroll-target="#a-note-on-data">A note on data</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture00.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lecture-practical-introduction.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome/Intro</h1>
+<h1 class="title">Practical sessions</h1>
 </div>
 
 
@@ -227,68 +242,47 @@ if(f.classList.contains('jk-circle-right')) {
 </header>
 
 
-<section id="welcome-to-sgsss-decomposition-workshop" class="level1 page-columns page-full">
-<h1>Welcome to SGSSS Decomposition Workshop!</h1>
-<section id="hello" class="level2">
-<h2 class="anchored" data-anchor-id="hello">Hello!</h2>
+<section id="practicalities" class="level2">
+<h2 class="anchored" data-anchor-id="practicalities">Practicalities</h2>
 <ul>
-<li>Who we are
-<ul>
-<li>Ben; Josiah; Chloe; Trystan</li>
-</ul></li>
-<li>Who you are (Ben open https://www.menti.com/ala23cd37ta7)</li>
+<li>You can find the practical materials at the course homepage (see link at bottom)</li>
+<li>We provide R and Stata code</li>
+<li>We recommend picking one and sticking with it unless you are a confident user of one or both</li>
+<li>We provide worked examples and then some questions</li>
+<li>We have solutions for the questions, but encourage you to try to work out the solutions first</li>
 </ul>
 </section>
-<section id="housekeeping" class="level2">
-<h2 class="anchored" data-anchor-id="housekeeping">Housekeeping</h2>
+<section id="software-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="software-comparison">Software comparison</h2>
 <ul>
-<li>Code of conduct</li>
-<li>Ask questions whenever 👍 You can do this through the Teams chat facility {demo this now}</li>
-<li>We’ve structured the sessions with regular breaks, but if you need to leave just leave!</li>
-<li>Materials will live online here so you can access them any time</li>
+<li>A good deal of the functionality is available in both R and Stata</li>
+<li>For obvious reasons we are more familiar with the R version</li>
+<li>From what I (Ben) can tell one difference is that rdecompose only allows pairwise standardization, whilst DasGuptR will standardize as many populations that you provide it</li>
+<li>This means some of the examples in Exercise Two differ between the two implementations</li>
+<li>This might also be me not understanding the package very well!</li>
 </ul>
 </section>
-<section id="learning-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
-<p>By the end of the workshop you will:</p>
-<ol type="1">
-<li>Understand how standardization and decomposition can be used to answer social science research questions</li>
-<li>Be familiar with different approaches to standardization and decomposition</li>
-<li>Be able to apply standardization and decomposition to practical examples in R or Stata</li>
-</ol>
-</section>
-<section id="course-schedule" class="level2">
-<h2 class="anchored" data-anchor-id="course-schedule">Course schedule</h2>
+<section id="a-note-on-data" class="level2">
+<h2 class="anchored" data-anchor-id="a-note-on-data">A note on data</h2>
 <ul>
-<li>See the <a href="https://josiahpjking.github.io/sgsss_std_decomp/index.html">course website</a></li>
+<li>We have curated a range of data examples for the practical sessions</li>
+<li>As a result we are ‘strangers’ <span class="citation" data-cites="dignazio5UnicornsJanitors2020">(<a href="#ref-dignazio5UnicornsJanitors2020" role="doc-biblioref">D’Ignazio and Klein 2020</a>)</span> to these data - we don’t know the context of “the collection and maintenance process of the data”</li>
+<li>There is always a risk of ‘epistemic violence’ <span class="citation" data-cites="dignazio5UnicornsJanitors2020">(<a href="#ref-dignazio5UnicornsJanitors2020" role="doc-biblioref">D’Ignazio and Klein 2020</a> citing Gayatri Spivak)</span> as a result</li>
+<li>You may be less of a stranger to some of these topics than we are - so if we misunderstand something, or use terminology or concepts that someone more familiar would avoid, then please let us know</li>
 </ul>
 </section>
-<section id="practical-sessions" class="level2">
-<h2 class="anchored" data-anchor-id="practical-sessions">Practical sessions</h2>
-<ul>
-<li>You can follow along with the materials in a local installation of R and RStudio on your own computer</li>
-<li>You can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp</li>
-<li>If you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) https://posit.cloud/content/12653236</li>
-<li>For Stata you’re relying on your own copy</li>
-</ul>
-</section>
-<section id="software" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="software">Software</h2>
-<ul>
-<li>R examples use the <a href="https://cran.r-project.org/web/packages/DasGuptR/index.html">DasGuptR</a> package. We (mainly Josiah) wrote this!</li>
-<li>Stata examples use the rdecompose command <span class="citation" data-cites="liRateDecompositionAggregate2017">[@liRateDecompositionAggregate2017]</span>. Seems neat!</li>
-<li>For obvious reasons we are more familiar with the R version, and so focus on that</li>
-<li>For some of the more complex examples we only provide R examples. You (or a friendly LLM) may be able to translate these to Stata</li>
-</ul>
+<section id="references" class="level2">
 
 
 
-<div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p>Or maybe not. I found that LLMs (the free ChatGPT one) was not at all good with rdecompose - perhaps because the documentation isn’t that extensive</p>
-</div></div></section>
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-dignazio5UnicornsJanitors2020" class="csl-entry" role="listitem">
+D’Ignazio, Catherine, and Lauren Klein. 2020. <span>“5. <span>Unicorns</span>, <span>Janitors</span>, <span>Ninjas</span>, <span>Wizards</span>, and <span>Rock Stars</span>.”</span> <em>Data Feminism</em>, March.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

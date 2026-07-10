@@ -5,6 +5,7 @@ params:
     TOGGLE: TRUE
 editor_options: 
   chunk_output_type: console
+bibliography: bibliography.bib
 ---
 
 ```{r}
@@ -25,13 +26,271 @@ use_panelset()
 library(DasGuptR)
 ```
 
-# TODO
+# Choose your own adventure
+
+1. Find some data relevant to your research interests and apply standardization and decomposition to them. Ask us for help if you get stuck!
+2. If you are still working on exercises from the previous practicals, feel free to go back and work on them
+3. Work through the bootstrapping examples below in your preferred language. There is a lot of detail here (particularly in the R example), so don't worry if this feels like a lot. As a result we have provided all the code for you to run and suggestions for settings you might want to change to see how it affects the results.
+
+# Bootstrapping standardization and decomposition
+
+These are the data we will be using. I don't know anything about them, but this is the description from [@liRateDecompositionAggregate2017, p496]
+
+> [These data] compare desire for more children in two groups of women: those with 4 or more children (represented by parity 4+) and those with 1 child (represented as parity 1). Given that age is an important determinant of fertility and that most parity 1 women are likely younger than women with 4 or more children, the question is how to isolate the effect of age composition differences in the two parity groups. rdecompose can be applied to isolate the effect of age composition from actual differences in rates between the two groups of women
+
+**Table 2. Population Size and Percent Desiring More Children (Rate) by Age**
+
+| Age group | Parity 4+ Size (Nᵢ) | Parity 4+ Rate (Tᵢ) | Parity 1 Size (Nᵢ) | Parity 1 Rate (Tᵢ) |
+|-----------|--------------------:|--------------------:|-------------------:|-------------------:|
+| 20 to 24  | 27  | 37.037 | 363 | 90.083 |
+| 25 to 29  | 152 | 19.079 | 208 | 76.923 |
+| 30 to 34  | 224 | 15.179 | 96  | 56.250 |
+| 35 to 39  | 239 | 5.021  | 59  | 20.339 |
+| 40 to 44  | 211 | 6.161  | 48  | 10.417 |
+| **All ages** | **853** | **11.489** | **774** | **72.093** |
+
+*Source: Clogg and Eliason (1988) from [@liRateDecompositionAggregate2017 p497]*
+
+::::panelset
+:::panel
+#### R
+Load packages and set the seed for the random number generator
+
+```{r}
+
+library(tidyverse)
+library(rsample)
+library(DasGuptR)
+
+set.seed(346)
+
+```
+
+Read in the data.
+
+```{r}
+
+clogg_long <- read_csv("https://raw.githubusercontent.com/benmatthewsed/sgsss_std_decomp/refs/heads/main/data/example2-clogg-long.csv")
+
+```
+
+# Running the original analysis
+
+```{r}
+
+original_res <- 
+DasGuptR::dgnpop(
+  clogg_long,
+  pop = "parity",
+       factors = c("rate"),
+      id_vars = "age_groups",
+      crossclassified = "size") |> 
+  DasGuptR::dg_table()
+
+original_res
+
+```
+
+# Exploding the data
+
+Before resampling we need to turn the aggregate data into person-level data.
+
+```{r}
+clogg_uncount <- 
+clogg_long |> 
+  uncount(size, .remove = FALSE) |> # we need to keep the size variable so set .remove as FALSE
+  group_by(age_groups, parity) |> 
+  mutate(
+    d = as.integer(row_number() <= round(rate * size / 100))
+  ) |> 
+  ungroup()
+
+clogg_uncount
+```
+
+# Create the decomposition wrapper function
+
+We need a shorthand way to perform the standardization and decomposition for each of our eventual bootstrap replications. We can create an [R function](https://r4ds.hadley.nz/functions.html) to do this.
+
+```{r}
+
+dg_clogg <- function(clogg_df){
+
+DasGuptR::dgnpop(
+  clogg_df,
+  pop = "parity",
+       factors = c("rate"),
+      id_vars = "age_groups",
+      crossclassified = "size") |> 
+  DasGuptR::dg_table() |> 
+  rownames_to_column() # this will be helpful later!
+
+}
+
+```
+
+# Re-aggregating the data
+
+We also need a way to reaggregate each resampled dataset before the standardization and decomposition. We can create another function to do this. Note the use of `rsample::analysis(splits)` - this lets us access each bootstrap draw in a memory efficient way.
+
+```{r}
+
+agg_clogg <- function(splits){
+  
+  rsample::analysis(splits) |> 
+      count(age_groups, parity, d, name = "size") |> # this is the opposite of uncount()
+  pivot_wider(names_from = "d", # turns the dataset wider to make the next step easier
+                values_from = "size") |> 
+  mutate(size = `1` + `0`,
+  rate = `1` / size * 100) |> 
+  select(age_groups, parity, size, rate) # keep only the columns we need
+  
+}
+
+```
+
+# Resampling the data
+
+Now we can bootstrap the data. Try changing the `times` argument from 100 to 200 and then to 1000 to see what happens.
+
+```{r}
+clogg_straps <- 
+rsample::bootstraps(
+  clogg_uncount, times = 100
+)
+
+clogg_straps
+```
+
+Now we use the `map` function to reaggregate each bootstrap replication. This iterates over each bootstrap draw and applies our `agg_clogg` function to each one in turn, and then saves the results in a new column.
+
+```{r}
+clogg_straps <- 
+clogg_straps |> 
+  mutate(clogg_agg = map(splits, agg_clogg))
+```
+
+# Iterating the standardization and decomposition
+
+With our aggregated bootstrap draws, we can use the `map` function to apply our custom `dg_clogg` function to run the standardization and decomposition to each draw.
+
+```{r}
+clogg_straps <- 
+clogg_straps |> 
+  mutate(results = map(clogg_agg, dg_clogg))
+
+clogg_straps
+
+```
 
 
+We can now just select the results and the bootstrap id columns, then use `unnest` to take a look at our 100 decompositions.
 
+```{r}
+clogg_straps |> 
+  mutate(results = map(clogg_agg, dg_clogg)) |> 
+  select(id, results) |> 
+  unnest(results) 
+```
 
+We can then calculate the standard error of the standardization and decomposition for each of the factors in the decomposition.
 
+```{r}
+clogg_boot_res <- 
+clogg_straps |> 
+ select(id, results) |> 
+  unnest(results) |> 
+ # filter(is.na(diff))
+  group_by(rowname) |> 
+  summarise(se_diff = sd(diff)) 
 
+clogg_boot_res
+```
+And now we can attach these to the results from the original data, and calculate confidence intervals using a normal approximation.
 
+```{r}
+original_res |> 
+  rownames_to_column() |> 
+  left_join(clogg_boot_res) |> 
+  mutate(conf_low = diff - 1.96 * se_diff,
+  conf_upp = diff + 1.96 * se_diff)
+```
 
+We don't have to use a normal approximation - we can use the bootstrap draws themselves to calculate confidence intervals (although be careful - you need _a lot_ of bootstrap draws to get reliable estimates of 95% confidence intervals)
 
+```{r}
+
+clogg_straps |> 
+  select(id, results) |> 
+  unnest(results) |> 
+ # filter(is.na(diff))
+  group_by(rowname) |> 
+  summarise(estimate = quantile(diff, c(0.025, 0.5, 0.975), na.rm = TRUE),
+ci = c(0.025, 0.5, 0.975)) |> 
+  pivot_wider(id_cols = rowname,
+  names_from = ci,
+values_from = estimate)
+```
+
+Compare these to the values calculated with the Normal approximation above. How similar are they?
+
+:::
+:::panel
+#### Stata
+
+First read in the data
+
+```default
+import delimited "https://raw.githubusercontent.com/benmatthewsed/sgsss_std_decomp/refs/heads/main/data/example2-clogg-long.csv", varnames(1) clear
+
+```
+
+Run the original decomposition from [@liRateDecompositionAggregate2017] Table 2.
+
+```default
+rdecompose size rate, group(parity) transform(size) sum(age_groups)
+```
+
+# Set up the decomposition program
+
+Code from [@liRateDecompositionAggregate2017 p500] with variable names slightly amended.
+
+```default
+program mydecompose, eclass
+preserve
+collapse (count) size= d (mean) rate = d, by(age_groups parity)
+quietly rdecompose size rate, group(parity) transform(size) sum(age_groups)
+matrix b = e(b) * 100
+ereturn post b
+restore
+end
+```
+
+# Explode the original data
+
+This code expands out the dataset based on the `size` variable and then creates a new 0/1 column `d` based on the `rate` variable.
+
+```default
+expand size
+
+by age_groups parity, sort: generate d = _n<=round(rate*size/100)
+
+```
+
+We can check what we've done by summing up again by age and parity
+
+```default
+by age_groups parity, sort: tab d
+```
+
+# Bootstrapping the standardization and decomposition
+
+Now we can resample the data and run the standardization and decomposition. Try changing the `reps()` value from 1000 to 100 and see what happens. The `rseed` command makes the results reproducible.
+
+```default
+bootstrap, nowarn nodots reps(1000): mydecompose rseed 356
+```
+
+:::
+
+## References

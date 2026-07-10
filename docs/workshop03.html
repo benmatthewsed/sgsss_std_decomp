@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -197,7 +232,8 @@ if(f.classList.contains('jk-circle-right')) {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#todo" id="toc-todo" class="nav-link active" data-scroll-target="#todo">TODO</a></li>
+  <li><a href="#choose-your-own-adventure" id="toc-choose-your-own-adventure" class="nav-link active" data-scroll-target="#choose-your-own-adventure">Choose your own adventure</a></li>
+  <li><a href="#bootstrapping-standardization-and-decomposition" id="toc-bootstrapping-standardization-and-decomposition" class="nav-link" data-scroll-target="#bootstrapping-standardization-and-decomposition">Bootstrapping standardization and decomposition</a></li>
   </ul>
 </nav>
     </div>
@@ -223,10 +259,378 @@ if(f.classList.contains('jk-circle-right')) {
 </header>
 
 
-<section id="todo" class="level1">
-<h1>TODO</h1>
+<section id="choose-your-own-adventure" class="level1">
+<h1>Choose your own adventure</h1>
+<ol type="1">
+<li>Find some data relevant to your research interests and apply standardization and decomposition to them. Ask us for help if you get stuck!</li>
+<li>If you are still working on exercises from the previous practicals, feel free to go back and work on them</li>
+<li>Work through the bootstrapping examples below in your preferred language. There is a lot of detail here (particularly in the R example), so don’t worry if this feels like a lot. As a result we have provided all the code for you to run and suggestions for settings you might want to change to see how it affects the results.</li>
+</ol>
+</section>
+<section id="bootstrapping-standardization-and-decomposition" class="level1">
+<h1>Bootstrapping standardization and decomposition</h1>
+<p>These are the data we will be using. I don’t know anything about them, but this is the description from <span class="citation" data-cites="liRateDecompositionAggregate2017">[@liRateDecompositionAggregate2017, p496]</span></p>
+<blockquote class="blockquote">
+<p>[These data] compare desire for more children in two groups of women: those with 4 or more children (represented by parity 4+) and those with 1 child (represented as parity 1). Given that age is an important determinant of fertility and that most parity 1 women are likely younger than women with 4 or more children, the question is how to isolate the effect of age composition differences in the two parity groups. rdecompose can be applied to isolate the effect of age composition from actual differences in rates between the two groups of women</p>
+</blockquote>
+<p><strong>Table 2. Population Size and Percent Desiring More Children (Rate) by Age</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Age group</th>
+<th style="text-align: right;">Parity 4+ Size (Nᵢ)</th>
+<th style="text-align: right;">Parity 4+ Rate (Tᵢ)</th>
+<th style="text-align: right;">Parity 1 Size (Nᵢ)</th>
+<th style="text-align: right;">Parity 1 Rate (Tᵢ)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>20 to 24</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">37.037</td>
+<td style="text-align: right;">363</td>
+<td style="text-align: right;">90.083</td>
+</tr>
+<tr class="even">
+<td>25 to 29</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">19.079</td>
+<td style="text-align: right;">208</td>
+<td style="text-align: right;">76.923</td>
+</tr>
+<tr class="odd">
+<td>30 to 34</td>
+<td style="text-align: right;">224</td>
+<td style="text-align: right;">15.179</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">56.250</td>
+</tr>
+<tr class="even">
+<td>35 to 39</td>
+<td style="text-align: right;">239</td>
+<td style="text-align: right;">5.021</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">20.339</td>
+</tr>
+<tr class="odd">
+<td>40 to 44</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: right;">6.161</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">10.417</td>
+</tr>
+<tr class="even">
+<td><strong>All ages</strong></td>
+<td style="text-align: right;"><strong>853</strong></td>
+<td style="text-align: right;"><strong>11.489</strong></td>
+<td style="text-align: right;"><strong>774</strong></td>
+<td style="text-align: right;"><strong>72.093</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: Clogg and Eliason (1988) from <span class="citation" data-cites="liRateDecompositionAggregate2017">[@liRateDecompositionAggregate2017 p497]</span></em></p>
+<div class="panelset">
+<div class="panel">
+<section id="r" class="level4">
+<h4 class="anchored" data-anchor-id="r">R</h4>
+<p>Load packages and set the seed for the random number generator</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsample)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">346</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Read in the data.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>clogg_long <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/benmatthewsed/sgsss_std_decomp/refs/heads/main/data/example2-clogg-long.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="running-the-original-analysis" class="level1">
+<h1>Running the original analysis</h1>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>original_res <span class="ot">&lt;-</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>DasGuptR<span class="sc">::</span><span class="fu">dgnpop</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  clogg_long,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pop =</span> <span class="st">"parity"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"rate"</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">id_vars =</span> <span class="st">"age_groups"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">crossclassified =</span> <span class="st">"size"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  DasGuptR<span class="sc">::</span><span class="fu">dg_table</span>()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>original_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         1        4      diff decomp
+age_groups_struct 48.61896 25.54727 -23.07169  38.07
+rate              55.84938 18.31685 -37.53253  61.93
+crude             72.09319 11.48897 -60.60422 100.00</code></pre>
+</div>
+</div>
+</section>
+<section id="exploding-the-data" class="level1">
+<h1>Exploding the data</h1>
+<p>Before resampling we need to turn the aggregate data into person-level data.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>clogg_uncount <span class="ot">&lt;-</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>clogg_long <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">uncount</span>(size, <span class="at">.remove =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="co"># we need to keep the size variable so set .remove as FALSE</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_groups, parity) <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">d =</span> <span class="fu">as.integer</span>(<span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="fu">round</span>(rate <span class="sc">*</span> size <span class="sc">/</span> <span class="dv">100</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>clogg_uncount</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,627 × 5
+   age_groups parity  size  rate     d
+   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+ 1 20 to 24        4    27  37.0     1
+ 2 20 to 24        4    27  37.0     1
+ 3 20 to 24        4    27  37.0     1
+ 4 20 to 24        4    27  37.0     1
+ 5 20 to 24        4    27  37.0     1
+ 6 20 to 24        4    27  37.0     1
+ 7 20 to 24        4    27  37.0     1
+ 8 20 to 24        4    27  37.0     1
+ 9 20 to 24        4    27  37.0     1
+10 20 to 24        4    27  37.0     1
+# ℹ 1,617 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="create-the-decomposition-wrapper-function" class="level1">
+<h1>Create the decomposition wrapper function</h1>
+<p>We need a shorthand way to perform the standardization and decomposition for each of our eventual bootstrap replications. We can create an <a href="https://r4ds.hadley.nz/functions.html">R function</a> to do this.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dg_clogg <span class="ot">&lt;-</span> <span class="cf">function</span>(clogg_df){</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>DasGuptR<span class="sc">::</span><span class="fu">dgnpop</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  clogg_df,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pop =</span> <span class="st">"parity"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"rate"</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">id_vars =</span> <span class="st">"age_groups"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">crossclassified =</span> <span class="st">"size"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  DasGuptR<span class="sc">::</span><span class="fu">dg_table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>() <span class="co"># this will be helpful later!</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="re-aggregating-the-data" class="level1">
+<h1>Re-aggregating the data</h1>
+<p>We also need a way to reaggregate each resampled dataset before the standardization and decomposition. We can create another function to do this. Note the use of <code>rsample::analysis(splits)</code> - this lets us access each bootstrap draw in a memory efficient way.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>agg_clogg <span class="ot">&lt;-</span> <span class="cf">function</span>(splits){</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  rsample<span class="sc">::</span><span class="fu">analysis</span>(splits) <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">count</span>(age_groups, parity, d, <span class="at">name =</span> <span class="st">"size"</span>) <span class="sc">|&gt;</span> <span class="co"># this is the opposite of uncount()</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"d"</span>, <span class="co"># turns the dataset wider to make the next step easier</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_from =</span> <span class="st">"size"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">size =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">rate =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">/</span> size <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age_groups, parity, size, rate) <span class="co"># keep only the columns we need</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="resampling-the-data" class="level1">
+<h1>Resampling the data</h1>
+<p>Now we can bootstrap the data. Try changing the <code>times</code> argument from 100 to 200 and then to 1000 to see what happens.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>clogg_straps <span class="ot">&lt;-</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>rsample<span class="sc">::</span><span class="fu">bootstraps</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  clogg_uncount, <span class="at">times =</span> <span class="dv">100</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>clogg_straps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Bootstrap sampling 
+# A tibble: 100 × 2
+   splits             id          
+   &lt;list&gt;             &lt;chr&gt;       
+ 1 &lt;split [1627/598]&gt; Bootstrap001
+ 2 &lt;split [1627/594]&gt; Bootstrap002
+ 3 &lt;split [1627/612]&gt; Bootstrap003
+ 4 &lt;split [1627/611]&gt; Bootstrap004
+ 5 &lt;split [1627/596]&gt; Bootstrap005
+ 6 &lt;split [1627/614]&gt; Bootstrap006
+ 7 &lt;split [1627/599]&gt; Bootstrap007
+ 8 &lt;split [1627/604]&gt; Bootstrap008
+ 9 &lt;split [1627/590]&gt; Bootstrap009
+10 &lt;split [1627/606]&gt; Bootstrap010
+# ℹ 90 more rows</code></pre>
+</div>
+</div>
+<p>Now we use the <code>map</code> function to reaggregate each bootstrap replication. This iterates over each bootstrap draw and applies our <code>agg_clogg</code> function to each one in turn, and then saves the results in a new column.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>clogg_straps <span class="ot">&lt;-</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>clogg_straps <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clogg_agg =</span> <span class="fu">map</span>(splits, agg_clogg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="iterating-the-standardization-and-decomposition" class="level1">
+<h1>Iterating the standardization and decomposition</h1>
+<p>With our aggregated bootstrap draws, we can use the <code>map</code> function to apply our custom <code>dg_clogg</code> function to run the standardization and decomposition to each draw.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>clogg_straps <span class="ot">&lt;-</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>clogg_straps <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">results =</span> <span class="fu">map</span>(clogg_agg, dg_clogg))</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>clogg_straps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Bootstrap sampling 
+# A tibble: 100 × 4
+   splits             id           clogg_agg         results     
+   &lt;list&gt;             &lt;chr&gt;        &lt;list&gt;            &lt;list&gt;      
+ 1 &lt;split [1627/598]&gt; Bootstrap001 &lt;tibble [10 × 4]&gt; &lt;df [3 × 5]&gt;
+ 2 &lt;split [1627/594]&gt; Bootstrap002 &lt;tibble [10 × 4]&gt; &lt;df [3 × 5]&gt;
+ 3 &lt;split [1627/612]&gt; Bootstrap003 &lt;tibble [10 × 4]&gt; &lt;df [3 × 5]&gt;
+ 4 &lt;split [1627/611]&gt; Bootstrap004 &lt;tibble [10 × 4]&gt; &lt;df [3 × 5]&gt;
+ 5 &lt;split [1627/596]&gt; Bootstrap005 &lt;tibble [10 × 4]&gt; &lt;df [3 × 5]&gt;
+ 6 &lt;split [1627/614]&gt; Bootstrap006 &lt;tibble [10 × 4]&gt; &lt;df [3 × 5]&gt;
+ 7 &lt;split [1627/599]&gt; Bootstrap007 &lt;tibble [10 × 4]&gt; &lt;df [3 × 5]&gt;
+ 8 &lt;split [1627/604]&gt; Bootstrap008 &lt;tibble [10 × 4]&gt; &lt;df [3 × 5]&gt;
+ 9 &lt;split [1627/590]&gt; Bootstrap009 &lt;tibble [10 × 4]&gt; &lt;df [3 × 5]&gt;
+10 &lt;split [1627/606]&gt; Bootstrap010 &lt;tibble [10 × 4]&gt; &lt;df [3 × 5]&gt;
+# ℹ 90 more rows</code></pre>
+</div>
+</div>
+<p>We can now just select the results and the bootstrap id columns, then use <code>unnest</code> to take a look at our 100 decompositions.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>clogg_straps <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">results =</span> <span class="fu">map</span>(clogg_agg, dg_clogg)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, results) <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(results) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 300 × 6
+   id           rowname             `1`   `4`  diff decomp
+   &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1 Bootstrap001 age_groups_struct  47.3  24.3 -23.0   39.3
+ 2 Bootstrap001 rate               53.6  18.1 -35.5   60.7
+ 3 Bootstrap001 crude              70.1  11.5 -58.5  100  
+ 4 Bootstrap002 age_groups_struct  51.2  26.8 -24.3   40.7
+ 5 Bootstrap002 rate               56.8  21.3 -35.5   59.3
+ 6 Bootstrap002 crude              71.9  12.1 -59.8  100  
+ 7 Bootstrap003 age_groups_struct  49.1  23.2 -25.9   41.0
+ 8 Bootstrap003 rate               54.7  17.5 -37.2   59.0
+ 9 Bootstrap003 crude              73.2  10.1 -63.1  100  
+10 Bootstrap004 age_groups_struct  46.7  23.9 -22.8   38.2
+# ℹ 290 more rows</code></pre>
+</div>
+</div>
+<p>We can then calculate the standard error of the standardization and decomposition for each of the factors in the decomposition.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>clogg_boot_res <span class="ot">&lt;-</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>clogg_straps <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span>(id, results) <span class="sc">|&gt;</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(results) <span class="sc">|&gt;</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a> <span class="co"># filter(is.na(diff))</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rowname) <span class="sc">|&gt;</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">se_diff =</span> <span class="fu">sd</span>(diff)) </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>clogg_boot_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  rowname           se_diff
+  &lt;chr&gt;               &lt;dbl&gt;
+1 age_groups_struct    2.46
+2 crude                1.94
+3 rate                 3.28</code></pre>
+</div>
+</div>
+<p>And now we can attach these to the results from the original data, and calculate confidence intervals using a normal approximation.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>original_res <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clogg_boot_res) <span class="sc">|&gt;</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">conf_low =</span> diff <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> se_diff,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">conf_upp =</span> diff <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> se_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            rowname        1        4      diff decomp  se_diff  conf_low
+1 age_groups_struct 48.61896 25.54727 -23.07169  38.07 2.462872 -27.89892
+2              rate 55.84938 18.31685 -37.53253  61.93 3.278694 -43.95877
+3             crude 72.09319 11.48897 -60.60422 100.00 1.944092 -64.41464
+   conf_upp
+1 -18.24446
+2 -31.10629
+3 -56.79380</code></pre>
+</div>
+</div>
+<p>We don’t have to use a normal approximation - we can use the bootstrap draws themselves to calculate confidence intervals (although be careful - you need <em>a lot</em> of bootstrap draws to get reliable estimates of 95% confidence intervals)</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>clogg_straps <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, results) <span class="sc">|&gt;</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(results) <span class="sc">|&gt;</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># filter(is.na(diff))</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rowname) <span class="sc">|&gt;</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">estimate =</span> <span class="fu">quantile</span>(diff, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="at">ci =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> rowname,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> ci,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="at">values_from =</span> estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+# Groups:   rowname [3]
+  rowname           `0.025` `0.5` `0.975`
+  &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+1 age_groups_struct   -27.0 -23.0   -18.1
+2 crude               -64.2 -60.5   -57.3
+3 rate                -44.5 -37.9   -31.6</code></pre>
+</div>
+</div>
+<p>Compare these to the values calculated with the Normal approximation above. How similar are they?</p>
+</section>
+</div>
+<div class="panel">
+<section id="stata" class="level4">
+<h4 class="anchored" data-anchor-id="stata">Stata</h4>
+<p>First read in the data</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>import delimited "https://raw.githubusercontent.com/benmatthewsed/sgsss_std_decomp/refs/heads/main/data/example2-clogg-long.csv", varnames(1) clear</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run the original decomposition from <span class="citation" data-cites="liRateDecompositionAggregate2017">[@liRateDecompositionAggregate2017]</span> Table 2.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rdecompose size rate, group(parity) transform(size) sum(age_groups)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="set-up-the-decomposition-program" class="level1">
+<h1>Set up the decomposition program</h1>
+<p>Code from <span class="citation" data-cites="liRateDecompositionAggregate2017">[@liRateDecompositionAggregate2017 p500]</span> with variable names slightly amended.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>program mydecompose, eclass</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>preserve</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>collapse (count) size= d (mean) rate = d, by(age_groups parity)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>quietly rdecompose size rate, group(parity) transform(size) sum(age_groups)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>matrix b = e(b) * 100</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>ereturn post b</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>restore</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="explode-the-original-data" class="level1">
+<h1>Explode the original data</h1>
+<p>This code expands out the dataset based on the <code>size</code> variable and then creates a new 0/1 column <code>d</code> based on the <code>rate</code> variable.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>expand size</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>by age_groups parity, sort: generate d = _n&lt;=round(rate*size/100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can check what we’ve done by summing up again by age and parity</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>by age_groups parity, sort: tab d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="bootstrapping-the-standardization-and-decomposition" class="level1">
+<h1>Bootstrapping the standardization and decomposition</h1>
+<p>Now we can resample the data and run the standardization and decomposition. Try changing the <code>reps()</code> value from 1000 to 100 and see what happens. The <code>rseed</code> command makes the results reproducible.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>bootstrap, nowarn nodots reps(1000): mydecompose rseed 356</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</div>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 
 
+</section>
+</div>
 </section>
 
 </main> <!-- /main -->

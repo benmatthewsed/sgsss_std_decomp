@@ -148,7 +148,7 @@ res_df |>
 - You then get an empirical distribution of results (remember this histogram!)
 - Pros: this will (almost) always work, makes no assumptions about distributions or anything
 - Cons: the amount of memory required scales with the number of units, your computer might run out of memory/catch on fire (if you are analysing population level data from India this approach will take a lot longer than if you are analysing population data from Scotland)
-- Your computer probably won't _really_ catch on fire, but if you are planning to bootstrap some large data you will have to think about the practicalities (feel free to ask us if you are planning this!)
+- Okay your computer probably won't _really_ catch on fire, but if you are planning to bootstrap some large data you will have to think about the practicalities (feel free to ask us if you are planning this!)
 
 
 ## Bootstrapping standardization and decomposition
@@ -295,7 +295,7 @@ deaths |>
 - Check whether the difference in crude rates between comparator is statistically significant before you do your standardization and decomposition
 - Bootstrap your results a few times as a matter of course just to see if something breaks
 
-# Bonus slides: Bootstrapping in practice
+# Bonus slides: A worked example of bootstrapping in practice
 
 
 ## Bootstrapping in practice: Exploding the data
