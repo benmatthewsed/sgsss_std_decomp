@@ -259,6 +259,13 @@ deaths |>
 - If the standardized rates are very close together then the decomposition can involve dividing by very small numbers
 - Uh oh
 
+# An example
+
+## Ratios of normals
+
+- Because the calculations for decomposition involve division, when the crude rates for your comparisons are close together - and with the extra 'noise' from the bootstrapping, potentially overlap - the distribution of the decomposition can go haywire
+- Ben navigate to https://benmatthewsed.github.io/sgsss_std_decomp/ratio_distribution.html 
+
 ## An example
 
 ![reconviciton-rate](figs/reconviction-rate.png)

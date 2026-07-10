@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -269,7 +289,7 @@ if(f.classList.contains('jk-circle-right')) {
 </section>
 <section id="bootstrapping-standardization-and-decomposition" class="level1">
 <h1>Bootstrapping standardization and decomposition</h1>
-<p>These are the data we will be using. I don’t know anything about them, but this is the description from <span class="citation" data-cites="liRateDecompositionAggregate2017">[@liRateDecompositionAggregate2017, p496]</span></p>
+<p>These are the data we will be using. I don’t know anything about them, but this is the description from <span class="citation" data-cites="liRateDecompositionAggregate2017">(<a href="#ref-liRateDecompositionAggregate2017" role="doc-biblioref">Li 2017, p496</a>)</span></p>
 <blockquote class="blockquote">
 <p>[These data] compare desire for more children in two groups of women: those with 4 or more children (represented by parity 4+) and those with 1 child (represented as parity 1). Given that age is an important determinant of fertility and that most parity 1 women are likely younger than women with 4 or more children, the question is how to isolate the effect of age composition differences in the two parity groups. rdecompose can be applied to isolate the effect of age composition from actual differences in rates between the two groups of women</p>
 </blockquote>
@@ -336,7 +356,7 @@ if(f.classList.contains('jk-circle-right')) {
 </tr>
 </tbody>
 </table>
-<p><em>Source: Clogg and Eliason (1988) from <span class="citation" data-cites="liRateDecompositionAggregate2017">[@liRateDecompositionAggregate2017 p497]</span></em></p>
+<p><em>Source: Clogg and Eliason (1988) from <span class="citation" data-cites="liRateDecompositionAggregate2017">(<a href="#ref-liRateDecompositionAggregate2017" role="doc-biblioref">Li 2017, p497</a>)</span></em></p>
 <div class="panelset">
 <div class="panel">
 <section id="r" class="level4">
@@ -595,12 +615,12 @@ crude             72.09319 11.48897 -60.60422 100.00</code></pre>
 <h4 class="anchored" data-anchor-id="stata">Stata</h4>
 <p>First read in the data</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>import delimited "https://raw.githubusercontent.com/benmatthewsed/sgsss_std_decomp/refs/heads/main/data/example2-clogg-long.csv", varnames(1) clear</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Run the original decomposition from <span class="citation" data-cites="liRateDecompositionAggregate2017">[@liRateDecompositionAggregate2017]</span> Table 2.</p>
+<p>Run the original decomposition from <span class="citation" data-cites="liRateDecompositionAggregate2017">(<a href="#ref-liRateDecompositionAggregate2017" role="doc-biblioref">Li 2017</a>)</span> Table 2.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rdecompose size rate, group(parity) transform(size) sum(age_groups)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="set-up-the-decomposition-program" class="level1">
 <h1>Set up the decomposition program</h1>
-<p>Code from <span class="citation" data-cites="liRateDecompositionAggregate2017">[@liRateDecompositionAggregate2017 p500]</span> with variable names slightly amended.</p>
+<p>Code from <span class="citation" data-cites="liRateDecompositionAggregate2017">(<a href="#ref-liRateDecompositionAggregate2017" role="doc-biblioref">Li 2017, p500</a>)</span> with variable names slightly amended.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>program mydecompose, eclass</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>preserve</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>collapse (count) size= d (mean) rate = d, by(age_groups parity)</span>
@@ -631,9 +651,14 @@ crude             72.09319 11.48897 -60.60422 100.00</code></pre>
 
 </section>
 </div>
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-liRateDecompositionAggregate2017" class="csl-entry" role="listitem">
+Li, Jinjing. 2017. <span>“Rate <span>Decomposition</span> for <span>Aggregate Data Using Das Gupta</span>’s <span>Method</span>.”</span> <em>The Stata Journal</em> 17 (2): 490–502.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
