@@ -4,64 +4,85 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Signal / Noise — The Ratio of Two Normals</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
   :root{
-    --bg: #12141c;
-    --bg-alt: #0d0f16;
-    --panel: #1a1d29;
-    --panel-border: #2a2e3d;
-    --text: #edeae3;
-    --text-dim: #9a9db0;
-    --text-faint: #5c6076;
-    --x-color: #4fd1c5;
-    --x-color-soft: rgba(79, 209, 197, 0.18);
-    --y-color: #f2a93b;
-    --y-color-soft: rgba(242, 169, 59, 0.18);
-    --ratio-color: #b968c7;
-    --ratio-color-soft: rgba(185, 104, 199, 0.28);
-    --clip-color: #ff5470;
-    --clip-glow: rgba(255, 84, 112, 0.55);
-    --danger-band: rgba(255, 84, 112, 0.08);
-    --focus: #7ee0ff;
+    --bg: #E8ECE6;
+    --surface: #FCFCF9;
+    --ink: #1C2A26;
+    --ink-soft: #56655F;
+    --line: #C7D0C6;
+    --line-strong: #9FAE9C;
+    --teal: #1F6F63;
+    --teal-dark: #164F46;
+    --teal-soft: rgba(31,111,99,0.14);
+    --ochre: #B8842A;
+    --ochre-soft: #EAD9B0;
+    --ochre-soft-bg: rgba(184,132,42,0.16);
+    --indigo: #3C4A73;
+    --indigo-soft: rgba(60,74,115,0.14);
+    --rose: #A6473C;
+    --rose-soft: rgba(166,71,60,0.12);
+    --paper-shadow: 0 1px 0 rgba(28,42,38,0.06);
+    --radius: 10px;
+    --max-w: 980px;
+
+    --x-color: var(--teal);
+    --y-color: var(--ochre);
+    --ratio-color: var(--indigo);
+    --clip-color: var(--rose);
   }
 
   *{ box-sizing: border-box; }
   html,body{ margin:0; padding:0; }
   body{
-    background: radial-gradient(circle at 20% 0%, #171a26 0%, var(--bg) 45%, var(--bg-alt) 100%);
-    color: var(--text);
-    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     padding: 28px 20px 60px;
     min-height: 100vh;
   }
 
-  .app{ max-width: 980px; margin: 0 auto; }
+  .mono, .app .eyebrow, .control label span, .control label b{ font-family: "IBM Plex Mono", monospace; }
+
+  .app{ max-width: var(--max-w); margin: 0 auto; }
 
   header{ margin-bottom: 28px; }
   .eyebrow{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
     letter-spacing: 0.14em;
-    color: var(--text-faint);
     text-transform: uppercase;
-    margin: 0 0 10px;
+    color: var(--teal-dark);
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before{
+    content: "";
+    width: 18px; height: 1px;
+    background: var(--teal-dark);
+    display: inline-block;
   }
   h1{
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: clamp(26px, 4vw, 38px);
-    line-height: 1.1;
-    margin: 0 0 12px;
-    letter-spacing: -0.01em;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(30px, 4vw, 42px);
+    line-height: 1.12;
+    margin: 0 0 14px;
+    color: var(--ink);
   }
   h1 .accent-x{ color: var(--x-color); }
   h1 .accent-y{ color: var(--y-color); }
   .lede{
-    color: var(--text-dim);
-    font-size: 15px;
+    color: var(--ink-soft);
+    font-size: 16px;
     line-height: 1.55;
     max-width: 640px;
     margin: 0;
@@ -72,87 +93,91 @@
     flex-wrap: wrap;
     gap: 20px;
     align-items: flex-end;
-    background: var(--panel);
-    border: 1px solid var(--panel-border);
-    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--paper-shadow);
     padding: 18px 20px;
     margin-bottom: 22px;
   }
   .control{ display:flex; flex-direction:column; gap:8px; }
   .control label{
-    font-size: 12px;
-    color: var(--text-dim);
-    font-weight: 500;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     display:flex; gap:6px; align-items:baseline;
   }
   .control label span, .control label b{
-    font-family:'JetBrains Mono', monospace;
-    color: var(--text);
+    color: var(--ink);
     font-size: 13px;
+    text-transform: none;
+    letter-spacing: 0;
   }
   input[type="range"]{
     -webkit-appearance:none; appearance:none;
     width: 220px; height: 4px;
-    background: linear-gradient(90deg, var(--panel-border), var(--panel-border));
+    background: var(--line-strong);
     border-radius: 3px;
     outline: none;
     cursor: pointer;
   }
   input[type="range"]::-webkit-slider-thumb{
     -webkit-appearance:none;
-    width: 18px; height: 18px;
+    width: 16px; height: 16px;
     border-radius: 50%;
-    background: var(--focus);
-    border: 3px solid var(--bg);
-    box-shadow: 0 0 0 1px var(--panel-border), 0 0 10px rgba(126,224,255,0.5);
+    background: var(--teal);
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--line-strong);
     cursor: pointer;
     margin-top: -1px;
   }
   input[type="range"]::-moz-range-thumb{
-    width: 14px; height: 14px; border-radius: 50%;
-    background: var(--focus); border: 3px solid var(--bg); cursor:pointer;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--teal); border: 3px solid var(--surface); cursor:pointer;
   }
   input[type="range"]:focus-visible::-webkit-slider-thumb{
-    outline: 2px solid var(--focus); outline-offset: 2px;
+    outline: 2px solid var(--teal); outline-offset: 2px;
   }
 
   #muSlider{
-    background: linear-gradient(90deg, var(--x-color-soft), var(--panel-border) 50%, var(--y-color-soft));
+    background: linear-gradient(90deg, var(--teal), var(--line-strong) 50%, var(--ochre));
   }
 
-  .segmented{ display:flex; border:1px solid var(--panel-border); border-radius:8px; overflow:hidden; }
+  .segmented{ display:flex; border:1px solid var(--line-strong); border-radius:8px; overflow:hidden; }
   .segmented button{
-    background: transparent; border:none; color: var(--text-dim);
-    font-family:'JetBrains Mono', monospace; font-size:13px;
-    padding: 8px 14px; cursor:pointer; border-right: 1px solid var(--panel-border);
+    background: #fff; border:none; color: var(--ink-soft);
+    font-family:"IBM Plex Mono", monospace; font-size:12.5px;
+    padding: 8px 14px; cursor:pointer; border-right: 1px solid var(--line-strong);
     transition: background .15s, color .15s;
   }
   .segmented button:last-child{ border-right:none; }
-  .segmented button:hover{ background: rgba(255,255,255,0.04); color: var(--text); }
-  .segmented button.active{ background: var(--ratio-color-soft); color: var(--text); }
-  .segmented button:focus-visible{ outline: 2px solid var(--focus); outline-offset: -2px; }
+  .segmented button:hover{ background: rgba(31,111,99,0.08); color: var(--teal-dark); }
+  .segmented button.active{ background: var(--teal); color: #fff; font-weight:600; }
+  .segmented button:focus-visible{ outline: 2px solid var(--teal); outline-offset: -2px; }
 
   .primary-btn{
-    background: var(--ratio-color);
-    color: #17101a;
-    border: none;
-    font-family:'Space Grotesk', sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
+    background: var(--teal);
+    color: #fff;
+    border: 1px solid var(--teal-dark);
     font-weight: 600;
     font-size: 14px;
     padding: 11px 18px;
-    border-radius: 9px;
+    border-radius: 7px;
     cursor: pointer;
-    transition: transform .12s, box-shadow .12s, background .12s;
-    box-shadow: 0 0 0 rgba(185,104,199,0);
+    transition: transform .12s, background .12s;
   }
-  .primary-btn:hover{ background:#c988da; box-shadow: 0 0 18px rgba(185,104,199,0.35); transform: translateY(-1px); }
-  .primary-btn:active{ transform: translateY(0); }
-  .primary-btn:focus-visible{ outline: 2px solid var(--focus); outline-offset: 2px; }
+  .primary-btn:hover{ background: var(--teal-dark); }
+  .primary-btn:active{ transform: translateY(1px); }
+  .primary-btn:focus-visible{ outline: 2px solid var(--teal); outline-offset: 2px; }
 
   .panel{
-    background: var(--panel);
-    border: 1px solid var(--panel-border);
-    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--paper-shadow);
     padding: 18px 20px 20px;
     margin-bottom: 22px;
   }
@@ -161,11 +186,11 @@
     flex-wrap: wrap; gap: 14px; margin-bottom: 6px;
   }
   .panel-head h2{
-    font-family:'Space Grotesk', sans-serif;
-    font-size: 16px; font-weight: 600; margin: 0;
-    color: var(--text);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 19px; font-weight: 600; margin: 0;
+    color: var(--ink);
   }
-  .legend{ display:flex; gap: 16px; font-size: 12px; color: var(--text-dim); }
+  .legend{ display:flex; gap: 16px; font-size: 12.5px; color: var(--ink-soft); }
   .legend span{ display:inline-flex; align-items:center; gap:6px; }
   .dot{ width:9px; height:9px; border-radius:50%; display:inline-block; }
   .dot.x{ background: var(--x-color); }
@@ -174,21 +199,21 @@
   svg{ width: 100%; height: auto; display:block; }
 
   .annotation{
-    font-family:'JetBrains Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 12.5px;
-    color: var(--text-dim);
+    color: var(--ink-soft);
     margin: 10px 2px 0;
     padding: 8px 12px;
     border-left: 2px solid var(--clip-color);
-    background: var(--danger-band);
+    background: var(--rose-soft);
     border-radius: 0 6px 6px 0;
   }
-  .annotation.calm{ border-left-color: var(--x-color); background: rgba(79,209,197,0.06); }
-  .annotation.warn{ border-left-color: #f2a93b; background: rgba(242,169,59,0.06); }
+  .annotation.calm{ border-left-color: var(--teal); background: var(--teal-soft); }
+  .annotation.warn{ border-left-color: var(--ochre); background: var(--ochre-soft-bg); }
 
   .range-control{ align-items: flex-end; }
   .range-control input[type="range"]{
-    background: var(--panel-border); width: 180px;
+    background: var(--line-strong); width: 180px;
   }
 
   .clip-readout{
@@ -197,40 +222,42 @@
   }
   .clip-light{
     display:flex; flex-direction:column; align-items:center; gap:4px;
-    font-family:'JetBrains Mono', monospace; font-size: 10.5px;
-    color: var(--text-faint); letter-spacing: 0.06em;
+    font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+    color: var(--ink-soft); letter-spacing: 0.06em;
     min-width: 110px;
   }
   .clip-light span{
     width: 14px; height: 14px; border-radius: 50%;
-    background: #2a2e3d;
-    box-shadow: inset 0 0 0 2px #363a4a;
+    background: #fff;
+    box-shadow: inset 0 0 0 2px var(--line-strong);
     transition: background .2s, box-shadow .2s;
   }
   .clip-light.active span{
     background: var(--clip-color);
-    box-shadow: 0 0 12px 3px var(--clip-glow), inset 0 0 0 2px rgba(255,255,255,0.15);
+    box-shadow: 0 0 8px 2px rgba(166,71,60,0.35), inset 0 0 0 2px rgba(255,255,255,0.4);
     animation: pulse 1.1s ease-in-out infinite;
   }
   @keyframes pulse{
     0%,100%{ opacity: 1; }
     50%{ opacity: 0.55; }
   }
-  .clip-light b{ color: var(--text); font-size: 15px; font-weight: 500; }
+  .clip-light b{ color: var(--ink); font-size: 15px; font-weight: 600; }
 
   .stat-block{ display:flex; gap: 22px; }
   .stat-block div{ display:flex; flex-direction:column; align-items:center; gap:2px; }
-  .stat-block label{ font-size: 10.5px; color: var(--text-faint); text-transform: uppercase; letter-spacing: .06em; }
-  .stat-block b{ font-family:'JetBrains Mono', monospace; font-size: 16px; color: var(--text); font-weight: 500; }
+  .stat-block label{ font-size: 10.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+  .stat-block b{ font-family:"IBM Plex Mono", monospace; font-size: 16px; color: var(--ink); font-weight: 600; }
 
   footer{
-    color: var(--text-faint);
-    font-size: 12.5px;
+    color: var(--ink-soft);
+    font-size: 13.5px;
     line-height: 1.6;
     max-width: 680px;
     margin-top: 6px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
   }
-  footer b{ color: var(--text-dim); }
+  footer b{ color: var(--ink); }
 
   @media (prefers-reduced-motion: reduce){
     .clip-light.active span{ animation: none; }
@@ -285,7 +312,7 @@
 
   <section class="panel">
     <div class="panel-head">
-      <h2>Sampling distribution of X / Y <span style="color:var(--text-faint); font-weight:400;">(this sample's ratios)</span></h2>
+      <h2>Sampling distribution of X / Y <span style="color:var(--ink-soft); font-weight:400;">(this sample's ratios)</span></h2>
       <div class="control range-control">
         <label>Display range &nbsp;±<span id="clipVal">8</span></label>
         <input type="range" id="clipSlider" min="2" max="30" step="1" value="8" aria-label="Histogram display range">
@@ -391,21 +418,21 @@
     // gridlines
     for(let gx=-6; gx<=6; gx+=2){
       const px = dxScale(gx);
-      gridGroup.appendChild(svgEl('line', {x1:px, y1:DTOP, x2:px, y2:DBASE, stroke:'#242838', 'stroke-width':1}));
-      const t = svgEl('text', {x:px, y:DBASE+18, fill:'#5c6076', 'font-size':11, 'font-family':'JetBrains Mono, monospace', 'text-anchor':'middle'});
+      gridGroup.appendChild(svgEl('line', {x1:px, y1:DTOP, x2:px, y2:DBASE, stroke:'#C7D0C6', 'stroke-width':1}));
+      const t = svgEl('text', {x:px, y:DBASE+18, fill:'#56655F', 'font-size':11, 'font-family':'IBM Plex Mono, monospace', 'text-anchor':'middle'});
       t.textContent = gx;
       gridGroup.appendChild(t);
     }
-    gridGroup.appendChild(svgEl('line', {x1:DPX0, y1:DBASE, x2:DPX1, y2:DBASE, stroke:'#363a4a', 'stroke-width':1.2}));
+    gridGroup.appendChild(svgEl('line', {x1:DPX0, y1:DBASE, x2:DPX1, y2:DBASE, stroke:'#9FAE9C', 'stroke-width':1.2}));
     densitySvg.appendChild(gridGroup);
 
     // danger band around y=0 (where Y crosses zero -> denominator explosion)
     const bandHalf = 0.35;
     const bx0 = dxScale(-bandHalf), bx1 = dxScale(bandHalf);
-    densitySvg.appendChild(svgEl('rect', {x:bx0, y:DTOP, width:bx1-bx0, height:DBASE-DTOP, fill:'rgba(255,84,112,0.07)'}));
-    const dashLine = svgEl('line', {x1:dxScale(0), y1:DTOP, x2:dxScale(0), y2:DBASE, stroke:'#ff5470', 'stroke-width':1, 'stroke-dasharray':'4 4', opacity:0.6});
+    densitySvg.appendChild(svgEl('rect', {x:bx0, y:DTOP, width:bx1-bx0, height:DBASE-DTOP, fill:'rgba(166,71,60,0.07)'}));
+    const dashLine = svgEl('line', {x1:dxScale(0), y1:DTOP, x2:dxScale(0), y2:DBASE, stroke:'#A6473C', 'stroke-width':1, 'stroke-dasharray':'4 4', opacity:0.6});
     densitySvg.appendChild(dashLine);
-    const dLabel = svgEl('text', {x:dxScale(0)+6, y:DTOP+14, fill:'#ff8a9e', 'font-size':10.5, 'font-family':'JetBrains Mono, monospace'});
+    const dLabel = svgEl('text', {x:dxScale(0)+6, y:DTOP+14, fill:'#A6473C', 'font-size':10.5, 'font-family':'IBM Plex Mono, monospace'});
     dLabel.textContent = 'Y ≈ 0 → ratio explodes';
     densitySvg.appendChild(dLabel);
 
@@ -432,7 +459,7 @@
       return d;
     }
 
-    densitySvg.appendChild(svgEl('path', {d: areaPathFor(ptsOverlap), fill:'rgba(255,255,255,0.10)'}));
+    densitySvg.appendChild(svgEl('path', {d: areaPathFor(ptsOverlap), fill:'rgba(28,42,38,0.07)'}));
     densitySvg.appendChild(svgEl('path', {d: pathFor(ptsX), fill:'none', stroke:'var(--x-color)', 'stroke-width':2.2}));
     densitySvg.appendChild(svgEl('path', {d: pathFor(ptsY), fill:'none', stroke:'var(--y-color)', 'stroke-width':2.2}));
 
@@ -493,12 +520,12 @@
     for(let i=0;i<=tickCount;i++){
       const v = -clip + (2*clip)*i/tickCount;
       const px = hx(v);
-      gridGroup.appendChild(svgEl('line', {x1:px, y1:HTOP, x2:px, y2:HBASE, stroke:'#242838', 'stroke-width':1}));
-      const t = svgEl('text', {x:px, y:HBASE+18, fill:'#5c6076', 'font-size':11, 'font-family':'JetBrains Mono, monospace', 'text-anchor':'middle'});
+      gridGroup.appendChild(svgEl('line', {x1:px, y1:HTOP, x2:px, y2:HBASE, stroke:'#C7D0C6', 'stroke-width':1}));
+      const t = svgEl('text', {x:px, y:HBASE+18, fill:'#56655F', 'font-size':11, 'font-family':'IBM Plex Mono, monospace', 'text-anchor':'middle'});
       t.textContent = v.toFixed(1);
       gridGroup.appendChild(t);
     }
-    gridGroup.appendChild(svgEl('line', {x1:HPX0, y1:HBASE, x2:HPX1, y2:HBASE, stroke:'#363a4a', 'stroke-width':1.2}));
+    gridGroup.appendChild(svgEl('line', {x1:HPX0, y1:HBASE, x2:HPX1, y2:HBASE, stroke:'#9FAE9C', 'stroke-width':1.2}));
     histSvg.appendChild(gridGroup);
 
     // bars
@@ -517,18 +544,18 @@
 
     // clip zone shading + edge markers
     if(left>0){
-      histSvg.appendChild(svgEl('rect', {x:HPX0-14, y:HTOP, width:14, height:HBASE-HTOP, fill:'rgba(255,84,112,0.18)'}));
+      histSvg.appendChild(svgEl('rect', {x:HPX0-14, y:HTOP, width:14, height:HBASE-HTOP, fill:'rgba(166,71,60,0.18)'}));
       const tri = svgEl('polygon', {points:`${HPX0-6},${HBASE-8} ${HPX0+4},${HBASE-16} ${HPX0+4},${HBASE-0}`, fill:'var(--clip-color)'});
       histSvg.appendChild(tri);
-      const lbl = svgEl('text', {x:HPX0-8, y:HTOP+14, fill:'#ff8a9e', 'font-size':10.5, 'font-family':'JetBrains Mono, monospace', 'text-anchor':'end'});
+      const lbl = svgEl('text', {x:HPX0-8, y:HTOP+14, fill:'#A6473C', 'font-size':10.5, 'font-family':'IBM Plex Mono, monospace', 'text-anchor':'end'});
       lbl.textContent = `${left} clipped`;
       histSvg.appendChild(lbl);
     }
     if(right>0){
-      histSvg.appendChild(svgEl('rect', {x:HPX1, y:HTOP, width:14, height:HBASE-HTOP, fill:'rgba(255,84,112,0.18)'}));
+      histSvg.appendChild(svgEl('rect', {x:HPX1, y:HTOP, width:14, height:HBASE-HTOP, fill:'rgba(166,71,60,0.18)'}));
       const tri = svgEl('polygon', {points:`${HPX1+6},${HBASE-8} ${HPX1-4},${HBASE-16} ${HPX1-4},${HBASE-0}`, fill:'var(--clip-color)'});
       histSvg.appendChild(tri);
-      const lbl = svgEl('text', {x:HPX1+8, y:HTOP+14, fill:'#ff8a9e', 'font-size':10.5, 'font-family':'JetBrains Mono, monospace'});
+      const lbl = svgEl('text', {x:HPX1+8, y:HTOP+14, fill:'#A6473C', 'font-size':10.5, 'font-family':'IBM Plex Mono, monospace'});
       lbl.textContent = `${right} clipped`;
       histSvg.appendChild(lbl);
     }
