@@ -284,13 +284,7 @@ install_github("josiahpjking/DasGuptR@develop")
 
 In Stata: **rdecompose**
 
-```
-clear
-input str12 LAA long n_people long n_women15to44 int n_births
-"Glasgow City" 650300 161105 6150
-"Stirling" 94210 17844 659
-end
-```
+TODO Ben how do you install rdecompose in stirling? the data is given in the question below, but i don't know how they get rdecompose package/library/function thing.
 
 
 `r qend()`

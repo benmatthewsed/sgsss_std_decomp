@@ -194,6 +194,16 @@ $^*$ "factors" here may be better worded as "component parts". It's nothing to d
 
 ## Decomposition - {DasGuptR}
 
+- We've been pleasantly surprised by the usage (n.b, expectations were low!)  
+
+    - Understanding tuberculosis rates in Brazil
+    - Comparing contribution of different factors to epilepsy burden across different sociodemographic indices
+    - Changes in population composition affecting rates of 'deaths of despair' (USA)
+    - Understanding the labour market. It's in Portuguese, but [this technical note](https://www.bcb.gov.br/publicacoes/notastecnicas){target=_"blank"} from Charles Correa at the Central Bank of Brazil has some excellent examples and explanations.  
+
+
+## Decomposition - {DasGuptR}
+
 **Workflow**  
 
 ```{r}
@@ -256,6 +266,11 @@ dgres <- dgnpop(x = mydat,
 head(dgres)
 ```
 
+<small>
+^ these are the rates for each population (both crude and standardised rates)  
+
+The value of the `factor` column denotes the part of the rate that is **not** held at the average.  
+</small>
 
 :::
 ::::
@@ -294,6 +309,12 @@ dg_table(dgres)
 
 :::
 ::::
+
+## Decomposition - {DasGuptR}
+
+### Das Gupta tables
+
+![](images/dgtable.png)
 
 
 ## Decomposition - {DasGuptR}

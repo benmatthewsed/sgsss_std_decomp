@@ -430,6 +430,9 @@ $$
 
 SEPA provides data allowing for either of these decompositions for every year from 2011 onwards, providing us with a good example for decomposition across a time series.  
 
+You could use this example to evidence how pairwise standardisation of populations creates an inconsistency in that A-effects between populations 1 and 2 and between 2 and 3 do not sum to those between 1 and 3.  
+Contrast this with Das Gupta's approach using the full time series.  
+
 The data are available at [https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv](https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv){target="_blank"}  
 
 :::
@@ -457,9 +460,42 @@ dgnpop(df,
        pop="year",
        factors=c("pop","wpp","recp")) |> 
   dg_plot(legend.position="bottom")
-
-
 ```
+
+decomposition across pairs of populations:  
+```{r}
+dgnpop(df |> filter(year %in% c(2011,2016)),
+       pop="year",
+       factors=c("wpp","recp")) |> 
+  dg_table()
+dgnpop(df |> filter(year %in% c(2016,2022)),
+       pop="year",
+       factors=c("wpp","recp")) |> 
+  dg_table()
+dgnpop(df |> filter(year %in% c(2011,2022)),
+       pop="year",
+       factors=c("wpp","recp")) |> 
+  dg_table()
+```
+contribution of `wpp` from 2011 to 2016 and from 2016 to 2022 does not give us the contriution from 2011 to 2022!  
+-0.114 + -0.161 does not equal -0.0263
+ 
+```{r}
+dgnpop(df,
+       pop="year",
+       factors=c("wpp","recp")) |> 
+  dg_table(pop1 = 2011, pop2 = 2016)
+dgnpop(df,
+       pop="year",
+       factors=c("wpp","recp")) |> 
+  dg_table(pop1 = 2016, pop2 = 2022)
+dgnpop(df,
+       pop="year",
+       factors=c("wpp","recp")) |> 
+  dg_table(pop1 = 2011, pop2 = 2022)
+```
+Now, the contribution of `wpp` from 2011 to 2016 and from 2016 to 2022 *does* retreive the contriution from 2011 to 2022:  
+-0.0109 + -0.0159 = -0.0268
 
 ```default
 import delimited "https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_timeseries.csv", varnames(1) clear
@@ -521,18 +557,22 @@ gdat |>
     pgap = (1-(female/male))*100
   )
 
-# occupation-adjusted GPayGap: 
-dgnpop(gdat,
+# to get the occupation-adjusted GPayGap
+# we get the standardised rates: 
+srates <- dgnpop(gdat,
        pop = "sex",
        factors = "mean_hourly",
        id_vars = "soc2dcode",
-       crossclassified = "thousand") |>
-  filter(factor == "mean_hourly") |>
-  select(pop,rate,factor) |>
-  pivot_wider(names_from=pop,values_from=rate) |>
-  mutate(
-    pgap = (1-(female/male))*100
-  )
+       crossclassified = "thousand")
+
+# and we want the rates where it holds the proportions of population
+# in each occupation the same: 
+srates |> 
+  filter(factor == "mean_hourly")
+
+# and then to get the "pay gap" as a percentage of the male income:
+# 11.1%
+(1 - (21.26316/23.91682)) * 100
 ```
 
 
@@ -572,9 +612,9 @@ For example, we may be interested in decomposing the proportion of energy genera
 
 $$ \small
 \begin{align}
-\text{Wind & Solar Share} &= \frac{\text{Electricity Generated from Wind & Solar}}{\text{Electricity Generated}} \\
-\quad \\
-&=\sum\limits_{\text{country }i}\frac{\text{from W&S}_i}{\text{from Renewables}_i} \cdot \frac{\text{from Renewables}_i}{\text{from Clean Energy}_i} \cdot \frac{\text{from Clean Energy}_i}{\text{Total}_i} \\
+\text{Wind \& Solar Share} &= \frac{\text{Electricity Generated from Wind \& Solar}}{\text{Electricity Generated}} \\
+& \quad \\
+&=\sum\limits_{\text{country }i}\frac{\text{from W\&S}_i}{\text{from Renewables}_i} \cdot \frac{\text{from Renewables}_i}{\text{from Clean Energy}_i} \cdot \frac{\text{from Clean Energy}_i}{\text{Total}_i} \\
 \end{align}
 $$
 

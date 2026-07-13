@@ -225,8 +225,10 @@ clogg_straps |>
   unnest(results) |> 
  # filter(is.na(diff))
   group_by(rowname) |> 
-  summarise(estimate = quantile(diff, c(0.025, 0.5, 0.975), na.rm = TRUE),
-ci = c(0.025, 0.5, 0.975)) |> 
+  reframe(
+      estimate = quantile(diff, c(0.025, 0.5, 0.975), na.rm = TRUE),
+      ci = c(0.025, 0.5, 0.975)
+    ) |> 
   pivot_wider(id_cols = rowname,
   names_from = ci,
 values_from = estimate)
