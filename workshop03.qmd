@@ -1,7 +1,7 @@
 ---
 title: "Practical 3"
 params: 
-    SHOW_SOLS: FALSE
+    SHOW_SOLS: TRUE
     TOGGLE: TRUE
 editor_options: 
   chunk_output_type: console
@@ -296,5 +296,6 @@ bootstrap, nowarn nodots reps(1000): mydecompose rseed 356
 ```
 
 :::
+::::
 
 ## References
