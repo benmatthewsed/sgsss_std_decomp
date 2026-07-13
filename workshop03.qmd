@@ -168,6 +168,8 @@ Now we use the `map` function to reaggregate each bootstrap replication. This it
 clogg_straps <- 
 clogg_straps |> 
   mutate(clogg_agg = map(splits, agg_clogg))
+
+clogg_straps
 ```
 
 # Iterating the standardization and decomposition
@@ -184,7 +186,7 @@ clogg_straps
 ```
 
 
-We can now just select the results and the bootstrap id columns, then use `unnest` to take a look at our 100 decompositions.
+We can now just select the results and the bootstrap id columns, then use `unnest` to take a look at our 100 decompositions. The columns `1` and `4` represent the one and four parity groups.
 
 ```{r}
 clogg_straps |> 
