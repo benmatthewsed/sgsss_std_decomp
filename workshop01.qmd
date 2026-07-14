@@ -295,6 +295,11 @@ install_github("josiahpjking/DasGuptR@develop")
 
 In Stata, we're assuming you are familiar with using Stata (if not, we recommend you use R instead). The relevant command is **rdecompose**
 
+```default
+#| eval: false
+ssc install rdecompose
+```
+
 `r qend()`
 
 `r qbegin(qcounter())`

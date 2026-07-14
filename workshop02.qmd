@@ -659,20 +659,18 @@ srates |>
 :::panel
 #### Stata
 
+So far as I (Ben) can tell `rdecompose` doesn't let you easily access the standardized rates, so we can't follow the R example exactly. But you can perform the decomposition with the code below:
+
 ```default
 import delimited "https://josiahpjking.github.io/sgsss_std_decomp/data/gender_pay_occ.csv", varnames(1) clear
 
 
 * create the variables
 
-gen wpp = totalwaste/pop
-gen recp = recycled/totalwaste
-gen lfp = landfilled/totalwaste
-gen incp = diverted/totalwaste
+bysort sex: egen total_employees = total(thousand)
+gen soc_share = thousand/ total_employees
 
-rdecompose wpp recp, group(year) multi
-
-rdecompose pop wpp recp, group(year) multi
+rdecompose soc_share mean_hourly, group(sex) sum(soc2dcode) detail
 ```
 :::
 ::::
@@ -803,7 +801,7 @@ left_join(
 :::panel
 #### Stata
 
-nothing here! todo! 
+Because the way `rdecompose` handles time series is different to `DasGuptR` we don't provide Stata code for this example.
 
 :::
 ::::
@@ -867,7 +865,7 @@ head(bs)
 :::panel
 #### Stata
 
-nothing here! todo! 
+Because the way `rdecompose` handles time series is different to `DasGuptR` we don't provide Stata code for this example.
 
 :::
 ::::
@@ -929,6 +927,7 @@ dgnpop(hdat,
 :::panel
 #### Stata
 
+Because the way `rdecompose` handles time series is different to `DasGuptR` we don't provide Stata code for this example.
 
 :::
 ::::
@@ -1024,7 +1023,7 @@ dg_plot(deaths_dc,legend.position="bottom")
 :::panel
 #### Stata
 
-nothing here yet! still todo!
+Because the way `rdecompose` handles time series is different to `DasGuptR` we don't provide Stata code for this example.
 
 :::
 ::::
