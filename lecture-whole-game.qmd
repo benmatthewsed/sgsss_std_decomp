@@ -1,5 +1,5 @@
 ---
-title: "The Whole Game"
+title: "Standardization and Decomposition: A worked example of Scotland's reconviction rate"
 format:
   revealjs:
     theme: [default, assets/mystyle.scss]
@@ -28,8 +28,11 @@ options(digits=2)
 
 # A motivating example: Why is Scotland's reconviction rate falling?
 
-## Background
+::: aside
+aka Matthews, King and Buchan (in preparation)
+:::
 
+## Background
 -   The crime drop [@farrellWhyCrimeDrop2014] has changed the demographics of people being convicted [@matthewsRethinkingOneCriminologys2018]
 -   Changing demographics of people convicted complicates comparisons in the aggregate reconviction rate over time
 -   The overall change in the reconvictions rate in Scotland is partly due to fewer reconvictions and partly due to changing demographics
@@ -38,36 +41,7 @@ options(digits=2)
 
 # Part One: The crime drop in Scotland {background-color="#006938"}
 
-## Fewer people are being convicted
-
-```{r warnings=FALSE}
-# library(tidyverse)
-# library(DasGuptR)
-# library(readxl)
-# library(here)
-# library(binom)
-# library(patchwork)
-
-
-# scot_reconv <- readRDS(here::here("01_data", "combined_reconvictions.rds"))
-
-# scot_reconv |> 
-#   group_by(year) |> 
-#   summarise(n = sum(number_of_offenders)) |> 
-#   ggplot(aes(x = year, group = 1, y = n)) +
-#   geom_line() +
-#   theme_minimal() +
-#   geom_line(linewidth = 1.5,
-#             alpha = 0.9,
-#             colour = "#006938") +
-#   labs(y = "Size of reconviction cohorts",
-#        x = "Year",
-#        caption = "Source: Scottish Government (2013; 2024)") +
-#   theme(axis.text.x = element_text(angle = 45, hjust=1))
-```
-
 ## The overall reconviction rate is falling
-
 
 ![reconviciton-rate](figs/reconviction-rate.png)
 
@@ -81,8 +55,7 @@ options(digits=2)
 ## A gap in the crime drop
 
 -   There has been *a lot* written about the causes of the crime drop [@farrellWhyCrimeDrop2014; @tonryWhyCrimeRates2014; @ballGreatDeclineAdolescent2023], including previous attempts to describe changes in the demographics of crime and use these descriptions to build explanations for why there is less crime now than in the past [@matthewsRethinkingOneCriminologys2018; @tuttleEndAgeCrimeCurve2024; @farrellDebutsLegaciesCrime2015]
--   There haven't - at least as far as I'm aware - been any studies which go on to explore the *consequences* of these changing demographics for the justice system more broadly
--   One area these changing demographics can matter are when measuring Criminal Justice System 'performance'
+-   One unexplored area these changing demographics can matter are when measuring Criminal Justice System 'performance'
 
 # Part Two: Measuring 'Performance' {background-color="#006938"}
 
@@ -98,11 +71,8 @@ options(digits=2)
 
 -   However, "differences in the offending related characteristics of those included in each cohort make comparing reoffending rates problematic, across both time and jurisdictions." [@browneAdultYouthReoffending2024, p19]
 
--   We can think of the overall reconviction rate as a *weighted* mean of the reconviction rates in different demographic groups, weighted by the group size. You can have changes in the rate due to changes in the means or changes in the rates.
-
--   This is known as the amalgamation paradox [@goodAmalgamationGeometryTwobyTwo1987] or Simpson's [-@simpsonInterpretationInteractionContingency1951] paradox
-
--   Because of changes in the distribution of characteristics of the people who have been convicted change in the overall reconviction rate can be biased. The overall change we see will be both due to changes in the prevalence of reconviction amongst demographic groups, but also the mix/composition of those groups who are in each reconviction cohort.
+-   Because of changes in the distribution of characteristics of the people who have been convicted, change in the overall reconviction rate can be biased as a performance measure
+- The overall change we see will be both due to changes in the prevalence of reconviction amongst demographic groups, but also the mix/composition of those groups who are in each reconviction cohort.
 
 ## The anatomy of a rate
 
@@ -118,7 +88,7 @@ options(digits=2)
 -   Standardization and decomposition can separate out changes in the reconviction rate that are due to demographic change from those due to change in the underlying reconviction rate for different age groups
 -   Standardization and decomposition can also separate out the relative importance of different factors in driving aggregate change (e.g. age and sex)
 -   Previous regression-based approaches [@francisPredictingReconvictionRates2005; @cunliffeReoffendingAdultsResults2007; @drakeWashingtonsOffenderAccountability2010]  to correct for the problem of changing 'offender mix' can perform this standardization part, but don't focus on the decomposition part
-
+- The regression approach focuses on 'is the observed rate lower than some predicted rate' - but not quantifying the contribution of a given characteristic to the difference between observed and predicted rate
 
 # Research design {background-color="#006938"}
 
