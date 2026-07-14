@@ -48,15 +48,24 @@ $^*$ "factors" here may be better worded as "component parts". It's nothing to d
 
 ---
 
-![](images/pres1/Slide3.PNG){fig-align="center" width="100%"}
-
----
-
 ![](images/pres1/Slide4.PNG){fig-align="center" width="100%"}
 
 ---
 
 ![](images/pres1/Slide5.PNG){fig-align="center" width="100%"}
+
+---
+
+![](images/pres1/Slide19.PNG){fig-align="center" width="100%"}
+
+---
+
+![](images/pres1/Slide20.PNG){fig-align="center" width="100%"}
+
+---
+
+![](images/pres1/Slide21.PNG){fig-align="center" width="100%"}
+
 
 ---
 
@@ -113,17 +122,6 @@ $^*$ "factors" here may be better worded as "component parts". It's nothing to d
 
 ![](images/pres1/Slide18.PNG){fig-align="center" width="100%"}
 
----
-
-![](images/pres1/Slide19.PNG){fig-align="center" width="100%"}
-
----
-
-![](images/pres1/Slide20.PNG){fig-align="center" width="100%"}
-
----
-
-![](images/pres1/Slide21.PNG){fig-align="center" width="100%"}
 
 ---
 
@@ -162,6 +160,10 @@ $^*$ "factors" here may be better worded as "component parts". It's nothing to d
 
 ---
 
+![](images/pres1/Slide32.PNG){fig-align="center" width="100%"}
+
+---
+
 ![](images/pres1/Slide30.PNG){fig-align="center" width="100%"}
 
 ---
@@ -170,15 +172,59 @@ $^*$ "factors" here may be better worded as "component parts". It's nothing to d
 
 ---
 
-![](images/pres1/Slide32.PNG){fig-align="center" width="100%"}
-
----
-
 ![](images/pres1/Slide33.PNG){fig-align="center" width="100%"}
 
 ---
 
 ![](images/pres1/Slide34.PNG){fig-align="center" width="100%"}
+
+## Decomposition - Das Gupta 
+
+::::{.columns}
+:::{.column width="50%"}
+__standardisation:__  
+
+- what the rates would be if factor A was asis, but the other factors were at the average configuration' (i.e., the weighted mean of all possible combinations of those factors across the two populations)  
+
+:::
+:::{.column width="50%"}
+__decomposition:__ 
+
+- how much of $\Delta R$ is due to $\Delta A$, averaged over all possible ways of moving from $R_1$ to $R_2$.  
+
+
+:::
+::::
+
+
+:::{.fragment}
+::::{.columns}
+:::{.column width="50%"}
+hypothetical rates letting one factor move and holding others constant
+:::
+:::{.column width="50%"}
+comparison of hypothetical rates to determine contribution of each factor
+:::
+::::
+
+:::
+
+## phew...
+
+<div style="width: 150px;">
+  <img src="images/rabbit.png" style="width: 100%;">
+</div>
+
+:::{.fragment}
+Take-away:  
+
+- neutrality: doesn't favour one population as the standard 
+
+- symmetry: order of factors doesn't matter
+
+- $\Delta R = \Delta A_{std} +  \Delta B_{std} + \ldots  + \Delta K_{std}$
+
+:::
 
 
 ## Decomposition - {DasGuptR}
@@ -316,6 +362,8 @@ dg_table(dgres)
 ### Das Gupta tables
 
 ![](images/dgtable.png)
+
+
 
 
 ## Decomposition - {DasGuptR}
