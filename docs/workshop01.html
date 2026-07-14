@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,9 +21,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,16 +64,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cc9c921b97e619dececfd4d9f733df73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-33292a589ea9797582940b4560cfe6d3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -103,21 +101,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <script>
+
 function toggle_visibility(id1, id2) {
+
 var e = document.getElementById(id1);
+
 var f = document.getElementById(id2);
+
 e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
 if(f.classList.contains('jk-circle-right')) {
+
     f.classList.add('jk-circle-down')
+
     f.classList.remove('jk-circle-right')
+
 } else {
+
     f.classList.add('jk-circle-right')
+
     f.classList.remove('jk-circle-down')
+
 }
+
 }
+
 </script>
 
+
+
 <!---<script src="https://kit.fontawesome.com/120b08a6f5.js" crossorigin="anonymous"></script>-->
+
 <link href="site_libs/panelset-0.3.0/panelset.css" rel="stylesheet">
 
 <script src="site_libs/panelset-0.3.0/panelset.js"></script>
@@ -155,7 +169,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -190,6 +204,10 @@ window.Quarto = {
  <span class="dropdown-text">Standardization and decomposition: A conceptual introduction</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="./lecture-whole-game.html">
+ <span class="dropdown-text">The Whole Game</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./lecture-stddecompbasics.html">
  <span class="dropdown-text">Standardisation and Decomposition of Rates as Products</span></a>
   </li>  
@@ -202,20 +220,16 @@ window.Quarto = {
  <span class="dropdown-text">Uncertainty in Standardization and Decomposition</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./lecture-whole-game.html">
- <span class="dropdown-text">The Whole Game</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="./lecture-othermethods.html">
  <span class="dropdown-text">Decomposition more generally</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-worksheets" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Worksheets</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-practicals" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Practicals</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-worksheets">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-practicals">    
         <li>
     <a class="dropdown-item" href="./workshop01.html">
  <span class="dropdown-text">Practical 1</span></a>
@@ -303,23 +317,23 @@ Question 1
 <p>Calculate the birth rate for each LAA</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="gzoettpoeu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gzoettpoeu table {
+<div id="cwocbgheob" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cwocbgheob table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gzoettpoeu thead, #gzoettpoeu tbody, #gzoettpoeu tfoot, #gzoettpoeu tr, #gzoettpoeu td, #gzoettpoeu th {
+#cwocbgheob thead, #cwocbgheob tbody, #cwocbgheob tfoot, #cwocbgheob tr, #cwocbgheob td, #cwocbgheob th {
   border-style: none;
 }
 
-#gzoettpoeu p {
+#cwocbgheob p {
   margin: 0;
   padding: 0;
 }
 
-#gzoettpoeu .gt_table {
+#cwocbgheob .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -345,12 +359,12 @@ Question 1
   border-left-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_caption {
+#cwocbgheob .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gzoettpoeu .gt_title {
+#cwocbgheob .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -362,7 +376,7 @@ Question 1
   border-bottom-width: 0;
 }
 
-#gzoettpoeu .gt_subtitle {
+#cwocbgheob .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -374,7 +388,7 @@ Question 1
   border-top-width: 0;
 }
 
-#gzoettpoeu .gt_heading {
+#cwocbgheob .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -386,13 +400,13 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_bottom_border {
+#cwocbgheob .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_col_headings {
+#cwocbgheob .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -407,7 +421,7 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_col_heading {
+#cwocbgheob .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -427,7 +441,7 @@ Question 1
   overflow-x: hidden;
 }
 
-#gzoettpoeu .gt_column_spanner_outer {
+#cwocbgheob .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -439,15 +453,15 @@ Question 1
   padding-right: 4px;
 }
 
-#gzoettpoeu .gt_column_spanner_outer:first-child {
+#cwocbgheob .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gzoettpoeu .gt_column_spanner_outer:last-child {
+#cwocbgheob .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gzoettpoeu .gt_column_spanner {
+#cwocbgheob .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -459,11 +473,11 @@ Question 1
   width: 100%;
 }
 
-#gzoettpoeu .gt_spanner_row {
+#cwocbgheob .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gzoettpoeu .gt_group_heading {
+#cwocbgheob .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -489,7 +503,7 @@ Question 1
   text-align: left;
 }
 
-#gzoettpoeu .gt_empty_group_heading {
+#cwocbgheob .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -504,15 +518,15 @@ Question 1
   vertical-align: middle;
 }
 
-#gzoettpoeu .gt_from_md > :first-child {
+#cwocbgheob .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gzoettpoeu .gt_from_md > :last-child {
+#cwocbgheob .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gzoettpoeu .gt_row {
+#cwocbgheob .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -531,7 +545,7 @@ Question 1
   overflow-x: hidden;
 }
 
-#gzoettpoeu .gt_stub {
+#cwocbgheob .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -544,7 +558,7 @@ Question 1
   padding-right: 5px;
 }
 
-#gzoettpoeu .gt_stub_row_group {
+#cwocbgheob .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -558,15 +572,15 @@ Question 1
   vertical-align: top;
 }
 
-#gzoettpoeu .gt_row_group_first td {
+#cwocbgheob .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gzoettpoeu .gt_row_group_first th {
+#cwocbgheob .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gzoettpoeu .gt_summary_row {
+#cwocbgheob .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -576,16 +590,16 @@ Question 1
   padding-right: 5px;
 }
 
-#gzoettpoeu .gt_first_summary_row {
+#cwocbgheob .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_first_summary_row.thick {
+#cwocbgheob .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gzoettpoeu .gt_last_summary_row {
+#cwocbgheob .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -595,7 +609,7 @@ Question 1
   border-bottom-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_grand_summary_row {
+#cwocbgheob .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -605,7 +619,7 @@ Question 1
   padding-right: 5px;
 }
 
-#gzoettpoeu .gt_first_grand_summary_row {
+#cwocbgheob .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -615,7 +629,7 @@ Question 1
   border-top-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_last_grand_summary_row_top {
+#cwocbgheob .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -625,11 +639,11 @@ Question 1
   border-bottom-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_striped {
+#cwocbgheob .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gzoettpoeu .gt_table_body {
+#cwocbgheob .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -638,7 +652,7 @@ Question 1
   border-bottom-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_footnotes {
+#cwocbgheob .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -652,7 +666,7 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_footnote {
+#cwocbgheob .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -661,7 +675,7 @@ Question 1
   padding-right: 5px;
 }
 
-#gzoettpoeu .gt_sourcenotes {
+#cwocbgheob .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -675,7 +689,7 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#gzoettpoeu .gt_sourcenote {
+#cwocbgheob .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -683,72 +697,72 @@ Question 1
   padding-right: 5px;
 }
 
-#gzoettpoeu .gt_left {
+#cwocbgheob .gt_left {
   text-align: left;
 }
 
-#gzoettpoeu .gt_center {
+#cwocbgheob .gt_center {
   text-align: center;
 }
 
-#gzoettpoeu .gt_right {
+#cwocbgheob .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gzoettpoeu .gt_font_normal {
+#cwocbgheob .gt_font_normal {
   font-weight: normal;
 }
 
-#gzoettpoeu .gt_font_bold {
+#cwocbgheob .gt_font_bold {
   font-weight: bold;
 }
 
-#gzoettpoeu .gt_font_italic {
+#cwocbgheob .gt_font_italic {
   font-style: italic;
 }
 
-#gzoettpoeu .gt_super {
+#cwocbgheob .gt_super {
   font-size: 65%;
 }
 
-#gzoettpoeu .gt_footnote_marks {
+#cwocbgheob .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gzoettpoeu .gt_asterisk {
+#cwocbgheob .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gzoettpoeu .gt_indent_1 {
+#cwocbgheob .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gzoettpoeu .gt_indent_2 {
+#cwocbgheob .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gzoettpoeu .gt_indent_3 {
+#cwocbgheob .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gzoettpoeu .gt_indent_4 {
+#cwocbgheob .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gzoettpoeu .gt_indent_5 {
+#cwocbgheob .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gzoettpoeu .katex-display {
+#cwocbgheob .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gzoettpoeu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cwocbgheob div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -784,26 +798,32 @@ Question 1
 </div>
 <p class="question-end">
 </p>
-<div style="display:none;">
+<div class="solution-begin">
+<button id="sol-start-1" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-1', 'sol-start-1')">
+Solution
+</button>
+</div>
+<div id="sol-body-1" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 1</em>. </span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="ahhltndwpz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ahhltndwpz table {
+<div id="mmzzocxcdr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mmzzocxcdr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ahhltndwpz thead, #ahhltndwpz tbody, #ahhltndwpz tfoot, #ahhltndwpz tr, #ahhltndwpz td, #ahhltndwpz th {
+#mmzzocxcdr thead, #mmzzocxcdr tbody, #mmzzocxcdr tfoot, #mmzzocxcdr tr, #mmzzocxcdr td, #mmzzocxcdr th {
   border-style: none;
 }
 
-#ahhltndwpz p {
+#mmzzocxcdr p {
   margin: 0;
   padding: 0;
 }
 
-#ahhltndwpz .gt_table {
+#mmzzocxcdr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -829,12 +849,12 @@ Question 1
   border-left-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_caption {
+#mmzzocxcdr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ahhltndwpz .gt_title {
+#mmzzocxcdr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -846,7 +866,7 @@ Question 1
   border-bottom-width: 0;
 }
 
-#ahhltndwpz .gt_subtitle {
+#mmzzocxcdr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -858,7 +878,7 @@ Question 1
   border-top-width: 0;
 }
 
-#ahhltndwpz .gt_heading {
+#mmzzocxcdr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -870,13 +890,13 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_bottom_border {
+#mmzzocxcdr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_col_headings {
+#mmzzocxcdr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -891,7 +911,7 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_col_heading {
+#mmzzocxcdr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -911,7 +931,7 @@ Question 1
   overflow-x: hidden;
 }
 
-#ahhltndwpz .gt_column_spanner_outer {
+#mmzzocxcdr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -923,15 +943,15 @@ Question 1
   padding-right: 4px;
 }
 
-#ahhltndwpz .gt_column_spanner_outer:first-child {
+#mmzzocxcdr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ahhltndwpz .gt_column_spanner_outer:last-child {
+#mmzzocxcdr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ahhltndwpz .gt_column_spanner {
+#mmzzocxcdr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -943,11 +963,11 @@ Question 1
   width: 100%;
 }
 
-#ahhltndwpz .gt_spanner_row {
+#mmzzocxcdr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ahhltndwpz .gt_group_heading {
+#mmzzocxcdr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -973,7 +993,7 @@ Question 1
   text-align: left;
 }
 
-#ahhltndwpz .gt_empty_group_heading {
+#mmzzocxcdr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -988,15 +1008,15 @@ Question 1
   vertical-align: middle;
 }
 
-#ahhltndwpz .gt_from_md > :first-child {
+#mmzzocxcdr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ahhltndwpz .gt_from_md > :last-child {
+#mmzzocxcdr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ahhltndwpz .gt_row {
+#mmzzocxcdr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1015,7 +1035,7 @@ Question 1
   overflow-x: hidden;
 }
 
-#ahhltndwpz .gt_stub {
+#mmzzocxcdr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1028,7 +1048,7 @@ Question 1
   padding-right: 5px;
 }
 
-#ahhltndwpz .gt_stub_row_group {
+#mmzzocxcdr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1042,15 +1062,15 @@ Question 1
   vertical-align: top;
 }
 
-#ahhltndwpz .gt_row_group_first td {
+#mmzzocxcdr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ahhltndwpz .gt_row_group_first th {
+#mmzzocxcdr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ahhltndwpz .gt_summary_row {
+#mmzzocxcdr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1060,16 +1080,16 @@ Question 1
   padding-right: 5px;
 }
 
-#ahhltndwpz .gt_first_summary_row {
+#mmzzocxcdr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_first_summary_row.thick {
+#mmzzocxcdr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ahhltndwpz .gt_last_summary_row {
+#mmzzocxcdr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1079,7 +1099,7 @@ Question 1
   border-bottom-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_grand_summary_row {
+#mmzzocxcdr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1089,7 +1109,7 @@ Question 1
   padding-right: 5px;
 }
 
-#ahhltndwpz .gt_first_grand_summary_row {
+#mmzzocxcdr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1099,7 +1119,7 @@ Question 1
   border-top-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_last_grand_summary_row_top {
+#mmzzocxcdr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1109,11 +1129,11 @@ Question 1
   border-bottom-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_striped {
+#mmzzocxcdr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ahhltndwpz .gt_table_body {
+#mmzzocxcdr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1122,7 +1142,7 @@ Question 1
   border-bottom-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_footnotes {
+#mmzzocxcdr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1136,7 +1156,7 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_footnote {
+#mmzzocxcdr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1145,7 +1165,7 @@ Question 1
   padding-right: 5px;
 }
 
-#ahhltndwpz .gt_sourcenotes {
+#mmzzocxcdr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1159,7 +1179,7 @@ Question 1
   border-right-color: #D3D3D3;
 }
 
-#ahhltndwpz .gt_sourcenote {
+#mmzzocxcdr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1167,72 +1187,72 @@ Question 1
   padding-right: 5px;
 }
 
-#ahhltndwpz .gt_left {
+#mmzzocxcdr .gt_left {
   text-align: left;
 }
 
-#ahhltndwpz .gt_center {
+#mmzzocxcdr .gt_center {
   text-align: center;
 }
 
-#ahhltndwpz .gt_right {
+#mmzzocxcdr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ahhltndwpz .gt_font_normal {
+#mmzzocxcdr .gt_font_normal {
   font-weight: normal;
 }
 
-#ahhltndwpz .gt_font_bold {
+#mmzzocxcdr .gt_font_bold {
   font-weight: bold;
 }
 
-#ahhltndwpz .gt_font_italic {
+#mmzzocxcdr .gt_font_italic {
   font-style: italic;
 }
 
-#ahhltndwpz .gt_super {
+#mmzzocxcdr .gt_super {
   font-size: 65%;
 }
 
-#ahhltndwpz .gt_footnote_marks {
+#mmzzocxcdr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ahhltndwpz .gt_asterisk {
+#mmzzocxcdr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ahhltndwpz .gt_indent_1 {
+#mmzzocxcdr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ahhltndwpz .gt_indent_2 {
+#mmzzocxcdr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ahhltndwpz .gt_indent_3 {
+#mmzzocxcdr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ahhltndwpz .gt_indent_4 {
+#mmzzocxcdr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ahhltndwpz .gt_indent_5 {
+#mmzzocxcdr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ahhltndwpz .katex-display {
+#mmzzocxcdr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ahhltndwpz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mmzzocxcdr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1281,23 +1301,23 @@ Question 2
 <p>Calculate these below, and then multiply them to demonstrate to yourselves that this returns the same rates (give or take some rounding!) as the previous question.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="pyvvqmynkr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pyvvqmynkr table {
+<div id="kvhdaogftv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kvhdaogftv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pyvvqmynkr thead, #pyvvqmynkr tbody, #pyvvqmynkr tfoot, #pyvvqmynkr tr, #pyvvqmynkr td, #pyvvqmynkr th {
+#kvhdaogftv thead, #kvhdaogftv tbody, #kvhdaogftv tfoot, #kvhdaogftv tr, #kvhdaogftv td, #kvhdaogftv th {
   border-style: none;
 }
 
-#pyvvqmynkr p {
+#kvhdaogftv p {
   margin: 0;
   padding: 0;
 }
 
-#pyvvqmynkr .gt_table {
+#kvhdaogftv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1323,12 +1343,12 @@ Question 2
   border-left-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_caption {
+#kvhdaogftv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pyvvqmynkr .gt_title {
+#kvhdaogftv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1340,7 +1360,7 @@ Question 2
   border-bottom-width: 0;
 }
 
-#pyvvqmynkr .gt_subtitle {
+#kvhdaogftv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1352,7 +1372,7 @@ Question 2
   border-top-width: 0;
 }
 
-#pyvvqmynkr .gt_heading {
+#kvhdaogftv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1364,13 +1384,13 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_bottom_border {
+#kvhdaogftv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_col_headings {
+#kvhdaogftv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1385,7 +1405,7 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_col_heading {
+#kvhdaogftv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1405,7 +1425,7 @@ Question 2
   overflow-x: hidden;
 }
 
-#pyvvqmynkr .gt_column_spanner_outer {
+#kvhdaogftv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1417,15 +1437,15 @@ Question 2
   padding-right: 4px;
 }
 
-#pyvvqmynkr .gt_column_spanner_outer:first-child {
+#kvhdaogftv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pyvvqmynkr .gt_column_spanner_outer:last-child {
+#kvhdaogftv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pyvvqmynkr .gt_column_spanner {
+#kvhdaogftv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1437,11 +1457,11 @@ Question 2
   width: 100%;
 }
 
-#pyvvqmynkr .gt_spanner_row {
+#kvhdaogftv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pyvvqmynkr .gt_group_heading {
+#kvhdaogftv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1467,7 +1487,7 @@ Question 2
   text-align: left;
 }
 
-#pyvvqmynkr .gt_empty_group_heading {
+#kvhdaogftv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1482,15 +1502,15 @@ Question 2
   vertical-align: middle;
 }
 
-#pyvvqmynkr .gt_from_md > :first-child {
+#kvhdaogftv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pyvvqmynkr .gt_from_md > :last-child {
+#kvhdaogftv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pyvvqmynkr .gt_row {
+#kvhdaogftv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1509,7 +1529,7 @@ Question 2
   overflow-x: hidden;
 }
 
-#pyvvqmynkr .gt_stub {
+#kvhdaogftv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1522,7 +1542,7 @@ Question 2
   padding-right: 5px;
 }
 
-#pyvvqmynkr .gt_stub_row_group {
+#kvhdaogftv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1536,15 +1556,15 @@ Question 2
   vertical-align: top;
 }
 
-#pyvvqmynkr .gt_row_group_first td {
+#kvhdaogftv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pyvvqmynkr .gt_row_group_first th {
+#kvhdaogftv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pyvvqmynkr .gt_summary_row {
+#kvhdaogftv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1554,16 +1574,16 @@ Question 2
   padding-right: 5px;
 }
 
-#pyvvqmynkr .gt_first_summary_row {
+#kvhdaogftv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_first_summary_row.thick {
+#kvhdaogftv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pyvvqmynkr .gt_last_summary_row {
+#kvhdaogftv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1573,7 +1593,7 @@ Question 2
   border-bottom-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_grand_summary_row {
+#kvhdaogftv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1583,7 +1603,7 @@ Question 2
   padding-right: 5px;
 }
 
-#pyvvqmynkr .gt_first_grand_summary_row {
+#kvhdaogftv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1593,7 +1613,7 @@ Question 2
   border-top-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_last_grand_summary_row_top {
+#kvhdaogftv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1603,11 +1623,11 @@ Question 2
   border-bottom-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_striped {
+#kvhdaogftv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pyvvqmynkr .gt_table_body {
+#kvhdaogftv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1616,7 +1636,7 @@ Question 2
   border-bottom-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_footnotes {
+#kvhdaogftv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1630,7 +1650,7 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_footnote {
+#kvhdaogftv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1639,7 +1659,7 @@ Question 2
   padding-right: 5px;
 }
 
-#pyvvqmynkr .gt_sourcenotes {
+#kvhdaogftv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1653,7 +1673,7 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#pyvvqmynkr .gt_sourcenote {
+#kvhdaogftv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1661,72 +1681,72 @@ Question 2
   padding-right: 5px;
 }
 
-#pyvvqmynkr .gt_left {
+#kvhdaogftv .gt_left {
   text-align: left;
 }
 
-#pyvvqmynkr .gt_center {
+#kvhdaogftv .gt_center {
   text-align: center;
 }
 
-#pyvvqmynkr .gt_right {
+#kvhdaogftv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pyvvqmynkr .gt_font_normal {
+#kvhdaogftv .gt_font_normal {
   font-weight: normal;
 }
 
-#pyvvqmynkr .gt_font_bold {
+#kvhdaogftv .gt_font_bold {
   font-weight: bold;
 }
 
-#pyvvqmynkr .gt_font_italic {
+#kvhdaogftv .gt_font_italic {
   font-style: italic;
 }
 
-#pyvvqmynkr .gt_super {
+#kvhdaogftv .gt_super {
   font-size: 65%;
 }
 
-#pyvvqmynkr .gt_footnote_marks {
+#kvhdaogftv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pyvvqmynkr .gt_asterisk {
+#kvhdaogftv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pyvvqmynkr .gt_indent_1 {
+#kvhdaogftv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pyvvqmynkr .gt_indent_2 {
+#kvhdaogftv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pyvvqmynkr .gt_indent_3 {
+#kvhdaogftv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pyvvqmynkr .gt_indent_4 {
+#kvhdaogftv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pyvvqmynkr .gt_indent_5 {
+#kvhdaogftv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pyvvqmynkr .katex-display {
+#kvhdaogftv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pyvvqmynkr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kvhdaogftv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1771,26 +1791,32 @@ Question 2
 </div>
 <p class="question-end">
 </p>
-<div style="display:none;">
+<div class="solution-begin">
+<button id="sol-start-2" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-2', 'sol-start-2')">
+Solution
+</button>
+</div>
+<div id="sol-body-2" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 2</em>. </span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="gfycroehfc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gfycroehfc table {
+<div id="fzuknduwud" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fzuknduwud table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gfycroehfc thead, #gfycroehfc tbody, #gfycroehfc tfoot, #gfycroehfc tr, #gfycroehfc td, #gfycroehfc th {
+#fzuknduwud thead, #fzuknduwud tbody, #fzuknduwud tfoot, #fzuknduwud tr, #fzuknduwud td, #fzuknduwud th {
   border-style: none;
 }
 
-#gfycroehfc p {
+#fzuknduwud p {
   margin: 0;
   padding: 0;
 }
 
-#gfycroehfc .gt_table {
+#fzuknduwud .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1816,12 +1842,12 @@ Question 2
   border-left-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_caption {
+#fzuknduwud .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gfycroehfc .gt_title {
+#fzuknduwud .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1833,7 +1859,7 @@ Question 2
   border-bottom-width: 0;
 }
 
-#gfycroehfc .gt_subtitle {
+#fzuknduwud .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1845,7 +1871,7 @@ Question 2
   border-top-width: 0;
 }
 
-#gfycroehfc .gt_heading {
+#fzuknduwud .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1857,13 +1883,13 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_bottom_border {
+#fzuknduwud .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_col_headings {
+#fzuknduwud .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1878,7 +1904,7 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_col_heading {
+#fzuknduwud .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1898,7 +1924,7 @@ Question 2
   overflow-x: hidden;
 }
 
-#gfycroehfc .gt_column_spanner_outer {
+#fzuknduwud .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1910,15 +1936,15 @@ Question 2
   padding-right: 4px;
 }
 
-#gfycroehfc .gt_column_spanner_outer:first-child {
+#fzuknduwud .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gfycroehfc .gt_column_spanner_outer:last-child {
+#fzuknduwud .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gfycroehfc .gt_column_spanner {
+#fzuknduwud .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1930,11 +1956,11 @@ Question 2
   width: 100%;
 }
 
-#gfycroehfc .gt_spanner_row {
+#fzuknduwud .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gfycroehfc .gt_group_heading {
+#fzuknduwud .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1960,7 +1986,7 @@ Question 2
   text-align: left;
 }
 
-#gfycroehfc .gt_empty_group_heading {
+#fzuknduwud .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1975,15 +2001,15 @@ Question 2
   vertical-align: middle;
 }
 
-#gfycroehfc .gt_from_md > :first-child {
+#fzuknduwud .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gfycroehfc .gt_from_md > :last-child {
+#fzuknduwud .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gfycroehfc .gt_row {
+#fzuknduwud .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2002,7 +2028,7 @@ Question 2
   overflow-x: hidden;
 }
 
-#gfycroehfc .gt_stub {
+#fzuknduwud .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2015,7 +2041,7 @@ Question 2
   padding-right: 5px;
 }
 
-#gfycroehfc .gt_stub_row_group {
+#fzuknduwud .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2029,15 +2055,15 @@ Question 2
   vertical-align: top;
 }
 
-#gfycroehfc .gt_row_group_first td {
+#fzuknduwud .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gfycroehfc .gt_row_group_first th {
+#fzuknduwud .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gfycroehfc .gt_summary_row {
+#fzuknduwud .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2047,16 +2073,16 @@ Question 2
   padding-right: 5px;
 }
 
-#gfycroehfc .gt_first_summary_row {
+#fzuknduwud .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_first_summary_row.thick {
+#fzuknduwud .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gfycroehfc .gt_last_summary_row {
+#fzuknduwud .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2066,7 +2092,7 @@ Question 2
   border-bottom-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_grand_summary_row {
+#fzuknduwud .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2076,7 +2102,7 @@ Question 2
   padding-right: 5px;
 }
 
-#gfycroehfc .gt_first_grand_summary_row {
+#fzuknduwud .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2086,7 +2112,7 @@ Question 2
   border-top-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_last_grand_summary_row_top {
+#fzuknduwud .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2096,11 +2122,11 @@ Question 2
   border-bottom-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_striped {
+#fzuknduwud .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gfycroehfc .gt_table_body {
+#fzuknduwud .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2109,7 +2135,7 @@ Question 2
   border-bottom-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_footnotes {
+#fzuknduwud .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2123,7 +2149,7 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_footnote {
+#fzuknduwud .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2132,7 +2158,7 @@ Question 2
   padding-right: 5px;
 }
 
-#gfycroehfc .gt_sourcenotes {
+#fzuknduwud .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2146,7 +2172,7 @@ Question 2
   border-right-color: #D3D3D3;
 }
 
-#gfycroehfc .gt_sourcenote {
+#fzuknduwud .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2154,72 +2180,72 @@ Question 2
   padding-right: 5px;
 }
 
-#gfycroehfc .gt_left {
+#fzuknduwud .gt_left {
   text-align: left;
 }
 
-#gfycroehfc .gt_center {
+#fzuknduwud .gt_center {
   text-align: center;
 }
 
-#gfycroehfc .gt_right {
+#fzuknduwud .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gfycroehfc .gt_font_normal {
+#fzuknduwud .gt_font_normal {
   font-weight: normal;
 }
 
-#gfycroehfc .gt_font_bold {
+#fzuknduwud .gt_font_bold {
   font-weight: bold;
 }
 
-#gfycroehfc .gt_font_italic {
+#fzuknduwud .gt_font_italic {
   font-style: italic;
 }
 
-#gfycroehfc .gt_super {
+#fzuknduwud .gt_super {
   font-size: 65%;
 }
 
-#gfycroehfc .gt_footnote_marks {
+#fzuknduwud .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gfycroehfc .gt_asterisk {
+#fzuknduwud .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gfycroehfc .gt_indent_1 {
+#fzuknduwud .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gfycroehfc .gt_indent_2 {
+#fzuknduwud .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gfycroehfc .gt_indent_3 {
+#fzuknduwud .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gfycroehfc .gt_indent_4 {
+#fzuknduwud .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gfycroehfc .gt_indent_5 {
+#fzuknduwud .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gfycroehfc .katex-display {
+#fzuknduwud .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gfycroehfc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fzuknduwud div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2287,23 +2313,23 @@ Hints
 <p>A1 * B2!</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="sqogvxfhee" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#sqogvxfhee table {
+<div id="xbbkvwtfdo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xbbkvwtfdo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#sqogvxfhee thead, #sqogvxfhee tbody, #sqogvxfhee tfoot, #sqogvxfhee tr, #sqogvxfhee td, #sqogvxfhee th {
+#xbbkvwtfdo thead, #xbbkvwtfdo tbody, #xbbkvwtfdo tfoot, #xbbkvwtfdo tr, #xbbkvwtfdo td, #xbbkvwtfdo th {
   border-style: none;
 }
 
-#sqogvxfhee p {
+#xbbkvwtfdo p {
   margin: 0;
   padding: 0;
 }
 
-#sqogvxfhee .gt_table {
+#xbbkvwtfdo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2329,12 +2355,12 @@ Hints
   border-left-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_caption {
+#xbbkvwtfdo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#sqogvxfhee .gt_title {
+#xbbkvwtfdo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2346,7 +2372,7 @@ Hints
   border-bottom-width: 0;
 }
 
-#sqogvxfhee .gt_subtitle {
+#xbbkvwtfdo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2358,7 +2384,7 @@ Hints
   border-top-width: 0;
 }
 
-#sqogvxfhee .gt_heading {
+#xbbkvwtfdo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2370,13 +2396,13 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_bottom_border {
+#xbbkvwtfdo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_col_headings {
+#xbbkvwtfdo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2391,7 +2417,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_col_heading {
+#xbbkvwtfdo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2411,7 +2437,7 @@ Hints
   overflow-x: hidden;
 }
 
-#sqogvxfhee .gt_column_spanner_outer {
+#xbbkvwtfdo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2423,15 +2449,15 @@ Hints
   padding-right: 4px;
 }
 
-#sqogvxfhee .gt_column_spanner_outer:first-child {
+#xbbkvwtfdo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sqogvxfhee .gt_column_spanner_outer:last-child {
+#xbbkvwtfdo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sqogvxfhee .gt_column_spanner {
+#xbbkvwtfdo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2443,11 +2469,11 @@ Hints
   width: 100%;
 }
 
-#sqogvxfhee .gt_spanner_row {
+#xbbkvwtfdo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#sqogvxfhee .gt_group_heading {
+#xbbkvwtfdo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2473,7 +2499,7 @@ Hints
   text-align: left;
 }
 
-#sqogvxfhee .gt_empty_group_heading {
+#xbbkvwtfdo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2488,15 +2514,15 @@ Hints
   vertical-align: middle;
 }
 
-#sqogvxfhee .gt_from_md > :first-child {
+#xbbkvwtfdo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sqogvxfhee .gt_from_md > :last-child {
+#xbbkvwtfdo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sqogvxfhee .gt_row {
+#xbbkvwtfdo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2515,7 +2541,7 @@ Hints
   overflow-x: hidden;
 }
 
-#sqogvxfhee .gt_stub {
+#xbbkvwtfdo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2528,7 +2554,7 @@ Hints
   padding-right: 5px;
 }
 
-#sqogvxfhee .gt_stub_row_group {
+#xbbkvwtfdo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2542,15 +2568,15 @@ Hints
   vertical-align: top;
 }
 
-#sqogvxfhee .gt_row_group_first td {
+#xbbkvwtfdo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sqogvxfhee .gt_row_group_first th {
+#xbbkvwtfdo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#sqogvxfhee .gt_summary_row {
+#xbbkvwtfdo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2560,16 +2586,16 @@ Hints
   padding-right: 5px;
 }
 
-#sqogvxfhee .gt_first_summary_row {
+#xbbkvwtfdo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_first_summary_row.thick {
+#xbbkvwtfdo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sqogvxfhee .gt_last_summary_row {
+#xbbkvwtfdo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2579,7 +2605,7 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_grand_summary_row {
+#xbbkvwtfdo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2589,7 +2615,7 @@ Hints
   padding-right: 5px;
 }
 
-#sqogvxfhee .gt_first_grand_summary_row {
+#xbbkvwtfdo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2599,7 +2625,7 @@ Hints
   border-top-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_last_grand_summary_row_top {
+#xbbkvwtfdo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2609,11 +2635,11 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_striped {
+#xbbkvwtfdo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sqogvxfhee .gt_table_body {
+#xbbkvwtfdo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2622,7 +2648,7 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_footnotes {
+#xbbkvwtfdo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2636,7 +2662,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_footnote {
+#xbbkvwtfdo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2645,7 +2671,7 @@ Hints
   padding-right: 5px;
 }
 
-#sqogvxfhee .gt_sourcenotes {
+#xbbkvwtfdo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2659,7 +2685,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#sqogvxfhee .gt_sourcenote {
+#xbbkvwtfdo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2667,72 +2693,72 @@ Hints
   padding-right: 5px;
 }
 
-#sqogvxfhee .gt_left {
+#xbbkvwtfdo .gt_left {
   text-align: left;
 }
 
-#sqogvxfhee .gt_center {
+#xbbkvwtfdo .gt_center {
   text-align: center;
 }
 
-#sqogvxfhee .gt_right {
+#xbbkvwtfdo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sqogvxfhee .gt_font_normal {
+#xbbkvwtfdo .gt_font_normal {
   font-weight: normal;
 }
 
-#sqogvxfhee .gt_font_bold {
+#xbbkvwtfdo .gt_font_bold {
   font-weight: bold;
 }
 
-#sqogvxfhee .gt_font_italic {
+#xbbkvwtfdo .gt_font_italic {
   font-style: italic;
 }
 
-#sqogvxfhee .gt_super {
+#xbbkvwtfdo .gt_super {
   font-size: 65%;
 }
 
-#sqogvxfhee .gt_footnote_marks {
+#xbbkvwtfdo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#sqogvxfhee .gt_asterisk {
+#xbbkvwtfdo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sqogvxfhee .gt_indent_1 {
+#xbbkvwtfdo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#sqogvxfhee .gt_indent_2 {
+#xbbkvwtfdo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#sqogvxfhee .gt_indent_3 {
+#xbbkvwtfdo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#sqogvxfhee .gt_indent_4 {
+#xbbkvwtfdo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#sqogvxfhee .gt_indent_5 {
+#xbbkvwtfdo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#sqogvxfhee .katex-display {
+#xbbkvwtfdo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#sqogvxfhee div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xbbkvwtfdo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2768,30 +2794,504 @@ Hints
 </div>
 <p class="question-end">
 </p>
-<div style="display:none;">
+<div class="solution-begin">
+<button id="sol-start-3" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-3', 'sol-start-3')">
+Solution
+</button>
+</div>
+<div id="sol-body-3" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 3</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> p01 <span class="sc">|&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">bpw =</span> <span class="fu">round</span>(n_births<span class="sc">/</span>n_women15to44,<span class="dv">5</span>),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw =</span> <span class="fu">round</span>(n_women15to44<span class="sc">/</span>n_people,<span class="dv">5</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">birth_rate =</span> bpw<span class="sc">*</span>propw<span class="sc">*</span><span class="dv">1000</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>p01</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 7
-  LAA          n_people n_women15to44 n_births    bpw propw birth_rate
-  &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
-1 Glasgow City   650300        161105     6150 0.0382 0.248       9.46
-2 Stirling        94210         17844      659 0.0369 0.189       6.99</code></pre>
+<div class="cell-output-display">
+<div id="mgjumwjcma" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mgjumwjcma table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mgjumwjcma thead, #mgjumwjcma tbody, #mgjumwjcma tfoot, #mgjumwjcma tr, #mgjumwjcma td, #mgjumwjcma th {
+  border-style: none;
+}
+
+#mgjumwjcma p {
+  margin: 0;
+  padding: 0;
+}
+
+#mgjumwjcma .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mgjumwjcma .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mgjumwjcma .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mgjumwjcma .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mgjumwjcma .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mgjumwjcma .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mgjumwjcma .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mgjumwjcma .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mgjumwjcma .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mgjumwjcma .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mgjumwjcma .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mgjumwjcma .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mgjumwjcma .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mgjumwjcma .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mgjumwjcma .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgjumwjcma .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mgjumwjcma .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mgjumwjcma .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mgjumwjcma .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgjumwjcma .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mgjumwjcma .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgjumwjcma .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mgjumwjcma .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgjumwjcma .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mgjumwjcma .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgjumwjcma .gt_left {
+  text-align: left;
+}
+
+#mgjumwjcma .gt_center {
+  text-align: center;
+}
+
+#mgjumwjcma .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mgjumwjcma .gt_font_normal {
+  font-weight: normal;
+}
+
+#mgjumwjcma .gt_font_bold {
+  font-weight: bold;
+}
+
+#mgjumwjcma .gt_font_italic {
+  font-style: italic;
+}
+
+#mgjumwjcma .gt_super {
+  font-size: 65%;
+}
+
+#mgjumwjcma .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mgjumwjcma .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mgjumwjcma .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mgjumwjcma .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mgjumwjcma .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mgjumwjcma .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mgjumwjcma .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#mgjumwjcma .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mgjumwjcma div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="LAA" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LAA</th>
+<th id="n_people" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_people</th>
+<th id="n_women15to44" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_women15to44</th>
+<th id="n_births" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_births</th>
+<th id="bpw" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">bpw</th>
+<th id="propw" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">propw</th>
+<th id="birth_rate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">birth_rate</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="LAA">Glasgow City</td>
+<td class="gt_row gt_right" headers="n_people">650300</td>
+<td class="gt_row gt_right" headers="n_women15to44">161105</td>
+<td class="gt_row gt_right" headers="n_births">6150</td>
+<td class="gt_row gt_right" headers="bpw">0.03817</td>
+<td class="gt_row gt_right" headers="propw">0.24774</td>
+<td class="gt_row gt_right" headers="birth_rate">9.456236</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="LAA">Stirling</td>
+<td class="gt_row gt_right" headers="n_people">94210</td>
+<td class="gt_row gt_right" headers="n_women15to44">17844</td>
+<td class="gt_row gt_right" headers="n_births">659</td>
+<td class="gt_row gt_right" headers="bpw">0.03693</td>
+<td class="gt_row gt_right" headers="propw">0.18941</td>
+<td class="gt_row gt_right" headers="birth_rate">6.994911</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p01<span class="sc">$</span>propw[<span class="dv">1</span>] <span class="sc">*</span> p01<span class="sc">$</span>bpw[<span class="dv">2</span>] <span class="sc">*</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 9.149038</code></pre>
 </div>
-</div>
+<p><br></p>
+<p><span class="math inline">\(0.24774 \times 0.03693  \times 1000 = 9.1490382\)</span></p>
 </div>
 <p class="solution-end">
 </p>
@@ -2823,23 +3323,23 @@ A1 * ((B1+B2)/2)<br>
 A2 * ((B1+B2)/2)</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="raghfgonfy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#raghfgonfy table {
+<div id="dcmwcumcro" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dcmwcumcro table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#raghfgonfy thead, #raghfgonfy tbody, #raghfgonfy tfoot, #raghfgonfy tr, #raghfgonfy td, #raghfgonfy th {
+#dcmwcumcro thead, #dcmwcumcro tbody, #dcmwcumcro tfoot, #dcmwcumcro tr, #dcmwcumcro td, #dcmwcumcro th {
   border-style: none;
 }
 
-#raghfgonfy p {
+#dcmwcumcro p {
   margin: 0;
   padding: 0;
 }
 
-#raghfgonfy .gt_table {
+#dcmwcumcro .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2865,12 +3365,12 @@ A2 * ((B1+B2)/2)</p>
   border-left-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_caption {
+#dcmwcumcro .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#raghfgonfy .gt_title {
+#dcmwcumcro .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2882,7 +3382,7 @@ A2 * ((B1+B2)/2)</p>
   border-bottom-width: 0;
 }
 
-#raghfgonfy .gt_subtitle {
+#dcmwcumcro .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2894,7 +3394,7 @@ A2 * ((B1+B2)/2)</p>
   border-top-width: 0;
 }
 
-#raghfgonfy .gt_heading {
+#dcmwcumcro .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2906,13 +3406,13 @@ A2 * ((B1+B2)/2)</p>
   border-right-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_bottom_border {
+#dcmwcumcro .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_col_headings {
+#dcmwcumcro .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2927,7 +3427,7 @@ A2 * ((B1+B2)/2)</p>
   border-right-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_col_heading {
+#dcmwcumcro .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2947,7 +3447,7 @@ A2 * ((B1+B2)/2)</p>
   overflow-x: hidden;
 }
 
-#raghfgonfy .gt_column_spanner_outer {
+#dcmwcumcro .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2959,15 +3459,15 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 4px;
 }
 
-#raghfgonfy .gt_column_spanner_outer:first-child {
+#dcmwcumcro .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#raghfgonfy .gt_column_spanner_outer:last-child {
+#dcmwcumcro .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#raghfgonfy .gt_column_spanner {
+#dcmwcumcro .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2979,11 +3479,11 @@ A2 * ((B1+B2)/2)</p>
   width: 100%;
 }
 
-#raghfgonfy .gt_spanner_row {
+#dcmwcumcro .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#raghfgonfy .gt_group_heading {
+#dcmwcumcro .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3009,7 +3509,7 @@ A2 * ((B1+B2)/2)</p>
   text-align: left;
 }
 
-#raghfgonfy .gt_empty_group_heading {
+#dcmwcumcro .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3024,15 +3524,15 @@ A2 * ((B1+B2)/2)</p>
   vertical-align: middle;
 }
 
-#raghfgonfy .gt_from_md > :first-child {
+#dcmwcumcro .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#raghfgonfy .gt_from_md > :last-child {
+#dcmwcumcro .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#raghfgonfy .gt_row {
+#dcmwcumcro .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3051,7 +3551,7 @@ A2 * ((B1+B2)/2)</p>
   overflow-x: hidden;
 }
 
-#raghfgonfy .gt_stub {
+#dcmwcumcro .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3064,7 +3564,7 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 5px;
 }
 
-#raghfgonfy .gt_stub_row_group {
+#dcmwcumcro .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3078,15 +3578,15 @@ A2 * ((B1+B2)/2)</p>
   vertical-align: top;
 }
 
-#raghfgonfy .gt_row_group_first td {
+#dcmwcumcro .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#raghfgonfy .gt_row_group_first th {
+#dcmwcumcro .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#raghfgonfy .gt_summary_row {
+#dcmwcumcro .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3096,16 +3596,16 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 5px;
 }
 
-#raghfgonfy .gt_first_summary_row {
+#dcmwcumcro .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_first_summary_row.thick {
+#dcmwcumcro .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#raghfgonfy .gt_last_summary_row {
+#dcmwcumcro .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3115,7 +3615,7 @@ A2 * ((B1+B2)/2)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_grand_summary_row {
+#dcmwcumcro .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3125,7 +3625,7 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 5px;
 }
 
-#raghfgonfy .gt_first_grand_summary_row {
+#dcmwcumcro .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3135,7 +3635,7 @@ A2 * ((B1+B2)/2)</p>
   border-top-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_last_grand_summary_row_top {
+#dcmwcumcro .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3145,11 +3645,11 @@ A2 * ((B1+B2)/2)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_striped {
+#dcmwcumcro .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#raghfgonfy .gt_table_body {
+#dcmwcumcro .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3158,7 +3658,7 @@ A2 * ((B1+B2)/2)</p>
   border-bottom-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_footnotes {
+#dcmwcumcro .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3172,7 +3672,7 @@ A2 * ((B1+B2)/2)</p>
   border-right-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_footnote {
+#dcmwcumcro .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3181,7 +3681,7 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 5px;
 }
 
-#raghfgonfy .gt_sourcenotes {
+#dcmwcumcro .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3195,7 +3695,7 @@ A2 * ((B1+B2)/2)</p>
   border-right-color: #D3D3D3;
 }
 
-#raghfgonfy .gt_sourcenote {
+#dcmwcumcro .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3203,72 +3703,72 @@ A2 * ((B1+B2)/2)</p>
   padding-right: 5px;
 }
 
-#raghfgonfy .gt_left {
+#dcmwcumcro .gt_left {
   text-align: left;
 }
 
-#raghfgonfy .gt_center {
+#dcmwcumcro .gt_center {
   text-align: center;
 }
 
-#raghfgonfy .gt_right {
+#dcmwcumcro .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#raghfgonfy .gt_font_normal {
+#dcmwcumcro .gt_font_normal {
   font-weight: normal;
 }
 
-#raghfgonfy .gt_font_bold {
+#dcmwcumcro .gt_font_bold {
   font-weight: bold;
 }
 
-#raghfgonfy .gt_font_italic {
+#dcmwcumcro .gt_font_italic {
   font-style: italic;
 }
 
-#raghfgonfy .gt_super {
+#dcmwcumcro .gt_super {
   font-size: 65%;
 }
 
-#raghfgonfy .gt_footnote_marks {
+#dcmwcumcro .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#raghfgonfy .gt_asterisk {
+#dcmwcumcro .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#raghfgonfy .gt_indent_1 {
+#dcmwcumcro .gt_indent_1 {
   text-indent: 5px;
 }
 
-#raghfgonfy .gt_indent_2 {
+#dcmwcumcro .gt_indent_2 {
   text-indent: 10px;
 }
 
-#raghfgonfy .gt_indent_3 {
+#dcmwcumcro .gt_indent_3 {
   text-indent: 15px;
 }
 
-#raghfgonfy .gt_indent_4 {
+#dcmwcumcro .gt_indent_4 {
   text-indent: 20px;
 }
 
-#raghfgonfy .gt_indent_5 {
+#dcmwcumcro .gt_indent_5 {
   text-indent: 25px;
 }
 
-#raghfgonfy .katex-display {
+#dcmwcumcro .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#raghfgonfy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dcmwcumcro div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3304,69 +3804,32 @@ A2 * ((B1+B2)/2)</p>
 </div>
 <p class="question-end">
 </p>
-<div style="display:none;">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p01</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 7
-  LAA          n_people n_women15to44 n_births    bpw propw birth_rate
-  &lt;chr&gt;           &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
-1 Glasgow City   650300        161105     6150 0.0382 0.248       9.46
-2 Stirling        94210         17844      659 0.0369 0.189       6.99</code></pre>
+<div class="solution-begin">
+<button id="sol-start-4" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-4', 'sol-start-4')">
+Solution
+</button>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if proportion of w15-44 were equal:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p01<span class="sc">$</span>bpw <span class="sc">*</span> <span class="fu">mean</span>(p01<span class="sc">$</span>propw) <span class="sc">*</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 8.343008 8.071975</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if births per w15-44 were equal:</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(p01<span class="sc">$</span>bpw) <span class="sc">*</span> p01<span class="sc">$</span>propw <span class="sc">*</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 9.302637 7.112345</code></pre>
-</div>
-</div>
-</div>
-<p class="solution-end">
-</p>
-<div class="question-begin">
-Question 5
-</div>
-<div class="question-body">
-<p>The differences between these two pairs of standardised rates (when using the average of the two populations as the reference) provides the contribution of each factor on the total crude rate difference.</p>
-<p>We know from the very first question that Stirling has a crude birth rate that is ~2.46 births per 1000 people fewer than Glasgow.</p>
-<p>How much of this is due to Stirling having relatively fewer ‘women of child bearing age’?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hints
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>(A2 - A1) * ((B1+B2)/2) / (R2 - R1)</p>
+<div id="sol-body-4" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 4</em>. </span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="khfvpjhoeu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#khfvpjhoeu table {
+<div id="zjphjgkymi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zjphjgkymi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#khfvpjhoeu thead, #khfvpjhoeu tbody, #khfvpjhoeu tfoot, #khfvpjhoeu tr, #khfvpjhoeu td, #khfvpjhoeu th {
+#zjphjgkymi thead, #zjphjgkymi tbody, #zjphjgkymi tfoot, #zjphjgkymi tr, #zjphjgkymi td, #zjphjgkymi th {
   border-style: none;
 }
 
-#khfvpjhoeu p {
+#zjphjgkymi p {
   margin: 0;
   padding: 0;
 }
 
-#khfvpjhoeu .gt_table {
+#zjphjgkymi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3392,12 +3855,12 @@ Hints
   border-left-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_caption {
+#zjphjgkymi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#khfvpjhoeu .gt_title {
+#zjphjgkymi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3409,7 +3872,7 @@ Hints
   border-bottom-width: 0;
 }
 
-#khfvpjhoeu .gt_subtitle {
+#zjphjgkymi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3421,7 +3884,7 @@ Hints
   border-top-width: 0;
 }
 
-#khfvpjhoeu .gt_heading {
+#zjphjgkymi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3433,13 +3896,13 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_bottom_border {
+#zjphjgkymi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_col_headings {
+#zjphjgkymi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3454,7 +3917,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_col_heading {
+#zjphjgkymi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3474,7 +3937,7 @@ Hints
   overflow-x: hidden;
 }
 
-#khfvpjhoeu .gt_column_spanner_outer {
+#zjphjgkymi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3486,15 +3949,15 @@ Hints
   padding-right: 4px;
 }
 
-#khfvpjhoeu .gt_column_spanner_outer:first-child {
+#zjphjgkymi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#khfvpjhoeu .gt_column_spanner_outer:last-child {
+#zjphjgkymi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#khfvpjhoeu .gt_column_spanner {
+#zjphjgkymi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3506,11 +3969,11 @@ Hints
   width: 100%;
 }
 
-#khfvpjhoeu .gt_spanner_row {
+#zjphjgkymi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#khfvpjhoeu .gt_group_heading {
+#zjphjgkymi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3536,7 +3999,7 @@ Hints
   text-align: left;
 }
 
-#khfvpjhoeu .gt_empty_group_heading {
+#zjphjgkymi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3551,15 +4014,15 @@ Hints
   vertical-align: middle;
 }
 
-#khfvpjhoeu .gt_from_md > :first-child {
+#zjphjgkymi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#khfvpjhoeu .gt_from_md > :last-child {
+#zjphjgkymi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#khfvpjhoeu .gt_row {
+#zjphjgkymi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3578,7 +4041,7 @@ Hints
   overflow-x: hidden;
 }
 
-#khfvpjhoeu .gt_stub {
+#zjphjgkymi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3591,7 +4054,7 @@ Hints
   padding-right: 5px;
 }
 
-#khfvpjhoeu .gt_stub_row_group {
+#zjphjgkymi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3605,15 +4068,15 @@ Hints
   vertical-align: top;
 }
 
-#khfvpjhoeu .gt_row_group_first td {
+#zjphjgkymi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#khfvpjhoeu .gt_row_group_first th {
+#zjphjgkymi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#khfvpjhoeu .gt_summary_row {
+#zjphjgkymi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3623,16 +4086,16 @@ Hints
   padding-right: 5px;
 }
 
-#khfvpjhoeu .gt_first_summary_row {
+#zjphjgkymi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_first_summary_row.thick {
+#zjphjgkymi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#khfvpjhoeu .gt_last_summary_row {
+#zjphjgkymi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3642,7 +4105,7 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_grand_summary_row {
+#zjphjgkymi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3652,7 +4115,7 @@ Hints
   padding-right: 5px;
 }
 
-#khfvpjhoeu .gt_first_grand_summary_row {
+#zjphjgkymi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3662,7 +4125,7 @@ Hints
   border-top-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_last_grand_summary_row_top {
+#zjphjgkymi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3672,11 +4135,11 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_striped {
+#zjphjgkymi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#khfvpjhoeu .gt_table_body {
+#zjphjgkymi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3685,7 +4148,7 @@ Hints
   border-bottom-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_footnotes {
+#zjphjgkymi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3699,7 +4162,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_footnote {
+#zjphjgkymi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3708,7 +4171,7 @@ Hints
   padding-right: 5px;
 }
 
-#khfvpjhoeu .gt_sourcenotes {
+#zjphjgkymi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3722,7 +4185,7 @@ Hints
   border-right-color: #D3D3D3;
 }
 
-#khfvpjhoeu .gt_sourcenote {
+#zjphjgkymi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3730,72 +4193,594 @@ Hints
   padding-right: 5px;
 }
 
-#khfvpjhoeu .gt_left {
+#zjphjgkymi .gt_left {
   text-align: left;
 }
 
-#khfvpjhoeu .gt_center {
+#zjphjgkymi .gt_center {
   text-align: center;
 }
 
-#khfvpjhoeu .gt_right {
+#zjphjgkymi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#khfvpjhoeu .gt_font_normal {
+#zjphjgkymi .gt_font_normal {
   font-weight: normal;
 }
 
-#khfvpjhoeu .gt_font_bold {
+#zjphjgkymi .gt_font_bold {
   font-weight: bold;
 }
 
-#khfvpjhoeu .gt_font_italic {
+#zjphjgkymi .gt_font_italic {
   font-style: italic;
 }
 
-#khfvpjhoeu .gt_super {
+#zjphjgkymi .gt_super {
   font-size: 65%;
 }
 
-#khfvpjhoeu .gt_footnote_marks {
+#zjphjgkymi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#khfvpjhoeu .gt_asterisk {
+#zjphjgkymi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#khfvpjhoeu .gt_indent_1 {
+#zjphjgkymi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#khfvpjhoeu .gt_indent_2 {
+#zjphjgkymi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#khfvpjhoeu .gt_indent_3 {
+#zjphjgkymi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#khfvpjhoeu .gt_indent_4 {
+#zjphjgkymi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#khfvpjhoeu .gt_indent_5 {
+#zjphjgkymi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#khfvpjhoeu .katex-display {
+#zjphjgkymi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#khfvpjhoeu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zjphjgkymi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="LAA" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">LAA</th>
+<th id="n_people" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_people</th>
+<th id="n_women15to44" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_women15to44</th>
+<th id="n_births" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_births</th>
+<th id="bpw" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">bpw</th>
+<th id="propw" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">propw</th>
+<th id="birth_rate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">birth_rate</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="LAA">Glasgow City</td>
+<td class="gt_row gt_right" headers="n_people">650300</td>
+<td class="gt_row gt_right" headers="n_women15to44">161105</td>
+<td class="gt_row gt_right" headers="n_births">6150</td>
+<td class="gt_row gt_right" headers="bpw">0.03817</td>
+<td class="gt_row gt_right" headers="propw">0.24774</td>
+<td class="gt_row gt_right" headers="birth_rate">9.456236</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="LAA">Stirling</td>
+<td class="gt_row gt_right" headers="n_people">94210</td>
+<td class="gt_row gt_right" headers="n_women15to44">17844</td>
+<td class="gt_row gt_right" headers="n_births">659</td>
+<td class="gt_row gt_right" headers="bpw">0.03693</td>
+<td class="gt_row gt_right" headers="propw">0.18941</td>
+<td class="gt_row gt_right" headers="birth_rate">6.994911</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>if proportion of w15-44 were equal:</p>
+<ul>
+<li>Glasgow: <span class="math inline">\(0.03817 \times \frac{0.24774+0.18941}{2} \times 1000 = 8.3430078\)</span></li>
+<li>Stirling: <span class="math inline">\(0.03693 \times \frac{0.24774+0.18941}{2} \times 1000 = 8.0719747\)</span></li>
+</ul>
+<p>if births per w15-44 were equal:</p>
+<ul>
+<li>Glasgow: <span class="math inline">\(0.24774 \times \frac{0.03817+0.03693}{2} \times 1000 = 9.302637\)</span></li>
+<li>Stirling: <span class="math inline">\(0.18941 \times \frac{0.03817+0.03693}{2} \times 1000 = 7.1123455\)</span></li>
+</ul>
+</div>
+<p class="solution-end">
+</p>
+<div class="question-begin">
+Question 5
+</div>
+<div class="question-body">
+<p>The differences between these two pairs of standardised rates (when using the average of the two populations as the reference) provides the contribution of each factor on the total crude rate difference.</p>
+<p>We know from the very first question that Stirling has a crude birth rate that is ~2.46 births per 1000 people fewer than Glasgow.</p>
+<p>How much of this is due to Stirling having relatively fewer ‘women of child bearing age’?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hints
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>(A2 - A1) * ((B1+B2)/2) / (R2 - R1)</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="rjnlpjjrzn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rjnlpjjrzn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#rjnlpjjrzn thead, #rjnlpjjrzn tbody, #rjnlpjjrzn tfoot, #rjnlpjjrzn tr, #rjnlpjjrzn td, #rjnlpjjrzn th {
+  border-style: none;
+}
+
+#rjnlpjjrzn p {
+  margin: 0;
+  padding: 0;
+}
+
+#rjnlpjjrzn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rjnlpjjrzn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rjnlpjjrzn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rjnlpjjrzn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rjnlpjjrzn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rjnlpjjrzn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rjnlpjjrzn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rjnlpjjrzn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rjnlpjjrzn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rjnlpjjrzn .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#rjnlpjjrzn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rjnlpjjrzn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rjnlpjjrzn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rjnlpjjrzn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rjnlpjjrzn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rjnlpjjrzn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rjnlpjjrzn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rjnlpjjrzn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rjnlpjjrzn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rjnlpjjrzn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rjnlpjjrzn .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rjnlpjjrzn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rjnlpjjrzn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rjnlpjjrzn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rjnlpjjrzn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rjnlpjjrzn .gt_left {
+  text-align: left;
+}
+
+#rjnlpjjrzn .gt_center {
+  text-align: center;
+}
+
+#rjnlpjjrzn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rjnlpjjrzn .gt_font_normal {
+  font-weight: normal;
+}
+
+#rjnlpjjrzn .gt_font_bold {
+  font-weight: bold;
+}
+
+#rjnlpjjrzn .gt_font_italic {
+  font-style: italic;
+}
+
+#rjnlpjjrzn .gt_super {
+  font-size: 65%;
+}
+
+#rjnlpjjrzn .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#rjnlpjjrzn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rjnlpjjrzn .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#rjnlpjjrzn .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#rjnlpjjrzn .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rjnlpjjrzn .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rjnlpjjrzn .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#rjnlpjjrzn .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#rjnlpjjrzn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3834,28 +4819,24 @@ Hints
 </div>
 <p class="question-end">
 </p>
-<div style="display:none;">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># these are Glasgow and Stirling's propw-standardised rates, and births-per-women standardised rates: </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> p01 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pw.std =</span> bpw <span class="sc">*</span> <span class="fu">mean</span>(propw) <span class="sc">*</span> <span class="dv">1000</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">br.std =</span> <span class="fu">mean</span>(bpw) <span class="sc">*</span> propw <span class="sc">*</span> <span class="dv">1000</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>p01</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 9
-  LAA      n_people n_women15to44 n_births    bpw propw birth_rate pw.std br.std
-  &lt;chr&gt;       &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-1 Glasgow…   650300        161105     6150 0.0382 0.248       9.46   8.34   9.30
-2 Stirling    94210         17844      659 0.0369 0.189       6.99   8.07   7.11</code></pre>
+<div class="solution-begin">
+<button id="sol-start-5" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-5', 'sol-start-5')">
+Solution
+</button>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 89% of the difference in rates is due to differences in proportions of women 15-44!  </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>( p01<span class="sc">$</span>br.std[<span class="dv">2</span>] <span class="sc">-</span> p01<span class="sc">$</span>br.std[<span class="dv">1</span>] ) <span class="sc">/</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  (p01<span class="sc">$</span>birth_rate[<span class="dv">2</span>] <span class="sc">-</span> p01<span class="sc">$</span>birth_rate[<span class="dv">1</span>] ) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 88.98833</code></pre>
-</div>
-</div>
+<div id="sol-body-5" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 5</em>. </span>From the previous question, these are Glasgow and Stirling’s rates were only the proportion of women aged 15-44 to differ (and not the birth rate per woman aged 15-44):</p>
+<ul>
+<li>Glasgow: <span class="math inline">\(0.24774 \times \frac{0.03817+0.03693}{2} \times 1000 = 9.302637\)</span></li>
+<li>Stirling: <span class="math inline">\(0.18941 \times \frac{0.03817+0.03693}{2} \times 1000 = 7.1123455\)</span></li>
+</ul>
+<p>And the crude rates:</p>
+<ul>
+<li>Glasgow: <span class="math inline">\(9.4562358\)</span></li>
+<li>Stirling: <span class="math inline">\(6.9949113\)</span></li>
+</ul>
+<p>The difference between standardised rates, as a percentage of the difference between crude rates, gives:</p>
+<p><span class="math inline">\(\frac{7.1123455 - 9.302637}{6.9949113 - 9.4562358} = 88.9883272\%\)</span></p>
 </div>
 <p class="solution-end">
 </p>
@@ -3870,15 +4851,10 @@ Question 6
 <p>In R: <strong>DasGuptR</strong><br>
 We would recommend installing the development version</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(remotes)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">"josiahpjking/DasGuptR@develop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(remotes)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">"josiahpjking/DasGuptR@develop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In Stata: <strong>rdecompose</strong></p>
-<pre><code>clear
-input str12 LAA long n_people long n_women15to44 int n_births
-"Glasgow City" 650300 161105 6150
-"Stirling" 94210 17844 659
-end</code></pre>
+<p>In Stata, we’re assuming you are familiar with using Stata (if not, we recommend you use R instead). The relevant command is <strong>rdecompose</strong></p>
 </div>
 <p class="question-end">
 </p>
@@ -3891,12 +4867,12 @@ Question 7
 <section id="r" class="level4 panel">
 <h4 class="anchored" data-anchor-id="r">R</h4>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">LAA =</span> <span class="fu">c</span>(<span class="st">"Glasgow City"</span>,<span class="st">"Stirling"</span>),</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_people =</span> <span class="fu">c</span>(<span class="dv">650300</span>,<span class="dv">94210</span>),</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women15to44 =</span> <span class="fu">c</span>(<span class="dv">161105</span>,<span class="dv">17844</span>),</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_births =</span> <span class="fu">c</span>(<span class="dv">6150</span>,<span class="dv">659</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">LAA =</span> <span class="fu">c</span>(<span class="st">"Glasgow City"</span>,<span class="st">"Stirling"</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_people =</span> <span class="fu">c</span>(<span class="dv">650300</span>,<span class="dv">94210</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women15to44 =</span> <span class="fu">c</span>(<span class="dv">161105</span>,<span class="dv">17844</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_births =</span> <span class="fu">c</span>(<span class="dv">6150</span>,<span class="dv">659</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="stata" class="level4 panel">
@@ -3913,38 +4889,44 @@ end</code></pre>
 <p>You might find it easiest to multiply the “births per woman aged 15-44” by 1000 when you create it.</p>
 <p>In R, this will look something like this:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> p01 <span class="sc">|&gt;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw =</span>  ????</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">bpw =</span>  ???</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>dres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> ???, </span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"???"</span>,</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"???"</span>,<span class="st">"???"</span>))</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> p01 <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw =</span>  ????</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">bpw =</span>  ???</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>dres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> ???, </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"???"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"???"</span>,<span class="st">"???"</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p class="question-end">
 </p>
-<div style="display:none;">
+<div class="solution-begin">
+<button id="sol-start-6" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-6', 'sol-start-6')">
+Solution
+</button>
+</div>
+<div id="sol-body-6" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 6</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> p01 <span class="sc">|&gt;</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw =</span>  n_women15to44<span class="sc">/</span>n_people,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">bpw =</span>  n_births<span class="sc">/</span>n_women15to44<span class="sc">*</span><span class="dv">1000</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>dres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> p01, </span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"LAA"</span>,</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"bpw"</span>,<span class="st">"propw"</span>))</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DasGuptR)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p01 <span class="ot">&lt;-</span> p01 <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw =</span>  n_women15to44<span class="sc">/</span>n_people,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">bpw =</span>  n_births<span class="sc">/</span>n_women15to44<span class="sc">*</span><span class="dv">1000</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>dres <span class="ot">&lt;-</span> <span class="fu">dgnpop</span>(<span class="at">x =</span> p01, </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"LAA"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"bpw"</span>,<span class="st">"propw"</span>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dg_table</span>(dres)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      Glasgow City Stirling       diff decomp
 bpw       8.343778 8.072162 -0.2716165  11.03
@@ -3968,39 +4950,45 @@ Question 8
 <section id="r-1" class="level3 panel">
 <h3 class="anchored" data-anchor-id="r-1">R</h3>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>p01a <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">LAA =</span> <span class="fu">c</span>(<span class="st">"Glasgow City"</span>,<span class="st">"Stirling"</span>),</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_people =</span> <span class="fu">c</span>(<span class="dv">650300</span>,<span class="dv">94210</span>),</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women =</span> <span class="fu">c</span>(<span class="dv">332054</span>, <span class="dv">48731</span>),</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women15to44 =</span> <span class="fu">c</span>(<span class="dv">161105</span>,<span class="dv">17844</span>),</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_births =</span> <span class="fu">c</span>(<span class="dv">6150</span>,<span class="dv">659</span>)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p01a <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">LAA =</span> <span class="fu">c</span>(<span class="st">"Glasgow City"</span>,<span class="st">"Stirling"</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_people =</span> <span class="fu">c</span>(<span class="dv">650300</span>,<span class="dv">94210</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women =</span> <span class="fu">c</span>(<span class="dv">332054</span>, <span class="dv">48731</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_women15to44 =</span> <span class="fu">c</span>(<span class="dv">161105</span>,<span class="dv">17844</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_births =</span> <span class="fu">c</span>(<span class="dv">6150</span>,<span class="dv">659</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="stata-1" class="level3 panel">
 <h3 class="anchored" data-anchor-id="stata-1">Stata</h3>
-<div class="sourceCode" id="cb23"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>clear</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>input str12 LAA long n_people long n_women long n_women15to44 int n_births</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>"Glasgow City" 650300 332054 161105 6150</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>"Stirling"     94210  48731  17844  659</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>clear</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>input str12 LAA long n_people long n_women long n_women15to44 int n_births</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>"Glasgow City" 650300 332054 161105 6150</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>"Stirling"     94210  48731  17844  659</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
 <p class="question-end">
 </p>
-<div style="display:none;">
+<div class="solution-begin">
+<button id="sol-start-7" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-7', 'sol-start-7')">
+Solution
+</button>
+</div>
+<div id="sol-body-7" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 7</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>p01a <span class="ot">&lt;-</span> p01a <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">propw =</span> n_women<span class="sc">/</span>n_people,</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">propw1544 =</span> n_women15to44<span class="sc">/</span>n_women,</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">bpw =</span> n_births<span class="sc">/</span>n_women15to44<span class="sc">*</span><span class="dv">1000</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(p01a,</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"LAA"</span>,</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"propw"</span>,<span class="st">"propw1544"</span>,<span class="st">"bpw"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p01a <span class="ot">&lt;-</span> p01a <span class="sc">|&gt;</span> <span class="fu">mutate</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">propw =</span> n_women<span class="sc">/</span>n_people,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">propw1544 =</span> n_women15to44<span class="sc">/</span>n_women,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">bpw =</span> n_births<span class="sc">/</span>n_women15to44<span class="sc">*</span><span class="dv">1000</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(p01a,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"LAA"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"propw"</span>,<span class="st">"propw1544"</span>,<span class="st">"bpw"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Glasgow City Stirling       diff decomp
 propw         8.168592 8.274858  0.1062662  -4.32
@@ -4036,41 +5024,47 @@ Birth Rates Across England and Scotland
 <section id="r-2" class="level4 panel">
 <h4 class="anchored" data-anchor-id="r-2">R</h4>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>country, <span class="sc">~</span>n_people, <span class="sc">~</span>n_women, <span class="sc">~</span>n_women1544, <span class="sc">~</span>n_births,</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Scotland"</span>, <span class="dv">5546900</span>, <span class="dv">2851740</span>, <span class="dv">1064441</span>, <span class="dv">45763</span>,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"England"</span>, <span class="dv">58620101</span>, <span class="dv">29895762</span>, <span class="dv">11583779</span>, <span class="dv">567708</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>country, <span class="sc">~</span>n_people, <span class="sc">~</span>n_women, <span class="sc">~</span>n_women1544, <span class="sc">~</span>n_births,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Scotland"</span>, <span class="dv">5546900</span>, <span class="dv">2851740</span>, <span class="dv">1064441</span>, <span class="dv">45763</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"England"</span>, <span class="dv">58620101</span>, <span class="dv">29895762</span>, <span class="dv">11583779</span>, <span class="dv">567708</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="stata-2" class="level4 panel">
 <h4 class="anchored" data-anchor-id="stata-2">Stata</h4>
-<div class="sourceCode" id="cb27"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>clear</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>input str8 country long n_people long n_women long n_women1544 long n_births</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>"Scotland"  5546900  2851740  1064441  45763</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>"England"   58620101 29895762 11583779 567708</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>clear</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>input str8 country long n_people long n_women long n_women1544 long n_births</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>"Scotland"  5546900  2851740  1064441  45763</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>"England"   58620101 29895762 11583779 567708</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
 </div>
 </div>
-<div style="display:none;">
+<div class="solution-begin">
+<button id="sol-start-8" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-8', 'sol-start-8')">
+Solution
+</button>
+</div>
+<div id="sol-body-8" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 8</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>country, <span class="sc">~</span>n_people, <span class="sc">~</span>n_women, <span class="sc">~</span>n_women1544, <span class="sc">~</span>n_births,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Scotland"</span>, <span class="dv">5546900</span>, <span class="dv">2851740</span>, <span class="dv">1064441</span>, <span class="dv">45763</span>,</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"England"</span>, <span class="dv">58620101</span>, <span class="dv">29895762</span>, <span class="dv">11583779</span>, <span class="dv">567708</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="sc">|&gt;</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    country, </span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">cr =</span> n_births<span class="sc">/</span>n_people<span class="sc">*</span><span class="fl">1e3</span></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>country, <span class="sc">~</span>n_people, <span class="sc">~</span>n_women, <span class="sc">~</span>n_women1544, <span class="sc">~</span>n_births,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Scotland"</span>, <span class="dv">5546900</span>, <span class="dv">2851740</span>, <span class="dv">1064441</span>, <span class="dv">45763</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"England"</span>, <span class="dv">58620101</span>, <span class="dv">29895762</span>, <span class="dv">11583779</span>, <span class="dv">567708</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="sc">|&gt;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    country, </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">cr =</span> n_births<span class="sc">/</span>n_people<span class="sc">*</span><span class="fl">1e3</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   country     cr
@@ -4078,20 +5072,20 @@ Birth Rates Across England and Scotland
 1 Scotland  8.25
 2 England   9.68</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create factors:</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  scot_v_eng <span class="sc">|&gt;</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw =</span> n_women<span class="sc">/</span>n_people,</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw1544 =</span> n_women1544<span class="sc">/</span>n_women,</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">bpw =</span> n_births<span class="sc">/</span>n_women1544</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># decomposition</span></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(scot_v_eng, </span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"country"</span>,</span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"propw"</span>,<span class="st">"propw1544"</span>,<span class="st">"bpw"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create factors:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>scot_v_eng <span class="ot">&lt;-</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  scot_v_eng <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw =</span> n_women<span class="sc">/</span>n_people,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">propw1544 =</span> n_women1544<span class="sc">/</span>n_women,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">bpw =</span> n_births<span class="sc">/</span>n_women1544</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># decomposition</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(scot_v_eng, </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop =</span> <span class="st">"country"</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors =</span> <span class="fu">c</span>(<span class="st">"propw"</span>,<span class="st">"propw1544"</span>,<span class="st">"bpw"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              England    Scotland          diff decomp
 propw     0.008927015 0.008999177  7.216193e-05  -5.03
@@ -4143,55 +5137,61 @@ The Gender Earnings-Gap
 <section id="r-3" class="level4 panel">
 <h4 class="anchored" data-anchor-id="r-3">R</h4>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>work25 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">pop =</span> <span class="fu">c</span>(<span class="st">"males"</span>,<span class="st">"females"</span>),</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">working_age =</span> <span class="fu">c</span>(<span class="dv">23718900</span>, <span class="dv">24613110</span>),</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">labour_force =</span> <span class="fu">c</span>(<span class="dv">18442860</span>, <span class="dv">5767405</span>),</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">employees =</span> <span class="fu">c</span>(<span class="dv">4823169</span>, <span class="dv">280557</span>),</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">avg_hours_pp =</span> <span class="fu">c</span>(<span class="fl">37.9</span>, <span class="fl">31.7</span>),</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_weekly_earnings =</span> <span class="fu">c</span>(<span class="dv">4240916038</span>, <span class="dv">178762504</span>)</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>work25 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">pop =</span> <span class="fu">c</span>(<span class="st">"males"</span>,<span class="st">"females"</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">working_age =</span> <span class="fu">c</span>(<span class="dv">23718900</span>, <span class="dv">24613110</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">labour_force =</span> <span class="fu">c</span>(<span class="dv">18442860</span>, <span class="dv">5767405</span>),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">employees =</span> <span class="fu">c</span>(<span class="dv">4823169</span>, <span class="dv">280557</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">avg_hours_pp =</span> <span class="fu">c</span>(<span class="fl">37.9</span>, <span class="fl">31.7</span>),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_weekly_earnings =</span> <span class="fu">c</span>(<span class="dv">4240916038</span>, <span class="dv">178762504</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="stata-3" class="level4 panel">
 <h4 class="anchored" data-anchor-id="stata-3">Stata</h4>
-<div class="sourceCode" id="cb33"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>clear</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>input str7 pop long working_age long labour_force long employees float avg_hours_pp double total_weekly_earnings</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>"males"   23718900 18442860 4823169 37.9 4240916038</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>"females" 24613110 5767405  280557  31.7 178762504</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>clear</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>input str7 pop long working_age long labour_force long employees float avg_hours_pp double total_weekly_earnings</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>"males"   23718900 18442860 4823169 37.9 4240916038</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>"females" 24613110 5767405  280557  31.7 178762504</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
 </div>
 </div>
-<div style="display:none;">
+<div class="solution-begin">
+<button id="sol-start-9" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-9', 'sol-start-9')">
+Solution
+</button>
+</div>
+<div id="sol-body-9" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 9</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>work25 <span class="sc">|&gt;</span> <span class="fu">transmute</span>(</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  pop,</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weeklyearnings_perperson =</span> total_weekly_earnings<span class="sc">/</span>working_age</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>work25 <span class="sc">|&gt;</span> <span class="fu">transmute</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  pop,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">weeklyearnings_perperson =</span> total_weekly_earnings<span class="sc">/</span>working_age</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      pop weeklyearnings_perperson
 1   males               178.799018
 2 females                 7.262898</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create factors</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>work25 <span class="ot">&lt;-</span> </span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  work25 <span class="sc">|&gt;</span> </span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">participation =</span> labour_force <span class="sc">/</span> working_age,</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">employment =</span> employees <span class="sc">/</span> labour_force,</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours =</span> avg_hours_pp,</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">earnings =</span> total_weekly_earnings<span class="sc">/</span>hours<span class="sc">/</span>employees</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="co"># decompose</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(work25, </span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"pop"</span>,</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"participation"</span>,<span class="st">"employment"</span>,<span class="st">"hours"</span>,<span class="st">"earnings"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create factors</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>work25 <span class="ot">&lt;-</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  work25 <span class="sc">|&gt;</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">participation =</span> labour_force <span class="sc">/</span> working_age,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">employment =</span> employees <span class="sc">/</span> labour_force,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">hours =</span> avg_hours_pp,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">earnings =</span> total_weekly_earnings<span class="sc">/</span>hours<span class="sc">/</span>employees</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># decompose</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(work25, </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"pop"</span>,</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"participation"</span>,<span class="st">"employment"</span>,<span class="st">"hours"</span>,<span class="st">"earnings"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                females     males       diff decomp
 participation 28.443354  94.38448  65.941123  38.44
@@ -4239,21 +5239,27 @@ Scotland’s Recycling: 2011 and 2022
 </div>
 </div>
 </div>
-<div style="display:none;">
+<div class="solution-begin">
+<button id="sol-start-10" class="jk-circle-right solution-icon clickable" onclick="toggle_visibility('sol-body-10', 'sol-start-10')">
+Solution
+</button>
+</div>
+<div id="sol-body-10" class="solution-body proof solution" style="display: none;">
+<p><span class="proof-title"><em>Solution 10</em>. </span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_2011_2022.csv"</span>)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates and factors</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># crude rate</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">rpp =</span> recycled<span class="sc">/</span>pop<span class="sc">*</span><span class="fl">1e3</span>,</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># factors</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">wpp =</span> totalwaste<span class="sc">/</span>pop<span class="sc">*</span><span class="fl">1e3</span>,</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">recp =</span> recycled<span class="sc">/</span>totalwaste,</span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_2011_2022.csv"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># crude rates and factors</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># crude rate</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">rpp =</span> recycled<span class="sc">/</span>pop<span class="sc">*</span><span class="fl">1e3</span>,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># factors</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">wpp =</span> totalwaste<span class="sc">/</span>pop<span class="sc">*</span><span class="fl">1e3</span>,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">recp =</span> recycled<span class="sc">/</span>totalwaste,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 9
    year     pop recycled landfilled diverted totalwaste   rpp   wpp  recp
@@ -4261,10 +5267,10 @@ Scotland’s Recycling: 2011 and 2022
 1  2011 5299900  1032156    1453789   120688    2606633  195.  492. 0.396
 2  2022 5447000  1012045     585461   736277    2333783  186.  428. 0.434</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(df,</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"year"</span>,</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"wpp"</span>,<span class="st">"recp"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dgnpop</span>(df,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">pop=</span><span class="st">"year"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">factors=</span><span class="fu">c</span>(<span class="st">"wpp"</span>,<span class="st">"recp"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dg_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          2011     2022       diff  decomp
 wpp   204.0154 177.7272 -26.288226  293.67
@@ -4295,242 +5301,236 @@ crude 194.7501 185.7986  -8.951485  100.00</code></pre>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
       }
-      return false;
-    }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
-    }
-    const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
-        }
-        return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -4538,200 +5538,224 @@ crude 194.7501 185.7986  -8.951485  100.00</code></pre>
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
-        for (let i=0; i<annoteTargets.length; i++) {
-          const annoteTarget = annoteTargets[i];
-          const targetCell = annoteTarget.getAttribute("data-target-cell");
-          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
-          const contentFn = () => {
-            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-            if (content) {
-              const tipContent = content.cloneNode(true);
-              tipContent.classList.add("code-annotation-tip-content");
-              return tipContent.outerHTML;
-            }
-          }
-          const config = {
-            allowHTML: true,
-            content: contentFn,
-            onShow: (instance) => {
-              selectCodeLines(instance.reference);
-              instance.reference.classList.add('code-annotation-active');
-              window.tippy.hideAll();
-            },
-            onHide: (instance) => {
-              unselectCodeLines();
-              instance.reference.classList.remove('code-annotation-active');
-            },
-            maxWidth: 300,
-            delay: [50, 0],
-            duration: [200, 0],
-            offset: [5, 10],
-            arrow: true,
-            appendTo: function(el) {
-              return el.parentElement.parentElement.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'quarto',
-            placement: 'right',
-            popperOptions: {
-              modifiers: [
-              {
-                name: 'flip',
-                options: {
-                  flipVariations: false, // true by default
-                  allowedAutoPlacements: ['right'],
-                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
-                },
-              },
-              {
-                name: 'preventOverflow',
-                options: {
-                  mainAxis: false,
-                  altAxis: false
-                }
-              }
-              ]        
-            }      
-          };
-          window.tippy(annoteTarget, config); 
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+      for (let i=0; i<annoteTargets.length; i++) {
+        const annoteTarget = annoteTargets[i];
+        const targetCell = annoteTarget.getAttribute("data-target-cell");
+        const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+        const contentFn = () => {
+          const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          if (content) {
+            const tipContent = content.cloneNode(true);
+            tipContent.classList.add("code-annotation-tip-content");
+            return tipContent.outerHTML;
+          }
+        }
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          onShow: (instance) => {
+            selectCodeLines(instance.reference);
+            instance.reference.classList.add('code-annotation-active');
+            window.tippy.hideAll();
+          },
+          onHide: (instance) => {
+            unselectCodeLines();
+            instance.reference.classList.remove('code-annotation-active');
+          },
+          maxWidth: 300,
+          delay: [50, 0],
+          duration: [200, 0],
+          offset: [5, 10],
+          arrow: true,
+          appendTo: function(el) {
+            return el.parentElement.parentElement.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto',
+          placement: 'right',
+          popperOptions: {
+            modifiers: [
+            {
+              name: 'flip',
+              options: {
+                flipVariations: false, // true by default
+                allowedAutoPlacements: ['right'],
+                fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                mainAxis: false,
+                altAxis: false
+              }
+            }
+            ]        
+          }      
+        };
+        window.tippy(annoteTarget, config); 
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
