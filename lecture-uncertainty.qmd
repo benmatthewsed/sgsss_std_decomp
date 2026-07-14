@@ -2,6 +2,7 @@
 title: "Uncertainty in Standardization and Decomposition"
 format:
   revealjs:
+    output-file: "lecture-uncertainty.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade
@@ -28,7 +29,7 @@ options(digits = 2)
 
 ## Whence uncertainty?
 
-- Unlike regression the Das Gupta method doesn't really have a concept of an error term - all results are calculate algebraically [@dasguptaStandardizationDecompositionRates1993]
+- Unlike regression the Das Gupta method doesn't really have a concept of an error term - all results are calculated algebraically [@dasguptaStandardizationDecompositionRates1993]
 - But we might still want to quantify uncertainty in the results of a standardization and decomposition
 - Bootstrapping is a general purpose way to achieve this [@carseyMonteCarloSimulation2014]
 - It can also show where results might be sensitive to small changes in the data (typically if the absolute difference between the rates you are decomposing is small) - we will see an example of this later
@@ -557,34 +558,10 @@ draws_2004_2016 |>
 
 ## Bootstrapping: 5. Visualize
 
-```{r}
+## Bootstrapping: 5. Visualize
 
+```{r}
 library(ggdist)
-
-decomp_draws |> 
-ggplot(aes(x = decomp, y = rowname)) +
-  ggdist::stat_dots(quantiles = 100)
-
-```
-
-## Bootstrapping: 5. Visualize
-
-```{r}
-
-# get rid of the crude
-
-decomp_draws |> 
-  filter(rowname != "crude") |> 
-  ggplot(aes(x = decomp, y = rowname)) +
-  ggdist::stat_dots(quantiles = 100)
-
-```
-
-
-## Bootstrapping: 5. Visualize
-
-```{r}
-
 # tidy up a bit
 decomp_fig <- 
 decomp_draws |> 
@@ -603,6 +580,7 @@ decomp_draws |>
   title = "Decomposition of Scottish reconviction rate, 2004 and 2016") +
     theme(plot.title.position = "plot")
 
+decomp_fig
 ```
 
 ## Bootstrapping in practice
@@ -618,6 +596,8 @@ dat_2004_2016 |>
   dg_table() |> 
   mutate(across(where(is.numeric), ~ round(.x, 2))) |>
   rownames_to_column()
+
+res_2004_2016
 ```
 
 ## Bootstrapping in practice

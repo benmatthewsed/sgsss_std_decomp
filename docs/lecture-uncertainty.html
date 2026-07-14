@@ -223,7 +223,7 @@
 <section id="whence-uncertainty" class="slide level2">
 <h2>Whence uncertainty?</h2>
 <ul>
-<li>Unlike regression the Das Gupta method doesn’t really have a concept of an error term - all results are calculate algebraically <span class="citation" data-cites="dasguptaStandardizationDecompositionRates1993">(<a href="#/references" role="doc-biblioref" onclick="">Das Gupta 1993</a>)</span></li>
+<li>Unlike regression the Das Gupta method doesn’t really have a concept of an error term - all results are calculated algebraically <span class="citation" data-cites="dasguptaStandardizationDecompositionRates1993">(<a href="#/references" role="doc-biblioref" onclick="">Das Gupta 1993</a>)</span></li>
 <li>But we might still want to quantify uncertainty in the results of a standardization and decomposition</li>
 <li>Bootstrapping is a general purpose way to achieve this <span class="citation" data-cites="carseyMonteCarloSimulation2014">(<a href="#/references" role="doc-biblioref" onclick="">Carsey and Harden 2014</a>)</span></li>
 <li>It can also show where results might be sensitive to small changes in the data (typically if the absolute difference between the rates you are decomposing is small) - we will see an example of this later</li>
@@ -13912,25 +13912,30 @@
 </section>
 <section id="bootstrapping-5.-visualize" class="slide level2">
 <h2>Bootstrapping: 5. Visualize</h2>
-
-<img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-30-1.png" width="960" class="r-stretch"></section>
+</section>
 <section id="bootstrapping-5.-visualize-1" class="slide level2">
 <h2>Bootstrapping: 5. Visualize</h2>
 
-<img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-31-1.png" width="960" class="r-stretch"></section>
-<section id="bootstrapping-5.-visualize-2" class="slide level2">
-<h2>Bootstrapping: 5. Visualize</h2>
-</section>
+<img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-30-1.png" width="960" class="r-stretch"></section>
 <section id="bootstrapping-in-practice-2" class="slide level2">
 <h2>Bootstrapping in practice</h2>
 <ul>
 <li>These are the original results</li>
 </ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     rowname 2004 2016  diff decomp
+1 Age_struct 0.31 0.28 -0.02   41.3
+2  prev_rate 0.31 0.28 -0.03   57.2
+3 Sex_struct 0.29 0.29  0.00    1.5
+4      crude 0.32 0.27 -0.05  100.0</code></pre>
+</div>
+</div>
 </section>
 <section id="bootstrapping-in-practice-3" class="slide level2">
 <h2>Bootstrapping in practice</h2>
 
-<img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch"></section>
+<img data-src="lecture-uncertainty_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"></section>
 <section id="bootstrapping-in-practice-4" class="slide level2">
 <h2>Bootstrapping in practice</h2>
 <ul>

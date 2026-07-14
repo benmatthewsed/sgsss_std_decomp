@@ -2,6 +2,7 @@
 title: "Standardization and decomposition: A conceptual introduction"
 format:
   revealjs:
+    output-file: "lecture-conceptual.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade

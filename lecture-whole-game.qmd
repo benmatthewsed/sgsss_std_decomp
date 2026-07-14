@@ -2,6 +2,7 @@
 title: "Standardization and Decomposition: A worked example of Scotland's reconviction rate"
 format:
   revealjs:
+    output-file: "lecture-whole-game.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade

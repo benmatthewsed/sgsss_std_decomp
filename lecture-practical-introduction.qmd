@@ -2,6 +2,7 @@
 title: "Practical sessions"
 format:
   revealjs:
+    output-file: "lecture-practical-introduction.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade

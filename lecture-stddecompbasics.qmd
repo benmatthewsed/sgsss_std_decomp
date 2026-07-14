@@ -2,6 +2,7 @@
 title: "Standardisation and Decomposition of Rates as Products"
 format:
   revealjs:
+    output-file: "lecture-stddecompbasics.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade

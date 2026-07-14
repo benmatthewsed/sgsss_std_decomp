@@ -2,6 +2,7 @@
 title: "Crossclassified Data & Multiple Populations"
 format:
   revealjs:
+    output-file: "lecture-crossclass.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade
