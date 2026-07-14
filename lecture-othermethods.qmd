@@ -2,6 +2,7 @@
 title: "Decomposition more generally"
 format:
   revealjs:
+    output-file: "lecture-othermethods.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade

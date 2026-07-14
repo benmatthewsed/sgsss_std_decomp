@@ -2,6 +2,7 @@
 title: "Close"
 format:
   revealjs:
+    output-file: "lecture-close.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade
@@ -25,8 +26,12 @@ By right now you will:
 
 ## Where to go next
 
-- For more methods training: lots more courses by SGSSS and NCRM
+- For more methods training: lots more courses by [SGSSS](https://www.sgsss.ac.uk/training/) and [NCRM](https://www.ncrm.ac.uk/training/)
 - If you want to do standardization and decomposition you can find the DasGuptR at https://github.com/josiahpjking/DasGuptR and on [CRAN](https://cran.r-project.org/web/packages/DasGuptR/index.html)
 - These resources will live online so you can find them at https://josiahpjking.github.io/sgsss_std_decomp/ (until linkrot comes for them, as for us all)
 
 # Thank you!
+
+::: aside
+And thanks to SGSSS for funding this session
+:::

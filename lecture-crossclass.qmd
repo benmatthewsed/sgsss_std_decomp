@@ -2,6 +2,7 @@
 title: "Crossclassified Data & Multiple Populations"
 format:
   revealjs:
+    output-file: "lecture-crossclass.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade
@@ -207,7 +208,7 @@ dgnpop(x = mydat,
 :::
 :::{.column width="50%"}
 
-if we're thinking about things in terms of population *composition*, then we can make use of:  
+If we're thinking about things in terms of population *composition*, then we can make use of:  
 
 - `id_vars` : specify the variable(s) that define sub-groups
 - `crossclassified` : specify the variable that gives the sub-group size

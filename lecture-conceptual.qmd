@@ -2,6 +2,7 @@
 title: "Standardization and decomposition: A conceptual introduction"
 format:
   revealjs:
+    output-file: "lecture-conceptual.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade
@@ -32,36 +33,31 @@ options(digits=2)
 ## Standardization
 
 - Originally used to adjust mortality comparisons between populations with different age structures [@keidingStandardizationControlConfounding2014]
-- Lets you "compar[e] rates between populations with different age structures by applying age-specific rates to a single “target” age structure and, thereafter, comparing predicted _marginal_[^1] summaries in this target population." [@keidingStandardizationControlConfounding2014 p529]
+- Lets you "compar[e] rates between populations with different age structures by applying age-specific rates to a single 'target' age structure and, thereafter, comparing predicted _marginal_[^1] summaries in this target population." [@keidingStandardizationControlConfounding2014 p529]
 - More generally - lets you compare rates of _any outcome_ between populations with different compositions of _any confounder_
 
-[^1]: This is an important term! We will come back to this
-
-
-## Kitagawa
-
-- "When comparing the incidence of some phenomenon in two or more groups, social researchers place much emphasis on the need for holding constant those related facors that would tend to distort the comparison" @kitagawaComponentsDifferenceTwo1955
+[^1]: This is an important term! We will come back to this in a second
 
 
 ## Standardization
 
 - Conceptually the focus is on _aggregate_/_marginal_ rates, not individual effects
-- Aggregate rates are really common as [performance indicators](https://www.gov.scot/collections/national-performance-framework/): the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate... were all part of Scotland's National Performance Framework
 - Individual effects can aggregate in non-intuitive ways [see @goodAmalgamationGeometryTwobyTwo1987 or @simpsonInterpretationInteractionContingency1951]
+- Aggregate rates are really common as [performance indicators](https://www.gov.scot/collections/national-performance-framework/): the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate... were all part of Scotland's National Performance Framework
 
 ::: aside
 'Marginal' has two opposite meanings in statistics - either it can be an average or it can be a small change [@gelmanMarginal2006]. To get technical, it can be either an integral or a derivative. Fun!
 :::
 
 
-## Kitagawa's example
+## An example
 - "For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition" @kitagawaComponentsDifferenceTwo1955
 - Take the observed age/sex/race death rates for your two areas
-- Multiply these by some standard age, sex and race [sic] profile
+- Multiply these by some 'standard' age, sex and race [sic] profile
 - You have 'standardized' rates!
 
 ## Picking a standard population
-- Say you wanted to compare mortality rates in Glasgow and Shetland, controling for differences in age sex and ethnicity
+- Say you wanted to compare mortality rates in Glasgow and Shetland, controlling for differences in age sex and ethnicity
 - Which population would you use as a standard one?
   - The Glasgow population?
   - The Shetland population?
@@ -71,23 +67,23 @@ options(digits=2)
 # Student discussion
 
 - Have a think about it, talk it over if you like (in person or the Teams chat)
-- Vote at https://www.menti.com/alj2qykb376m
+- Vote at [this menti link](https://www.menti.com/alj2qykb376m)
 
 ## Decomposition
-
-- Asks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you've standardized by?
-- How much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?
+- So you've got some standardized rates - now what?
+- Decomposition asks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you've standardized by?
+- From the previous example: how much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?
 
 ## Why decomposition?
 
 - Standardized rates are 'artificial', summaries of a world we do not live in
-- Why should we care what the mortality rate in Scotland would be if it had the Estonian age distribution?
-- Decomposition makes comparisons of standardized rates more analytically useful:
-- "A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the "observed" crude (or total) rates and the "artificial" standardized rates" [@kitagawaComponentsDifferenceTwo1955 pp1169-1170]
+- Why should we care what the mortality rate in Scotland would be if it had, say, the Estonian age distribution?
+- Decomposition makes comparisons of standardized rates more analytically useful by showing the contributions of the factors you standardize by:
+- "A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the observed' crude (or total) rates and the 'artificial' standardized rates" [@kitagawaComponentsDifferenceTwo1955 pp1169-1170]
 
 ## Decomposition
 - Decomposition lets you say how much of the difference between crude rates of your outcome between your comparison cases are due to the various factors you choose to control for
-- In Kitagawa's example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is 'left over'
+- In Kitagawa's [-@kitagawaComponentsDifferenceTwo1955] example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is 'left over'
 
 ## A conjecture
 - A lot of social science research either aims to identify the 'effect' of some independent variable on an outcome
@@ -101,7 +97,7 @@ options(digits=2)
 
 ## A conjecture
 - You can be interested in (average?) individual effects, or the aggregation of individual effects in different populations
-- We can think of these as 'direct' and 'compositional' effects [@vaupelDecomposingDemographicChange2002]
+- We can think of these as 'direct' and 'compositional' effects respectively [@vaupelDecomposingDemographicChange2002]
 - But you need to be clear what you are interested in
 
 ::: aside
@@ -121,20 +117,29 @@ options(digits=2)
 
 ## Thinking about direct and compositional effects
 - Next we're going to look at a worked example about age and reconviction
-- There is a direct effect of age[^2] on reconviction: younger people typically are reconvicted at higher rates than older people
+- There is a direct effect of age on reconviction: younger people typically are reconvicted at higher rates than older people
 - There is also a compositional effect: typically younger people make up more of 'reconviction cohorts' because younger people are more likely to be convicted in the first place than older people
 
 
 ## Thinking about direct and compositional effects
-- Imagine you are researching whether breastfeeding practices can explain differences in children's height at age two between areas of high and low deprivation
+- Imagine you are researching whether breastfeeding practices can explain differences in children's height at age two between Scotland and Argentina
 - What would be a direct effect? And what would be a compositional effect?
-
-https://www.menti.com/al47qfxs37jv
+- Take a minute then vote on the options at [the menti](https://www.menti.com/al47qfxs37jv)
 
 ## Thinking about direct and compositional effects
 - Take two minutes to think about your own research topic
 - What is your key 'independent' variable?
 - What might that look like as a direct effect? And what might it look like as a compositional effect?
 
+## A caveat
+- @lundbergWhatYourEstimand2021 are actually quite critical of standardization and decomposition
+- Whilst we have a counterfactual it is only a descriptive counterfactual, not a causal one
+- If used purely descriptively "the link to theory is weak: why exactly do we care about that reweighting of the Mexican population, given that Mexico does not have the age distribution of the U.S.?"
+- If used causally - "the causal difference between U.S. mortality and the counterfactual mortality that U.S. individuals would experience under an intervention to move them to Mexico" - the "link to evidence is weak"
+
+## So what's it good for?
+- @lundbergWhatYourEstimand2021 are right about causality - you don't get causal effects out of standardization and decomposition (indeed @dasguptaStandardizationDecompositionRates1993 says as much)
+- But I think the descriptive use is still important (we don't all have to do causal analysis all the time)
+- And I think sensitising researchers to possible role of compositional effects is very valuable too
 
 ## References

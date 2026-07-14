@@ -2,6 +2,7 @@
 title: "Welcome/Intro"
 format:
   revealjs:
+    output-file: "lecture-00.html"
     theme: [default, assets/mystyle.scss]
     footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
     transition: fade

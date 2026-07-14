@@ -44,7 +44,7 @@ __Sessions__
 - [Practical 2](workshop02.html)  
 - [Uncertainty](lecture-uncertainty.html)  
 - [Practical 3](workshop03.html)
-
+- [Close](lecture-close.html)  
 <!-- [Other Methods of Decomposition](lecture-othermethods.html) -->
 
 :::
