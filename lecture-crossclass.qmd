@@ -207,7 +207,7 @@ dgnpop(x = mydat,
 :::
 :::{.column width="50%"}
 
-if we're thinking about things in terms of population *composition*, then we can make use of:  
+If we're thinking about things in terms of population *composition*, then we can make use of:  
 
 - `id_vars` : specify the variable(s) that define sub-groups
 - `crossclassified` : specify the variable that gives the sub-group size

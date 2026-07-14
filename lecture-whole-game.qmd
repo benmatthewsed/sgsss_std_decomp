@@ -55,7 +55,7 @@ aka Matthews, King and Buchan (in preparation)
 ## A gap in the crime drop
 
 -   There has been *a lot* written about the causes of the crime drop [@farrellWhyCrimeDrop2014; @tonryWhyCrimeRates2014; @ballGreatDeclineAdolescent2023], including previous attempts to describe changes in the demographics of crime and use these descriptions to build explanations for why there is less crime now than in the past [@matthewsRethinkingOneCriminologys2018; @tuttleEndAgeCrimeCurve2024; @farrellDebutsLegaciesCrime2015]
--   One unexplored area these changing demographics can matter are when measuring Criminal Justice System 'performance'
+-   One unexplored area these changing demographics can matter is when measuring Criminal Justice System 'performance'
 
 # Part Two: Measuring 'Performance' {background-color="#006938"}
 
@@ -158,7 +158,7 @@ Sex is "generally based on how a person presents and is recorded when a personâ€
 ## Analysis
 
 -   The dramatic changes in the demographics of people involved in the justice system that we have seen in Scotland distorts simple comparisons over time in aggregate performance measures such as the reconviction rate, because the people who make up reconviction cohorts in the early 2000s have a very different profile to those who make up reconvictions cohorts in the mid 2020s
--   Young people used to have the highest reconviction rate of all age groups, but this is has fallen
+-   Young people used to have the highest reconviction rate of all age groups, but this has fallen
 -   Those over 40 have consistently lower reconviction rates, but these have not fallen
 -   Young people also used to make up more of the reconviction cohorts
 -   In terms of the overall reconviction rate, a group of people with high levels of reconviction have been replaced by people with lower levels of reconviction
@@ -168,7 +168,7 @@ Sex is "generally based on how a person presents and is recorded when a personâ€
 
 -   We can attribute about three-quarters of the fall in the reconvictions rate in Scotland between 1997/98-2020/21 to demographic change in the population of people convicted, rather than falls in the reconviction rate *per se*.[^1]
 -   If you want to use the reconviction rate as a measure of sentencing effectiveness or similar, you would think the justice system is doing a much better job than it is
--   In an optimistic reading the change in the mix of people being reconvicted could still be due to criminal justice practices (e.g. more diversion from prosecution for young people), but *is not attributable to the 'effectiveness' of the criminal justice system in rehabilitating offenders* - it is purely due to changes in the demographic mix of people being convicted in the first place
+-   In an optimistic reading, the change in the mix of people being reconvicted could still be due to criminal justice practices (e.g. more diversion from prosecution for young people), but *is not attributable to the 'effectiveness' of the criminal justice system in rehabilitating offenders* - it is purely due to changes in the demographic mix of people being convicted in the first place
 
 
 [^1]: If you change the comparison years to compare a year in the 2000s to 2020/1 this falls to around half of the overall change attributable to changes in age structure.

@@ -512,7 +512,7 @@ $$
 
 This difference could be attributable to:  
 
-- a greater number of males in the "labour force" (people who are employed or actively seeking employent. this excludes students etc).
+- a greater number of males in the "labour force" (people who are employed or actively seeking employment. this excludes students etc).
 - higher rates of employment for males in the labour force compared to females in the labour force (employment bias)
 - males working more hours per week compared to females (i.e., fewer part time roles)
 - a higher average hourly wage for males compared to females (a pay bias - this is the typically "gender pay gap", unadjusted for specific roles)  

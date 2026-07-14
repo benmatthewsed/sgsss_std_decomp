@@ -32,7 +32,7 @@ options(digits=2)
 ## Standardization
 
 - Originally used to adjust mortality comparisons between populations with different age structures [@keidingStandardizationControlConfounding2014]
-- Lets you "compar[e] rates between populations with different age structures by applying age-specific rates to a single “target” age structure and, thereafter, comparing predicted _marginal_[^1] summaries in this target population." [@keidingStandardizationControlConfounding2014 p529]
+- Lets you "compar[e] rates between populations with different age structures by applying age-specific rates to a single 'target' age structure and, thereafter, comparing predicted _marginal_[^1] summaries in this target population." [@keidingStandardizationControlConfounding2014 p529]
 - More generally - lets you compare rates of _any outcome_ between populations with different compositions of _any confounder_
 
 [^1]: This is an important term! We will come back to this in a second
@@ -78,11 +78,11 @@ options(digits=2)
 - Standardized rates are 'artificial', summaries of a world we do not live in
 - Why should we care what the mortality rate in Scotland would be if it had, say, the Estonian age distribution?
 - Decomposition makes comparisons of standardized rates more analytically useful by showing the contributions of the factors you standardize by:
-- "A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the "observed" crude (or total) rates and the "artificial" standardized rates" [@kitagawaComponentsDifferenceTwo1955 pp1169-1170]
+- "A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the observed' crude (or total) rates and the 'artificial' standardized rates" [@kitagawaComponentsDifferenceTwo1955 pp1169-1170]
 
 ## Decomposition
 - Decomposition lets you say how much of the difference between crude rates of your outcome between your comparison cases are due to the various factors you choose to control for
-- In Kitagawa's example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is 'left over'
+- In Kitagawa's [-@kitagawaComponentsDifferenceTwo1955] example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is 'left over'
 
 ## A conjecture
 - A lot of social science research either aims to identify the 'effect' of some independent variable on an outcome

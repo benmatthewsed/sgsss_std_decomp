@@ -377,7 +377,7 @@ Question 2
 <p>We’re going to decompose the crude rate difference between 2004 and 2016, into the contributions from:</p>
 <ul>
 <li>the reconvictions rate within a given age-group</li>
-<li>the share of the convited population that belong to a given age-group</li>
+<li>the share of the convicted population that belong to a given age-group</li>
 </ul>
 <p>Create new variables representing these components.</p>
 </div>
@@ -449,7 +449,11 @@ crude  0.3237422 0.2717579 -0.05198431 100.00</code></pre>
 </section>
 <section id="stata-2" class="level4 panel">
 <h4 class="anchored" data-anchor-id="stata-2">Stata</h4>
-<div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rdecompose weight rate, group(year) sum(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rdecompose weight rate, group(year) sum(age)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>** setting the function explicitly gives the same results</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>rdecompose weight rate, group(year) sum(age) function(sum(rate*weight))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -459,8 +463,9 @@ crude  0.3237422 0.2717579 -0.05198431 100.00</code></pre>
 Question 4
 </div>
 <div class="question-body">
-<p>Now conduct the same decomposition, but instead of using the age-group population share as a “factor” in the decomposition, utilise the <code>id_vars</code> and <code>crossclassified</code> arguments to indicate the rate as being aggregated over these different subgroups.</p>
-<p>(You should get the same output)</p>
+<p>If you are using R, conduct the same decomposition, but instead of using the age-group population share as a “factor” in the decomposition, utilise the <code>id_vars</code> and <code>crossclassified</code> arguments to indicate the rate as being aggregated over these different subgroups.</p>
+<p>You should get the same output.</p>
+<p>(The <code>rdecompose</code> package does not have the same set of options as <code>DasGuptr</code> so this question is R only.)</p>
 </div>
 <p class="question-end">
 </p>
