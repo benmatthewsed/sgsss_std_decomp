@@ -1,0 +1,65 @@
+---
+title: "Welcome/Intro"
+format:
+  revealjs:
+    output-file: "lecture-00.html"
+    theme: [default, assets/mystyle.scss]
+    footer: "<a style='color:black;text-decoration:underline overline;' href='./index.html'>Workshop Home</a>"
+    transition: fade
+    slide-number: true
+    preview-links: auto
+    callout-appearance: simple
+    code-line-numbers: false
+    code-overflow: wrap
+    code-annotations: hover
+    code-copy: hover
+    chalkboard: true
+---
+
+
+# Welcome to SGSSS Decomposition Workshop!
+
+## Hello! 
+- Who we are
+  - Ben; Josiah; Chloe; Trystan
+- Who you are (Ben open [https://www.menti.com/ala23cd37ta7](https://www.menti.com/ala23cd37ta7){target="_blank"})
+
+
+
+## Housekeeping
+
+- [Code of conduct](https://benmatthewsed.github.io/sgsss_std_decomp/code_of_conduct)
+- Ask questions whenever 👍 You can do this through the Teams chat facility {demo this now}
+- We’ve structured the sessions with regular breaks, but if you need to leave just leave!
+- Materials will live online here so you can access them any time
+
+## Learning outcomes
+
+By the end of the workshop you will:
+
+1.	Understand how standardization and decomposition can be used to answer social science research questions
+2.	Be familiar with different approaches to standardization and decomposition
+3.	Be able to apply standardization and decomposition to practical examples in R or Stata
+
+## Course schedule
+
+- See the [course website](https://josiahpjking.github.io/sgsss_std_decomp/index.html)
+
+## Practical sessions
+
+- You can follow along with the materials in a local installation of R and RStudio on your own computer
+- You can find the course materials at [https://github.com/josiahpjking/sgsss_std_decomp](https://github.com/josiahpjking/sgsss_std_decomp){target="_blank"}
+- If you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) [https://posit.cloud/content/12653236](https://posit.cloud/content/12653236){target="_blank"}
+- For Stata you're relying on your own copy
+
+## Software
+
+- R examples use the [DasGuptR](https://cran.r-project.org/web/packages/DasGuptR/index.html) package. We (mainly Josiah) wrote this!
+- Stata examples use the rdecompose command [@liRateDecompositionAggregate2017]. Seems neat!
+- For obvious reasons we are more familiar with the R version, and so focus on that
+- For some of the more complex examples we only provide R examples. You (or a friendly LLM) may be able to translate these to Stata
+
+:::aside
+Or maybe not. I found that LLMs (the free ChatGPT one) was not at all good with rdecompose - perhaps because the documentation isn't that extensive
+:::
+

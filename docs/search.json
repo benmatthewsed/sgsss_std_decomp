@@ -1,5 +1,698 @@
 [
   {
+    "objectID": "workshop03.html",
+    "href": "workshop03.html",
+    "title": "Practical 3",
+    "section": "",
+    "text": "Find some data relevant to your research interests and apply standardization and decomposition to them. Ask us for help if you get stuck!\nIf you are still working on exercises from the previous practicals, feel free to go back and work on them\nWork through the bootstrapping examples below in your preferred language. There is a lot of detail here (particularly in the R example), so don’t worry if this feels like a lot. As a result we have provided all the code for you to run and suggestions for settings you might want to change to see how it affects the results."
+  },
+  {
+    "objectID": "workshop01.html",
+    "href": "workshop01.html",
+    "title": "Practical 1",
+    "section": "",
+    "text": "Example: Birth Rates in Stirling vs Glasgow\n\nQuestion 1\n\n\nHere is the data for two Local Authority Areas (LAA) in Scotland: Stirling and Glasgow City.\nThe crude birth rate is calculated as the number of births per 1000 people.\n\\[\n\\text{Birth Rate} = \\frac{\\text{Number of Births}}{\\text{Number of People}} \\cdot 1000\n\\]\nCalculate the birth rate for each LAA\n\n\n\n\n\n\n\n\nLAA\nn_people\nn_births\nbirth_rate\n\n\n\n\nGlasgow City\n650300\n6150\n?\n\n\nStirling\n94210\n659\n?\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution 1. \n\n\n\n\n\n\n\n\nLAA\nn_people\nn_births\nbirth_rate\n\n\n\n\nGlasgow City\n650300\n6150\n9.46\n\n\nStirling\n94210\n659\n7.00\n\n\n\n\n\n\n\n\n\n\n\nQuestion 2\n\n\nWe can decompose the birth rate into two components: A: the number of births per “woman of child bearing age”(Scotland uses ages 15-44)“, and B: the proportion of the population that are women aged 15-44.\n\\[\n\\text{Birth Rate} = A \\cdot B \\cdot 1000\n\\]  \\[\n\\text{Birth Rate} = \\frac{\\text{Nr of Women 15-44}}{\\text{Nr of People}} \\cdot \\frac{\\text{Nr of Births}}{\\text{Nr of Women 15-44}} \\cdot 1000\n\\]\nCalculate these below, and then multiply them to demonstrate to yourselves that this returns the same rates (give or take some rounding!) as the previous question.\n\n\n\n\n\n\n\n\nLAA\nn_people\nn_women15to44\nn_births\nw15-44 / people\nbirths / w15-44\nbirth_rate\n\n\n\n\nGlasgow City\n650300\n161105\n6150\nA1\nB1\nA1 * B1 * 1000\n\n\nStirling\n94210\n17844\n659\nA2\nB2\nA2 * B2 * 1000\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution 2. \n\n\n\n\n\n\n\n\nLAA\nn_people\nn_women15to44\nn_births\nw15-44 / people\nbirths / w15-44\nbirth_rate\n\n\n\n\nGlasgow City\n650300\n161105\n6150\n0.24774\n0.03817\n9.46\n\n\nStirling\n94210\n17844\n659\n0.18941\n0.03693\n6.99\n\n\n\n\n\n\n\n\n\n\n\nQuestion 3\n\n\nWhat would Stirling’s birth rate be if:\n\nWomen aged 15-44 made up the same proportion of its population as they do for Glasgow?\n\n\n\n\n\n\n\nHints\n\n\n\n\n\nA1 * B2!\n\n\n\n\n\n\n\n\nLAA\nw15-44 / people\nbirths / w15-44\n\n\n\n\nGlasgow City\nA1\nB1\n\n\nStirling\nA2\nB2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution 3. \n\n\n\n\n\n\n\n\nLAA\nn_people\nn_women15to44\nn_births\nbpw\npropw\nbirth_rate\n\n\n\n\nGlasgow City\n650300\n161105\n6150\n0.03817\n0.24774\n9.456236\n\n\nStirling\n94210\n17844\n659\n0.03693\n0.18941\n6.994911\n\n\n\n\n\n\n\n\n\\(0.24774 \\times 0.03693  \\times 1000 = 9.1490382\\)\n\n\n\n\nQuestion 4\n\n\nWhat would each LAA’s birth rates be if:\n\nThe proportion of the population comprised of women aged 15-44 was the same in both populations (i.e., at the average of the two)\nThe rates of births in women aged 15-44 were the same in both populations (i.e., at the average of the two)\n\n\n\n\n\n\n\nHints\n\n\n\n\n\nB1 * ((A1+A2)/2)\nB2 * ((A1+A2)/2)\nand\nA1 * ((B1+B2)/2)\nA2 * ((B1+B2)/2)\n\n\n\n\n\n\n\n\nLAA\nw15-44 / people\nbirths / w15-44\n\n\n\n\nGlasgow City\nA1\nB1\n\n\nStirling\nA2\nB2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution 4. \n\n\n\n\n\n\n\n\nLAA\nn_people\nn_women15to44\nn_births\nbpw\npropw\nbirth_rate\n\n\n\n\nGlasgow City\n650300\n161105\n6150\n0.03817\n0.24774\n9.456236\n\n\nStirling\n94210\n17844\n659\n0.03693\n0.18941\n6.994911\n\n\n\n\n\n\n\nif proportion of w15-44 were equal:\n\nGlasgow: \\(0.03817 \\times \\frac{0.24774+0.18941}{2} \\times 1000 = 8.3430078\\)\nStirling: \\(0.03693 \\times \\frac{0.24774+0.18941}{2} \\times 1000 = 8.0719747\\)\n\nif births per w15-44 were equal:\n\nGlasgow: \\(0.24774 \\times \\frac{0.03817+0.03693}{2} \\times 1000 = 9.302637\\)\nStirling: \\(0.18941 \\times \\frac{0.03817+0.03693}{2} \\times 1000 = 7.1123455\\)\n\n\n\n\n\nQuestion 5\n\n\nThe differences between these two pairs of standardised rates (when using the average of the two populations as the reference) provides the contribution of each factor on the total crude rate difference.\nWe know from the very first question that Stirling has a crude birth rate that is ~2.46 births per 1000 people fewer than Glasgow.\nHow much of this is due to Stirling having relatively fewer ‘women of child bearing age’?\n\n\n\n\n\n\nHints\n\n\n\n\n\n(A2 - A1) * ((B1+B2)/2) / (R2 - R1)\n\n\n\n\n\n\n\n\nLAA\ncrude rate\nw15-44 / people\nbirths / w15-44\n\n\n\n\nGlasgow City\nR1\nA1\nB1\n\n\nStirling\nR2\nA2\nB2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution 5. From the previous question, these are Glasgow and Stirling’s rates were only the proportion of women aged 15-44 to differ (and not the birth rate per woman aged 15-44):\n\nGlasgow: \\(0.24774 \\times \\frac{0.03817+0.03693}{2} \\times 1000 = 9.302637\\)\nStirling: \\(0.18941 \\times \\frac{0.03817+0.03693}{2} \\times 1000 = 7.1123455\\)\n\nAnd the crude rates:\n\nGlasgow: \\(9.4562358\\)\nStirling: \\(6.9949113\\)\n\nThe difference between standardised rates, as a percentage of the difference between crude rates, gives:\n\\(\\frac{7.1123455 - 9.302637}{6.9949113 - 9.4562358} = 88.9883272\\%\\)\n\n\n\n\n\nGet The Software\n\nQuestion 6\n\n\nGet either R or Stata open, and install the various packages.\nIn R: DasGuptR\nWe would recommend installing the development version\n\nlibrary(remotes)\ninstall_github(\"josiahpjking/DasGuptR@develop\")\n\nIn Stata, we’re assuming you are familiar with using Stata (if not, we recommend you use R instead). The relevant command is rdecompose\n#| eval: false\nssc install rdecompose\n\n\n\n\nQuestion 7\n\n\nHere’s the data:\n\n\nR\n\np01 &lt;- data.frame(\n  LAA = c(\"Glasgow City\",\"Stirling\"),\n  n_people = c(650300,94210),\n  n_women15to44 = c(161105,17844),\n  n_births = c(6150,659)\n)\n\n\n\nStata\nclear\ninput str12 LAA long n_people long n_women15to44 int n_births\n\"Glasgow City\" 650300 161105 6150\n\"Stirling\" 94210 17844 659\nend\n\n\n Create the new factors, and use either dgnpop() (in R) or rdecompose (Stata) to conduct the decomposition.\nCheck that it matches your calculations above.\nYou might find it easiest to multiply the “births per woman aged 15-44” by 1000 when you create it.\nIn R, this will look something like this:\n\nlibrary(tidyverse)\nlibrary(DasGuptR)\np01 &lt;- p01 |&gt;\n  mutate(\n    propw =  ????\n    bpw =  ???\n  )\n\ndres &lt;- dgnpop(x = ???, \n       pop = \"???\",\n       factors = c(\"???\",\"???\"))\n\ndg_table(dres)\n\n\n\n\n\n\nSolution\n\n\n\nSolution 6. \n\nlibrary(tidyverse)\nlibrary(DasGuptR)\np01 &lt;- p01 |&gt;\n  mutate(\n    propw =  n_women15to44/n_people,\n    bpw =  n_births/n_women15to44*1000\n  )\n\ndres &lt;- dgnpop(x = p01, \n       pop = \"LAA\",\n       factors = c(\"bpw\",\"propw\"))\n\ndg_table(dres)\n\n      Glasgow City Stirling       diff decomp\nbpw       8.343778 8.072162 -0.2716165  11.03\npropw     9.303243 7.112697 -2.1905460  88.97\ncrude     9.457174 6.995011 -2.4621625 100.00\n\n\n\n\n\n\nQuestion 8\n\n\nWe can split the birth rate further, into three different factors:\n\\[ \\small\n\\text{Birth Rate} = \\frac{\\text{Nr of Women}}{\\text{Nr of People}} \\cdot \\frac{\\text{Nr of Women 15-44}}{\\text{Nr of Women}} \\cdot \\frac{\\text{Nr of Births}}{\\text{Nr of Women 15-44}} \\cdot 1000\n\\]\nPerform this decomposition now.\n\n\nR\n\np01a &lt;- data.frame(\n  LAA = c(\"Glasgow City\",\"Stirling\"),\n  n_people = c(650300,94210),\n  n_women = c(332054, 48731),\n  n_women15to44 = c(161105,17844),\n  n_births = c(6150,659)\n)\n\n\n\nStata\nclear\ninput str12 LAA long n_people long n_women long n_women15to44 int n_births\n\"Glasgow City\" 650300 332054 161105 6150\n\"Stirling\"     94210  48731  17844  659\nend\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution 7. \n\np01a &lt;- p01a |&gt; mutate(\n  propw = n_women/n_people,\n  propw1544 = n_women15to44/n_women,\n  bpw = n_births/n_women15to44*1000\n)\n\ndgnpop(p01a,\n       pop=\"LAA\",\n       factors=c(\"propw\",\"propw1544\",\"bpw\")) |&gt;\n  dg_table()\n\n          Glasgow City Stirling       diff decomp\npropw         8.168592 8.274858  0.1062662  -4.32\npropw1544     9.363423 7.066774 -2.2966485  93.28\nbpw           8.348808 8.077028 -0.2717802  11.04\ncrude         9.457174 6.995011 -2.4621625 100.00\n\n\n\n\n\n\n\nChoose your own\n\n\n\n\n\n\nBirth Rates Across England and Scotland\n\n\n\n\n\nJust the same as above, but comparing England and Scotland.\n\\[ \\small\n\\text{Birth Rate} = \\frac{\\text{Nr of Women}}{\\text{Nr of People}} \\cdot \\frac{\\text{Nr of Women 15-44}}{\\text{Nr of Women}} \\cdot \\frac{\\text{Nr of Births}}{\\text{Nr of Women 15-44}} \\cdot 1000\n\\]\nData:\n\n\nR\n\nscot_v_eng &lt;- \n  tribble(\n    ~country, ~n_people, ~n_women, ~n_women1544, ~n_births,\n    \"Scotland\", 5546900, 2851740, 1064441, 45763,\n    \"England\", 58620101, 29895762, 11583779, 567708\n  )\n\n\n\nStata\nclear\ninput str8 country long n_people long n_women long n_women1544 long n_births\n\"Scotland\"  5546900  2851740  1064441  45763\n\"England\"   58620101 29895762 11583779 567708\nend\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution 8. \n\nscot_v_eng &lt;- \n  tribble(\n    ~country, ~n_people, ~n_women, ~n_women1544, ~n_births,\n    \"Scotland\", 5546900, 2851740, 1064441, 45763,\n    \"England\", 58620101, 29895762, 11583779, 567708\n  )\n\n# crude rates\nscot_v_eng |&gt;\n  transmute(\n    country, \n    cr = n_births/n_people*1e3\n  )\n\n# A tibble: 2 × 2\n  country     cr\n  &lt;chr&gt;    &lt;dbl&gt;\n1 Scotland  8.25\n2 England   9.68\n\n# create factors:\nscot_v_eng &lt;- \n  scot_v_eng |&gt;\n  mutate(\n    propw = n_women/n_people,\n    propw1544 = n_women1544/n_women,\n    bpw = n_births/n_women1544\n  )\n\n# decomposition\ndgnpop(scot_v_eng, \n       pop = \"country\",\n       factors = c(\"propw\",\"propw1544\",\"bpw\")) |&gt;\n  dg_table()\n\n              England    Scotland          diff decomp\npropw     0.008927015 0.008999177  7.216193e-05  -5.03\npropw1544 0.009126028 0.008791294 -3.347335e-04  23.34\nbpw       0.009545104 0.008373342 -1.171762e-03  81.69\ncrude     0.009684528 0.008250194 -1.434334e-03 100.00\n\n\n\n\n\n\n\n\n\n\n\nThe Gender Earnings-Gap\n\n\n\n\n\nIn 2025 in the UK, the estimated weekly earnings per working aged Males was £179. The weekly earnings per working aged Females was only £7.\nThese numbers can be calculated as simply:\n\\[\n\\text{weekly £ per working aged person} = \\frac{\\text{total weekly earnings}}{\\text{number of working aged people}}\n\\]\nThis difference could be attributable to:\n\na greater number of males in the “labour force” (people who are employed or actively seeking employment. this excludes students etc).\nhigher rates of employment for males in the labour force compared to females in the labour force (employment bias)\nmales working more hours per week compared to females (i.e., fewer part time roles)\na higher average hourly wage for males compared to females (a pay bias - this is the typically “gender pay gap”, unadjusted for specific roles)\n\nSo we can decompose the total weekly earnings per person as:\n\\[\n\\text{weekly £ per working aged person} = A \\cdot B \\cdot C \\cdot D\n\\]\nWhere\n\nA = proportion of working aged population in the labour force\nB = the proportion of the labour force that are employed\nC = the average hours worked per employee\nD = the average earnings per hour\n\nYou can find this data for a whole load of different countries at https://ilostat.ilo.org/data/?cat_mode=subject, if you would like to do this for somewhere else.\n\n\nR\n\nwork25 &lt;- data.frame(\n  pop = c(\"males\",\"females\"),\n  working_age = c(23718900, 24613110),\n  labour_force = c(18442860, 5767405),\n  employees = c(4823169, 280557),\n  avg_hours_pp = c(37.9, 31.7),\n  total_weekly_earnings = c(4240916038, 178762504)\n)\n\n\n\nStata\nclear\ninput str7 pop long working_age long labour_force long employees float avg_hours_pp double total_weekly_earnings\n\"males\"   23718900 18442860 4823169 37.9 4240916038\n\"females\" 24613110 5767405  280557  31.7 178762504\nend\n\n\n\n\n\n\n\nSolution\n\n\n\nSolution 9. \n\n# crude rates\nwork25 |&gt; transmute(\n  pop,\n  weeklyearnings_perperson = total_weekly_earnings/working_age\n)\n\n      pop weeklyearnings_perperson\n1   males               178.799018\n2 females                 7.262898\n\n# create factors\nwork25 &lt;- \n  work25 |&gt; \n  mutate(\n    participation = labour_force / working_age,\n    employment = employees / labour_force,\n    hours = avg_hours_pp,\n    earnings = total_weekly_earnings/hours/employees\n  )\n\n# decompose\ndgnpop(work25, \n       pop=\"pop\",\n       factors=c(\"participation\",\"employment\",\"hours\",\"earnings\")) |&gt;\n  dg_table()\n\n                females     males       diff decomp\nparticipation 28.443354  94.38448  65.941123  38.44\nemployment    19.115488 102.76588  83.650392  48.77\nhours         62.034915  74.16793  12.133012   7.07\nearnings      63.617110  73.42870   9.811594   5.72\ncrude          7.262898 178.79902 171.536121 100.00\n\n\nI guess it’s good that a pay-bias doesn’t account for much of this difference (only ~5%).\nIt’s worrying that the employment-bias account for almost half!\nThis is a good example to note that these methods are not going to give us evidence of a bias being present (or absent).\nAll we are saying is that the different employment rates for men vs women contributes 49% of the total earnings disparity. That is not evidence of a bias against employing women - such a bias happens at the unit level, not at the level of the population. In this way, Das Gupta’s decomposition is essentially an act of book-keeping. The counterfactuals we get from this method (A, below) are not the same as those that we need to think about to evidence an gender employment bias (B, below).\n\nA: “if Fs and Ms had same proportions of people in the labour force, worked the same hours, and had the same hourly wage, but differed in their employment rates in the way that they do, what would their weekly earnings be?”\nB: “if a given individual F was perceived to be M, does their probability of employment change (all else being equal)?”\n\n\n\n\n\n\n\n\n\n\nScotland’s Recycling: 2011 and 2022\n\n\n\n\n\nThe Scottish Environment Protection Agency (SEPA) provides data on the weights of waste that is generated, recycled, landfilled etc.\nOne indicator tracked by many countries and organisations is the amount of recycled waste per citizen, i.e.:\n\\[\n\\text{Recycled Tonnes Per Person} = \\frac{\\text{Recycled Waste}}{\\text{Nr People}}\n\\]\nIn Scotland, this indicator has actually decreased from 195kg per person in 2011 to 186kg per person in 2022. On face value this could be interpreted as an indication that we are, as a nation, recycling less!\nBut we can decompose the indicator into the amount of waste generated per person, and the proportion of waste that is recycled.\nThis decomposition will allow us to see how much of the decrease in the population indicator can be attributable to changes in the amounts of waste generated, or in the proportion of waste that is recycled.\n\\[\n\\text{Recycled Tonnes Per Person} = \\frac{\\text{Total Waste}}{\\text{Nr People}} \\cdot \\frac{\\text{Recycled Waste}}{\\text{Total Waste}}\n\\]\nData are available at https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_2011_2022.csv\n\n\n\n\n\nSolution\n\n\n\nSolution 10. \n\ndf &lt;- read_csv(\"https://josiahpjking.github.io/sgsss_std_decomp/data/recycling_2011_2022.csv\")\n\n# crude rates and factors\ndf &lt;- df |&gt;\n  mutate(\n    # crude rate\n    rpp = recycled/pop*1e3,\n    # factors\n    wpp = totalwaste/pop*1e3,\n    recp = recycled/totalwaste,\n  )\n\ndf\n\n# A tibble: 2 × 9\n   year     pop recycled landfilled diverted totalwaste   rpp   wpp  recp\n  &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1  2011 5299900  1032156    1453789   120688    2606633  195.  492. 0.396\n2  2022 5447000  1012045     585461   736277    2333783  186.  428. 0.434\n\ndgnpop(df,\n       pop=\"year\",\n       factors=c(\"wpp\",\"recp\")) |&gt; \n  dg_table()\n\n          2011     2022       diff  decomp\nwpp   204.0154 177.7272 -26.288226  293.67\nrecp  182.2029 199.5397  17.336741 -193.67\ncrude 194.7501 185.7986  -8.951485  100.00\n\n\nThis example is a good one for figuring out directions etc.\nWe get from this:\n\nthe crude indicator of “kg recycled per person” goes down\nif the waste generated per person stayed the same, but we only change the proportion of waste that is recycled, then “kg recycled per person” would have gone up.\n\nthis is good! it means we’re recycling a greater proportion of waste!\n\nif the proportion of waste that is recycled stays the same, but we only change the amount of waste generated per person, then “kg recycled per person” would have gone down about ~3 times as much as it did.\n\nthis is also good! it suggests we’re creating a lot less waste!\n\n\ntogether, we have this antagonistic relationship between these two factors and the eventual outcome. A population can make the indicator go up either by generating loads more waste (a bad thing) or by recycling a greater proportion of the waste (a good thing)!"
+  },
+  {
+    "objectID": "lecture-whole-game.html#background",
+    "href": "lecture-whole-game.html#background",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Background",
+    "text": "Background\n\nThe crime drop (Farrell, Tilley, and Tseloni 2014) has changed the demographics of people being convicted (Matthews and Minton 2018)\nChanging demographics of people convicted complicates comparisons in the aggregate reconviction rate over time\nThe overall change in the reconvictions rate in Scotland is partly due to fewer reconvictions and partly due to changing demographics\nThis creates statistical bias in the aggregate reconviction rate if it’s used as a measure of ‘effectiveness’ of the justice system\nWe demonstrate this problem with a worked example using Scottish reconvictions data"
+  },
+  {
+    "objectID": "lecture-whole-game.html#the-overall-reconviction-rate-is-falling",
+    "href": "lecture-whole-game.html#the-overall-reconviction-rate-is-falling",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "The overall reconviction rate is falling",
+    "text": "The overall reconviction rate is falling\n\nreconviciton-rate"
+  },
+  {
+    "objectID": "lecture-whole-game.html#the-demographics-of-convictions-are-changing",
+    "href": "lecture-whole-game.html#the-demographics-of-convictions-are-changing",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "The demographics of convictions are changing",
+    "text": "The demographics of convictions are changing\n\nage-composition"
+  },
+  {
+    "objectID": "lecture-whole-game.html#a-gap-in-the-crime-drop",
+    "href": "lecture-whole-game.html#a-gap-in-the-crime-drop",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "A gap in the crime drop",
+    "text": "A gap in the crime drop\n\nThere has been a lot written about the causes of the crime drop (Farrell, Tilley, and Tseloni 2014; Tonry 2014; Ball et al. 2023), including previous attempts to describe changes in the demographics of crime and use these descriptions to build explanations for why there is less crime now than in the past (Matthews and Minton 2018; Tuttle 2024; Farrell, Laycock, and Tilley 2015)\nOne unexplored area these changing demographics can matter is when measuring Criminal Justice System ‘performance’"
+  },
+  {
+    "objectID": "lecture-whole-game.html#reconviction-rates-as-a-performance-metric",
+    "href": "lecture-whole-game.html#reconviction-rates-as-a-performance-metric",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Reconviction rates as a performance metric",
+    "text": "Reconviction rates as a performance metric\n\nThe Sentencing Council (for England and Wales) says the reconviction rate is a “key metric for evaluating the effectiveness of sentencing” (Gormley, Hamilton, and Belton 2022, p18)\n“Measuring recidivism is important, as it is one indicator of the effectiveness of the criminal justice system in the rehabilitation of offenders. Reconviction rates are a proxy measure for recidivism” (Scottish Government 2024, p8) and “Reduce reconviction rates” was a National Performance Framework indicator from 2007 to 2018\nThe common logic is that if the reconviction rate goes down then the criminal justice system is doing a better job at rehabilitating offenders"
+  },
+  {
+    "objectID": "lecture-whole-game.html#but-its-not-so-simple",
+    "href": "lecture-whole-game.html#but-its-not-so-simple",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "But it’s not so simple",
+    "text": "But it’s not so simple\n\nHowever, “differences in the offending related characteristics of those included in each cohort make comparing reoffending rates problematic, across both time and jurisdictions.” (Browne 2024, p19)\nBecause of changes in the distribution of characteristics of the people who have been convicted, change in the overall reconviction rate can be biased as a performance measure\nThe overall change we see will be both due to changes in the prevalence of reconviction amongst demographic groups, but also the mix/composition of those groups who are in each reconviction cohort."
+  },
+  {
+    "objectID": "lecture-whole-game.html#the-anatomy-of-a-rate",
+    "href": "lecture-whole-game.html#the-anatomy-of-a-rate",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "The anatomy of a rate",
+    "text": "The anatomy of a rate\n\nTo use reconviction rates as measures of criminal justice system ‘performance’ you only want to measure change in the subgroup rates\nBut change in the overall rate can come from either changes in the subgroup rates or changes in the relative subgroup sizes\n\n\n“If the target for a reduction in the overall reconviction rate is met, and this is mainly due to more people with a lower likelihood of re-offending being brought into the criminal justice system and being convicted, rather than through a reduction in rates of re-offending among those who would normally be brought into the system, this would bring little cause for celebration.” (Kirkwood 2008, p9)"
+  },
+  {
+    "objectID": "lecture-whole-game.html#standardization-and-decomposition",
+    "href": "lecture-whole-game.html#standardization-and-decomposition",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Standardization and decomposition",
+    "text": "Standardization and decomposition\n\nStandardization and decomposition can separate out changes in the reconviction rate that are due to demographic change from those due to change in the underlying reconviction rate for different age groups\nStandardization and decomposition can also separate out the relative importance of different factors in driving aggregate change (e.g. age and sex)\nPrevious regression-based approaches (Francis, Harman, and Humphreys 2005; Cunliffe and Shepherd 2007; Drake, Aos, and Barnoski 2010) to correct for the problem of changing ‘offender mix’ can perform this standardization part, but don’t focus on the decomposition part\nThe regression approach focuses on ‘is the observed rate lower than some predicted rate’ - but not quantifying the contribution of a given characteristic to the difference between observed and predicted rate"
+  },
+  {
+    "objectID": "lecture-whole-game.html#research-question",
+    "href": "lecture-whole-game.html#research-question",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Research Question",
+    "text": "Research Question\n\nHow much of the change in the overall reconviction rate in Scotland between 1997 and 2022 is attributable to changing demographics?"
+  },
+  {
+    "objectID": "lecture-whole-game.html#data",
+    "href": "lecture-whole-game.html#data",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Data",
+    "text": "Data\n\nWe analyse data from ‘reconviciton cohorts’ in Scotland between 1997/1998-2020/21(Scottish Government 2024)\nA reconviction cohort is “all offenders who either received a non-custodial conviction or were released from a custodial sentence in a given financial year, from the 1st April to the 31st March the following year” (Scottish Government 2024, p40)\nThere is nothing particularly special about these time points, and the same approach would work for other time periods and other characteristics\nSome evidence that Scotland might be an extreme case here with larger demographic changes than in other countries (Matthews 2023)"
+  },
+  {
+    "objectID": "lecture-whole-game.html#measures",
+    "href": "lecture-whole-game.html#measures",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Measures",
+    "text": "Measures\n\n“The reconviction rate is presented as the percentage of offenders in the cohort who were reconvicted one or more times by a court within a specified follow up period from the date of the index conviction. For most reconviction analyses in this bulletin, the follow-up period is one year,” (Scottish Government 2024, p10)\nWe decompose the overall reconviction rate by age and sex\nAge groups:\n\nUnder 21, 21 to 25, 26 to 30, 31 to 40, over 40\n\nSex:\n\nMale, female\n\n\n\n\nSex is “generally based on how a person presents and is recorded when a person’s details are entered into the [Criminal Histories System]. It is recorded for operational purposes, such as requirements for searching” (Scottish Government 2024, p44)"
+  },
+  {
+    "objectID": "lecture-whole-game.html#method",
+    "href": "lecture-whole-game.html#method",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Method",
+    "text": "Method\n\nWe will talk about this at length for the rest of the day!"
+  },
+  {
+    "objectID": "lecture-whole-game.html#change-in-reconviciton-rate-by-age-group",
+    "href": "lecture-whole-game.html#change-in-reconviciton-rate-by-age-group",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Change in reconviciton rate by age group",
+    "text": "Change in reconviciton rate by age group\n\nreconvictions-by-age"
+  },
+  {
+    "objectID": "lecture-whole-game.html#remember-the-changing-demographic-mix",
+    "href": "lecture-whole-game.html#remember-the-changing-demographic-mix",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Remember the changing demographic mix!",
+    "text": "Remember the changing demographic mix!\n\nage-composition"
+  },
+  {
+    "objectID": "lecture-whole-game.html#how-much-change-in-the-reconviction-rate-is-due-to-demographic-mix",
+    "href": "lecture-whole-game.html#how-much-change-in-the-reconviction-rate-is-due-to-demographic-mix",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "How much change in the reconviction rate is due to demographic mix?",
+    "text": "How much change in the reconviction rate is due to demographic mix?\n\nstandardized-rates"
+  },
+  {
+    "objectID": "lecture-whole-game.html#decomposition",
+    "href": "lecture-whole-game.html#decomposition",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Decomposition",
+    "text": "Decomposition"
+  },
+  {
+    "objectID": "lecture-whole-game.html#standardization-and-decomposition-of-reconviction-rates-in-scotland",
+    "href": "lecture-whole-game.html#standardization-and-decomposition-of-reconviction-rates-in-scotland",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Standardization and Decomposition of Reconviction Rates in Scotland",
+    "text": "Standardization and Decomposition of Reconviction Rates in Scotland\n\n\n\n\n\n\n\n\n\n\nImpact of…\nReconviction cohort 1997–98\nReconviction cohort 2020–21\nDifference in rates\n% of crude difference\n\n\n\n\nAge structure\n0.31\n0.28\n-0.03\n70.30\n\n\nSex\n0.30\n0.30\n0.00\n1.45\n\n\nReconviction rate\n0.30\n0.29\n-0.01\n28.25\n\n\nCrude rate\n0.32\n0.27\n-0.05\n100.00\n\n\n\n*Data from Scottish Government (2024). Calculations authors’ own."
+  },
+  {
+    "objectID": "lecture-whole-game.html#analysis",
+    "href": "lecture-whole-game.html#analysis",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Analysis",
+    "text": "Analysis\n\nThe dramatic changes in the demographics of people involved in the justice system that we have seen in Scotland distorts simple comparisons over time in aggregate performance measures such as the reconviction rate, because the people who make up reconviction cohorts in the early 2000s have a very different profile to those who make up reconvictions cohorts in the mid 2020s\nYoung people used to have the highest reconviction rate of all age groups, but this has fallen\nThose over 40 have consistently lower reconviction rates, but these have not fallen\nYoung people also used to make up more of the reconviction cohorts\nIn terms of the overall reconviction rate, a group of people with high levels of reconviction have been replaced by people with lower levels of reconviction"
+  },
+  {
+    "objectID": "lecture-whole-game.html#analysis-1",
+    "href": "lecture-whole-game.html#analysis-1",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "Analysis",
+    "text": "Analysis\n\nWe can attribute about three-quarters of the fall in the reconvictions rate in Scotland between 1997/98-2020/21 to demographic change in the population of people convicted, rather than falls in the reconviction rate per se.1\nIf you want to use the reconviction rate as a measure of sentencing effectiveness or similar, you would think the justice system is doing a much better job than it is\nIn an optimistic reading, the change in the mix of people being reconvicted could still be due to criminal justice practices (e.g. more diversion from prosecution for young people), but is not attributable to the ‘effectiveness’ of the criminal justice system in rehabilitating offenders - it is purely due to changes in the demographic mix of people being convicted in the first place\n\nIf you change the comparison years to compare a year in the 2000s to 2020/1 this falls to around half of the overall change attributable to changes in age structure."
+  },
+  {
+    "objectID": "lecture-whole-game.html#references",
+    "href": "lecture-whole-game.html#references",
+    "title": "Standardization and Decomposition: A worked example of Scotland’s reconviction rate",
+    "section": "References",
+    "text": "References\n\n\n\n\nBall, Jude, Richard Grucza, Michael Livingston, Tom ter Bogt, Candace Currie, and Margaretha de Looze. 2023. “The Great Decline in Adolescent Risk Behaviours: Unitary Trend, Separate Trends, or Cascade?” Social Science & Medicine 317 (January): 115616. https://doi.org/10.1016/j.socscimed.2022.115616.\n\n\nBrowne, S. 2024. “Adult and Youth Reoffending in Northern Ireland (2021/22 Cohort).” Northern Ireland Statistics and Research Agency.\n\n\nCunliffe, Jack, and Adrian Shepherd. 2007. “Re-Offending of Adults: Results from the 2004 Cohort.” Home Office.\n\n\nDrake, E. K., S. Aos, and R. Barnoski. 2010. “Washington’s Offender Accountability Act: Final Report on Recidivism Outcomes.” Olympia: Washington State Institute for Public Policy.\n\n\nFarrell, Graham, Gloria Laycock, and Nick Tilley. 2015. “Debuts and Legacies: The Crime Drop and the Role of Adolescence-Limited and Persistent Offending.” Crime Science 4 (1). https://doi.org/10.1186/s40163-015-0028-3.\n\n\nFarrell, Graham, Nick Tilley, and Andromachi Tseloni. 2014. “Why the Crime Drop?” Crime and Justice 43 (1): 421–90.\n\n\nFrancis, Brian, Juliet Harman, and Leslie Humphreys. 2005. “Predicting Reconviction Rates in Northern Ireland.” 7/2005. Northern Ireland Office.\n\n\nGormley, Jay, Melissa Hamilton, and Ian Belton. 2022. “The Effectiveness of Sentencing Options on Reoffending.” Sentencing Council.\n\n\nKirkwood, Steve. 2008. “Evidencing the Impact of Criminal Justice Services on Re-offending.” CJScotland.\n\n\nMatthews, Ben. 2023. “The Age-Crime Curve and the Crime Drop in (Some of) Northern Europe.” University of Oslo.\n\n\nMatthews, Ben, and Jon Minton. 2018. “Rethinking One of Criminology’s ‘Brute Facts’: The Age–Crime Curve and the Crime Drop in Scotland.” European Journal of Criminology 15 (3): 296–320. https://doi.org/10.1177/1477370817731706.\n\n\nScottish Government. 2024. “Reconviction Rates in Scotland: 2020-21 Offender Cohort.” Scottish Government.\n\n\nTonry, Michael. 2014. “Why Crime Rates Are Falling Throughout the Western World.” Crime and Justice 43 (1): 1–63.\n\n\nTuttle, James. 2024. “The End of the Age-Crime Curve? A Historical Comparison of Male Arrest Rates in the United States, 1985–2019.” The British Journal of Criminology 64 (3): 638–55. https://doi.org/10.1093/bjc/azad049."
+  },
+  {
+    "objectID": "lecture-stddecompbasics.html#decomposition---das-gupta",
+    "href": "lecture-stddecompbasics.html#decomposition---das-gupta",
+    "title": "Standardisation and Decomposition of Rates as Products",
+    "section": "Decomposition - Das Gupta",
+    "text": "Decomposition - Das Gupta\n\n\nstandardisation:\n\nwhat the rates would be if factor A was asis, but the other factors were at the average configuration’ (i.e., the weighted mean of all possible combinations of those factors across the two populations)\n\n\ndecomposition:\n\nhow much of \\(\\Delta R\\) is due to \\(\\Delta A\\), averaged over all possible ways of moving from \\(R_1\\) to \\(R_2\\).\n\n\n\n\n\nhypothetical rates letting one factor move and holding others constant\n\ncomparison of hypothetical rates to determine contribution of each factor"
+  },
+  {
+    "objectID": "lecture-stddecompbasics.html#phew",
+    "href": "lecture-stddecompbasics.html#phew",
+    "title": "Standardisation and Decomposition of Rates as Products",
+    "section": "phew…",
+    "text": "phew…\n\n\n\n\nTake-away:\n\nneutrality: doesn’t favour one population as the standard\nsymmetry: order of factors doesn’t matter\n\\(\\Delta R = \\Delta A_{std} +  \\Delta B_{std} + \\ldots  + \\Delta K_{std}\\)"
+  },
+  {
+    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr",
+    "href": "lecture-stddecompbasics.html#decomposition---dasguptr",
+    "title": "Standardisation and Decomposition of Rates as Products",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\nWhy?\n\ndeveloped because we shared an office back in 2019.\nimplements all of Das Gupta’s 1993 manual:\n\nK factors\narbitrary rate functions (not just products)\ncrossclassified data structures\nN populations"
+  },
+  {
+    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr-1",
+    "href": "lecture-stddecompbasics.html#decomposition---dasguptr-1",
+    "title": "Standardisation and Decomposition of Rates as Products",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\n\nWe’ve been pleasantly surprised by the usage (n.b, expectations were low!)\n\nUnderstanding tuberculosis rates in Brazil\nComparing contribution of different factors to epilepsy burden across different sociodemographic indices\nChanges in population composition affecting rates of ‘deaths of despair’ (USA)\nUnderstanding the labour market. It’s in Portuguese, but this technical note from Charles Correa at the Central Bank of Brazil has some excellent examples and explanations."
+  },
+  {
+    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr-2",
+    "href": "lecture-stddecompbasics.html#decomposition---dasguptr-2",
+    "title": "Standardisation and Decomposition of Rates as Products",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\nWorkflow\n\ndgnpop(x = &lt;data&gt;,\n       pop = \"...\",\n       factors = c(\"...\"),\n       \n       id_vars = c(\"...\"),\n       crossclassified = \"...\",\n       ratefunction = \"...\"\n)\n\nDecomposition tables:\n\ndgnpop(...) |&gt; dg_table()\n\nTime series plots:\n\ndgnpop(...) |&gt; dg_plot()"
+  },
+  {
+    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr-3",
+    "href": "lecture-stddecompbasics.html#decomposition---dasguptr-3",
+    "title": "Standardisation and Decomposition of Rates as Products",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\n2 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~psq,~pgr,\n  \"P1\", 5/15, 3/5,\n  \"P2\", 10/15, 8/10,\n) \nmydat\n\n# A tibble: 2 × 3\n  pop     psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.333   0.6\n2 P2    0.667   0.8\n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"psq\",\"pgr\"))\n\nhead(dgres)\n\n  rate pop std.set factor\n1 0.20  P1    &lt;NA&gt;  crude\n2 0.53  P2    &lt;NA&gt;  crude\n3 0.23  P1      P2    psq\n4 0.47  P2      P1    psq\n5 0.30  P1      P2    pgr\n6 0.40  P2      P1    pgr\n\n\n ^ these are the rates for each population (both crude and standardised rates)\nThe value of the factor column denotes the part of the rate that is not held at the average."
+  },
+  {
+    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr-4",
+    "href": "lecture-stddecompbasics.html#decomposition---dasguptr-4",
+    "title": "Standardisation and Decomposition of Rates as Products",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\n2 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~psq,~pgr,\n  \"P1\", 5/15, 3/5,\n  \"P2\", 10/15, 8/10,\n) \nmydat\n\n# A tibble: 2 × 3\n  pop     psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.333   0.6\n2 P2    0.667   0.8\n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"psq\",\"pgr\"))\n\ndg_table(dgres)\n\n        P1   P2 diff decomp\npsq   0.23 0.47 0.23     70\npgr   0.30 0.40 0.10     30\ncrude 0.20 0.53 0.33    100"
+  },
+  {
+    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr-5",
+    "href": "lecture-stddecompbasics.html#decomposition---dasguptr-5",
+    "title": "Standardisation and Decomposition of Rates as Products",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\nDas Gupta tables"
+  },
+  {
+    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr-6",
+    "href": "lecture-stddecompbasics.html#decomposition---dasguptr-6",
+    "title": "Standardisation and Decomposition of Rates as Products",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\n3 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\nhead(dgres)\n\n  rate pop std.set factor\n1 0.20  P1    &lt;NA&gt;  crude\n2 0.53  P2    &lt;NA&gt;  crude\n3 0.32  P1      P2   pcol\n4 0.38  P2      P1   pcol\n5 0.23  P1      P2    psq\n6 0.48  P2      P1    psq"
+  },
+  {
+    "objectID": "lecture-stddecompbasics.html#decomposition---dasguptr-7",
+    "href": "lecture-stddecompbasics.html#decomposition---dasguptr-7",
+    "title": "Standardisation and Decomposition of Rates as Products",
+    "section": "Decomposition - {DasGuptR}",
+    "text": "Decomposition - {DasGuptR}\n3 factor\n\n\n\nlibrary(tibble)\n\nmydat &lt;- tribble(\n  ~pop,~pcol,~psq,~pgr,\n  \"P1\", 11/15, 4/11, 3/4,\n  \"P2\", 13/15, 10/13, 8/10,\n) \nmydat\n\n# A tibble: 2 × 4\n  pop    pcol   psq   pgr\n  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 P1    0.733 0.364  0.75\n2 P2    0.867 0.769  0.8 \n\n\n\n\nlibrary(DasGuptR)\n\ndgres &lt;- dgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"pcol\",\"psq\",\"pgr\"))\n\ndg_table(dgres)\n\n        P1   P2  diff decomp\npcol  0.32 0.38 0.059   17.6\npsq   0.23 0.48 0.252   75.5\npgr   0.34 0.37 0.023    6.9\ncrude 0.20 0.53 0.333  100.0"
+  },
+  {
+    "objectID": "lecture-othermethods.html#a-misnomer..",
+    "href": "lecture-othermethods.html#a-misnomer..",
+    "title": "Decomposition more generally",
+    "section": "A misnomer..",
+    "text": "A misnomer..\n\nDas Gupta uses terms such as “A-effect”, “B-effect”.\nPeople (self included) are lax with the word “effect” in many areas of statistics\nIt’s probably even less appropriate in DG decomposition\n\n\nscot_v_eng\n\n# A tibble: 2 × 6\n  country  n_people n_women1544 n_births propw1544   bpw\n  &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 Scotland  5546900     1064441    45763     0.192  43.0\n2 England  58620101    11583779   567708     0.198  49.0\n\ndgnpop(scot_v_eng,\n       pop = \"country\",\n       factors=c(\"propw1544\",\"bpw\")) |&gt;\n  dg_table()\n\n          England Scotland    diff decomp\npropw1544   9.090    8.827 -0.2626  18.31\nbpw         9.545    8.373 -1.1717  81.69\ncrude       9.685    8.250 -1.4343 100.00"
+  },
+  {
+    "objectID": "lecture-othermethods.html#a-misnomer..-1",
+    "href": "lecture-othermethods.html#a-misnomer..-1",
+    "title": "Decomposition more generally",
+    "section": "A misnomer..",
+    "text": "A misnomer..\n\nDas Gupta uses terms such as “A-effect”, “B-effect”.\nPeople (self included) are lax with the word “effect” in many areas of statistics\nIt’s probably even less appropriate in DG decomposition\n\n\nscot_v_eng2\n\n# A tibble: 2 × 6\n  country  n_people n_tesco n_births proptsco   bpt\n  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;\n1 Scotland  5546900     224    45763   0.0404  204.\n2 England  58620101    2582   567708   0.0440  220.\n\ndgnpop(scot_v_eng2,\n       pop = \"country\",\n       factors=c(\"proptsco\",\"bpt\")) |&gt;\n  dg_table()\n\n         England Scotland    diff decomp\nproptsco   9.342    8.565 -0.7770  54.17\nbpt        9.282    8.624 -0.6574  45.83\ncrude      9.685    8.250 -1.4343 100.00\n\n\n\n(other supermarkets are available)"
+  },
+  {
+    "objectID": "lecture-othermethods.html#this-is-true",
+    "href": "lecture-othermethods.html#this-is-true",
+    "title": "Decomposition more generally",
+    "section": "this is true!",
+    "text": "this is true!\nif England and Scotland had same number of tesco stores per person, but differed in the number of births per tesco store, the England/Scotland birth rate difference would be 46% of the size that it is.\n\n\nbut is it useful?\nprobably not…\n\n\n(other supermarkets are available)"
+  },
+  {
+    "objectID": "lecture-othermethods.html#arithmetic-not-stochastic",
+    "href": "lecture-othermethods.html#arithmetic-not-stochastic",
+    "title": "Decomposition more generally",
+    "section": "Arithmetic, not stochastic",
+    "text": "Arithmetic, not stochastic\n\nall we are doing is moving numbers around!\nthere’s no estimation happening\nbut we are in the world of counterfactuals.."
+  },
+  {
+    "objectID": "lecture-othermethods.html#counterfactuals-but-not-potential-outcomes",
+    "href": "lecture-othermethods.html#counterfactuals-but-not-potential-outcomes",
+    "title": "Decomposition more generally",
+    "section": "counterfactuals, but not potential outcomes",
+    "text": "counterfactuals, but not potential outcomes\ncounterfactual:\n\nif Scotland had X tesco stores per person, and Z births per tesco, what would the nr births per person be?\n\npotential outcome:\n\nif we gave Scotland more tesco stores, what would the nr births per person be?\n\nif we give a Scottish person access to 1 more tesco store, what would the probability of them giving birth be?"
+  },
+  {
+    "objectID": "lecture-othermethods.html#counterfactuals",
+    "href": "lecture-othermethods.html#counterfactuals",
+    "title": "Decomposition more generally",
+    "section": "counterfactuals",
+    "text": "counterfactuals\n“Standardized rates are ‘artificial’, summaries of a world we do not live in.”\n\n\n(Ben, this morning)\n\n\ndgnpop(scot_v_eng2,\n       pop = \"country\",\n       factors=c(\"proptsco\",\"bpt\")) |&gt;\n  dg_table()\n\n         England Scotland    diff decomp\nproptsco   9.342    8.565 -0.7770  54.17\nbpt        9.282    8.624 -0.6574  45.83\ncrude      9.685    8.250 -1.4343 100.00"
+  },
+  {
+    "objectID": "lecture-othermethods.html#estimands",
+    "href": "lecture-othermethods.html#estimands",
+    "title": "Decomposition more generally",
+    "section": "estimands",
+    "text": "estimands\nWhat is your estimand?\n\na descriptive disparity between two populations’ birth rates were they to be the same with respect to the number of births per tesco store?\na causal difference in the numbers of birth between two populations due to their different numbers of tesco stores?"
+  },
+  {
+    "objectID": "lecture-othermethods.html#das-gupta",
+    "href": "lecture-othermethods.html#das-gupta",
+    "title": "Decomposition more generally",
+    "section": "Das Gupta",
+    "text": "Das Gupta\n\n\n\n\n\n\n\nWhat does it decompose?\n\\(R_a - R_b\\) : Group difference in calculated rate\n\n\nInto what parts?\nWhatever bits make up how we’re calculating the rate\n\n\nHow?\naveraging over the possible calculations substituting in each groups’ parts of the rate calculation\n\n\nCounterfactual\nWhat would the difference in rates be if [all parts of rate function but \\(\\alpha\\)] were the same between \\(a\\) and \\(b\\)?"
+  },
+  {
+    "objectID": "lecture-othermethods.html#macro-vs-micro",
+    "href": "lecture-othermethods.html#macro-vs-micro",
+    "title": "Decomposition more generally",
+    "section": "macro vs micro",
+    "text": "macro vs micro\n\n\nAggregate counts\n\n\n# A tibble: 2 × 4\n  population n_people n_tesco n_births\n  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;\n1 Scotland        500      20       90\n2 England        6000     200      500\n\n\n\nIndividual People\n\n\n   person population tesco birth\n1       1    England     0     1\n2       2    England     0     0\n3       3    England     0     0\n4       4   Scotland     1     1\n5       5    England     0     0\n6       6    England     0     0\n7       7    England     1     0\n8       8    England     0     1\n9       9   Scotland     0     0\n10     10    England     0     1\n11    ...        ...   ...   ..."
+  },
+  {
+    "objectID": "lecture-othermethods.html#macro-vs-micro-1",
+    "href": "lecture-othermethods.html#macro-vs-micro-1",
+    "title": "Decomposition more generally",
+    "section": "macro vs micro",
+    "text": "macro vs micro\n\n\nAggregate counts\n\n\n# A tibble: 2 × 4\n  population n_people n_tesco n_births\n  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;\n1 Scotland        500      20       90\n2 England        6000     200      500\n\n\n\nIntermediate Units\n\n\n    datazone population ntesco nbirth\n1  S01006653   Scotland      1     10\n2  E01002868    England      2     43\n3  E01005123    England      3     67\n4  E01006655    England      1    102\n5  E01009123    England      2    234\n6  S01008935   Scotland      0     22\n7  E01012345    England      2     54\n8  E01016421    England      4     78\n9  E01033732    England      2     94\n10 E01000001    England      5     89\n11       ...        ...    ...    ..."
+  },
+  {
+    "objectID": "lecture-othermethods.html#regression-estimating-conditional-expectations",
+    "href": "lecture-othermethods.html#regression-estimating-conditional-expectations",
+    "title": "Decomposition more generally",
+    "section": "regression: estimating conditional expectations",
+    "text": "regression: estimating conditional expectations\n\n\\(\\mathbb{E}[Y|X]\\) - expected value of Y conditional upon X\n\nexpected number/probability of births given number/presence of tesco, for a given population.\n\nestimating conditional expectation allows us to move towards a decomposition of group disparities into:\n\ndifferential prevalence (like Das Gupta)\ndifferential effects"
+  },
+  {
+    "objectID": "lecture-othermethods.html#oaxaca-blinder",
+    "href": "lecture-othermethods.html#oaxaca-blinder",
+    "title": "Decomposition more generally",
+    "section": "Oaxaca-Blinder",
+    "text": "Oaxaca-Blinder\n\n\n\n\n\n\n\nWhat does it decompose?\n\\(\\mathbb{E}_a[Y] - \\mathbb{E}_b[Y]\\) : Group difference in expected value of Y\n\n\nInto what parts?\ndifferences in \\(\\mathbb{E}[X]\\) (“endowments”)differences in \\(\\mathbb{E}[Y|X]\\) (“returns”)\n\n\nHow?\nEstimates functional relationship between X and outcome Y in each group\n\n\nCounterfactual\nWhat would the difference in Y be if group B had group A’s ‘endowments’ \\(\\mathbb{E}_a[X]\\), but kept the same ‘returns’ \\(\\mathbb{E}_b[Y|X]\\)?What would the difference in \\(Y\\) be if group B kept its own characteristics X but had the same X-Y relationship as in group A?"
+  },
+  {
+    "objectID": "lecture-othermethods.html#oaxaca-blinder-1",
+    "href": "lecture-othermethods.html#oaxaca-blinder-1",
+    "title": "Decomposition more generally",
+    "section": "Oaxaca-Blinder?",
+    "text": "Oaxaca-Blinder?\n\nRahimi & Nazari 2021: A detailed explanation and graphical representation of the Blinder-Oaxaca decomposition method with its application in health inequalities\nHlavac 2014: oaxaca: Blinder-Oaxaca Decomposition in R\nA rabbit hole: Oaxaca & Sierminska 2025 Oaxaca-Blinder meets Kitagawa: What is the link?"
+  },
+  {
+    "objectID": "lecture-othermethods.html#group-difference-or-group-effect",
+    "href": "lecture-othermethods.html#group-difference-or-group-effect",
+    "title": "Decomposition more generally",
+    "section": "Group difference or Group effect?",
+    "text": "Group difference or Group effect?\n\n\ngroup “difference”\naim is to understand why (structurally) a disparity exists\n How much of the difference in Y between groups can be attributed to the fact that groups have different distributions/effects of X on Y?\n\n\n\ngroup “effect”\naim is to understand how a process/mechanism works\n How much of the effect on Y of being in group A vs B is because the grouping has an effect on M and M has an effect on Y?"
+  },
+  {
+    "objectID": "lecture-othermethods.html#mediation",
+    "href": "lecture-othermethods.html#mediation",
+    "title": "Decomposition more generally",
+    "section": "Mediation",
+    "text": "Mediation\n\n\n\n\n\n\n\nWhat does it decompose?\n\\(\\mathbb{E}[Y^a] - \\mathbb{E}[Y^b]\\) : Group effect.Expected change in Y had an entity been in group \\(a\\) vs in group \\(b\\).\n\n\nInto what parts?\nDirect effect of group on Y \\(\\mathbb{E}[Y^{a,M^b}] - \\mathbb{E}[Y^{b,M^b}]\\)Indirect effect of group on Y via M \\(\\mathbb{E}[Y^{a,M^a}] - \\mathbb{E}[Y^{a,M^b}]\\)\n\n\nHow?\nEstimates the functional relationship between the grouping and M, and the joint relationship of the grouping and M on the outcome.\n\n\nCounterfactual\nHow much would Y change were a unit to move from group \\(a\\) to \\(b\\) but hold \\(M\\) constant?How much would Y change were a unit to stay in group \\(a\\), but changed its \\(M\\) the amount by which we would expect \\(M\\) to change if it moved from group \\(a\\) to \\(b\\)."
+  },
+  {
+    "objectID": "lecture-othermethods.html#mediation-1",
+    "href": "lecture-othermethods.html#mediation-1",
+    "title": "Decomposition more generally",
+    "section": "Mediation?",
+    "text": "Mediation?\n\nit’s probably not want you want.\nrequires much more stringent causal assumptions that are almost impossible to satisfy (no unmeasured confounding of Group -&gt; Y, of Group -&gt; M, of M -&gt; Y).\n\n\n\nRohrer et al., 2022 That’s a Lot to Process! Pitfalls of Popular Path Models\nThe 100% CI Blog, 2025 Reviewer notes: That’s a very nice mediation analysis you have there. It would be a shame if something happened to it.\nuoepsy.github.io/lv Chapters 6 and 7."
+  },
+  {
+    "objectID": "lecture-othermethods.html#baseline-prevalence-effect",
+    "href": "lecture-othermethods.html#baseline-prevalence-effect",
+    "title": "Decomposition more generally",
+    "section": "baseline, prevalence, effect",
+    "text": "baseline, prevalence, effect\n ## baseline, prevalence, effect"
+  },
+  {
+    "objectID": "lecture-othermethods.html#group-disparity",
+    "href": "lecture-othermethods.html#group-disparity",
+    "title": "Decomposition more generally",
+    "section": "group disparity",
+    "text": "group disparity"
+  },
+  {
+    "objectID": "lecture-othermethods.html#baseline",
+    "href": "lecture-othermethods.html#baseline",
+    "title": "Decomposition more generally",
+    "section": "baseline",
+    "text": "baseline"
+  },
+  {
+    "objectID": "lecture-othermethods.html#prevalence",
+    "href": "lecture-othermethods.html#prevalence",
+    "title": "Decomposition more generally",
+    "section": "prevalence",
+    "text": "prevalence"
+  },
+  {
+    "objectID": "lecture-othermethods.html#effect",
+    "href": "lecture-othermethods.html#effect",
+    "title": "Decomposition more generally",
+    "section": "effect",
+    "text": "effect"
+  },
+  {
+    "objectID": "lecture-othermethods.html#baseline-prevalence-effect-selection",
+    "href": "lecture-othermethods.html#baseline-prevalence-effect-selection",
+    "title": "Decomposition more generally",
+    "section": "baseline, prevalence, effect, selection",
+    "text": "baseline, prevalence, effect, selection"
+  },
+  {
+    "objectID": "lecture-conceptual.html#standardization",
+    "href": "lecture-conceptual.html#standardization",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Standardization",
+    "text": "Standardization\n\nOriginally used to adjust mortality comparisons between populations with different age structures (Keiding and Clayton 2014)\nLets you “compar[e] rates between populations with different age structures by applying age-specific rates to a single ‘target’ age structure and, thereafter, comparing predicted marginal1 summaries in this target population.” (Keiding and Clayton 2014, p529)\nMore generally - lets you compare rates of any outcome between populations with different compositions of any confounder\n\nThis is an important term! We will come back to this in a second"
+  },
+  {
+    "objectID": "lecture-conceptual.html#standardization-1",
+    "href": "lecture-conceptual.html#standardization-1",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Standardization",
+    "text": "Standardization\n\nConceptually the focus is on aggregate/marginal rates, not individual effects\nIndividual effects can aggregate in non-intuitive ways Simpson (1951)\nAggregate rates are really common as performance indicators: the reconviction rate, child poverty rate, access to greenspace, proportion of people in unmanageable debt, victimization rate… were all part of Scotland’s National Performance Framework\n\n\n\n‘Marginal’ has two opposite meanings in statistics - either it can be an average or it can be a small change (Gelman 2006). To get technical, it can be either an integral or a derivative. Fun!"
+  },
+  {
+    "objectID": "lecture-conceptual.html#an-example",
+    "href": "lecture-conceptual.html#an-example",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "An example",
+    "text": "An example\n\n“For example, before comparing the death rates for the residents of two areas, demographers frequently control the factors of differences between the areas in age, sex and race [sic] composition” Kitagawa (1955)\nTake the observed age/sex/race death rates for your two areas\nMultiply these by some ‘standard’ age, sex and race [sic] profile\nYou have ‘standardized’ rates!"
+  },
+  {
+    "objectID": "lecture-conceptual.html#picking-a-standard-population",
+    "href": "lecture-conceptual.html#picking-a-standard-population",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Picking a standard population",
+    "text": "Picking a standard population\n\nSay you wanted to compare mortality rates in Glasgow and Shetland, controlling for differences in age sex and ethnicity\nWhich population would you use as a standard one?\n\nThe Glasgow population?\nThe Shetland population?\nThe average of the two populations?\nSomething else?"
+  },
+  {
+    "objectID": "lecture-conceptual.html#decomposition",
+    "href": "lecture-conceptual.html#decomposition",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Decomposition",
+    "text": "Decomposition\n\nSo you’ve got some standardized rates - now what?\nDecomposition asks a related question to standardization: How much of the observed difference in rates is due to differences in the factors you’ve standardized by?\nFrom the previous example: how much of the difference in death rates for the residents of two areas is due to each of differences between the areas in age, sex and race [sic] composition?"
+  },
+  {
+    "objectID": "lecture-conceptual.html#why-decomposition",
+    "href": "lecture-conceptual.html#why-decomposition",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Why decomposition?",
+    "text": "Why decomposition?\n\nStandardized rates are ‘artificial’, summaries of a world we do not live in\nWhy should we care what the mortality rate in Scotland would be if it had, say, the Estonian age distribution?\nDecomposition makes comparisons of standardized rates more analytically useful by showing the contributions of the factors you standardize by:\n“A systematic statement of relationships between crude and standardized rates for two or more groups may help to bridge the gap between the observed’ crude (or total) rates and the ‘artificial’ standardized rates” (Kitagawa 1955, pp1169–1170)"
+  },
+  {
+    "objectID": "lecture-conceptual.html#decomposition-1",
+    "href": "lecture-conceptual.html#decomposition-1",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Decomposition",
+    "text": "Decomposition\n\nDecomposition lets you say how much of the difference between crude rates of your outcome between your comparison cases are due to the various factors you choose to control for\nIn Kitagawa’s (1955) example, how much of the difference in mortality rates between areas is due to differences in their age, sex and race [sic] composition, and how much is ‘left over’"
+  },
+  {
+    "objectID": "lecture-conceptual.html#a-conjecture",
+    "href": "lecture-conceptual.html#a-conjecture",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "A conjecture",
+    "text": "A conjecture\n\nA lot of social science research either aims to identify the ‘effect’ of some independent variable on an outcome\nIn either an associational or causal way (Holland 1986)\nBut this is only half the picture"
+  },
+  {
+    "objectID": "lecture-conceptual.html#a-conjecture-1",
+    "href": "lecture-conceptual.html#a-conjecture-1",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "A conjecture",
+    "text": "A conjecture\n\nThe What is Your Estimand? approach to social science splits a target ‘estimand’ into “a unit-specific quantity … aggregated over a target population of units” (Lundberg, Johnson, and Stewart 2021, p535)\nIt’s useful to be able to answer questions about macro-level phenomena, and understand the processes of aggregation which connect individual or sub-group effects to aggregate outcomes\nStandardization and decomposition are one way to do this (there are others!)"
+  },
+  {
+    "objectID": "lecture-conceptual.html#a-conjecture-2",
+    "href": "lecture-conceptual.html#a-conjecture-2",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "A conjecture",
+    "text": "A conjecture\n\nYou can be interested in (average?) individual effects, or the aggregation of individual effects in different populations\nWe can think of these as ‘direct’ and ‘compositional’ effects respectively (Vaupel and Canudas-Romo 2002)\nBut you need to be clear what you are interested in\n\n\n\nAnd uh oh individual effects may aggregate in unintuitive ways in different populations (Rose 1985), but we won’t really go into this today"
+  },
+  {
+    "objectID": "lecture-conceptual.html#my-motivating-example",
+    "href": "lecture-conceptual.html#my-motivating-example",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "My motivating example",
+    "text": "My motivating example\n\nI (Ben) wrote my PhD thesis on the ‘crime drop’ in Scotland and how the falls in convictions overall were reflected in changing demographics of crime and patterns of crime at the individual level (Matthews 2017)\nThere is a tension at the heart of this analysis I struggled to get to grips with - my focus was both at the aggregate level (the crime drop literature is about aggregate crime rates) but also at the individual level (conviction rates for people of different ages)\nStandardization and decomposition appealed to me because I was trying to separate out how much of the change in the aggregate conviction rate was due to underlying changes in demographics, convictions prevalence and the number of convictions per person convicted"
+  },
+  {
+    "objectID": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects",
+    "href": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Thinking about direct and compositional effects",
+    "text": "Thinking about direct and compositional effects\n\nNext we’re going to look at a worked example about age and reconviction\nThere is a direct effect of age on reconviction: younger people typically are reconvicted at higher rates than older people\nThere is also a compositional effect: typically younger people make up more of ‘reconviction cohorts’ because younger people are more likely to be convicted in the first place than older people"
+  },
+  {
+    "objectID": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects-1",
+    "href": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects-1",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Thinking about direct and compositional effects",
+    "text": "Thinking about direct and compositional effects\n\nImagine you are researching whether breastfeeding practices can explain differences in children’s height at age two between Scotland and Argentina\nWhat would be a direct effect? And what would be a compositional effect?\nTake a minute then vote on the options at the menti"
+  },
+  {
+    "objectID": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects-2",
+    "href": "lecture-conceptual.html#thinking-about-direct-and-compositional-effects-2",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "Thinking about direct and compositional effects",
+    "text": "Thinking about direct and compositional effects\n\nTake two minutes to think about your own research topic\nWhat is your key ‘independent’ variable?\nWhat might that look like as a direct effect? And what might it look like as a compositional effect?"
+  },
+  {
+    "objectID": "lecture-conceptual.html#a-caveat",
+    "href": "lecture-conceptual.html#a-caveat",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "A caveat",
+    "text": "A caveat\n\nLundberg, Johnson, and Stewart (2021) are actually quite critical of standardization and decomposition\nWhilst we have a counterfactual it is only a descriptive counterfactual, not a causal one\nIf used purely descriptively “the link to theory is weak: why exactly do we care about that reweighting of the Mexican population, given that Mexico does not have the age distribution of the U.S.?”\nIf used causally - “the causal difference between U.S. mortality and the counterfactual mortality that U.S. individuals would experience under an intervention to move them to Mexico” - the “link to evidence is weak”"
+  },
+  {
+    "objectID": "lecture-conceptual.html#so-whats-it-good-for",
+    "href": "lecture-conceptual.html#so-whats-it-good-for",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "So what’s it good for?",
+    "text": "So what’s it good for?\n\nLundberg, Johnson, and Stewart (2021) are right about causality - you don’t get causal effects out of standardization and decomposition (indeed Das Gupta (1993) says as much)\nBut I think the descriptive use is still important (we don’t all have to do causal analysis all the time)\nAnd I think sensitising researchers to possible role of compositional effects is very valuable too"
+  },
+  {
+    "objectID": "lecture-conceptual.html#references",
+    "href": "lecture-conceptual.html#references",
+    "title": "Standardization and decomposition: A conceptual introduction",
+    "section": "References",
+    "text": "References\n\n\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual.\n\n\nGelman, Andrew. 2006. “Marginal and Marginal.” Statistical Modeling, Causal Inference, and Social Science.\n\n\nGood, I. J., and Y. Mittal. 1987. “The Amalgamation and Geometry of Two-by-Two Contingency Tables.” The Annals of Statistics 15 (2): 694–711. https://www.jstor.org/stable/2241334.\n\n\nHolland, Paul W. 1986. “Statistics and Causal Inference.” Journal of the American Statistical Association 81 (396): 945–60. https://doi.org/10.2307/2289064.\n\n\nKeiding, Niels, and David Clayton. 2014. “Standardization and Control for Confounding in Observational Studies: A Historical Perspective.” Statistical Science 29 (4): 529–58. https://doi.org/10.1214/13-STS453.\n\n\nKitagawa, Evelyn M. 1955. “Components of a Difference Between Two Rates.” Journal of the American Statistical Association 50 (272): 1168–94. https://doi.org/10.1080/01621459.1955.10501299.\n\n\nLundberg, Ian, Rebecca Johnson, and Brandon M. Stewart. 2021. “What Is Your Estimand? Defining the Target Quantity Connects Statistical Evidence to Theory.” American Sociological Review 86 (3): 532–65. https://doi.org/10.1177/00031224211004187.\n\n\nMatthews, Ben. 2017. “Criminal Careers and the Crime Drop in Scotland, 1989-2011: An Exploration of Conviction Trends Across Age and Sex.” PhD thesis, University of Edinburgh.\n\n\nRose, Geoffrey. 1985. “Sick Individuals and Sick Populations.” International Journal of Epidemiology 14 (1): 32–38. https://doi.org/10.1093/ije/14.1.32.\n\n\nSimpson, E. H. 1951. “The Interpretation of Interaction in Contingency Tables.” Journal of the Royal Statistical Society: Series B (Methodological) 13 (2): 238–41. https://doi.org/10.1111/j.2517-6161.1951.tb00088.x.\n\n\nVaupel, James W., and Vladimir Canudas-Romo. 2002. “Decomposing Demographic Change into Direct Vs. Compositional Components.” Demographic Research 7 (July): 1–14. https://doi.org/10.4054/DemRes.2002.7.1."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Standardization and Decomposition: An Introduction for Social Scientists",
+    "section": "",
+    "text": "Overview\n\nWhen\nWednesday 15th July 2026\n\n\nWhere\n\nIn-person: University of Stirling, Cottrell Building, 2Y5. Click here for the map!\n\nOnline: The session will be recorded and transcribed via Teams. If you are joining online please use the link here\n\n\n\nWhat to prepare?\nPlease bring your own laptop with either R or Stata installed. If you cannot install either R or Stata on your own machine you will be able to complete practical exercises in R via a web browser, but for this you will need a free account with posit.cloud. If you would like to use this option please sign up for an account at posit.cloud before the session.\n\n\n\nSchedule\n\n\nSessions\n\nWelcome/Intro\n\nIntroduction to Standardisation and Decomposition\n\nThe whole game\n\nStandardisation & Decomposition of Rates as Products\n\nPractical 1\n\nCross-classified Data & Multiple Populations\n\nPractical 2\n\nUncertainty\n\nPractical 3\nClose\n\n\n\n\n\nBreaks\n 11:00-11:15: Coffee\n 12:15-13:15: Lunch\n 14:15-14:30: Coffee"
+  },
+  {
+    "objectID": "code-of-conduct.html",
+    "href": "code-of-conduct.html",
+    "title": "Code of conduct",
+    "section": "",
+    "text": "(Adapted from NCRM code of conduct for online courses)"
+  },
+  {
+    "objectID": "code-of-conduct.html#expectations-about-respect-for-privacy-and-confidentiality-of-others",
+    "href": "code-of-conduct.html#expectations-about-respect-for-privacy-and-confidentiality-of-others",
+    "title": "Code of conduct",
+    "section": "Expectations about respect for privacy and confidentiality of others",
+    "text": "Expectations about respect for privacy and confidentiality of others\n\nContent should not be recorded, downloaded, shared or re-posted externally without explicit permission.\nThe platforms we will be using allow participants to interact with course presenters and other course delegates and to post content to discussion forums and other shared spaces. Remember that information that you share will be seen by other users. It can be helpful to know something about other delegates and their work, but do not share sensitive personal information about yourself or others.\nDo not post anything which you are not explicitly authorised to share, or which is not already subject to an open licence.\nIf you would like to re-use something posted by another user, please ask their permission directly or contact us."
+  },
+  {
+    "objectID": "code-of-conduct.html#expectations-about-behaviour",
+    "href": "code-of-conduct.html#expectations-about-behaviour",
+    "title": "Code of conduct",
+    "section": "Expectations about behaviour",
+    "text": "Expectations about behaviour\n\nWe want to create a supportive and inclusive learning environment. Treat other users with respect and avoid inflammatory or offensive language. Discuss ideas constructively and do not criticise or attack others personally.\nRemember that you have no knowledge of your fellow delegates’ personal circumstances. Think and choose your words carefully before commenting or posting about potentially sensitive subjects.\nDo not use the course platforms for campaigning, advertising or to post about issues irrelevant to the course, do not attempt to distribute spam or engage in any kind of unlawful activity."
+  },
+  {
+    "objectID": "lecture-close.html#what-weve-covered",
+    "href": "lecture-close.html#what-weve-covered",
+    "title": "Close",
+    "section": "What we’ve covered",
+    "text": "What we’ve covered\nBy right now you will:\n\nUnderstand how standardization and decomposition can be used to answer social science research questions\nBe familiar with different approaches to standardization and decomposition\nBe able to apply standardization and decomposition to practical examples in R or Stata"
+  },
+  {
+    "objectID": "lecture-close.html#where-to-go-next",
+    "href": "lecture-close.html#where-to-go-next",
+    "title": "Close",
+    "section": "Where to go next",
+    "text": "Where to go next\n\nFor more methods training: lots more courses by SGSSS and NCRM\nIf you want to do standardization and decomposition you can find the DasGuptR at https://github.com/josiahpjking/DasGuptR and on CRAN\nThese resources will live online so you can find them at https://josiahpjking.github.io/sgsss_std_decomp/ (until linkrot comes for them, as for us all)"
+  },
+  {
+    "objectID": "lecture-crossclass.html#population-structure",
+    "href": "lecture-crossclass.html#population-structure",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "population structure",
+    "text": "population structure\n\n\n\nmydat &lt;- tribble(\n  ~pop, ~shape,   ~nshp, ~ngrn, ~weight, ~rate,\n  1,    \"circle\",    10,     2, 10/24,  2/10,\n  1,    \"square\",    10,     3, 10/24,  3/10,\n  1,    \"triangle\",   4,     3,  4/24,  3/4,\n  2,    \"circle\",     7,     2,  7/24,  2/7,\n  2,    \"square\",     7,     4,  7/24,  4/7,\n  2,    \"triangle\",  10,     7, 10/24,  7/10,\n)\n\n\n\nmydat\n\n# A tibble: 6 × 6\n    pop shape     nshp  ngrn weight  rate\n  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1     1 circle      10     2  0.417 0.2  \n2     1 square      10     3  0.417 0.3  \n3     1 triangle     4     3  0.167 0.75 \n4     2 circle       7     2  0.292 0.286\n5     2 square       7     4  0.292 0.571\n6     2 triangle    10     7  0.417 0.7"
+  },
+  {
+    "objectID": "lecture-crossclass.html#population-share",
+    "href": "lecture-crossclass.html#population-share",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "population share",
+    "text": "population share\n\n\nrelative size of sub group is another factor\n\\[\n\\text{Green Rate} = \\sum\\limits_{\\text{shape }i}  \\frac{n_{i}}{n} \\cdot \\frac{green_{i}}{n_{i}}\n\\]\n\n\nmydat |&gt;\n  group_by(pop) |&gt;\n  summarise(\n    crude_rate_v1 = sum(ngrn) / sum(nshp),\n    crude_rat_v2 = sum(weight * rate)\n  )\n\n# A tibble: 2 × 3\n    pop crude_rate_v1 crude_rat_v2\n  &lt;dbl&gt;         &lt;dbl&gt;        &lt;dbl&gt;\n1     1         0.333        0.333\n2     2         0.542        0.542"
+  },
+  {
+    "objectID": "lecture-crossclass.html#decomposition-within-each-sub-group",
+    "href": "lecture-crossclass.html#decomposition-within-each-sub-group",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "decomposition within each sub-group?",
+    "text": "decomposition within each sub-group?\n\n\n\nseparate out data into each subgroup\ndo decomposition of weight * rate on each subgroup\nsum it all up\n\n\n\\[ \\small\n\\begin{align}\nW\\text{-effect} = \\,\\,&(W_{2\\,\\bigcirc} - W_{1\\,\\bigcirc})\\left( \\frac{R_{1\\,\\bigcirc}+R_{2\\,\\bigcirc}}{2} \\right) \\\\\n&+ \\\\\n&(W_{2\\,\\triangle} - W_{1\\,\\triangle})\\left( \\frac{R_{1\\,\\triangle}+R_{2\\,\\triangle}}{2} \\right) \\\\\n&+ \\\\\n&(W_{2\\,\\square} - W_{1\\,\\square})\\left( \\frac{R_{1\\,\\square}+R_{2\\,\\square}}{2} \\right) \\\\\n\\end{align}\n\\]\n\nWhat a lot of effort!"
+  },
+  {
+    "objectID": "lecture-crossclass.html#decomposition-on-vectors",
+    "href": "lecture-crossclass.html#decomposition-on-vectors",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "decomposition on vectors",
+    "text": "decomposition on vectors\ndo the decomposition of weight * rate, but instead of a single number, these are vectors.\n\\[\nW\\text{-effect} = \\,\\, (\\vec{W}_{2} - \\vec{W}_{1})\\left( \\frac{\\vec{R}_{1}+\\vec{R}_{2}}{2} \\right)\n\\] \\[\n\\vec{W} = \\begin{bmatrix} W_{\\bigcirc} \\\\ W_{\\triangle} \\\\ W_{\\square} \\end{bmatrix}, \\vec{R} = \\begin{bmatrix} R_{\\bigcirc} \\\\ R_{\\triangle} \\\\ R_{\\square} \\end{bmatrix},\n\\]"
+  },
+  {
+    "objectID": "lecture-crossclass.html#decomposition-on-vectors-1",
+    "href": "lecture-crossclass.html#decomposition-on-vectors-1",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "decomposition on vectors",
+    "text": "decomposition on vectors\n\n\n\ndgnpop(x = mydat,\n       pop = \"pop\",\n       factors=c(\"weight\",\"rate\"),\n       ratefunction = \"sum(weight * rate)\") |&gt;\n  dg_table()\n\n            1      2    diff decomp\nweight 0.4036 0.5000 0.09643  46.29\nrate   0.3958 0.5077 0.11190  53.71\ncrude  0.3333 0.5417 0.20833 100.00\n\n\n\nNote we need to specify the ratefunction.\nWhen weights and rates are vectors, then weight * rate will return a vector, but we need it to return a summary value, e.g., sum(weight * rate)"
+  },
+  {
+    "objectID": "lecture-crossclass.html#alternatively-or-equivalently",
+    "href": "lecture-crossclass.html#alternatively-or-equivalently",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "alternatively (or equivalently):",
+    "text": "alternatively (or equivalently):\n\n\n\ndgnpop(x = mydat,\n       pop = \"pop\",\n       factors = c(\"rate\"),\n       id_vars = \"shape\",\n       crossclassified = \"nshp\") |&gt;\n  dg_table()\n\n                  1      2    diff decomp\nrate         0.3958 0.5077 0.11190  53.71\nshape_struct 0.4036 0.5000 0.09643  46.29\ncrude        0.3333 0.5417 0.20833 100.00\n\n\n\nIf we’re thinking about things in terms of population composition, then we can make use of:\n\nid_vars : specify the variable(s) that define sub-groups\ncrossclassified : specify the variable that gives the sub-group size\n\nWith just one variable defining the sub-groups, this is (usually\\(^*\\)) just the same as the method on the slide previous"
+  },
+  {
+    "objectID": "lecture-crossclass.html#aside",
+    "href": "lecture-crossclass.html#aside",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "\\(^*\\)aside",
+    "text": "\\(^*\\)aside\n\n\npopulation subgroup composition is a driver of the rate construction\n\ndgnpop(x = data,\n       pop = \"pop\",\n       factors=c(\"weight\",\"a\",\"b\",\"c\"),\n       ratefunction = \"sum(weight * a * b * c)\") |&gt;\n  dg_table()\n\ndecomposition of population rate with weights as a composite factor  \\[\n\\sum\\limits_i w_i \\,\\,\\cdot a_i \\,\\cdot\\, b_i \\,\\cdot\\, c_i\n\\]\n\npopulation subgroups are ‘containers’ for the rate\n\ndgnpop(x = data,\n       pop = \"pop\",\n       factors = c(\"a\",\"b\",\"c\"),\n       id_vars = \"subgroup\",\n       crossclassified = \"subgroup_size\")\n\nwithin-subgroup decomposition of rates, and decomposition of population rate as sum of weights*rates. \\[\n\\sum\\limits_i w_i \\,\\,\\cdot \\underset{\\uparrow \\atop a_i \\cdot b_i \\cdot c_i}{r_i}\n\\]"
+  },
+  {
+    "objectID": "lecture-crossclass.html#sub-groups-defined-by-multiple-variables",
+    "href": "lecture-crossclass.html#sub-groups-defined-by-multiple-variables",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "sub-groups defined by multiple variables",
+    "text": "sub-groups defined by multiple variables\ncombinations of age, sex, race, area, etc.\n\n\n\n\n# A tibble: 12 × 5\n     pop     i     j size  rate \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n 1     1     1     1 n_11  r_11 \n 2     1     1     2 n_12  r_12 \n 3     1     1     3 n_13  r_13 \n 4     1     2     1 n_21  r_21 \n 5     1     2     2 n_22  r_22 \n 6     1     2     3 n_23  r_23 \n 7     2     1     1 n_11  r_11 \n 8     2     1     2 n_12  r_12 \n 9     2     1     3 n_13  r_13 \n10     2     2     1 n_21  r_21 \n11     2     2     2 n_22  r_22 \n12     2     2     3 n_23  r_23 \n\n\n\n\n\n# A tibble: 24 × 6\n     pop     i     j     k size  rate \n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n 1     1     1     1     1 n_111 r_111\n 2     1     1     1     2 n_112 r_112\n 3     1     1     2     1 n_121 r_121\n 4     1     1     2     2 n_122 r_122\n 5     1     1     3     1 n_131 r_131\n 6     1     1     3     2 n_132 r_132\n 7     1     2     1     1 n_211 r_211\n 8     1     2     1     2 n_212 r_212\n 9     1     2     2     1 n_221 r_221\n10     1     2     2     2 n_222 r_222\n# ℹ 14 more rows"
+  },
+  {
+    "objectID": "lecture-crossclass.html#example",
+    "href": "lecture-crossclass.html#example",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "example:",
+    "text": "example:\n\n\n\n\nCode\neg5.3 &lt;- tibble(\n  pop = rep(c(1985, 1970), e = 22),\n  age = rep(rep(1:11, 2), 2),\n  race = rep(rep(1:2, e = 11), 2),\n  # number of people in age-race-group\n  size = c(\n    3041, 11577, 27450, 32711, 35480, 27411, 19555, 19795, 15254, 8022, \n    2472, 707, 2692, 6473, 6841, 6547, 4352, 3034, 2540, 1749, 804, 236,\n    2968, 11484, 34614, 30992, 21983, 20314, 20928, 16897, 11339, 5720, \n    1315, 535, 2162, 6120, 4781, 3096, 2718, 2363, 1767, 1149, 448, 117\n  ),\n  # death rate in age-race-group\n  rate = c(\n    9.163, 0.462, 0.248, 0.929, 1.084, 1.810, 4.715, 12.187, 27.728, 64.068, 157.570, \n    17.208, 0.738, 0.328, 1.103, 2.045, 3.724, 8.052, 17.812, 34.128, 68.276, 125.161, \n    18.469, 0.751, 0.391, 1.146, 1.287, 2.672, 6.636, 15.691, 34.723, 79.763, 176.837, \n    36.993, 1.352,0.541, 2.040, 3.523, 6.746, 12.967, 24.471, 45.091, 74.902, 123.205\n  )\n)\n\neg5.3\n\n\n# A tibble: 44 × 5\n     pop   age  race  size   rate\n   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1  1985     1     1  3041  9.16 \n 2  1985     2     1 11577  0.462\n 3  1985     3     1 27450  0.248\n 4  1985     4     1 32711  0.929\n 5  1985     5     1 35480  1.08 \n 6  1985     6     1 27411  1.81 \n 7  1985     7     1 19555  4.72 \n 8  1985     8     1 19795 12.2  \n 9  1985     9     1 15254 27.7  \n10  1985    10     1  8022 64.1  \n# ℹ 34 more rows"
+  },
+  {
+    "objectID": "lecture-crossclass.html#combined-ij-mix-contribution",
+    "href": "lecture-crossclass.html#combined-ij-mix-contribution",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "combined ij-mix contribution",
+    "text": "combined ij-mix contribution\n\n\n\n\nCode\neg5.3a &lt;- eg5.3 |&gt;\n  group_by(pop) |&gt;\n  mutate(\n    agerace = interaction(age,race),\n    agerace_w = size/sum(size),\n  ) |&gt; ungroup()\n\neg5.3a\n\n\n# A tibble: 44 × 7\n     pop   age  race  size   rate agerace agerace_w\n   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt;       &lt;dbl&gt;\n 1  1985     1     1  3041  9.16  1.1        0.0127\n 2  1985     2     1 11577  0.462 2.1        0.0485\n 3  1985     3     1 27450  0.248 3.1        0.115 \n 4  1985     4     1 32711  0.929 4.1        0.137 \n 5  1985     5     1 35480  1.08  5.1        0.149 \n 6  1985     6     1 27411  1.81  6.1        0.115 \n 7  1985     7     1 19555  4.72  7.1        0.0819\n 8  1985     8     1 19795 12.2   8.1        0.0829\n 9  1985     9     1 15254 27.7   9.1        0.0639\n10  1985    10     1  8022 64.1   10.1       0.0336\n# ℹ 34 more rows\n\n\n\n\ndgnpop(x = eg5.3a,\n       pop = \"pop\",\n       factors = c(\"agerace_w\",\"rate\"),\n       ratefunction = \"sum(agerace_w * rate)\") |&gt;\n  dg_table()\n\n            1970  1985    diff decomp\nagerace_w  8.373 9.914  1.5415 -224.6\nrate      10.257 8.030 -2.2277  324.6\ncrude      9.422 8.736 -0.6862  100.0"
+  },
+  {
+    "objectID": "lecture-crossclass.html#separate-i-and-j-contributions",
+    "href": "lecture-crossclass.html#separate-i-and-j-contributions",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "separate i and j contributions?",
+    "text": "separate i and j contributions?\nignoring the ij interaction.. (Don’t do this!!)\n\n\n\n\nCode\neg5.3b &lt;- \n  eg5.3 |&gt; \n    group_by(pop) |&gt;\n    mutate(\n      popsize = sum(size)\n    ) |&gt;\n    group_by(pop, age) |&gt;\n    mutate(\n      age_w = sum(size)/popsize\n    ) |&gt; \n    group_by(pop,race) |&gt;\n    mutate(\n      race_w = sum(size)/popsize\n    ) |&gt;\n    ungroup() |&gt; select(-popsize)\n\neg5.3b\n\n\n# A tibble: 44 × 7\n     pop   age  race  size   rate  age_w race_w\n   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1  1985     1     1  3041  9.16  0.0157  0.849\n 2  1985     2     1 11577  0.462 0.0598  0.849\n 3  1985     3     1 27450  0.248 0.142   0.849\n 4  1985     4     1 32711  0.929 0.166   0.849\n 5  1985     5     1 35480  1.08  0.176   0.849\n 6  1985     6     1 27411  1.81  0.133   0.849\n 7  1985     7     1 19555  4.72  0.0946  0.849\n 8  1985     8     1 19795 12.2   0.0936  0.849\n 9  1985     9     1 15254 27.7   0.0712  0.849\n10  1985    10     1  8022 64.1   0.0370  0.849\n# ℹ 34 more rows\n\n\n\n\ndgnpop(x = eg5.3b,\n       pop = \"pop\",\n       factors = c(\"age_w\",\"race_w\",\"rate\"),\n       ratefunction = \"sum(age_w * race_w * rate)\") |&gt;\n  dg_table()\n\n         1970  1985     diff  decomp\nage_w   8.429 9.903  1.47442 -215.45\nrace_w  9.120 9.181  0.06135   -8.97\nrate   10.279 8.059 -2.22012  324.42\ncrude   9.448 8.764 -0.68434  100.00"
+  },
+  {
+    "objectID": "lecture-crossclass.html#separate-i-and-j-contributions-1",
+    "href": "lecture-crossclass.html#separate-i-and-j-contributions-1",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "separate i and j contributions",
+    "text": "separate i and j contributions\nsymetrically separating out ij interaction\n\n\n\n\n# A tibble: 44 × 5\n     pop   age  race  size   rate\n   &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1  1985     1     1  3041  9.16 \n 2  1985     2     1 11577  0.462\n 3  1985     3     1 27450  0.248\n 4  1985     4     1 32711  0.929\n 5  1985     5     1 35480  1.08 \n 6  1985     6     1 27411  1.81 \n 7  1985     7     1 19555  4.72 \n 8  1985     8     1 19795 12.2  \n 9  1985     9     1 15254 27.7  \n10  1985    10     1  8022 64.1  \n# ℹ 34 more rows\n\n\n\n\ndgnpop(x = eg5.3,\n       pop = \"pop\",\n       factors = c(\"rate\"),\n       id_vars = c(\"age\",\"race\"),\n       crossclassified = \"size\") |&gt;\n  dg_table()\n\n              1970  1985     diff  decomp\nage_struct   8.385 9.907  1.52173 -221.76\nrace_struct  9.136 9.156  0.01977   -2.88\nrate        10.257 8.030 -2.22773  324.64\ncrude        9.422 8.736 -0.68622  100.00"
+  },
+  {
+    "objectID": "lecture-crossclass.html#requirements",
+    "href": "lecture-crossclass.html#requirements",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "requirements",
+    "text": "requirements\n\nexhaustive stratification - sub-groups should cover 100% of the population of interest.\nboth populations must have same subgroups\nno subgroups of size zero"
+  },
+  {
+    "objectID": "lecture-crossclass.html#example-1",
+    "href": "lecture-crossclass.html#example-1",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "example",
+    "text": "example\n\n\nCode\nscbrth &lt;- \n  tribble(\n    ~year, ~n_people, ~n_women, ~n_women1544, ~n_births,\n    1991,   5083330,  2638815,      1121555,     67024,\n    2000,   5062940,  2631014,      1079356,     53076,\n    2010,   5262200,  2713982,      1058324,     58791,\n  ) |&gt;\n  mutate(\n    crude = n_births/n_people*1e3,\n    propw = n_women/n_people,\n    propw1544 = n_women1544/n_women,\n    bpw = n_births/n_women1544*1e3\n  )\nscbrth\n\n\n# A tibble: 3 × 9\n   year n_people n_women n_women1544 n_births crude propw propw1544   bpw\n  &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1  1991  5083330 2638815     1121555    67024  13.2 0.519     0.425  59.8\n2  2000  5062940 2631014     1079356    53076  10.5 0.520     0.410  49.2\n3  2010  5262200 2713982     1058324    58791  11.2 0.516     0.390  55.6"
+  },
+  {
+    "objectID": "lecture-crossclass.html#a-problem..",
+    "href": "lecture-crossclass.html#a-problem..",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "a problem..",
+    "text": "a problem..\nif we just look at pairwise decompositions..\n\n\n\n\nCode\ndgnpop(scbrth[1:2,], pop=\"year\",\n       factors=c(\"propw\",\"propw1544\",\"bpw\")) |&gt;\n  dg_table()\n\n\n           1991  2000     diff decomp\npropw     11.82 11.83  0.01251  -0.46\npropw1544 12.02 11.61 -0.41808  15.47\nbpw       12.96 10.67 -2.29626  84.99\ncrude     13.19 10.48 -2.70182 100.00\n\n\n\n\nCode\ndgnpop(scbrth[2:3,], pop=\"year\",\n       factors=c(\"propw\",\"propw1544\",\"bpw\")) |&gt;\n  dg_table()\n\n\n           2000  2010     diff decomp\npropw     10.88 10.80 -0.08189 -11.88\npropw1544 11.12 10.57 -0.55001 -79.82\nbpw       10.19 11.51  1.32099 191.70\ncrude     10.48 11.17  0.68909 100.00\n\n\n\n\nCode\ndgnpop(scbrth[c(1,3),], pop=\"year\",\n       factors=c(\"propw\",\"propw1544\",\"bpw\")) |&gt;\n  dg_table()\n\n\n           1991  2010     diff decomp\npropw     12.20 12.12 -0.07901   3.93\npropw1544 12.68 11.63 -1.04627  51.98\nbpw       12.60 11.71 -0.88746  44.09\ncrude     13.19 11.17 -2.01273 100.00\n\n\n\nWe have multiple sets of standardised rates.\nAnd internally inconsistent decomposition effects.\nWhat we want:\n\\[\\small\n\\begin{align}\n\\text{BPW-effect}_{\\text{1991v2010}} &= \\text{BPW-effect}_{\\text{1991v2000}} + \\\\ & \\quad \\,\\,\\,\\,\\text{BPW-effect}_{\\text{2000v2010}}\n\\end{align}\n\\]\nWhat we have:\n\\[\\small\n\\begin{align}\n-0.88746 &\\neq -2.29626 + 1.32099 \\\\\n-0.88746 &\\neq -0.9753 \\,\\,!?!?\\\\\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "lecture-crossclass.html#a-solution",
+    "href": "lecture-crossclass.html#a-solution",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "a solution",
+    "text": "a solution\nAveraging over different possible ways to achieve consistency through substituting in standardised rates for one another.\ne.g.,:"
+  },
+  {
+    "objectID": "lecture-crossclass.html#in-dasguptr",
+    "href": "lecture-crossclass.html#in-dasguptr",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "In DasGuptR",
+    "text": "In DasGuptR\nIt does it all for us:\n\ndgnpop(scbrth, pop=\"year\",\n       factors=c(\"propw\",\"propw1544\",\"bpw\")) |&gt;\n  dg_table()\n\n           1991  2000  2010\npropw     11.63 11.64 11.55\npropw1544 12.09 11.65 11.07\nbpw       12.67 10.40 11.75\ncrude     13.19 10.48 11.17\n\n\nNote we don’t get the decomposition effects unless we specify which pair of populations.\nThese are now based on standardisation across the full set.\n\ndgnpop(scbrth, pop=\"year\",\n       factors=c(\"propw\",\"propw1544\",\"bpw\")) |&gt;\n  dg_table(1991, 2010)\n\n           1991  2010    diff decomp\npropw     11.63 11.55 -0.0758   3.77\npropw1544 12.09 11.07 -1.0202  50.69\nbpw       12.67 11.75 -0.9167  45.55\ncrude     13.19 11.17 -2.0127 100.00"
+  },
+  {
+    "objectID": "lecture-crossclass.html#plots",
+    "href": "lecture-crossclass.html#plots",
+    "title": "Crossclassified Data & Multiple Populations",
+    "section": "plots",
+    "text": "plots\n\n\n\ndgnpop(scbrth, pop=\"year\",\n       factors=c(\"propw\",\"propw1544\",\"bpw\")) |&gt;\n  dg_plot()\n\n\n\n\n\n\n\n\n\n\ndgnpop(scbrth, pop=\"year\",\n       factors=c(\"propw\",\"propw1544\",\"bpw\")) |&gt;\n  ggplot(aes(x = pop, y = rate, \n             col = factor, group = factor))+\n  geom_line() +\n  theme_minimal()"
+  },
+  {
+    "objectID": "lecture-practical-introduction.html#practicalities",
+    "href": "lecture-practical-introduction.html#practicalities",
+    "title": "Practical sessions",
+    "section": "Practicalities",
+    "text": "Practicalities\n\nYou can find the practical materials at the course homepage (see link at bottom)\nWe provide R and Stata code\nWe recommend picking one and sticking with it unless you are a confident user of one or both\nWe provide worked examples and then some questions\nWe have solutions for the questions, but encourage you to try to work out the solutions first"
+  },
+  {
+    "objectID": "lecture-practical-introduction.html#software-comparison",
+    "href": "lecture-practical-introduction.html#software-comparison",
+    "title": "Practical sessions",
+    "section": "Software comparison",
+    "text": "Software comparison\n\nA good deal of the functionality is available in both R and Stata\nFor obvious reasons we are more familiar with the R version\nFrom what I (Ben) can tell one difference is that rdecompose only allows pairwise standardization, whilst DasGuptR will standardize as many populations that you provide it\nThis means some of the examples in Exercise Two differ between the two implementations\nThis might also be me not understanding the package very well!"
+  },
+  {
+    "objectID": "lecture-practical-introduction.html#a-note-on-data",
+    "href": "lecture-practical-introduction.html#a-note-on-data",
+    "title": "Practical sessions",
+    "section": "A note on data",
+    "text": "A note on data\n\nWe have curated a range of data examples for the practical sessions\nAs a result we are ‘strangers’ (D’Ignazio and Klein 2020) to these data - we don’t know the context of “the collection and maintenance process of the data”\nThere is always a risk of ‘epistemic violence’ (D’Ignazio and Klein 2020 citing Gayatri Spivak) as a result\nYou may be less of a stranger to some of these topics than we are - so if we misunderstand something, or use terminology or concepts that someone more familiar would avoid, then please let us know"
+  },
+  {
+    "objectID": "lecture-practical-introduction.html#references",
+    "href": "lecture-practical-introduction.html#references",
+    "title": "Practical sessions",
+    "section": "References",
+    "text": "References\n\n\n\n\nD’Ignazio, Catherine, and Lauren Klein. 2020. “5. Unicorns, Janitors, Ninjas, Wizards, and Rock Stars.” Data Feminism, March."
+  },
+  {
     "objectID": "lecture-uncertainty.html#whence-uncertainty",
     "href": "lecture-uncertainty.html#whence-uncertainty",
     "title": "Uncertainty in Standardization and Decomposition",

@@ -1042,21 +1042,21 @@ Because the way `rdecompose` handles time series is different to `DasGuptR` we d
 
 
 
-::: {.callout-note collapse="true"}
-#### Age-Sex-LAA Standardised Birth Rates, Scotland 1991-2024 
+<!-- ::: {.callout-note collapse="true"} -->
+<!-- #### Age-Sex-LAA Standardised Birth Rates, Scotland 1991-2024  -->
 
-$$
-\begin{align}
-\text{Birth Rate} &= \frac{\text{Nr Births}}{\text{Nr People}} \\
-\quad \\
-&= \sum\limits_{\text{age }i,\text{ sex }j,\text{ area } k} \frac{\text{Nr People}_{ijk}}{\text{Nr People}} \cdot \frac{\text{Nr Births}_{ijk}}{\text{Nr People}_{ijk}}
-\end{align}
-$$
+<!-- $$ -->
+<!-- \begin{align} -->
+<!-- \text{Birth Rate} &= \frac{\text{Nr Births}}{\text{Nr People}} \\ -->
+<!-- \quad \\ -->
+<!-- &= \sum\limits_{\text{age }i,\text{ sex }j,\text{ area } k} \frac{\text{Nr People}_{ijk}}{\text{Nr People}} \cdot \frac{\text{Nr Births}_{ijk}}{\text{Nr People}_{ijk}} -->
+<!-- \end{align} -->
+<!-- $$ -->
 
 
-TODO JK upload data. 
+<!-- TODO JK upload data.  -->
 
-:::
+<!-- ::: -->
 
 
 
