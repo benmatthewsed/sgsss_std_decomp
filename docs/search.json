@@ -390,5 +390,61 @@
     "title": "Uncertainty in Standardization and Decomposition",
     "section": "References",
     "text": "References\n\n\n\n\nCarsey, Thomas M., and Jeffrey J. Harden. 2014. Monte Carlo Simulation and Resampling Methods for Social Science. SAGE Publications, Inc. https://doi.org/10.4135/9781483319605.\n\n\nDas Gupta, Prithwis. 1993. Standardization and Decomposition of Rates: A User’s Manual.\n\n\nEfron, Bradley, and Trevor Hastie. 2016. “Bootstrap Confidence Intervals.” In Computer Age Statistical Inference: Algorithms, Evidence, and Data Science, 181–207. Institute of Mathematical Statistics Monographs. Cambridge: Cambridge University Press.\n\n\nFranz, Volker H. 2007. “Ratios: A Short Guide to Confidence Limits and Proper Use.” arXiv. https://doi.org/10.48550/arXiv.0710.2024.\n\n\nGiordano, Ryan, Rachael Meager, and Tamara Broderick. 2026. “An Automatic Finite-Sample Robustness Metric: When Can Dropping a Little Data Change Conclusions? Part I: Definitions and Experiments.” Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences 384 (2321): 20250001. https://doi.org/10.1098/rsta.2025.0001.\n\n\nLi, Jinjing. 2017. “Rate Decomposition for Aggregate Data Using Das Gupta’s Method.” The Stata Journal 17 (2): 490–502.\n\n\nRainey, Carlisle. 2024. “A Careful Consideration of CLARIFY: Simulation-Induced Bias in Point Estimates of Quantities of Interest.” Political Science Research and Methods 12 (3): 614–23. https://doi.org/10.1017/psrm.2023.8.\n\n\nVerlaan, Tim, and Samuel Langton. 2024. “On the Use of Inferential Statistics on Administrative Police Data.” In The Crime Data Handbook, 197–210. Bristol University Press.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science (2e). Second."
+  },
+  {
+    "objectID": "lecture00.html#hello",
+    "href": "lecture00.html#hello",
+    "title": "Welcome/Intro",
+    "section": "Hello!",
+    "text": "Hello!\n\nWho we are\n\nBen; Josiah; Chloe; Trystan\n\nWho you are (Ben open https://www.menti.com/ala23cd37ta7)"
+  },
+  {
+    "objectID": "lecture00.html#housekeeping",
+    "href": "lecture00.html#housekeeping",
+    "title": "Welcome/Intro",
+    "section": "Housekeeping",
+    "text": "Housekeeping\n\nCode of conduct\nAsk questions whenever 👍 You can do this through the Teams chat facility {demo this now}\nWe’ve structured the sessions with regular breaks, but if you need to leave just leave!\nMaterials will live online here so you can access them any time"
+  },
+  {
+    "objectID": "lecture00.html#learning-outcomes",
+    "href": "lecture00.html#learning-outcomes",
+    "title": "Welcome/Intro",
+    "section": "Learning outcomes",
+    "text": "Learning outcomes\nBy the end of the workshop you will:\n\nUnderstand how standardization and decomposition can be used to answer social science research questions\nBe familiar with different approaches to standardization and decomposition\nBe able to apply standardization and decomposition to practical examples in R or Stata"
+  },
+  {
+    "objectID": "lecture00.html#course-schedule",
+    "href": "lecture00.html#course-schedule",
+    "title": "Welcome/Intro",
+    "section": "Course schedule",
+    "text": "Course schedule\n\nSee the course website"
+  },
+  {
+    "objectID": "lecture00.html#practical-sessions",
+    "href": "lecture00.html#practical-sessions",
+    "title": "Welcome/Intro",
+    "section": "Practical sessions",
+    "text": "Practical sessions\n\nYou can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/josiahpjking/sgsss_std_decomp\nIf you don’t have an R installation, you can follow along with the R practicals in your browser via posit.cloud (free account required) https://posit.cloud/content/12653236\nFor Stata you’re relying on your own copy"
+  },
+  {
+    "objectID": "lecture00.html#software",
+    "href": "lecture00.html#software",
+    "title": "Welcome/Intro",
+    "section": "Software",
+    "text": "Software\n\nR examples use the DasGuptR package. We (mainly Josiah) wrote this!\nStata examples use the rdecompose command [@liRateDecompositionAggregate2017]. Seems neat!\nFor obvious reasons we are more familiar with the R version, and so focus on that\nFor some of the more complex examples we only provide R examples. You (or a friendly LLM) may be able to translate these to Stata\n\n\n\n\n\nOr maybe not. I found that LLMs (the free ChatGPT one) was not at all good with rdecompose - perhaps because the documentation isn’t that extensive"
+  },
+  {
+    "objectID": "lecture-close.html#what-weve-covered",
+    "href": "lecture-close.html#what-weve-covered",
+    "title": "Close",
+    "section": "What we’ve covered",
+    "text": "What we’ve covered\nBy right now you will:\n\nUnderstand how standardization and decomposition can be used to answer social science research questions\nBe familiar with different approaches to standardization and decomposition\nBe able to apply standardization and decomposition to practical examples in R or Stata"
+  },
+  {
+    "objectID": "lecture-close.html#where-to-go-next",
+    "href": "lecture-close.html#where-to-go-next",
+    "title": "Close",
+    "section": "Where to go next",
+    "text": "Where to go next\n\nFor more methods training: lots more courses by SGSSS and NCRM\nIf you want to do standardization and decomposition you can find the DasGuptR at https://github.com/josiahpjking/DasGuptR and on CRAN\nThese resources will live online so you can find them at https://josiahpjking.github.io/sgsss_std_decomp/ (until linkrot comes for them, as for us all)"
   }
 ]

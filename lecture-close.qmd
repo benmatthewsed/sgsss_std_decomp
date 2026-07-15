@@ -14,6 +14,8 @@ format:
     code-annotations: hover
     code-copy: hover
     chalkboard: true
+title-slide-attributes:
+  data-background-color: "#006938"  
 ---
 
 ## What we've covered
